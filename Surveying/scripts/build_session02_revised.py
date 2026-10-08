@@ -58,7 +58,7 @@ def arrow(ax,x1,y1,x2,y2,color=GRAY):
     ax.annotate('',(x2,y2),(x1,y1),arrowprops={'arrowstyle':'-|>','lw':2,'color':color})
 
 fig,ax=canvas(2.4)
-box(ax,.1,.55,3.3,1.5,'観測値 ＝ 見える\n1000・1002・1001 mm')
+box(ax,.1,.55,3.3,1.5,'観測値 ＝ 見える\n1000・1002・1001 mm',fs=14)
 arrow(ax,3.55,1.3,4.15,1.3)
 box(ax,4.3,.55,3.3,1.5,'平均 ＝ 推定する値\n1001 mm',TEAL)
 arrow(ax,7.75,1.3,8.35,1.3)
