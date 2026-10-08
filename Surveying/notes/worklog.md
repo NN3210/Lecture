@@ -14,3 +14,9 @@
 - Claude が成果物をチェック（`notes/reviews/2026-10-08_claude_review_session02.md`）。数値はすべて一致。表紙・例題Aの表・数式内の日本語・問2の密度の 4 点を直接修正した。
 - Marp の `--pptx`/`--pdf` はこの PC では headless ブラウザがタイムアウトして使えないため、`scripts/md2pptx.py`（python-pptx + matplotlib mathtext）と `scripts/pptx_export.ps1`（PowerPoint COM で PDF 化）を作り、`slides.pptx`・`slides.pdf` を生成した。
 - クラウド閲覧用に `slides.html`（KaTeX フォント埋め込み版）を Claude の Artifact として公開した（URL は非公開リンクのためリポジトリには書かない）。
+
+## 2026-10-08（Codex、第2回の図解改訂版）
+
+- 指定箇所を高校生にも伝わる説明・数値例・7点の図に改訂し、旧版を保持して`materials/slides/第02回_測量の基礎と誤差論/改訂版_20261008/`に新しいPPTX・PDF・原稿を保存した（本編68枚＋出典2枚）。
+- 標準偏差・自由度・単位・信頼区間を2枚に統合。中心極限定理、平均の分散、観測回数の効果と限界、逆分散重みの平方完成にGUM・NISTの出典を添えた。
+- 再生成用`build_session02_revised.py`と図原稿を保存し、例題・演習・追加数値例の検算、PDF描画、全体一覧と主要改訂ページの表示確認を実施した。
