@@ -30,7 +30,9 @@ OUT = ROOT / 'materials/slides/第02回_測量の基礎と誤差論/改訂版_20
 FIG = OUT / 'diagrams'
 FIG.mkdir(parents=True, exist_ok=True)
 # 中間ファイルもSurveying以下に置く。終了時に自分で作った一時領域だけ削除。
-plt.rcParams.update({'font.family': 'Noto Sans CJK JP', 'font.size': 14,
+# Noto Sans CJK JP が無い端末（Windows 等）ではメイリオで代替する
+# （Windows の Noto Sans JP は可変フォントで、matplotlib では極細になるため使わない）。
+plt.rcParams.update({'font.family': ['Noto Sans CJK JP', 'Meiryo'], 'font.size': 14,
                      'axes.spines.top': False, 'axes.spines.right': False,
                      'svg.fonttype': 'path', 'axes.unicode_minus': False})
 NAVY, TEAL, ORANGE, GRAY = '#1f4e79', '#13877b', '#bd512b', '#526273'
@@ -38,7 +40,7 @@ NAVY, TEAL, ORANGE, GRAY = '#1f4e79', '#13877b', '#bd512b', '#526273'
 def save(fig, name):
     svg = FIG / f'{name}.svg'
     fig.savefig(svg, bbox_inches='tight', facecolor='white')
-    svg.write_text('\n'.join(line.rstrip() for line in svg.read_text().splitlines())+'\n')
+    svg.write_text('\n'.join(line.rstrip() for line in svg.read_text(encoding='utf-8').splitlines())+'\n',encoding='utf-8')
     fig.savefig(FIG / f'{name}.png', dpi=180, bbox_inches='tight', facecolor='white')
     plt.close(fig)
 
@@ -64,36 +66,119 @@ box(ax,8.5,.55,3.3,1.5,'真値 X ＝ 知りたい値\n正確には分からな�
 ax.text(8,.22,'平均と真値が一致するとは限らない',ha='center',fontsize=15,color=ORANGE)
 save(fig,'true_value')
 
-fig,axes=plt.subplots(1,3,figsize=(12,2.8))
-for ax,k in zip(axes,[2,8,32]):
-    z=(2*np.arange(k+1)-k)/np.sqrt(k)
-    p=np.array([math.comb(k,int(j))/2**k for j in range(k+1)])
-    dz=2/np.sqrt(k)
-    ax.bar(z,p/dz,width=dz*.9,color=TEAL,alpha=.7,label='二項確率 ÷ 区間幅')
-    t=np.linspace(-3.6,3.6,300)
-    ax.plot(t,np.exp(-t*t/2)/np.sqrt(2*np.pi),color=ORANGE,lw=2,label='標準正規曲線')
-    ax.set_xlim(-3.6,3.6); ax.set_ylim(0,.52)
-    ax.set_title(f'小要因 {k} 個',fontsize=17,color=NAVY)
-    ax.set_xlabel('合計 ÷ √要因数',fontsize=13)
-    ax.tick_params(labelsize=11)
-axes[0].set_ylabel('密度（棒の面積が確率）',fontsize=12)
-axes[2].legend(fontsize=10,loc='upper right')
-fig.tight_layout(); save(fig,'clt')
-
 fig,axes=plt.subplots(1,3,figsize=(12,3.3))
+fig.suptitle('コイン1枚：表なら +1 mm、裏なら −1 mm',fontsize=14,color=NAVY,y=.99)
+for ax,k in zip(axes,[2,4,32]):
+    total=2*np.arange(k+1)-k
+    counts=np.array([math.comb(k,int(j)) for j in range(k+1)])
+    p=counts/2**k
+    ax.bar(total,p,width=1.6,color=TEAL,alpha=.7)
+    ax.set_title(f'コイン {k} 枚',fontsize=16,color=NAVY)
+    ax.set_xlabel('合計（mm）',fontsize=12)
+    ax.set_ylabel('出る割合',fontsize=12)
+    ax.tick_params(labelsize=12)
+    if k<32:
+        for x,y,c in zip(total,p,counts):
+            ax.text(x,y+.018,f'{c}通り',ha='center',fontsize=12,color=NAVY)
+        ax.text(.97,.94,f'全 {2**k} 通り',transform=ax.transAxes,ha='right',va='top',fontsize=12,color=GRAY)
+        ax.set(xlim=(-k-1.5,k+1.5),ylim=(0,.65),xticks=total)
+    else:
+        x=np.linspace(-32,32,600)
+        # 棒の間隔は2 mmなので、密度を2倍して出る割合と比較する。
+        normal=2*np.exp(-x*x/(2*k))/np.sqrt(2*np.pi*k)
+        ax.plot(x,normal,color=ORANGE,lw=2,label='なめらかな山（正規分布）')
+        ax.set(xlim=(-33,33),ylim=(0,.21),xticks=[-32,-16,0,16,32])
+        ax.legend(fontsize=12,loc='upper center',frameon=False,handlelength=1)
+fig.tight_layout(rect=(0,0,1,1),pad=.8); save(fig,'clt')
+
+fig,axes=plt.subplots(1,4,figsize=(12,3.3))
+# 平均を中心にそろえた固定点群。散らばりと中心のずれを別々に変える。
 pts=np.array([[-.13,.02],[.03,.12],[.1,-.07],[-.03,-.12],[.14,.06],[-.1,.14]])
-sets=[pts,pts+np.array([.6,.38]),np.array([[-.65,.2],[.1,.68],[.6,-.35],[-.35,-.58],[.55,.4],[-.3,-.35]])]
-titles=['中心近くに、よくそろう','よくそろうが、中心からずれる','広く散らばる']
-subs=['精度が高い・真値にも近い','精度は高い・確度は低い','精度が低い']
-for ax,p,t,s in zip(axes,sets,titles,subs):
-    for rad in [1,.66,.33]: ax.add_patch(Circle((0,0),rad,fill=False,edgecolor='#abb7c3',lw=1.5))
-    ax.axhline(0,color='#d5dde5',lw=.8); ax.axvline(0,color='#d5dde5',lw=.8)
-    ax.scatter(*p.T,s=62,color=TEAL,zorder=3)
-    ax.plot(0,0,'+',color=ORANGE,ms=16,mew=2)
-    ax.set(xlim=(-1.15,1.15),ylim=(-1.15,1.15)); ax.set_aspect('equal');ax.axis('off')
-    ax.set_title(t,fontsize=16,color=NAVY)
-    ax.text(0,-1.32,s,ha='center',fontsize=13,color=GRAY)
-fig.tight_layout();save(fig,'targets')
+pts=pts-pts.mean(axis=0)
+wide=np.array([[-.65,.2],[.1,.68],[.6,-.35],[-.35,-.58],[.55,.4],[-.3,-.35]])
+wide=wide-wide.mean(axis=0)
+offset=np.array([.52,.3])
+sets=[pts,pts+offset,wide,wide+offset]
+titles=['精度 高・妥当性 高','精度 高・妥当性 低','精度 低・妥当性 高','精度 低・妥当性 低']
+subs=['そろって中心','そろうが中心からずれる','散らばるが中心は合う','散らばり、中心もずれる']
+for ax,p,title,sub in zip(axes,sets,titles,subs):
+    for rad in [1,.66,.33]: ax.add_patch(Circle((0,0),rad,fill=False,edgecolor=GRAY,alpha=.35,lw=1.5))
+    ax.axhline(0,color=GRAY,alpha=.2,lw=.8); ax.axvline(0,color=GRAY,alpha=.2,lw=.8)
+    ax.scatter(*p.T,s=38,color=TEAL,zorder=3)
+    ax.plot(0,0,'+',color=ORANGE,ms=19,mew=2.5,zorder=4)
+    ax.plot(*p.mean(axis=0),'x',color=NAVY,ms=12,mew=2.5,zorder=5)
+    ax.set(xlim=(-1.25,1.25),ylim=(-1.2,1.2)); ax.set_aspect('equal');ax.axis('off')
+    ax.set_title(title+'\n'+sub,fontsize=12,color=NAVY,linespacing=1.7)
+fig.text(.5,.04,'＋ 真値（的の中心）　× 観測値の平均',ha='center',fontsize=13,color=GRAY)
+fig.subplots_adjust(left=.02,right=.98,top=.72,bottom=.15,wspace=.12)
+save(fig,'targets')
+
+from scipy.stats import t as student_t
+fig,ax=plt.subplots(figsize=(12,3.3))
+critical=student_t.ppf(.975,df=5)
+x=np.sort(np.r_[np.linspace(-4,4,1201),-critical,critical])
+density=student_t.pdf(x,df=5)
+ax.fill_between(x,0,density,where=np.abs(x)<=critical,color=TEAL,alpha=.18)
+ax.fill_between(x,0,density,where=np.abs(x)>=critical,color=ORANGE,alpha=.5)
+ax.plot(x,density,color=NAVY,lw=2)
+for boundary in [-critical,critical]:
+    ax.vlines(boundary,0,student_t.pdf(boundary,df=5),color=ORANGE,lw=2)
+ax.text(0,.17,'95%',ha='center',fontsize=23,color=TEAL)
+for sign in [-1,1]:
+    ax.annotate('2.5%',xy=(sign*3.15,.011),xytext=(sign*3.35,.10),ha='center',fontsize=14,color=ORANGE,
+                arrowprops={'arrowstyle':'->','color':ORANGE})
+ax.annotate(r'ここより下が 97.5% → $t_{0.975}$',xy=(critical,.045),xytext=(1.15,.30),
+            fontsize=13,color=NAVY,arrowprops={'arrowstyle':'->','color':GRAY})
+ax.set(xlim=(-4,4),ylim=(0,.42),xlabel=r'$t$',ylabel='密度',
+       xticks=[-4,-critical,0,critical,4],xticklabels=['−4','−2.571','0','+2.571','+4'])
+ax.set_title('自由度 5 の t 分布',fontsize=16,color=NAVY)
+ax.tick_params(labelsize=12)
+fig.tight_layout();save(fig,'ci_tails')
+
+fig,axes=plt.subplots(1,2,figsize=(12,3.3))
+shifts=[np.array([3,-2,1,-3,2,-1,-2,2]),np.array([1,2,3,2,1,3,2,2])]
+for ax,values,title in zip(axes,shifts,['独立：ばらばらの向き','連動：同じ向き']):
+    ax.axhline(0,color=GRAY,lw=1)
+    for i,value in enumerate(values,1):
+        color=TEAL if value<0 else ORANGE
+        arrow(ax,i,0,i,value,color)
+        ax.text(i,value+(.18 if value>0 else -.18),f'{value:+d}',ha='center',
+                va='bottom' if value>0 else 'top',fontsize=12,color=color)
+    ax.set(xlim=(.4,8.6),ylim=(-4,4.2),xticks=range(1,9),yticks=[-3,0,3],ylabel='ずれ（mm）')
+    ax.set_title(title,fontsize=16,color=NAVY)
+    ax.tick_params(labelsize=12)
+    total=int(values.sum())
+    summary='合計 0 mm → 平均 ≈ 0' if total==0 else f'合計 +{total} mm → 平均 ≠ 0（偏りが残る）'
+    ax.text(.5,-.25,summary,transform=ax.transAxes,ha='center',fontsize=14,color=NAVY)
+fig.subplots_adjust(left=.065,right=.98,top=.84,bottom=.25,wspace=.24)
+save(fig,'cancel')
+
+fig,axes=plt.subplots(1,2,figsize=(12,3.3))
+for ax in axes:
+    ax.set_aspect('equal');ax.axis('off')
+axes[0].plot([0,3],[0,0],color=TEAL,lw=3)
+axes[0].plot([3,3],[0,4],color=TEAL,lw=3)
+axes[0].plot([0,3],[0,4],color=ORANGE,lw=3)
+axes[0].plot([2.65,2.65,3],[0,.35,.35],color=GRAY,lw=1.2)
+axes[0].text(1.5,-.55,'3 mm',ha='center',fontsize=14,color=TEAL)
+axes[0].text(3.2,2,'4 mm',va='center',fontsize=14,color=TEAL)
+axes[0].text(.85,2.5,'5 mm',ha='center',fontsize=14,color=ORANGE,rotation=53.13)
+axes[0].set(xlim=(-1.5,6.5),ylim=(-1,5))
+axes[0].set_title('独立なずれ：二乗して足す',fontsize=14,color=NAVY,pad=34)
+axes[0].text(.5,1.025,r'$\sqrt{3^2+4^2}=5$ mm',transform=axes[0].transAxes,
+             ha='center',va='bottom',fontsize=14,color=NAVY)
+axes[1].plot([0,3],[1,1],color=TEAL,lw=4)
+axes[1].plot([3,7],[1,1],color=ORANGE,lw=4)
+for pos in [0,3,7]: axes[1].plot([pos,pos],[.8,1.2],color=NAVY,lw=1.5)
+axes[1].text(1.5,1.5,'3 mm',ha='center',fontsize=14,color=TEAL)
+axes[1].text(5,1.5,'4 mm',ha='center',fontsize=14,color=ORANGE)
+axes[1].annotate('',(7,0),(0,0),arrowprops={'arrowstyle':'|-|','color':NAVY,'lw':1.5})
+axes[1].text(3.5,-.7,'3 + 4 = 7 mm',ha='center',fontsize=16,color=NAVY)
+axes[1].set(xlim=(-.5,7.5),ylim=(-2,4))
+axes[1].set_title('同じ向きにそろうずれ：そのまま足す',fontsize=14,color=NAVY,pad=34)
+axes[1].text(.5,1.025,'3 + 4 = 7 mm',transform=axes[1].transAxes,
+             ha='center',va='bottom',fontsize=14,color=NAVY)
+fig.tight_layout();save(fig,'variance_add')
 
 fig,ax=canvas(2.7)
 box(ax,.1,1.25,2.5,1.05,'① 同じ対象・単位？\n距離の種類もそろえる',fs=14)
@@ -118,16 +203,25 @@ box(ax,9.0,1.0,2.75,1.3,'4回の平均\n揺らぎ 2 mm',TEAL,19)
 ax.text(4.1,.02,'各矢印の「4分の1」と、全体の「半分」は別',ha='center',fontsize=15,color=ORANGE)
 save(fig,'propagation')
 
-fig,axes=plt.subplots(1,2,figsize=(12,2.85),gridspec_kw={'width_ratios':[1.1,1]})
-n=np.arange(1,33)
-axes[0].plot(n,4/np.sqrt(n),color=TEAL,lw=2.5,label='独立：4/√n')
-axes[0].plot(n,4*np.sqrt(.5+.5/n),color=ORANGE,lw=2.5,label='連動あり：全ペアの相関0.5')
-axes[0].set(xlim=(1,32),ylim=(0,4.3),xlabel='観測回数 n',ylabel='平均の標準偏差（mm）')
-axes[0].legend(fontsize=11);axes[0].grid(alpha=.15)
+fig,axes=plt.subplots(1,2,figsize=(12,3.3),gridspec_kw={'width_ratios':[1.2,1]})
+n=np.linspace(1,32,400)
+axes[0].axvspan(16,32,color=ORANGE,alpha=.10)
+axes[0].plot(n,4/np.sqrt(n),color=TEAL,lw=2.5,label=r'偶然誤差による平均のばらつき $4/\sqrt{n}$ mm')
+axes[0].axhline(1,color=ORANGE,lw=2,label=r'定誤差 $b=1$ mm')
+axes[0].scatter([16],[1],color=NAVY,s=48,zorder=4)
+axes[0].annotate(r'$n=16$',(16,1),xytext=(10,1.8),fontsize=12,color=NAVY,
+                 arrowprops={'arrowstyle':'->','color':GRAY})
+axes[0].set(xlim=(1,32),ylim=(0,4.3),xlabel=r'観測回数 $n$',ylabel='mm',xticks=[1,4,8,16,24,32])
+axes[0].tick_params(labelsize=12);axes[0].grid(alpha=.15)
+fig.legend(*axes[0].get_legend_handles_labels(),loc='upper center',bbox_to_anchor=(.5,1),
+           ncol=2,fontsize=12,frameon=False)
 axes[1].axis('off')
-for y,txt in zip([.88,.61,.34,.06],['1回：4 mm → 4回：2 mm','9回：約1.33 mm → 16回：1 mm','半分のばらつきには、4倍の回数','共通の偏り b は、何回平均しても残る']):
- axes[1].text(.03,y,txt,fontsize=15,color=ORANGE if y<.1 else NAVY,transform=axes[1].transAxes)
-fig.tight_layout();save(fig,'repeats')
+for y,txt in zip([.96,.78,.60,.38],['1回：4 mm → 4回：2 mm','9回：約1.33 mm → 16回：1 mm',
+                                   '半分のばらつきには、4倍の回数','定誤差 $b$ は何回平均しても残る']):
+    axes[1].text(.03,y,txt,fontsize=14,color=ORANGE if y<.4 else NAVY,transform=axes[1].transAxes)
+axes[1].text(.03,.12,'網掛け部分：回数を増やしても\n真値に近づかない',fontsize=14,color=ORANGE,
+             transform=axes[1].transAxes,va='top',linespacing=1.5)
+fig.tight_layout(rect=(0,0,1,.85));save(fig,'repeats')
 
 fig,axes=plt.subplots(1,2,figsize=(12,2.85))
 a=np.linspace(0,1,101);v=a*a+4*(1-a)**2
@@ -193,7 +287,7 @@ def build():
     import shutil
     with tempfile.TemporaryDirectory(prefix='.build_session02_',dir=OUT) as scratch:
         tempfile.tempdir=scratch
-        text=(OUT/'slides_revised.md').read_text()
+        text=(OUT/'slides_revised.md').read_text(encoding='utf-8')
         meta,body=m.split_frontmatter(text)
         b=RevisedBuilder('Noto Sans CJK JP','測量学 第2回｜図解・やさしい解説版')
         for s in m.split_slides(body):
