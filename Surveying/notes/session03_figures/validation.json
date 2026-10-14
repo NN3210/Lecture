@@ -1,5 +1,7 @@
 {
-  "README_SHA256": "e65e19f6aecfc7298654789e8e3c2f342c6c4c62dc4f6a308a8974944d4472b6",
+  "README_SHA256": "dd43f60a8ad17211276c1e38a78bcaa450058ecdc88ccf96a8f955d2143617bd",
+  "真北方向角": "座標北から真北へ右回り正。東で負、西で正。α = T − γ",
+  "正算式の数式フォント": "DejaVu Sans（mathtext）",
   "検査結果": [
     {
       "図": "three_surfaces",

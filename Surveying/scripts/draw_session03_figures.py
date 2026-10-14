@@ -204,27 +204,33 @@ def geodetic_coords():
 
 def three_norths():
     fig, ax = canvas(3.4)
-    o = (3.1, .38)
-    # 真北を座標北の西側に配置。γを反時計回り正とし α = T + γ。
-    for end, color in [((3.1, 2.85), NAVY), ((2.42, 2.77), TEAL),
-                       ((1.61, 2.57), ORANGE), ((5.75, 1.62), GRAY)]:
+    o = np.array([3.1, .35])
+    # 座標北から真北へ時計回りを正。原点より西の点ではγ > 0。
+    # matplotlibは東から反時計回りなので、時計回りの弧は角度を減らす。
+    for deg, length, color in [(90, 2.45, NAVY), (74, 2.5, TEAL),
+                               (99, 2.5, ORANGE), (25, 2.95, GRAY)]:
+        end = o + length*np.array([np.cos(np.deg2rad(deg)), np.sin(np.deg2rad(deg))])
         arrow(ax, *o, *end, color)
-    ax.text(3.18, 2.93, '座標北（X）', fontsize=13)
-    ax.text(1.95, 2.93, '真北', fontsize=13, color=TEAL)
-    ax.text(.78, 2.62, '磁北', fontsize=13, color=ORANGE)
-    ax.text(5.77, 1.64, 'P', fontsize=14, color=GRAY)
-    ax.text(2.8, .12, 'O', fontsize=14)
+    ax.text(3.05, 2.97, '座標北（X）', ha='right', fontsize=13)
+    ax.text(3.95, 2.69, '真北', fontsize=13, color=TEAL)
+    ax.text(.65, 2.55, '磁北（西偏約9°）', fontsize=12, color=ORANGE)
+    ax.text(5.85, 1.62, 'P', fontsize=14, color=GRAY)
+    ax.text(2.8, .10, 'O', fontsize=14)
     arc(ax, o, .8, 90, 25, NAVY)
-    arc(ax, o, 1.35, 106, 25, TEAL)
-    arc(ax, o, 1.95, 90, 106, ORANGE)
-    ax.text(4.1, .56, '方向角 T', fontsize=12)
-    ax.text(4.2, 1.58, '方位角 α', fontsize=12, color=TEAL)
-    ax.annotate('真北方向角 γ', xy=(2.82, 2.31), xytext=(.08, 1.75), fontsize=12,
-                color=ORANGE, arrowprops={'arrowstyle': '-', 'color': ORANGE})
-    box(ax, 6.45, 1.75, 5.12, 1.0, '方位角 = 方向角 + 真北方向角\nα = T + γ', fs=14)
-    ax.text(6.55, 1.22, '（符号は定義による）', fontsize=13, color=GRAY)
-    ax.text(6.55, .68, 'この図：T・α は右回り、γ は左回りを正', fontsize=12)
-    ax.text(6.55, .20, '磁北は磁石が指す北。角度は説明用に拡大。', fontsize=12, color=GRAY)
+    arc(ax, o, 1.35, 74, 25, TEAL)
+    arc(ax, o, 2.1, 90, 74, TEAL)
+    ax.text(4.1, .48, '方向角 T', fontsize=12)
+    ax.text(4.15, 1.88, '方位角 α', fontsize=12, color=TEAL)
+    gamma_mid = o + 2.1*np.array([np.cos(np.deg2rad(82)), np.sin(np.deg2rad(82))])
+    ax.annotate('真北方向角 γ（右回りが正）', xy=gamma_mid, xytext=(4.15, 3.08),
+                fontsize=12, color=TEAL,
+                arrowprops={'arrowstyle': '-', 'color': TEAL,
+                            'connectionstyle': 'angle,angleA=180,angleB=82,rad=0'})
+    box(ax, 6.45, 1.75, 5.12, 1.0, '方位角 = 方向角 − 真北方向角\nα = T − γ', fs=14)
+    ax.text(6.55, 1.13, 'γ は座標北から真北へ右回りを正。\n原点より東で負、西で正',
+            fontsize=12, linespacing=1.5)
+    ax.text(6.55, .35, 'この図は原点より西の点（γ > 0）の例。\n角度は説明用に拡大',
+            fontsize=12, color=GRAY, linespacing=1.5)
     save(fig, 'three_norths')
 
 
@@ -374,7 +380,10 @@ def forward_calc():
     ax.text(4.15,1.59,'$S$',fontsize=15)
     ax.text(2.51,1.36,'ΔX = S cos T\n（緯距）',ha='right',fontsize=12,color=GRAY,linespacing=1.5)
     ax.text(4.0,.49,'ΔY = S sin T（経距）',ha='center',fontsize=12,color=GRAY)
-    box(ax,7.15,1.63,4.4,1.05,'X_B = X_A + ΔX\nY_B = Y_A + ΔY',fs=15)
+    # 日本語は既存フォント、数式は専用フォントに分けて添字とΔを描画する。
+    with plt.rc_context({'mathtext.fontset': 'dejavusans'}):
+        box(ax,7.15,1.63,4.4,1.05,
+            r'$X_B = X_A + \Delta X$'+'\n'+r'$Y_B = Y_A + \Delta Y$',fs=15)
     ax.text(7.3,1.05,'B は A の南東にある',fontsize=14,color=TEAL)
     ax.text(7.3,.48,'ΔX < 0　／　ΔY > 0',fontsize=14,color=TEAL)
     save(fig,'forward_calc')
@@ -418,7 +427,10 @@ def main():
                  scale_factor,distance_stages,elevation_reduction,forward_calc,inverse_quadrant]:
         draw()
     assert hashlib.sha256(readme.read_bytes()).hexdigest()==before
-    (QA/'validation.json').write_text(json.dumps({'README_SHA256':before,'検査結果':CHECKS},
+    (QA/'validation.json').write_text(json.dumps({'README_SHA256':before,
+                                               '真北方向角': '座標北から真北へ右回り正。東で負、西で正。α = T − γ',
+                                               '正算式の数式フォント': 'DejaVu Sans（mathtext）',
+                                               '検査結果':CHECKS},
                                                ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
     # 点検用一覧画像もSurveying配下に残す。正本PNGのサイズは変えない。
     sheet=Image.new('RGB',(1440,5*235),'white')

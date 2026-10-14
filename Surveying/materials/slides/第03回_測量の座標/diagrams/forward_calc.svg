@@ -1443,63 +1443,146 @@ z
     </g>
    </g>
    <g id="text_10">
-    <!-- X_B = X_A + ΔX -->
-    <g style="fill: #1f4e79" transform="translate(591.915328 86.324667) scale(0.15 -0.15)">
+    <!-- $X_B = X_A + \Delta X$ -->
+    <g style="fill: #1f4e79" transform="translate(607.329 86.324667) scale(0.15 -0.15)">
      <defs>
-      <path id="Meiryo-5f" d="M 3988 -919
-L -13 -919
-L -13 -581
-L 3988 -581
-L 3988 -919
+      <path id="DejaVuSans-Oblique-58" d="M 878 4666
+L 1516 4666
+L 2316 2981
+L 3763 4666
+L 4500 4666
+L 2578 2438
+L 3738 0
+L 3103 0
+L 2163 1966
+L 459 0
+L -275 0
+L 1906 2509
+L 878 4666
 z
 " transform="scale(0.015625)"/>
-      <path id="Meiryo-2b" d="M 4534 1828
-L 2813 1828
-L 2813 106
-L 2331 106
-L 2331 1828
-L 609 1828
-L 609 2291
-L 2331 2291
-L 2331 4013
-L 2813 4013
-L 2813 2291
-L 4534 2291
-L 4534 1828
+      <path id="DejaVuSans-Oblique-42" d="M 1081 4666
+L 2694 4666
+Q 3350 4666 3675 4422
+Q 4000 4178 4000 3688
+Q 4000 3238 3720 2911
+Q 3441 2584 2988 2516
+Q 3375 2428 3569 2181
+Q 3763 1934 3763 1522
+Q 3763 819 3242 409
+Q 2722 0 1819 0
+L 172 0
+L 1081 4666
+z
+M 1234 2228
+L 903 519
+L 1919 519
+Q 2491 519 2800 781
+Q 3109 1044 3109 1522
+Q 3109 1891 2904 2059
+Q 2700 2228 2247 2228
+L 1234 2228
+z
+M 1606 4147
+L 1331 2741
+L 2272 2741
+Q 2775 2741 3058 2959
+Q 3341 3178 3341 3566
+Q 3341 3869 3150 4008
+Q 2959 4147 2541 4147
+L 1606 4147
+z
+" transform="scale(0.015625)"/>
+      <path id="DejaVuSans-3d" d="M 678 2906
+L 4684 2906
+L 4684 2381
+L 678 2381
+L 678 2906
+z
+M 678 1631
+L 4684 1631
+L 4684 1100
+L 678 1100
+L 678 1631
+z
+" transform="scale(0.015625)"/>
+      <path id="DejaVuSans-Oblique-41" d="M 2356 4666
+L 3072 4666
+L 3938 0
+L 3278 0
+L 3084 1197
+L 984 1197
+L 325 0
+L -341 0
+L 2356 4666
+z
+M 2584 4044
+L 1275 1722
+L 2988 1722
+L 2584 4044
+z
+" transform="scale(0.015625)"/>
+      <path id="DejaVuSans-2b" d="M 2944 4013
+L 2944 2272
+L 4684 2272
+L 4684 1741
+L 2944 1741
+L 2944 0
+L 2419 0
+L 2419 1741
+L 678 1741
+L 678 2272
+L 2419 2272
+L 2419 4013
+L 2944 4013
+z
+" transform="scale(0.015625)"/>
+      <path id="DejaVuSans-394" d="M 2188 4044
+L 906 525
+L 3472 525
+L 2188 4044
+z
+M 50 0
+L 1831 4666
+L 2547 4666
+L 4325 0
+L 50 0
 z
 " transform="scale(0.015625)"/>
      </defs>
-     <use xlink:href="#Meiryo-58"/>
-     <use xlink:href="#Meiryo-5f" transform="translate(66.943359 0)"/>
-     <use xlink:href="#Meiryo-42" transform="translate(129.052734 0)"/>
-     <use xlink:href="#Meiryo-20" transform="translate(196.337891 0)"/>
-     <use xlink:href="#Meiryo-3d" transform="translate(230.322266 0)"/>
-     <use xlink:href="#Meiryo-20" transform="translate(310.693359 0)"/>
-     <use xlink:href="#Meiryo-58" transform="translate(344.677734 0)"/>
-     <use xlink:href="#Meiryo-5f" transform="translate(411.621094 0)"/>
-     <use xlink:href="#Meiryo-41" transform="translate(473.730469 0)"/>
-     <use xlink:href="#Meiryo-20" transform="translate(541.503906 0)"/>
-     <use xlink:href="#Meiryo-2b" transform="translate(575.488281 0)"/>
-     <use xlink:href="#Meiryo-20" transform="translate(655.859375 0)"/>
-     <use xlink:href="#Meiryo-394" transform="translate(689.84375 0)"/>
-     <use xlink:href="#Meiryo-58" transform="translate(759.570312 0)"/>
+     <use xlink:href="#DejaVuSans-Oblique-58" transform="translate(0 0.09375)"/>
+     <use xlink:href="#DejaVuSans-Oblique-42" transform="translate(68.505859 -16.3125) scale(0.7)"/>
+     <use xlink:href="#DejaVuSans-3d" transform="translate(138.745117 0.09375)"/>
+     <use xlink:href="#DejaVuSans-Oblique-58" transform="translate(242.016602 0.09375)"/>
+     <use xlink:href="#DejaVuSans-Oblique-41" transform="translate(310.522461 -16.3125) scale(0.7)"/>
+     <use xlink:href="#DejaVuSans-2b" transform="translate(380.625 0.09375)"/>
+     <use xlink:href="#DejaVuSans-394" transform="translate(483.896484 0.09375)"/>
+     <use xlink:href="#DejaVuSans-Oblique-58" transform="translate(552.304688 0.09375)"/>
     </g>
-    <!-- Y_B = Y_A + ΔY -->
-    <g style="fill: #1f4e79" transform="translate(592.780172 106.671933) scale(0.15 -0.15)">
-     <use xlink:href="#Meiryo-59"/>
-     <use xlink:href="#Meiryo-5f" transform="translate(63.085938 0)"/>
-     <use xlink:href="#Meiryo-42" transform="translate(125.195312 0)"/>
-     <use xlink:href="#Meiryo-20" transform="translate(192.480469 0)"/>
-     <use xlink:href="#Meiryo-3d" transform="translate(226.464844 0)"/>
-     <use xlink:href="#Meiryo-20" transform="translate(306.835938 0)"/>
-     <use xlink:href="#Meiryo-59" transform="translate(340.820312 0)"/>
-     <use xlink:href="#Meiryo-5f" transform="translate(403.90625 0)"/>
-     <use xlink:href="#Meiryo-41" transform="translate(466.015625 0)"/>
-     <use xlink:href="#Meiryo-20" transform="translate(533.789062 0)"/>
-     <use xlink:href="#Meiryo-2b" transform="translate(567.773438 0)"/>
-     <use xlink:href="#Meiryo-20" transform="translate(648.144531 0)"/>
-     <use xlink:href="#Meiryo-394" transform="translate(682.128906 0)"/>
-     <use xlink:href="#Meiryo-59" transform="translate(751.855469 0)"/>
+    <!-- $Y_B = Y_A + \Delta Y$ -->
+    <g style="fill: #1f4e79" transform="translate(608.979 106.671933) scale(0.15 -0.15)">
+     <defs>
+      <path id="DejaVuSans-Oblique-59" d="M 403 4666
+L 1081 4666
+L 1953 2747
+L 3616 4666
+L 4325 4666
+L 2209 2222
+L 1778 0
+L 1147 0
+L 1575 2222
+L 403 4666
+z
+" transform="scale(0.015625)"/>
+     </defs>
+     <use xlink:href="#DejaVuSans-Oblique-59" transform="translate(0 0.09375)"/>
+     <use xlink:href="#DejaVuSans-Oblique-42" transform="translate(61.083984 -16.3125) scale(0.7)"/>
+     <use xlink:href="#DejaVuSans-3d" transform="translate(131.323242 0.09375)"/>
+     <use xlink:href="#DejaVuSans-Oblique-59" transform="translate(234.594727 0.09375)"/>
+     <use xlink:href="#DejaVuSans-Oblique-41" transform="translate(295.678711 -16.3125) scale(0.7)"/>
+     <use xlink:href="#DejaVuSans-2b" transform="translate(365.78125 0.09375)"/>
+     <use xlink:href="#DejaVuSans-394" transform="translate(469.052734 0.09375)"/>
+     <use xlink:href="#DejaVuSans-Oblique-59" transform="translate(537.460938 0.09375)"/>
     </g>
    </g>
    <g id="text_11">
