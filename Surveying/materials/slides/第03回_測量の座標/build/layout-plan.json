@@ -1,0 +1,566 @@
+[
+  {
+    "slide": 1,
+    "layout": "cover"
+  },
+  {
+    "slide": 2,
+    "layout": "text",
+    "fontSize": 25,
+    "contentBottom": 631.25,
+    "hasImage": false
+  },
+  {
+    "slide": 3,
+    "layout": "text",
+    "fontSize": 28,
+    "contentBottom": 603,
+    "hasImage": false
+  },
+  {
+    "slide": 4,
+    "layout": "text",
+    "fontSize": 28,
+    "contentBottom": 478,
+    "hasImage": false
+  },
+  {
+    "slide": 5,
+    "layout": "text",
+    "fontSize": 28,
+    "contentBottom": 630.4666666666667,
+    "hasImage": false
+  },
+  {
+    "slide": 6,
+    "layout": "text",
+    "fontSize": 28,
+    "contentBottom": 478,
+    "hasImage": false
+  },
+  {
+    "slide": 7,
+    "layout": "text",
+    "fontSize": 26,
+    "contentBottom": 544,
+    "hasImage": false
+  },
+  {
+    "slide": 8,
+    "layout": "text",
+    "fontSize": 28,
+    "contentBottom": 572.4666666666667,
+    "hasImage": false
+  },
+  {
+    "slide": 9,
+    "layout": "text",
+    "fontSize": 28,
+    "contentBottom": 595.1333333333333,
+    "hasImage": false
+  },
+  {
+    "slide": 10,
+    "layout": "text",
+    "fontSize": 28,
+    "contentBottom": 639,
+    "hasImage": false
+  },
+  {
+    "slide": 11,
+    "layout": "text",
+    "fontSize": 28,
+    "contentBottom": 572.4666666666667,
+    "hasImage": false
+  },
+  {
+    "slide": 12,
+    "layout": "text",
+    "fontSize": 28,
+    "contentBottom": 582.6,
+    "hasImage": false
+  },
+  {
+    "slide": 13,
+    "layout": "text",
+    "fontSize": 28,
+    "contentBottom": 538,
+    "hasImage": false
+  },
+  {
+    "slide": 14,
+    "layout": "figure",
+    "fontSize": 26,
+    "contentBottom": 268,
+    "hasImage": true
+  },
+  {
+    "slide": 15,
+    "layout": "text",
+    "fontSize": 28,
+    "contentBottom": 594.3333333333334,
+    "hasImage": false
+  },
+  {
+    "slide": 16,
+    "layout": "text",
+    "fontSize": 28,
+    "contentBottom": 590,
+    "hasImage": false
+  },
+  {
+    "slide": 17,
+    "layout": "figure",
+    "fontSize": 29,
+    "contentBottom": 154,
+    "hasImage": true
+  },
+  {
+    "slide": 18,
+    "layout": "text",
+    "fontSize": 28,
+    "contentBottom": 583.9333333333333,
+    "hasImage": false
+  },
+  {
+    "slide": 19,
+    "layout": "figure",
+    "fontSize": 26,
+    "contentBottom": 154,
+    "hasImage": true
+  },
+  {
+    "slide": 20,
+    "layout": "text",
+    "fontSize": 28,
+    "contentBottom": 553.2666666666667,
+    "hasImage": false
+  },
+  {
+    "slide": 21,
+    "layout": "figure",
+    "fontSize": 26,
+    "contentBottom": 366,
+    "hasImage": true
+  },
+  {
+    "slide": 22,
+    "layout": "figure",
+    "fontSize": 26,
+    "contentBottom": 325,
+    "hasImage": true
+  },
+  {
+    "slide": 23,
+    "layout": "figure",
+    "fontSize": 29,
+    "contentBottom": 154,
+    "hasImage": true
+  },
+  {
+    "slide": 24,
+    "layout": "figure",
+    "fontSize": 29,
+    "contentBottom": 154,
+    "hasImage": true
+  },
+  {
+    "slide": 25,
+    "layout": "figure",
+    "fontSize": 26,
+    "contentBottom": 325,
+    "hasImage": true
+  },
+  {
+    "slide": 26,
+    "layout": "figure",
+    "fontSize": 26,
+    "contentBottom": 325,
+    "hasImage": true
+  },
+  {
+    "slide": 27,
+    "layout": "text",
+    "fontSize": 28,
+    "contentBottom": 553.2666666666667,
+    "hasImage": false
+  },
+  {
+    "slide": 28,
+    "layout": "text",
+    "fontSize": 28,
+    "contentBottom": 575.5333333333333,
+    "hasImage": false
+  },
+  {
+    "slide": 29,
+    "layout": "text",
+    "fontSize": 28,
+    "contentBottom": 528,
+    "hasImage": false
+  },
+  {
+    "slide": 30,
+    "layout": "figure",
+    "fontSize": 26,
+    "contentBottom": 325,
+    "hasImage": true
+  },
+  {
+    "slide": 31,
+    "layout": "text",
+    "fontSize": 28,
+    "contentBottom": 626.4,
+    "hasImage": false
+  },
+  {
+    "slide": 32,
+    "layout": "figure",
+    "fontSize": 26,
+    "contentBottom": 325,
+    "hasImage": true
+  },
+  {
+    "slide": 33,
+    "layout": "text",
+    "fontSize": 28,
+    "contentBottom": 583.9333333333333,
+    "hasImage": false
+  },
+  {
+    "slide": 34,
+    "layout": "figure",
+    "fontSize": 26,
+    "contentBottom": 325,
+    "hasImage": true
+  },
+  {
+    "slide": 35,
+    "layout": "text",
+    "fontSize": 28,
+    "contentBottom": 595,
+    "hasImage": false
+  },
+  {
+    "slide": 36,
+    "layout": "text",
+    "fontSize": 28,
+    "contentBottom": 558.3333333333334,
+    "hasImage": false
+  },
+  {
+    "slide": 37,
+    "layout": "figure",
+    "fontSize": 26,
+    "contentBottom": 154,
+    "hasImage": true
+  },
+  {
+    "slide": 38,
+    "layout": "figure",
+    "fontSize": 26,
+    "contentBottom": 268,
+    "hasImage": true
+  },
+  {
+    "slide": 39,
+    "layout": "figure",
+    "fontSize": 26,
+    "contentBottom": 154,
+    "hasImage": true
+  },
+  {
+    "slide": 40,
+    "layout": "figure",
+    "fontSize": 26,
+    "contentBottom": 154,
+    "hasImage": true
+  },
+  {
+    "slide": 41,
+    "layout": "figure",
+    "fontSize": 26,
+    "contentBottom": 154,
+    "hasImage": true
+  },
+  {
+    "slide": 42,
+    "layout": "text",
+    "fontSize": 28,
+    "contentBottom": 610.2,
+    "hasImage": false
+  },
+  {
+    "slide": 43,
+    "layout": "text",
+    "fontSize": 28,
+    "contentBottom": 621,
+    "hasImage": false
+  },
+  {
+    "slide": 44,
+    "layout": "text",
+    "fontSize": 27,
+    "contentBottom": 627.9,
+    "hasImage": false
+  },
+  {
+    "slide": 45,
+    "layout": "text",
+    "fontSize": 28,
+    "contentBottom": 538.6,
+    "hasImage": false
+  },
+  {
+    "slide": 46,
+    "layout": "text",
+    "fontSize": 28,
+    "contentBottom": 576.7333333333333,
+    "hasImage": false
+  },
+  {
+    "slide": 47,
+    "layout": "figure",
+    "fontSize": 26,
+    "contentBottom": 268,
+    "hasImage": true
+  },
+  {
+    "slide": 48,
+    "layout": "figure",
+    "fontSize": 26,
+    "contentBottom": 268,
+    "hasImage": true
+  },
+  {
+    "slide": 49,
+    "layout": "text",
+    "fontSize": 28,
+    "contentBottom": 592.3333333333334,
+    "hasImage": false
+  },
+  {
+    "slide": 50,
+    "layout": "text",
+    "fontSize": 28,
+    "contentBottom": 553.2666666666667,
+    "hasImage": false
+  },
+  {
+    "slide": 51,
+    "layout": "figure",
+    "fontSize": 26,
+    "contentBottom": 366,
+    "hasImage": true
+  },
+  {
+    "slide": 52,
+    "layout": "figure",
+    "fontSize": 26,
+    "contentBottom": 211,
+    "hasImage": true
+  },
+  {
+    "slide": 53,
+    "layout": "figure",
+    "fontSize": 26,
+    "contentBottom": 391,
+    "hasImage": true
+  },
+  {
+    "slide": 54,
+    "layout": "text",
+    "fontSize": 28,
+    "contentBottom": 648.4,
+    "hasImage": false
+  },
+  {
+    "slide": 55,
+    "layout": "text",
+    "fontSize": 28,
+    "contentBottom": 557.2666666666667,
+    "hasImage": false
+  },
+  {
+    "slide": 56,
+    "layout": "text",
+    "fontSize": 28,
+    "contentBottom": 546.3333333333334,
+    "hasImage": false
+  },
+  {
+    "slide": 57,
+    "layout": "text",
+    "fontSize": 28,
+    "contentBottom": 452,
+    "hasImage": false
+  },
+  {
+    "slide": 58,
+    "layout": "text",
+    "fontSize": 28,
+    "contentBottom": 586.0666666666667,
+    "hasImage": false
+  },
+  {
+    "slide": 59,
+    "layout": "figure",
+    "fontSize": 26,
+    "contentBottom": 325,
+    "hasImage": true
+  },
+  {
+    "slide": 60,
+    "layout": "text",
+    "fontSize": 28,
+    "contentBottom": 580.4,
+    "hasImage": false
+  },
+  {
+    "slide": 61,
+    "layout": "text",
+    "fontSize": 28,
+    "contentBottom": 592.3333333333334,
+    "hasImage": false
+  },
+  {
+    "slide": 62,
+    "layout": "figure",
+    "fontSize": 26,
+    "contentBottom": 333,
+    "hasImage": true
+  },
+  {
+    "slide": 63,
+    "layout": "text",
+    "fontSize": 28,
+    "contentBottom": 533,
+    "hasImage": false
+  },
+  {
+    "slide": 64,
+    "layout": "text",
+    "fontSize": 28,
+    "contentBottom": 581,
+    "hasImage": false
+  },
+  {
+    "slide": 65,
+    "layout": "figure",
+    "fontSize": 26,
+    "contentBottom": 154,
+    "hasImage": true
+  },
+  {
+    "slide": 66,
+    "layout": "text",
+    "fontSize": 28,
+    "contentBottom": 510,
+    "hasImage": false
+  },
+  {
+    "slide": 67,
+    "layout": "text",
+    "fontSize": 28,
+    "contentBottom": 583.5333333333333,
+    "hasImage": false
+  },
+  {
+    "slide": 68,
+    "layout": "text",
+    "fontSize": 28,
+    "contentBottom": 600,
+    "hasImage": false
+  },
+  {
+    "slide": 69,
+    "layout": "text",
+    "fontSize": 28,
+    "contentBottom": 583.9333333333333,
+    "hasImage": false
+  },
+  {
+    "slide": 70,
+    "layout": "text",
+    "fontSize": 28,
+    "contentBottom": 410,
+    "hasImage": false
+  },
+  {
+    "slide": 71,
+    "layout": "text",
+    "fontSize": 28,
+    "contentBottom": 576.7333333333333,
+    "hasImage": false
+  },
+  {
+    "slide": 72,
+    "layout": "figure",
+    "fontSize": 29,
+    "contentBottom": 154,
+    "hasImage": true
+  },
+  {
+    "slide": 73,
+    "layout": "figure",
+    "fontSize": 29,
+    "contentBottom": 154,
+    "hasImage": true
+  },
+  {
+    "slide": 74,
+    "layout": "text",
+    "fontSize": 28,
+    "contentBottom": 599.5333333333333,
+    "hasImage": false
+  },
+  {
+    "slide": 75,
+    "layout": "text",
+    "fontSize": 28,
+    "contentBottom": 604,
+    "hasImage": false
+  },
+  {
+    "slide": 76,
+    "layout": "text",
+    "fontSize": 28,
+    "contentBottom": 621,
+    "hasImage": false
+  },
+  {
+    "slide": 77,
+    "layout": "text",
+    "fontSize": 28,
+    "contentBottom": 410,
+    "hasImage": false
+  },
+  {
+    "slide": 78,
+    "layout": "text",
+    "fontSize": 28,
+    "contentBottom": 589.6,
+    "hasImage": false
+  },
+  {
+    "slide": 79,
+    "layout": "text",
+    "fontSize": 28,
+    "contentBottom": 576.7333333333333,
+    "hasImage": false
+  },
+  {
+    "slide": 80,
+    "layout": "text",
+    "fontSize": 28,
+    "contentBottom": 478,
+    "hasImage": false
+  },
+  {
+    "slide": 81,
+    "layout": "text",
+    "fontSize": 25,
+    "contentBottom": 641.5,
+    "hasImage": false
+  }
+]

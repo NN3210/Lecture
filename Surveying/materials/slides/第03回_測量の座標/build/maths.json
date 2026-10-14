@@ -1,0 +1,1057 @@
+{
+  "EQM00001": {
+    "tex": "\\bar{x}=\\frac{\\sum_{i=1}^{6}x_i}{6}=30.006\\ \\mathrm{m}\r",
+    "display": true,
+    "mathml": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\"><semantics><mrow><mover accent=\"true\"><mi>x</mi><mo>ˉ</mo></mover><mo>=</mo><mfrac><mrow><munderover><mo>∑</mo><mrow><mi>i</mi><mo>=</mo><mn>1</mn></mrow><mn>6</mn></munderover><msub><mi>x</mi><mi>i</mi></msub></mrow><mn>6</mn></mfrac><mo>=</mo><mn>30.006</mn><mtext> </mtext><mi mathvariant=\"normal\">m</mi></mrow><annotation encoding=\"application/x-tex\">\\bar{x}=\\frac{\\sum_{i=1}^{6}x_i}{6}=30.006\\ \\mathrm{m}\r</annotation></semantics></math>"
+  },
+  "EQM00002": {
+    "tex": "\\sum v_i=0",
+    "display": false,
+    "mathml": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\"><semantics><mrow><mo>∑</mo><msub><mi>v</mi><mi>i</mi></msub><mo>=</mo><mn>0</mn></mrow><annotation encoding=\"application/x-tex\">\\sum v_i=0</annotation></semantics></math>"
+  },
+  "EQM00003": {
+    "tex": "\\sum v_i^2=28\\ \\mathrm{mm}^2",
+    "display": false,
+    "mathml": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\"><semantics><mrow><mo>∑</mo><msubsup><mi>v</mi><mi>i</mi><mn>2</mn></msubsup><mo>=</mo><mn>28</mn><mtext> </mtext><msup><mrow><mi mathvariant=\"normal\">m</mi><mi mathvariant=\"normal\">m</mi></mrow><mn>2</mn></msup></mrow><annotation encoding=\"application/x-tex\">\\sum v_i^2=28\\ \\mathrm{mm}^2</annotation></semantics></math>"
+  },
+  "EQM00004": {
+    "tex": "\\sigma=\\sqrt{\\frac{28}{6-1}}=2.37\\ \\mathrm{mm}",
+    "display": false,
+    "mathml": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\"><semantics><mrow><mi>σ</mi><mo>=</mo><msqrt><mfrac><mn>28</mn><mrow><mn>6</mn><mo>−</mo><mn>1</mn></mrow></mfrac></msqrt><mo>=</mo><mn>2.37</mn><mtext> </mtext><mrow><mi mathvariant=\"normal\">m</mi><mi mathvariant=\"normal\">m</mi></mrow></mrow><annotation encoding=\"application/x-tex\">\\sigma=\\sqrt{\\frac{28}{6-1}}=2.37\\ \\mathrm{mm}</annotation></semantics></math>"
+  },
+  "EQM00005": {
+    "tex": "\\sigma_{\\bar{x}}=\\frac{\\sigma}{\\sqrt{6}}=0.97\\ \\mathrm{mm}",
+    "display": false,
+    "mathml": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\"><semantics><mrow><msub><mi>σ</mi><mover accent=\"true\"><mi>x</mi><mo>ˉ</mo></mover></msub><mo>=</mo><mfrac><mi>σ</mi><msqrt><mn>6</mn></msqrt></mfrac><mo>=</mo><mn>0.97</mn><mtext> </mtext><mrow><mi mathvariant=\"normal\">m</mi><mi mathvariant=\"normal\">m</mi></mrow></mrow><annotation encoding=\"application/x-tex\">\\sigma_{\\bar{x}}=\\frac{\\sigma}{\\sqrt{6}}=0.97\\ \\mathrm{mm}</annotation></semantics></math>"
+  },
+  "EQM00006": {
+    "tex": "\\bar{x}_w=\\frac{1\\times80.000+4\\times80.015}{1+4}=80.012\\ \\mathrm{m}\r",
+    "display": true,
+    "mathml": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\"><semantics><mrow><msub><mover accent=\"true\"><mi>x</mi><mo>ˉ</mo></mover><mi>w</mi></msub><mo>=</mo><mfrac><mrow><mn>1</mn><mo>×</mo><mn>80.000</mn><mo>+</mo><mn>4</mn><mo>×</mo><mn>80.015</mn></mrow><mrow><mn>1</mn><mo>+</mo><mn>4</mn></mrow></mfrac><mo>=</mo><mn>80.012</mn><mtext> </mtext><mi mathvariant=\"normal\">m</mi></mrow><annotation encoding=\"application/x-tex\">\\bar{x}_w=\\frac{1\\times80.000+4\\times80.015}{1+4}=80.012\\ \\mathrm{m}\r</annotation></semantics></math>"
+  },
+  "EQM00007": {
+    "tex": "1\\times(-12)+4\\times3=0",
+    "display": false,
+    "mathml": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\"><semantics><mrow><mn>1</mn><mo>×</mo><mo stretchy=\"false\">(</mo><mo>−</mo><mn>12</mn><mo stretchy=\"false\">)</mo><mo>+</mo><mn>4</mn><mo>×</mo><mn>3</mn><mo>=</mo><mn>0</mn></mrow><annotation encoding=\"application/x-tex\">1\\times(-12)+4\\times3=0</annotation></semantics></math>"
+  },
+  "EQM00008": {
+    "tex": "\\sigma_0=\\sqrt{\\frac{180}{2-1}}=13.42\\ \\mathrm{mm}",
+    "display": false,
+    "mathml": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\"><semantics><mrow><msub><mi>σ</mi><mn>0</mn></msub><mo>=</mo><msqrt><mfrac><mn>180</mn><mrow><mn>2</mn><mo>−</mo><mn>1</mn></mrow></mfrac></msqrt><mo>=</mo><mn>13.42</mn><mtext> </mtext><mrow><mi mathvariant=\"normal\">m</mi><mi mathvariant=\"normal\">m</mi></mrow></mrow><annotation encoding=\"application/x-tex\">\\sigma_0=\\sqrt{\\frac{180}{2-1}}=13.42\\ \\mathrm{mm}</annotation></semantics></math>"
+  },
+  "EQM00009": {
+    "tex": "\\sigma_{\\bar{x}_w}=\\frac{\\sigma_0}{\\sqrt{5}}=6.00\\ \\mathrm{mm}",
+    "display": false,
+    "mathml": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\"><semantics><mrow><msub><mi>σ</mi><msub><mover accent=\"true\"><mi>x</mi><mo>ˉ</mo></mover><mi>w</mi></msub></msub><mo>=</mo><mfrac><msub><mi>σ</mi><mn>0</mn></msub><msqrt><mn>5</mn></msqrt></mfrac><mo>=</mo><mn>6.00</mn><mtext> </mtext><mrow><mi mathvariant=\"normal\">m</mi><mi mathvariant=\"normal\">m</mi></mrow></mrow><annotation encoding=\"application/x-tex\">\\sigma_{\\bar{x}_w}=\\frac{\\sigma_0}{\\sqrt{5}}=6.00\\ \\mathrm{mm}</annotation></semantics></math>"
+  },
+  "EQM00010": {
+    "tex": "h=H+N",
+    "display": false,
+    "mathml": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\"><semantics><mrow><mi>h</mi><mo>=</mo><mi>H</mi><mo>+</mo><mi>N</mi></mrow><annotation encoding=\"application/x-tex\">h=H+N</annotation></semantics></math>"
+  },
+  "EQM00011": {
+    "tex": "50.003,\\quad50.005,\\quad50.006,\\quad50.008,\\quad50.008\\ \\mathrm{m}\r",
+    "display": true,
+    "mathml": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\"><semantics><mrow><mn>50.003</mn><mo separator=\"true\">,</mo><mspace width=\"1em\"/><mn>50.005</mn><mo separator=\"true\">,</mo><mspace width=\"1em\"/><mn>50.006</mn><mo separator=\"true\">,</mo><mspace width=\"1em\"/><mn>50.008</mn><mo separator=\"true\">,</mo><mspace width=\"1em\"/><mn>50.008</mn><mtext> </mtext><mi mathvariant=\"normal\">m</mi></mrow><annotation encoding=\"application/x-tex\">50.003,\\quad50.005,\\quad50.006,\\quad50.008,\\quad50.008\\ \\mathrm{m}\r</annotation></semantics></math>"
+  },
+  "EQM00012": {
+    "tex": "\\sum_{i=1}^{4}v_i^2=27\\ \\mathrm{mm}^2\r",
+    "display": true,
+    "mathml": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\"><semantics><mrow><munderover><mo>∑</mo><mrow><mi>i</mi><mo>=</mo><mn>1</mn></mrow><mn>4</mn></munderover><msubsup><mi>v</mi><mi>i</mi><mn>2</mn></msubsup><mo>=</mo><mn>27</mn><mtext> </mtext><msup><mrow><mi mathvariant=\"normal\">m</mi><mi mathvariant=\"normal\">m</mi></mrow><mn>2</mn></msup></mrow><annotation encoding=\"application/x-tex\">\\sum_{i=1}^{4}v_i^2=27\\ \\mathrm{mm}^2\r</annotation></semantics></math>"
+  },
+  "EQM00013": {
+    "tex": "\\pm\\left(2\\ \\mathrm{mm}+2\\ \\mathrm{ppm}\\times D\\right)\r",
+    "display": true,
+    "mathml": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\"><semantics><mrow><mo>±</mo><mrow><mo fence=\"true\">(</mo><mn>2</mn><mtext> </mtext><mrow><mi mathvariant=\"normal\">m</mi><mi mathvariant=\"normal\">m</mi></mrow><mo>+</mo><mn>2</mn><mtext> </mtext><mrow><mi mathvariant=\"normal\">p</mi><mi mathvariant=\"normal\">p</mi><mi mathvariant=\"normal\">m</mi></mrow><mo>×</mo><mi>D</mi><mo fence=\"true\">)</mo></mrow></mrow><annotation encoding=\"application/x-tex\">\\pm\\left(2\\ \\mathrm{mm}+2\\ \\mathrm{ppm}\\times D\\right)\r</annotation></semantics></math>"
+  },
+  "EQM00014": {
+    "tex": "\\frac{\\sigma}{\\sqrt n}",
+    "display": false,
+    "mathml": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\"><semantics><mrow><mfrac><mi>σ</mi><msqrt><mi>n</mi></msqrt></mfrac></mrow><annotation encoding=\"application/x-tex\">\\frac{\\sigma}{\\sqrt n}</annotation></semantics></math>"
+  },
+  "EQM00015": {
+    "tex": "\\bar{x}=\\frac{250.030}{5}=50.006\\ \\mathrm{m}",
+    "display": false,
+    "mathml": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\"><semantics><mrow><mover accent=\"true\"><mi>x</mi><mo>ˉ</mo></mover><mo>=</mo><mfrac><mn>250.030</mn><mn>5</mn></mfrac><mo>=</mo><mn>50.006</mn><mtext> </mtext><mi mathvariant=\"normal\">m</mi></mrow><annotation encoding=\"application/x-tex\">\\bar{x}=\\frac{250.030}{5}=50.006\\ \\mathrm{m}</annotation></semantics></math>"
+  },
+  "EQM00016": {
+    "tex": "\\sigma=3.0\\ \\mathrm{mm}",
+    "display": false,
+    "mathml": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\"><semantics><mrow><mi>σ</mi><mo>=</mo><mn>3.0</mn><mtext> </mtext><mrow><mi mathvariant=\"normal\">m</mi><mi mathvariant=\"normal\">m</mi></mrow></mrow><annotation encoding=\"application/x-tex\">\\sigma=3.0\\ \\mathrm{mm}</annotation></semantics></math>"
+  },
+  "EQM00017": {
+    "tex": "\\sigma_{\\bar{x}}=\\frac{3.0}{\\sqrt{4}}=1.5\\ \\mathrm{mm}\r",
+    "display": true,
+    "mathml": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\"><semantics><mrow><msub><mi>σ</mi><mover accent=\"true\"><mi>x</mi><mo>ˉ</mo></mover></msub><mo>=</mo><mfrac><mn>3.0</mn><msqrt><mn>4</mn></msqrt></mfrac><mo>=</mo><mn>1.5</mn><mtext> </mtext><mrow><mi mathvariant=\"normal\">m</mi><mi mathvariant=\"normal\">m</mi></mrow></mrow><annotation encoding=\"application/x-tex\">\\sigma_{\\bar{x}}=\\frac{3.0}{\\sqrt{4}}=1.5\\ \\mathrm{mm}\r</annotation></semantics></math>"
+  },
+  "EQM00018": {
+    "tex": "w_1:w_2=\\frac12:\\frac14=2:1,\\qquad\r\n\\bar{H}=\\frac{2\\times10.012+10.018}{3}=10.014\\ \\mathrm{m}\r",
+    "display": true,
+    "mathml": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\"><semantics><mrow><msub><mi>w</mi><mn>1</mn></msub><mo>:</mo><msub><mi>w</mi><mn>2</mn></msub><mo>=</mo><mfrac><mn>1</mn><mn>2</mn></mfrac><mo>:</mo><mfrac><mn>1</mn><mn>4</mn></mfrac><mo>=</mo><mn>2</mn><mo>:</mo><mn>1</mn><mo separator=\"true\">,</mo><mspace width=\"2em\"/><mover accent=\"true\"><mi>H</mi><mo>ˉ</mo></mover><mo>=</mo><mfrac><mrow><mn>2</mn><mo>×</mo><mn>10.012</mn><mo>+</mo><mn>10.018</mn></mrow><mn>3</mn></mfrac><mo>=</mo><mn>10.014</mn><mtext> </mtext><mi mathvariant=\"normal\">m</mi></mrow><annotation encoding=\"application/x-tex\">w_1:w_2=\\frac12:\\frac14=2:1,\\qquad\r\n\\bar{H}=\\frac{2\\times10.012+10.018}{3}=10.014\\ \\mathrm{m}\r</annotation></semantics></math>"
+  },
+  "EQM00019": {
+    "tex": "2+2\\times10^{-6}\\times10^6=4\\ \\mathrm{mm}\r",
+    "display": true,
+    "mathml": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\"><semantics><mrow><mn>2</mn><mo>+</mo><mn>2</mn><mo>×</mo><msup><mn>10</mn><mrow><mo>−</mo><mn>6</mn></mrow></msup><mo>×</mo><msup><mn>10</mn><mn>6</mn></msup><mo>=</mo><mn>4</mn><mtext> </mtext><mrow><mi mathvariant=\"normal\">m</mi><mi mathvariant=\"normal\">m</mi></mrow></mrow><annotation encoding=\"application/x-tex\">2+2\\times10^{-6}\\times10^6=4\\ \\mathrm{mm}\r</annotation></semantics></math>"
+  },
+  "EQM00020": {
+    "tex": "(x_0,y_0)",
+    "display": false,
+    "mathml": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\"><semantics><mrow><mo stretchy=\"false\">(</mo><msub><mi>x</mi><mn>0</mn></msub><mo separator=\"true\">,</mo><msub><mi>y</mi><mn>0</mn></msub><mo stretchy=\"false\">)</mo></mrow><annotation encoding=\"application/x-tex\">(x_0,y_0)</annotation></semantics></math>"
+  },
+  "EQM00021": {
+    "tex": "\\theta",
+    "display": false,
+    "mathml": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\"><semantics><mrow><mi>θ</mi></mrow><annotation encoding=\"application/x-tex\">\\theta</annotation></semantics></math>"
+  },
+  "EQM00022": {
+    "tex": "\\begin{aligned}\r\nx'&=(x-x_0)\\cos\\theta+(y-y_0)\\sin\\theta\\\\\r\ny'&=-(x-x_0)\\sin\\theta+(y-y_0)\\cos\\theta\r\n\\end{aligned}\r",
+    "display": true,
+    "mathml": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\"><semantics><mtable rowspacing=\"0.25em\" columnalign=\"right left\" columnspacing=\"0em\"><mtr><mtd><mstyle scriptlevel=\"0\" displaystyle=\"true\"><msup><mi>x</mi><mo mathvariant=\"normal\" lspace=\"0em\" rspace=\"0em\">′</mo></msup></mstyle></mtd><mtd><mstyle scriptlevel=\"0\" displaystyle=\"true\"><mrow><mrow></mrow><mo>=</mo><mo stretchy=\"false\">(</mo><mi>x</mi><mo>−</mo><msub><mi>x</mi><mn>0</mn></msub><mo stretchy=\"false\">)</mo><mi>cos</mi><mo>⁡</mo><mi>θ</mi><mo>+</mo><mo stretchy=\"false\">(</mo><mi>y</mi><mo>−</mo><msub><mi>y</mi><mn>0</mn></msub><mo stretchy=\"false\">)</mo><mi>sin</mi><mo>⁡</mo><mi>θ</mi></mrow></mstyle></mtd></mtr><mtr><mtd><mstyle scriptlevel=\"0\" displaystyle=\"true\"><msup><mi>y</mi><mo mathvariant=\"normal\" lspace=\"0em\" rspace=\"0em\">′</mo></msup></mstyle></mtd><mtd><mstyle scriptlevel=\"0\" displaystyle=\"true\"><mrow><mrow></mrow><mo>=</mo><mo>−</mo><mo stretchy=\"false\">(</mo><mi>x</mi><mo>−</mo><msub><mi>x</mi><mn>0</mn></msub><mo stretchy=\"false\">)</mo><mi>sin</mi><mo>⁡</mo><mi>θ</mi><mo>+</mo><mo stretchy=\"false\">(</mo><mi>y</mi><mo>−</mo><msub><mi>y</mi><mn>0</mn></msub><mo stretchy=\"false\">)</mo><mi>cos</mi><mo>⁡</mo><mi>θ</mi></mrow></mstyle></mtd></mtr></mtable><annotation encoding=\"application/x-tex\">\\begin{aligned}\r\nx&#x27;&amp;=(x-x_0)\\cos\\theta+(y-y_0)\\sin\\theta\\\\\r\ny&#x27;&amp;=-(x-x_0)\\sin\\theta+(y-y_0)\\cos\\theta\r\n\\end{aligned}\r</annotation></semantics></math>"
+  },
+  "EQM00023": {
+    "tex": "\\sin\\theta",
+    "display": false,
+    "mathml": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\"><semantics><mrow><mi>sin</mi><mo>⁡</mo><mi>θ</mi></mrow><annotation encoding=\"application/x-tex\">\\sin\\theta</annotation></semantics></math>"
+  },
+  "EQM00024": {
+    "tex": "\\theta",
+    "display": false,
+    "mathml": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\"><semantics><mrow><mi>θ</mi></mrow><annotation encoding=\"application/x-tex\">\\theta</annotation></semantics></math>"
+  },
+  "EQM00025": {
+    "tex": "\\begin{pmatrix}x'\\\\y'\\end{pmatrix}\r\n=\\begin{pmatrix}\\cos\\theta&-\\sin\\theta\\\\\\sin\\theta&\\cos\\theta\\end{pmatrix}\r\n\\begin{pmatrix}x\\\\y\\end{pmatrix}\r",
+    "display": true,
+    "mathml": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\"><semantics><mrow><mrow><mo fence=\"true\">(</mo><mtable rowspacing=\"0.16em\" columnalign=\"center\" columnspacing=\"1em\"><mtr><mtd><mstyle scriptlevel=\"0\" displaystyle=\"false\"><msup><mi>x</mi><mo mathvariant=\"normal\" lspace=\"0em\" rspace=\"0em\">′</mo></msup></mstyle></mtd></mtr><mtr><mtd><mstyle scriptlevel=\"0\" displaystyle=\"false\"><msup><mi>y</mi><mo mathvariant=\"normal\" lspace=\"0em\" rspace=\"0em\">′</mo></msup></mstyle></mtd></mtr></mtable><mo fence=\"true\">)</mo></mrow><mo>=</mo><mrow><mo fence=\"true\">(</mo><mtable rowspacing=\"0.16em\" columnalign=\"center center\" columnspacing=\"1em\"><mtr><mtd><mstyle scriptlevel=\"0\" displaystyle=\"false\"><mrow><mi>cos</mi><mo>⁡</mo><mi>θ</mi></mrow></mstyle></mtd><mtd><mstyle scriptlevel=\"0\" displaystyle=\"false\"><mrow><mo>−</mo><mi>sin</mi><mo>⁡</mo><mi>θ</mi></mrow></mstyle></mtd></mtr><mtr><mtd><mstyle scriptlevel=\"0\" displaystyle=\"false\"><mrow><mi>sin</mi><mo>⁡</mo><mi>θ</mi></mrow></mstyle></mtd><mtd><mstyle scriptlevel=\"0\" displaystyle=\"false\"><mrow><mi>cos</mi><mo>⁡</mo><mi>θ</mi></mrow></mstyle></mtd></mtr></mtable><mo fence=\"true\">)</mo></mrow><mrow><mo fence=\"true\">(</mo><mtable rowspacing=\"0.16em\" columnalign=\"center\" columnspacing=\"1em\"><mtr><mtd><mstyle scriptlevel=\"0\" displaystyle=\"false\"><mi>x</mi></mstyle></mtd></mtr><mtr><mtd><mstyle scriptlevel=\"0\" displaystyle=\"false\"><mi>y</mi></mstyle></mtd></mtr></mtable><mo fence=\"true\">)</mo></mrow></mrow><annotation encoding=\"application/x-tex\">\\begin{pmatrix}x&#x27;\\\\y&#x27;\\end{pmatrix}\r\n=\\begin{pmatrix}\\cos\\theta&amp;-\\sin\\theta\\\\\\sin\\theta&amp;\\cos\\theta\\end{pmatrix}\r\n\\begin{pmatrix}x\\\\y\\end{pmatrix}\r</annotation></semantics></math>"
+  },
+  "EQM00026": {
+    "tex": "P(1.08,\\ 0.91)",
+    "display": false,
+    "mathml": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\"><semantics><mrow><mi>P</mi><mo stretchy=\"false\">(</mo><mn>1.08</mn><mo separator=\"true\">,</mo><mtext> </mtext><mn>0.91</mn><mo stretchy=\"false\">)</mo></mrow><annotation encoding=\"application/x-tex\">P(1.08,\\ 0.91)</annotation></semantics></math>"
+  },
+  "EQM00027": {
+    "tex": "30^\\circ",
+    "display": false,
+    "mathml": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\"><semantics><mrow><msup><mn>30</mn><mo>∘</mo></msup></mrow><annotation encoding=\"application/x-tex\">30^\\circ</annotation></semantics></math>"
+  },
+  "EQM00028": {
+    "tex": "\\begin{aligned}\r\nx'&=1.08\\times0.866-0.91\\times0.5\\approx0.48\\\\\r\ny'&=1.08\\times0.5+0.91\\times0.866\\approx1.33\r\n\\end{aligned}\r",
+    "display": true,
+    "mathml": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\"><semantics><mtable rowspacing=\"0.25em\" columnalign=\"right left\" columnspacing=\"0em\"><mtr><mtd><mstyle scriptlevel=\"0\" displaystyle=\"true\"><msup><mi>x</mi><mo mathvariant=\"normal\" lspace=\"0em\" rspace=\"0em\">′</mo></msup></mstyle></mtd><mtd><mstyle scriptlevel=\"0\" displaystyle=\"true\"><mrow><mrow></mrow><mo>=</mo><mn>1.08</mn><mo>×</mo><mn>0.866</mn><mo>−</mo><mn>0.91</mn><mo>×</mo><mn>0.5</mn><mo>≈</mo><mn>0.48</mn></mrow></mstyle></mtd></mtr><mtr><mtd><mstyle scriptlevel=\"0\" displaystyle=\"true\"><msup><mi>y</mi><mo mathvariant=\"normal\" lspace=\"0em\" rspace=\"0em\">′</mo></msup></mstyle></mtd><mtd><mstyle scriptlevel=\"0\" displaystyle=\"true\"><mrow><mrow></mrow><mo>=</mo><mn>1.08</mn><mo>×</mo><mn>0.5</mn><mo>+</mo><mn>0.91</mn><mo>×</mo><mn>0.866</mn><mo>≈</mo><mn>1.33</mn></mrow></mstyle></mtd></mtr></mtable><annotation encoding=\"application/x-tex\">\\begin{aligned}\r\nx&#x27;&amp;=1.08\\times0.866-0.91\\times0.5\\approx0.48\\\\\r\ny&#x27;&amp;=1.08\\times0.5+0.91\\times0.866\\approx1.33\r\n\\end{aligned}\r</annotation></semantics></math>"
+  },
+  "EQM00029": {
+    "tex": "h=85\\ \\mathrm{m}",
+    "display": false,
+    "mathml": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\"><semantics><mrow><mi>h</mi><mo>=</mo><mn>85</mn><mtext> </mtext><mi mathvariant=\"normal\">m</mi></mrow><annotation encoding=\"application/x-tex\">h=85\\ \\mathrm{m}</annotation></semantics></math>"
+  },
+  "EQM00030": {
+    "tex": "X\\approx-120\\ \\mathrm{km}",
+    "display": false,
+    "mathml": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\"><semantics><mrow><mi>X</mi><mo>≈</mo><mo>−</mo><mn>120</mn><mtext> </mtext><mrow><mi mathvariant=\"normal\">k</mi><mi mathvariant=\"normal\">m</mi></mrow></mrow><annotation encoding=\"application/x-tex\">X\\approx-120\\ \\mathrm{km}</annotation></semantics></math>"
+  },
+  "EQM00031": {
+    "tex": "Y\\approx-85\\ \\mathrm{km}",
+    "display": false,
+    "mathml": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\"><semantics><mrow><mi>Y</mi><mo>≈</mo><mo>−</mo><mn>85</mn><mtext> </mtext><mrow><mi mathvariant=\"normal\">k</mi><mi mathvariant=\"normal\">m</mi></mrow></mrow><annotation encoding=\"application/x-tex\">Y\\approx-85\\ \\mathrm{km}</annotation></semantics></math>"
+  },
+  "EQM00032": {
+    "tex": "H\\approx56\\ \\mathrm{m}",
+    "display": false,
+    "mathml": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\"><semantics><mrow><mi>H</mi><mo>≈</mo><mn>56</mn><mtext> </mtext><mi mathvariant=\"normal\">m</mi></mrow><annotation encoding=\"application/x-tex\">H\\approx56\\ \\mathrm{m}</annotation></semantics></math>"
+  },
+  "EQM00033": {
+    "tex": "x=12.345\\ \\mathrm{m}",
+    "display": false,
+    "mathml": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\"><semantics><mrow><mi>x</mi><mo>=</mo><mn>12.345</mn><mtext> </mtext><mi mathvariant=\"normal\">m</mi></mrow><annotation encoding=\"application/x-tex\">x=12.345\\ \\mathrm{m}</annotation></semantics></math>"
+  },
+  "EQM00034": {
+    "tex": "y=-3.210\\ \\mathrm{m}",
+    "display": false,
+    "mathml": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\"><semantics><mrow><mi>y</mi><mo>=</mo><mo>−</mo><mn>3.210</mn><mtext> </mtext><mi mathvariant=\"normal\">m</mi></mrow><annotation encoding=\"application/x-tex\">y=-3.210\\ \\mathrm{m}</annotation></semantics></math>"
+  },
+  "EQM00035": {
+    "tex": "0.52\\ \\mathrm{m}",
+    "display": false,
+    "mathml": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\"><semantics><mrow><mn>0.52</mn><mtext> </mtext><mi mathvariant=\"normal\">m</mi></mrow><annotation encoding=\"application/x-tex\">0.52\\ \\mathrm{m}</annotation></semantics></math>"
+  },
+  "EQM00036": {
+    "tex": "h-H=85-56=29\\ \\mathrm{m}\r",
+    "display": true,
+    "mathml": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\"><semantics><mrow><mi>h</mi><mo>−</mo><mi>H</mi><mo>=</mo><mn>85</mn><mo>−</mo><mn>56</mn><mo>=</mo><mn>29</mn><mtext> </mtext><mi mathvariant=\"normal\">m</mi></mrow><annotation encoding=\"application/x-tex\">h-H=85-56=29\\ \\mathrm{m}\r</annotation></semantics></math>"
+  },
+  "EQM00037": {
+    "tex": "f=\\frac{a-b}{a}\\approx\\frac{1}{298.257}\r",
+    "display": true,
+    "mathml": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\"><semantics><mrow><mi>f</mi><mo>=</mo><mfrac><mrow><mi>a</mi><mo>−</mo><mi>b</mi></mrow><mi>a</mi></mfrac><mo>≈</mo><mfrac><mn>1</mn><mn>298.257</mn></mfrac></mrow><annotation encoding=\"application/x-tex\">f=\\frac{a-b}{a}\\approx\\frac{1}{298.257}\r</annotation></semantics></math>"
+  },
+  "EQM00038": {
+    "tex": "N",
+    "display": false,
+    "mathml": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\"><semantics><mrow><mi>N</mi></mrow><annotation encoding=\"application/x-tex\">N</annotation></semantics></math>"
+  },
+  "EQM00039": {
+    "tex": "H",
+    "display": false,
+    "mathml": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\"><semantics><mrow><mi>H</mi></mrow><annotation encoding=\"application/x-tex\">H</annotation></semantics></math>"
+  },
+  "EQM00040": {
+    "tex": "h",
+    "display": false,
+    "mathml": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\"><semantics><mrow><mi>h</mi></mrow><annotation encoding=\"application/x-tex\">h</annotation></semantics></math>"
+  },
+  "EQM00041": {
+    "tex": "\\boxed{h=H+N}\\qquad\\boxed{H=h-N}\r",
+    "display": true,
+    "mathml": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\"><semantics><mrow><menclose notation=\"box\"><mstyle scriptlevel=\"0\" displaystyle=\"false\"><mstyle scriptlevel=\"0\" displaystyle=\"false\"><mstyle scriptlevel=\"0\" displaystyle=\"true\"><mrow><mi>h</mi><mo>=</mo><mi>H</mi><mo>+</mo><mi>N</mi></mrow></mstyle></mstyle></mstyle></menclose><mspace width=\"2em\"/><menclose notation=\"box\"><mstyle scriptlevel=\"0\" displaystyle=\"false\"><mstyle scriptlevel=\"0\" displaystyle=\"false\"><mstyle scriptlevel=\"0\" displaystyle=\"true\"><mrow><mi>H</mi><mo>=</mo><mi>h</mi><mo>−</mo><mi>N</mi></mrow></mstyle></mstyle></mstyle></menclose></mrow><annotation encoding=\"application/x-tex\">\\boxed{h=H+N}\\qquad\\boxed{H=h-N}\r</annotation></semantics></math>"
+  },
+  "EQM00042": {
+    "tex": "h",
+    "display": false,
+    "mathml": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\"><semantics><mrow><mi>h</mi></mrow><annotation encoding=\"application/x-tex\">h</annotation></semantics></math>"
+  },
+  "EQM00043": {
+    "tex": "H",
+    "display": false,
+    "mathml": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\"><semantics><mrow><mi>H</mi></mrow><annotation encoding=\"application/x-tex\">H</annotation></semantics></math>"
+  },
+  "EQM00044": {
+    "tex": "N",
+    "display": false,
+    "mathml": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\"><semantics><mrow><mi>N</mi></mrow><annotation encoding=\"application/x-tex\">N</annotation></semantics></math>"
+  },
+  "EQM00045": {
+    "tex": "h",
+    "display": false,
+    "mathml": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\"><semantics><mrow><mi>h</mi></mrow><annotation encoding=\"application/x-tex\">h</annotation></semantics></math>"
+  },
+  "EQM00046": {
+    "tex": "N",
+    "display": false,
+    "mathml": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\"><semantics><mrow><mi>N</mi></mrow><annotation encoding=\"application/x-tex\">N</annotation></semantics></math>"
+  },
+  "EQM00047": {
+    "tex": "\\begin{aligned}\r\nH&=h-N\\\\\r\n &=85.000-35.000\\\\\r\n &=50.000\\ \\mathrm{m}\r\n\\end{aligned}\r",
+    "display": true,
+    "mathml": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\"><semantics><mtable rowspacing=\"0.25em\" columnalign=\"right left\" columnspacing=\"0em\"><mtr><mtd><mstyle scriptlevel=\"0\" displaystyle=\"true\"><mi>H</mi></mstyle></mtd><mtd><mstyle scriptlevel=\"0\" displaystyle=\"true\"><mrow><mrow></mrow><mo>=</mo><mi>h</mi><mo>−</mo><mi>N</mi></mrow></mstyle></mtd></mtr><mtr><mtd><mstyle scriptlevel=\"0\" displaystyle=\"true\"><mrow></mrow></mstyle></mtd><mtd><mstyle scriptlevel=\"0\" displaystyle=\"true\"><mrow><mrow></mrow><mo>=</mo><mn>85.000</mn><mo>−</mo><mn>35.000</mn></mrow></mstyle></mtd></mtr><mtr><mtd><mstyle scriptlevel=\"0\" displaystyle=\"true\"><mrow></mrow></mstyle></mtd><mtd><mstyle scriptlevel=\"0\" displaystyle=\"true\"><mrow><mrow></mrow><mo>=</mo><mn>50.000</mn><mtext> </mtext><mi mathvariant=\"normal\">m</mi></mrow></mstyle></mtd></mtr></mtable><annotation encoding=\"application/x-tex\">\\begin{aligned}\r\nH&amp;=h-N\\\\\r\n &amp;=85.000-35.000\\\\\r\n &amp;=50.000\\ \\mathrm{m}\r\n\\end{aligned}\r</annotation></semantics></math>"
+  },
+  "EQM00048": {
+    "tex": "N",
+    "display": false,
+    "mathml": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\"><semantics><mrow><mi>N</mi></mrow><annotation encoding=\"application/x-tex\">N</annotation></semantics></math>"
+  },
+  "EQM00049": {
+    "tex": "h",
+    "display": false,
+    "mathml": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\"><semantics><mrow><mi>h</mi></mrow><annotation encoding=\"application/x-tex\">h</annotation></semantics></math>"
+  },
+  "EQM00050": {
+    "tex": "H_A=30.00\\ \\mathrm{m}",
+    "display": false,
+    "mathml": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\"><semantics><mrow><msub><mi>H</mi><mi>A</mi></msub><mo>=</mo><mn>30.00</mn><mtext> </mtext><mi mathvariant=\"normal\">m</mi></mrow><annotation encoding=\"application/x-tex\">H_A=30.00\\ \\mathrm{m}</annotation></semantics></math>"
+  },
+  "EQM00051": {
+    "tex": "h_A=71.09\\ \\mathrm{m}",
+    "display": false,
+    "mathml": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\"><semantics><mrow><msub><mi>h</mi><mi>A</mi></msub><mo>=</mo><mn>71.09</mn><mtext> </mtext><mi mathvariant=\"normal\">m</mi></mrow><annotation encoding=\"application/x-tex\">h_A=71.09\\ \\mathrm{m}</annotation></semantics></math>"
+  },
+  "EQM00052": {
+    "tex": "h_B=66.50\\ \\mathrm{m}",
+    "display": false,
+    "mathml": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\"><semantics><mrow><msub><mi>h</mi><mi>B</mi></msub><mo>=</mo><mn>66.50</mn><mtext> </mtext><mi mathvariant=\"normal\">m</mi></mrow><annotation encoding=\"application/x-tex\">h_B=66.50\\ \\mathrm{m}</annotation></semantics></math>"
+  },
+  "EQM00053": {
+    "tex": "\\begin{aligned}\r\nN_A&=71.09-30.00=41.09\\ \\mathrm{m}\\\\\r\nN_B&=41.09-0.02\\times6=40.97\\ \\mathrm{m}\\\\\r\nH_B&=66.50-40.97=25.53\\ \\mathrm{m}\r\n\\end{aligned}\r",
+    "display": true,
+    "mathml": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\"><semantics><mtable rowspacing=\"0.25em\" columnalign=\"right left\" columnspacing=\"0em\"><mtr><mtd><mstyle scriptlevel=\"0\" displaystyle=\"true\"><msub><mi>N</mi><mi>A</mi></msub></mstyle></mtd><mtd><mstyle scriptlevel=\"0\" displaystyle=\"true\"><mrow><mrow></mrow><mo>=</mo><mn>71.09</mn><mo>−</mo><mn>30.00</mn><mo>=</mo><mn>41.09</mn><mtext> </mtext><mi mathvariant=\"normal\">m</mi></mrow></mstyle></mtd></mtr><mtr><mtd><mstyle scriptlevel=\"0\" displaystyle=\"true\"><msub><mi>N</mi><mi>B</mi></msub></mstyle></mtd><mtd><mstyle scriptlevel=\"0\" displaystyle=\"true\"><mrow><mrow></mrow><mo>=</mo><mn>41.09</mn><mo>−</mo><mn>0.02</mn><mo>×</mo><mn>6</mn><mo>=</mo><mn>40.97</mn><mtext> </mtext><mi mathvariant=\"normal\">m</mi></mrow></mstyle></mtd></mtr><mtr><mtd><mstyle scriptlevel=\"0\" displaystyle=\"true\"><msub><mi>H</mi><mi>B</mi></msub></mstyle></mtd><mtd><mstyle scriptlevel=\"0\" displaystyle=\"true\"><mrow><mrow></mrow><mo>=</mo><mn>66.50</mn><mo>−</mo><mn>40.97</mn><mo>=</mo><mn>25.53</mn><mtext> </mtext><mi mathvariant=\"normal\">m</mi></mrow></mstyle></mtd></mtr></mtable><annotation encoding=\"application/x-tex\">\\begin{aligned}\r\nN_A&amp;=71.09-30.00=41.09\\ \\mathrm{m}\\\\\r\nN_B&amp;=41.09-0.02\\times6=40.97\\ \\mathrm{m}\\\\\r\nH_B&amp;=66.50-40.97=25.53\\ \\mathrm{m}\r\n\\end{aligned}\r</annotation></semantics></math>"
+  },
+  "EQM00054": {
+    "tex": "h=50.0\\ \\mathrm{m}",
+    "display": false,
+    "mathml": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\"><semantics><mrow><mi>h</mi><mo>=</mo><mn>50.0</mn><mtext> </mtext><mi mathvariant=\"normal\">m</mi></mrow><annotation encoding=\"application/x-tex\">h=50.0\\ \\mathrm{m}</annotation></semantics></math>"
+  },
+  "EQM00055": {
+    "tex": "N=35.0\\ \\mathrm{m}",
+    "display": false,
+    "mathml": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\"><semantics><mrow><mi>N</mi><mo>=</mo><mn>35.0</mn><mtext> </mtext><mi mathvariant=\"normal\">m</mi></mrow><annotation encoding=\"application/x-tex\">N=35.0\\ \\mathrm{m}</annotation></semantics></math>"
+  },
+  "EQM00056": {
+    "tex": "\\varphi",
+    "display": false,
+    "mathml": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\"><semantics><mrow><mi>φ</mi></mrow><annotation encoding=\"application/x-tex\">\\varphi</annotation></semantics></math>"
+  },
+  "EQM00057": {
+    "tex": "\\lambda",
+    "display": false,
+    "mathml": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\"><semantics><mrow><mi>λ</mi></mrow><annotation encoding=\"application/x-tex\">\\lambda</annotation></semantics></math>"
+  },
+  "EQM00058": {
+    "tex": "h",
+    "display": false,
+    "mathml": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\"><semantics><mrow><mi>h</mi></mrow><annotation encoding=\"application/x-tex\">h</annotation></semantics></math>"
+  },
+  "EQM00059": {
+    "tex": "Z",
+    "display": false,
+    "mathml": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\"><semantics><mrow><mi>Z</mi></mrow><annotation encoding=\"application/x-tex\">Z</annotation></semantics></math>"
+  },
+  "EQM00060": {
+    "tex": "X",
+    "display": false,
+    "mathml": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\"><semantics><mrow><mi>X</mi></mrow><annotation encoding=\"application/x-tex\">X</annotation></semantics></math>"
+  },
+  "EQM00061": {
+    "tex": "Y",
+    "display": false,
+    "mathml": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\"><semantics><mrow><mi>Y</mi></mrow><annotation encoding=\"application/x-tex\">Y</annotation></semantics></math>"
+  },
+  "EQM00062": {
+    "tex": "\\text{日本付近：}\\quad X<0,\\qquad Y>0,\\qquad Z>0\r",
+    "display": true,
+    "mathml": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\"><semantics><mrow><mtext>日本付近：</mtext><mspace width=\"1em\"/><mi>X</mi><mo>&lt;</mo><mn>0</mn><mo separator=\"true\">,</mo><mspace width=\"2em\"/><mi>Y</mi><mo>&gt;</mo><mn>0</mn><mo separator=\"true\">,</mo><mspace width=\"2em\"/><mi>Z</mi><mo>&gt;</mo><mn>0</mn></mrow><annotation encoding=\"application/x-tex\">\\text{日本付近：}\\quad X&lt;0,\\qquad Y&gt;0,\\qquad Z&gt;0\r</annotation></semantics></math>"
+  },
+  "EQM00063": {
+    "tex": "(0,0,0)",
+    "display": false,
+    "mathml": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\"><semantics><mrow><mo stretchy=\"false\">(</mo><mn>0</mn><mo separator=\"true\">,</mo><mn>0</mn><mo separator=\"true\">,</mo><mn>0</mn><mo stretchy=\"false\">)</mo></mrow><annotation encoding=\"application/x-tex\">(0,0,0)</annotation></semantics></math>"
+  },
+  "EQM00064": {
+    "tex": "\\Delta\\boldsymbol{r}=\\begin{pmatrix}\\Delta X\\\\\\Delta Y\\\\\\Delta Z\\end{pmatrix}\r\n=\\begin{pmatrix}100.000\\\\200.000\\\\500.000\\end{pmatrix}\\ \\mathrm{m}\r",
+    "display": true,
+    "mathml": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\"><semantics><mrow><mi mathvariant=\"normal\">Δ</mi><mi mathvariant=\"bold-italic\">r</mi><mo>=</mo><mrow><mo fence=\"true\">(</mo><mtable rowspacing=\"0.16em\" columnalign=\"center\" columnspacing=\"1em\"><mtr><mtd><mstyle scriptlevel=\"0\" displaystyle=\"false\"><mrow><mi mathvariant=\"normal\">Δ</mi><mi>X</mi></mrow></mstyle></mtd></mtr><mtr><mtd><mstyle scriptlevel=\"0\" displaystyle=\"false\"><mrow><mi mathvariant=\"normal\">Δ</mi><mi>Y</mi></mrow></mstyle></mtd></mtr><mtr><mtd><mstyle scriptlevel=\"0\" displaystyle=\"false\"><mrow><mi mathvariant=\"normal\">Δ</mi><mi>Z</mi></mrow></mstyle></mtd></mtr></mtable><mo fence=\"true\">)</mo></mrow><mo>=</mo><mrow><mo fence=\"true\">(</mo><mtable rowspacing=\"0.16em\" columnalign=\"center\" columnspacing=\"1em\"><mtr><mtd><mstyle scriptlevel=\"0\" displaystyle=\"false\"><mn>100.000</mn></mstyle></mtd></mtr><mtr><mtd><mstyle scriptlevel=\"0\" displaystyle=\"false\"><mn>200.000</mn></mstyle></mtd></mtr><mtr><mtd><mstyle scriptlevel=\"0\" displaystyle=\"false\"><mn>500.000</mn></mstyle></mtd></mtr></mtable><mo fence=\"true\">)</mo></mrow><mtext> </mtext><mi mathvariant=\"normal\">m</mi></mrow><annotation encoding=\"application/x-tex\">\\Delta\\boldsymbol{r}=\\begin{pmatrix}\\Delta X\\\\\\Delta Y\\\\\\Delta Z\\end{pmatrix}\r\n=\\begin{pmatrix}100.000\\\\200.000\\\\500.000\\end{pmatrix}\\ \\mathrm{m}\r</annotation></semantics></math>"
+  },
+  "EQM00065": {
+    "tex": "D=\\sqrt{\\Delta X^2+\\Delta Y^2+\\Delta Z^2}\r\n=\\sqrt{300\\,000}=547.723\\ \\mathrm{m}\r",
+    "display": true,
+    "mathml": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\"><semantics><mrow><mi>D</mi><mo>=</mo><msqrt><mrow><mi mathvariant=\"normal\">Δ</mi><msup><mi>X</mi><mn>2</mn></msup><mo>+</mo><mi mathvariant=\"normal\">Δ</mi><msup><mi>Y</mi><mn>2</mn></msup><mo>+</mo><mi mathvariant=\"normal\">Δ</mi><msup><mi>Z</mi><mn>2</mn></msup></mrow></msqrt><mo>=</mo><msqrt><mrow><mn>300</mn><mtext> </mtext><mn>000</mn></mrow></msqrt><mo>=</mo><mn>547.723</mn><mtext> </mtext><mi mathvariant=\"normal\">m</mi></mrow><annotation encoding=\"application/x-tex\">D=\\sqrt{\\Delta X^2+\\Delta Y^2+\\Delta Z^2}\r\n=\\sqrt{300\\,000}=547.723\\ \\mathrm{m}\r</annotation></semantics></math>"
+  },
+  "EQM00066": {
+    "tex": "X",
+    "display": false,
+    "mathml": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\"><semantics><mrow><mi>X</mi></mrow><annotation encoding=\"application/x-tex\">X</annotation></semantics></math>"
+  },
+  "EQM00067": {
+    "tex": "Y",
+    "display": false,
+    "mathml": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\"><semantics><mrow><mi>Y</mi></mrow><annotation encoding=\"application/x-tex\">Y</annotation></semantics></math>"
+  },
+  "EQM00068": {
+    "tex": "N",
+    "display": false,
+    "mathml": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\"><semantics><mrow><mi>N</mi></mrow><annotation encoding=\"application/x-tex\">N</annotation></semantics></math>"
+  },
+  "EQM00069": {
+    "tex": "E",
+    "display": false,
+    "mathml": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\"><semantics><mrow><mi>E</mi></mrow><annotation encoding=\"application/x-tex\">E</annotation></semantics></math>"
+  },
+  "EQM00070": {
+    "tex": "(0,0)",
+    "display": false,
+    "mathml": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\"><semantics><mrow><mo stretchy=\"false\">(</mo><mn>0</mn><mo separator=\"true\">,</mo><mn>0</mn><mo stretchy=\"false\">)</mo></mrow><annotation encoding=\"application/x-tex\">(0,0)</annotation></semantics></math>"
+  },
+  "EQM00071": {
+    "tex": "H=h-N",
+    "display": false,
+    "mathml": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\"><semantics><mrow><mi>H</mi><mo>=</mo><mi>h</mi><mo>−</mo><mi>N</mi></mrow><annotation encoding=\"application/x-tex\">H=h-N</annotation></semantics></math>"
+  },
+  "EQM00072": {
+    "tex": "N",
+    "display": false,
+    "mathml": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\"><semantics><mrow><mi>N</mi></mrow><annotation encoding=\"application/x-tex\">N</annotation></semantics></math>"
+  },
+  "EQM00073": {
+    "tex": "X<0,\\ Y>0,\\ Z>0",
+    "display": false,
+    "mathml": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\"><semantics><mrow><mi>X</mi><mo>&lt;</mo><mn>0</mn><mo separator=\"true\">,</mo><mtext> </mtext><mi>Y</mi><mo>&gt;</mo><mn>0</mn><mo separator=\"true\">,</mo><mtext> </mtext><mi>Z</mi><mo>&gt;</mo><mn>0</mn></mrow><annotation encoding=\"application/x-tex\">X&lt;0,\\ Y&gt;0,\\ Z&gt;0</annotation></semantics></math>"
+  },
+  "EQM00074": {
+    "tex": "(X,Y)=(0,0)",
+    "display": false,
+    "mathml": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\"><semantics><mrow><mo stretchy=\"false\">(</mo><mi>X</mi><mo separator=\"true\">,</mo><mi>Y</mi><mo stretchy=\"false\">)</mo><mo>=</mo><mo stretchy=\"false\">(</mo><mn>0</mn><mo separator=\"true\">,</mo><mn>0</mn><mo stretchy=\"false\">)</mo></mrow><annotation encoding=\"application/x-tex\">(X,Y)=(0,0)</annotation></semantics></math>"
+  },
+  "EQM00075": {
+    "tex": "x",
+    "display": false,
+    "mathml": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\"><semantics><mrow><mi>x</mi></mrow><annotation encoding=\"application/x-tex\">x</annotation></semantics></math>"
+  },
+  "EQM00076": {
+    "tex": "y",
+    "display": false,
+    "mathml": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\"><semantics><mrow><mi>y</mi></mrow><annotation encoding=\"application/x-tex\">y</annotation></semantics></math>"
+  },
+  "EQM00077": {
+    "tex": "X",
+    "display": false,
+    "mathml": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\"><semantics><mrow><mi>X</mi></mrow><annotation encoding=\"application/x-tex\">X</annotation></semantics></math>"
+  },
+  "EQM00078": {
+    "tex": "Y",
+    "display": false,
+    "mathml": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\"><semantics><mrow><mi>Y</mi></mrow><annotation encoding=\"application/x-tex\">Y</annotation></semantics></math>"
+  },
+  "EQM00079": {
+    "tex": "X",
+    "display": false,
+    "mathml": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\"><semantics><mrow><mi>X</mi></mrow><annotation encoding=\"application/x-tex\">X</annotation></semantics></math>"
+  },
+  "EQM00080": {
+    "tex": "Y",
+    "display": false,
+    "mathml": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\"><semantics><mrow><mi>Y</mi></mrow><annotation encoding=\"application/x-tex\">Y</annotation></semantics></math>"
+  },
+  "EQM00081": {
+    "tex": "\\text{帯広は原点の南西：}\\quad X<0,\\quad Y<0\r",
+    "display": true,
+    "mathml": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\"><semantics><mrow><mtext>帯広は原点の南西：</mtext><mspace width=\"1em\"/><mi>X</mi><mo>&lt;</mo><mn>0</mn><mo separator=\"true\">,</mo><mspace width=\"1em\"/><mi>Y</mi><mo>&lt;</mo><mn>0</mn></mrow><annotation encoding=\"application/x-tex\">\\text{帯広は原点の南西：}\\quad X&lt;0,\\quad Y&lt;0\r</annotation></semantics></math>"
+  },
+  "EQM00082": {
+    "tex": "m_0=0.9999",
+    "display": false,
+    "mathml": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\"><semantics><mrow><msub><mi>m</mi><mn>0</mn></msub><mo>=</mo><mn>0.9999</mn></mrow><annotation encoding=\"application/x-tex\">m_0=0.9999</annotation></semantics></math>"
+  },
+  "EQM00083": {
+    "tex": "m\\approx1",
+    "display": false,
+    "mathml": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\"><semantics><mrow><mi>m</mi><mo>≈</mo><mn>1</mn></mrow><annotation encoding=\"application/x-tex\">m\\approx1</annotation></semantics></math>"
+  },
+  "EQM00084": {
+    "tex": "Y",
+    "display": false,
+    "mathml": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\"><semantics><mrow><mi>Y</mi></mrow><annotation encoding=\"application/x-tex\">Y</annotation></semantics></math>"
+  },
+  "EQM00085": {
+    "tex": "m\\approx m_0\\left(1+\\frac{Y^2}{2R^2}\\right),\\qquad R\\approx6370\\ \\mathrm{km}\r",
+    "display": true,
+    "mathml": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\"><semantics><mrow><mi>m</mi><mo>≈</mo><msub><mi>m</mi><mn>0</mn></msub><mrow><mo fence=\"true\">(</mo><mn>1</mn><mo>+</mo><mfrac><msup><mi>Y</mi><mn>2</mn></msup><mrow><mn>2</mn><msup><mi>R</mi><mn>2</mn></msup></mrow></mfrac><mo fence=\"true\">)</mo></mrow><mo separator=\"true\">,</mo><mspace width=\"2em\"/><mi>R</mi><mo>≈</mo><mn>6370</mn><mtext> </mtext><mrow><mi mathvariant=\"normal\">k</mi><mi mathvariant=\"normal\">m</mi></mrow></mrow><annotation encoding=\"application/x-tex\">m\\approx m_0\\left(1+\\frac{Y^2}{2R^2}\\right),\\qquad R\\approx6370\\ \\mathrm{km}\r</annotation></semantics></math>"
+  },
+  "EQM00086": {
+    "tex": "S=\\sqrt{L^2-\\Delta h^2}=L\\cos\\theta\r",
+    "display": true,
+    "mathml": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\"><semantics><mrow><mi>S</mi><mo>=</mo><msqrt><mrow><msup><mi>L</mi><mn>2</mn></msup><mo>−</mo><mi mathvariant=\"normal\">Δ</mi><msup><mi>h</mi><mn>2</mn></msup></mrow></msqrt><mo>=</mo><mi>L</mi><mi>cos</mi><mo>⁡</mo><mi>θ</mi></mrow><annotation encoding=\"application/x-tex\">S=\\sqrt{L^2-\\Delta h^2}=L\\cos\\theta\r</annotation></semantics></math>"
+  },
+  "EQM00087": {
+    "tex": "S_0=S\\frac{R}{R+H}\\approx S\\left(1-\\frac{H}{R}\\right)\r",
+    "display": true,
+    "mathml": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\"><semantics><mrow><msub><mi>S</mi><mn>0</mn></msub><mo>=</mo><mi>S</mi><mfrac><mi>R</mi><mrow><mi>R</mi><mo>+</mo><mi>H</mi></mrow></mfrac><mo>≈</mo><mi>S</mi><mrow><mo fence=\"true\">(</mo><mn>1</mn><mo>−</mo><mfrac><mi>H</mi><mi>R</mi></mfrac><mo fence=\"true\">)</mo></mrow></mrow><annotation encoding=\"application/x-tex\">S_0=S\\frac{R}{R+H}\\approx S\\left(1-\\frac{H}{R}\\right)\r</annotation></semantics></math>"
+  },
+  "EQM00088": {
+    "tex": "\\theta",
+    "display": false,
+    "mathml": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\"><semantics><mrow><mi>θ</mi></mrow><annotation encoding=\"application/x-tex\">\\theta</annotation></semantics></math>"
+  },
+  "EQM00089": {
+    "tex": "\\Delta h",
+    "display": false,
+    "mathml": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\"><semantics><mrow><mi mathvariant=\"normal\">Δ</mi><mi>h</mi></mrow><annotation encoding=\"application/x-tex\">\\Delta h</annotation></semantics></math>"
+  },
+  "EQM00090": {
+    "tex": "H",
+    "display": false,
+    "mathml": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\"><semantics><mrow><mi>H</mi></mrow><annotation encoding=\"application/x-tex\">H</annotation></semantics></math>"
+  },
+  "EQM00091": {
+    "tex": "\\boxed{s=mS_0}\r",
+    "display": true,
+    "mathml": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\"><semantics><mrow><menclose notation=\"box\"><mstyle scriptlevel=\"0\" displaystyle=\"false\"><mstyle scriptlevel=\"0\" displaystyle=\"false\"><mstyle scriptlevel=\"0\" displaystyle=\"true\"><mrow><mi>s</mi><mo>=</mo><mi>m</mi><msub><mi>S</mi><mn>0</mn></msub></mrow></mstyle></mstyle></mstyle></menclose></mrow><annotation encoding=\"application/x-tex\">\\boxed{s=mS_0}\r</annotation></semantics></math>"
+  },
+  "EQM00092": {
+    "tex": "m<1",
+    "display": false,
+    "mathml": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\"><semantics><mrow><mi>m</mi><mo>&lt;</mo><mn>1</mn></mrow><annotation encoding=\"application/x-tex\">m&lt;1</annotation></semantics></math>"
+  },
+  "EQM00093": {
+    "tex": "m=1",
+    "display": false,
+    "mathml": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\"><semantics><mrow><mi>m</mi><mo>=</mo><mn>1</mn></mrow><annotation encoding=\"application/x-tex\">m=1</annotation></semantics></math>"
+  },
+  "EQM00094": {
+    "tex": "m>1",
+    "display": false,
+    "mathml": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\"><semantics><mrow><mi>m</mi><mo>&gt;</mo><mn>1</mn></mrow><annotation encoding=\"application/x-tex\">m&gt;1</annotation></semantics></math>"
+  },
+  "EQM00095": {
+    "tex": "h=H+N",
+    "display": false,
+    "mathml": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\"><semantics><mrow><mi>h</mi><mo>=</mo><mi>H</mi><mo>+</mo><mi>N</mi></mrow><annotation encoding=\"application/x-tex\">h=H+N</annotation></semantics></math>"
+  },
+  "EQM00096": {
+    "tex": "H",
+    "display": false,
+    "mathml": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\"><semantics><mrow><mi>H</mi></mrow><annotation encoding=\"application/x-tex\">H</annotation></semantics></math>"
+  },
+  "EQM00097": {
+    "tex": "L=1000.049\\ \\mathrm{m}",
+    "display": false,
+    "mathml": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\"><semantics><mrow><mi>L</mi><mo>=</mo><mn>1000.049</mn><mtext> </mtext><mi mathvariant=\"normal\">m</mi></mrow><annotation encoding=\"application/x-tex\">L=1000.049\\ \\mathrm{m}</annotation></semantics></math>"
+  },
+  "EQM00098": {
+    "tex": "\\Delta h=9.900\\ \\mathrm{m}",
+    "display": false,
+    "mathml": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\"><semantics><mrow><mi mathvariant=\"normal\">Δ</mi><mi>h</mi><mo>=</mo><mn>9.900</mn><mtext> </mtext><mi mathvariant=\"normal\">m</mi></mrow><annotation encoding=\"application/x-tex\">\\Delta h=9.900\\ \\mathrm{m}</annotation></semantics></math>"
+  },
+  "EQM00099": {
+    "tex": "H=100\\ \\mathrm{m}",
+    "display": false,
+    "mathml": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\"><semantics><mrow><mi>H</mi><mo>=</mo><mn>100</mn><mtext> </mtext><mi mathvariant=\"normal\">m</mi></mrow><annotation encoding=\"application/x-tex\">H=100\\ \\mathrm{m}</annotation></semantics></math>"
+  },
+  "EQM00100": {
+    "tex": "m=0.9999",
+    "display": false,
+    "mathml": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\"><semantics><mrow><mi>m</mi><mo>=</mo><mn>0.9999</mn></mrow><annotation encoding=\"application/x-tex\">m=0.9999</annotation></semantics></math>"
+  },
+  "EQM00101": {
+    "tex": "S=\\sqrt{L^2-\\Delta h^2}",
+    "display": false,
+    "mathml": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\"><semantics><mrow><mi>S</mi><mo>=</mo><msqrt><mrow><msup><mi>L</mi><mn>2</mn></msup><mo>−</mo><mi mathvariant=\"normal\">Δ</mi><msup><mi>h</mi><mn>2</mn></msup></mrow></msqrt></mrow><annotation encoding=\"application/x-tex\">S=\\sqrt{L^2-\\Delta h^2}</annotation></semantics></math>"
+  },
+  "EQM00102": {
+    "tex": "S_0=S\\frac{6\\,370\\,000}{6\\,370\\,100}",
+    "display": false,
+    "mathml": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\"><semantics><mrow><msub><mi>S</mi><mn>0</mn></msub><mo>=</mo><mi>S</mi><mfrac><mrow><mn>6</mn><mtext> </mtext><mn>370</mn><mtext> </mtext><mn>000</mn></mrow><mrow><mn>6</mn><mtext> </mtext><mn>370</mn><mtext> </mtext><mn>100</mn></mrow></mfrac></mrow><annotation encoding=\"application/x-tex\">S_0=S\\frac{6\\,370\\,000}{6\\,370\\,100}</annotation></semantics></math>"
+  },
+  "EQM00103": {
+    "tex": "s=0.9999S_0",
+    "display": false,
+    "mathml": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\"><semantics><mrow><mi>s</mi><mo>=</mo><mn>0.9999</mn><msub><mi>S</mi><mn>0</mn></msub></mrow><annotation encoding=\"application/x-tex\">s=0.9999S_0</annotation></semantics></math>"
+  },
+  "EQM00104": {
+    "tex": "s",
+    "display": false,
+    "mathml": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\"><semantics><mrow><mi>s</mi></mrow><annotation encoding=\"application/x-tex\">s</annotation></semantics></math>"
+  },
+  "EQM00105": {
+    "tex": "S",
+    "display": false,
+    "mathml": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\"><semantics><mrow><mi>S</mi></mrow><annotation encoding=\"application/x-tex\">S</annotation></semantics></math>"
+  },
+  "EQM00106": {
+    "tex": "S=\\frac{s}{m}\\cdot\\frac{R+H}{R}\r",
+    "display": true,
+    "mathml": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\"><semantics><mrow><mi>S</mi><mo>=</mo><mfrac><mi>s</mi><mi>m</mi></mfrac><mo>⋅</mo><mfrac><mrow><mi>R</mi><mo>+</mo><mi>H</mi></mrow><mi>R</mi></mfrac></mrow><annotation encoding=\"application/x-tex\">S=\\frac{s}{m}\\cdot\\frac{R+H}{R}\r</annotation></semantics></math>"
+  },
+  "EQM00107": {
+    "tex": "s=300.000\\ \\mathrm{m}",
+    "display": false,
+    "mathml": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\"><semantics><mrow><mi>s</mi><mo>=</mo><mn>300.000</mn><mtext> </mtext><mi mathvariant=\"normal\">m</mi></mrow><annotation encoding=\"application/x-tex\">s=300.000\\ \\mathrm{m}</annotation></semantics></math>"
+  },
+  "EQM00108": {
+    "tex": "H=200\\ \\mathrm{m}",
+    "display": false,
+    "mathml": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\"><semantics><mrow><mi>H</mi><mo>=</mo><mn>200</mn><mtext> </mtext><mi mathvariant=\"normal\">m</mi></mrow><annotation encoding=\"application/x-tex\">H=200\\ \\mathrm{m}</annotation></semantics></math>"
+  },
+  "EQM00109": {
+    "tex": "m=0.9999",
+    "display": false,
+    "mathml": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\"><semantics><mrow><mi>m</mi><mo>=</mo><mn>0.9999</mn></mrow><annotation encoding=\"application/x-tex\">m=0.9999</annotation></semantics></math>"
+  },
+  "EQM00110": {
+    "tex": "S=\\frac{300.000}{0.9999}\\cdot\\frac{6\\,370\\,200}{6\\,370\\,000}\r\n\\approx300.039\\ \\mathrm{m}\r",
+    "display": true,
+    "mathml": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\"><semantics><mrow><mi>S</mi><mo>=</mo><mfrac><mn>300.000</mn><mn>0.9999</mn></mfrac><mo>⋅</mo><mfrac><mrow><mn>6</mn><mtext> </mtext><mn>370</mn><mtext> </mtext><mn>200</mn></mrow><mrow><mn>6</mn><mtext> </mtext><mn>370</mn><mtext> </mtext><mn>000</mn></mrow></mfrac><mo>≈</mo><mn>300.039</mn><mtext> </mtext><mi mathvariant=\"normal\">m</mi></mrow><annotation encoding=\"application/x-tex\">S=\\frac{300.000}{0.9999}\\cdot\\frac{6\\,370\\,200}{6\\,370\\,000}\r\n\\approx300.039\\ \\mathrm{m}\r</annotation></semantics></math>"
+  },
+  "EQM00111": {
+    "tex": "X=-200",
+    "display": false,
+    "mathml": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\"><semantics><mrow><mi>X</mi><mo>=</mo><mo>−</mo><mn>200</mn></mrow><annotation encoding=\"application/x-tex\">X=-200</annotation></semantics></math>"
+  },
+  "EQM00112": {
+    "tex": "Y=+300",
+    "display": false,
+    "mathml": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\"><semantics><mrow><mi>Y</mi><mo>=</mo><mo>+</mo><mn>300</mn></mrow><annotation encoding=\"application/x-tex\">Y=+300</annotation></semantics></math>"
+  },
+  "EQM00113": {
+    "tex": "R=6370",
+    "display": false,
+    "mathml": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\"><semantics><mrow><mi>R</mi><mo>=</mo><mn>6370</mn></mrow><annotation encoding=\"application/x-tex\">R=6370</annotation></semantics></math>"
+  },
+  "EQM00114": {
+    "tex": "X",
+    "display": false,
+    "mathml": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\"><semantics><mrow><mi>X</mi></mrow><annotation encoding=\"application/x-tex\">X</annotation></semantics></math>"
+  },
+  "EQM00115": {
+    "tex": "Y",
+    "display": false,
+    "mathml": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\"><semantics><mrow><mi>Y</mi></mrow><annotation encoding=\"application/x-tex\">Y</annotation></semantics></math>"
+  },
+  "EQM00116": {
+    "tex": "(0,0)",
+    "display": false,
+    "mathml": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\"><semantics><mrow><mo stretchy=\"false\">(</mo><mn>0</mn><mo separator=\"true\">,</mo><mn>0</mn><mo stretchy=\"false\">)</mo></mrow><annotation encoding=\"application/x-tex\">(0,0)</annotation></semantics></math>"
+  },
+  "EQM00117": {
+    "tex": "H>0",
+    "display": false,
+    "mathml": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\"><semantics><mrow><mi>H</mi><mo>&gt;</mo><mn>0</mn></mrow><annotation encoding=\"application/x-tex\">H&gt;0</annotation></semantics></math>"
+  },
+  "EQM00118": {
+    "tex": "-\\frac{SH}{R}",
+    "display": false,
+    "mathml": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\"><semantics><mrow><mo>−</mo><mfrac><mrow><mi>S</mi><mi>H</mi></mrow><mi>R</mi></mfrac></mrow><annotation encoding=\"application/x-tex\">-\\frac{SH}{R}</annotation></semantics></math>"
+  },
+  "EQM00119": {
+    "tex": "s=mS_0",
+    "display": false,
+    "mathml": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\"><semantics><mrow><mi>s</mi><mo>=</mo><mi>m</mi><msub><mi>S</mi><mn>0</mn></msub></mrow><annotation encoding=\"application/x-tex\">s=mS_0</annotation></semantics></math>"
+  },
+  "EQM00120": {
+    "tex": "m",
+    "display": false,
+    "mathml": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\"><semantics><mrow><mi>m</mi></mrow><annotation encoding=\"application/x-tex\">m</annotation></semantics></math>"
+  },
+  "EQM00121": {
+    "tex": "\\alpha",
+    "display": false,
+    "mathml": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\"><semantics><mrow><mi>α</mi></mrow><annotation encoding=\"application/x-tex\">\\alpha</annotation></semantics></math>"
+  },
+  "EQM00122": {
+    "tex": "T",
+    "display": false,
+    "mathml": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\"><semantics><mrow><mi>T</mi></mrow><annotation encoding=\"application/x-tex\">T</annotation></semantics></math>"
+  },
+  "EQM00123": {
+    "tex": "\\gamma\\approx+0^\\circ43'",
+    "display": false,
+    "mathml": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\"><semantics><mrow><mi>γ</mi><mo>≈</mo><mo>+</mo><msup><mn>0</mn><mo>∘</mo></msup><msup><mn>43</mn><mo mathvariant=\"normal\" lspace=\"0em\" rspace=\"0em\">′</mo></msup></mrow><annotation encoding=\"application/x-tex\">\\gamma\\approx+0^\\circ43&#x27;</annotation></semantics></math>"
+  },
+  "EQM00124": {
+    "tex": "\\gamma",
+    "display": false,
+    "mathml": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\"><semantics><mrow><mi>γ</mi></mrow><annotation encoding=\"application/x-tex\">\\gamma</annotation></semantics></math>"
+  },
+  "EQM00125": {
+    "tex": "\\boxed{\\alpha=T-\\gamma}\r",
+    "display": true,
+    "mathml": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\"><semantics><mrow><menclose notation=\"box\"><mstyle scriptlevel=\"0\" displaystyle=\"false\"><mstyle scriptlevel=\"0\" displaystyle=\"false\"><mstyle scriptlevel=\"0\" displaystyle=\"true\"><mrow><mi>α</mi><mo>=</mo><mi>T</mi><mo>−</mo><mi>γ</mi></mrow></mstyle></mstyle></mstyle></menclose></mrow><annotation encoding=\"application/x-tex\">\\boxed{\\alpha=T-\\gamma}\r</annotation></semantics></math>"
+  },
+  "EQM00126": {
+    "tex": "\\gamma=0",
+    "display": false,
+    "mathml": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\"><semantics><mrow><mi>γ</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding=\"application/x-tex\">\\gamma=0</annotation></semantics></math>"
+  },
+  "EQM00127": {
+    "tex": "Y>0",
+    "display": false,
+    "mathml": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\"><semantics><mrow><mi>Y</mi><mo>&gt;</mo><mn>0</mn></mrow><annotation encoding=\"application/x-tex\">Y&gt;0</annotation></semantics></math>"
+  },
+  "EQM00128": {
+    "tex": "\\gamma<0",
+    "display": false,
+    "mathml": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\"><semantics><mrow><mi>γ</mi><mo>&lt;</mo><mn>0</mn></mrow><annotation encoding=\"application/x-tex\">\\gamma&lt;0</annotation></semantics></math>"
+  },
+  "EQM00129": {
+    "tex": "Y<0",
+    "display": false,
+    "mathml": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\"><semantics><mrow><mi>Y</mi><mo>&lt;</mo><mn>0</mn></mrow><annotation encoding=\"application/x-tex\">Y&lt;0</annotation></semantics></math>"
+  },
+  "EQM00130": {
+    "tex": "\\gamma>0",
+    "display": false,
+    "mathml": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\"><semantics><mrow><mi>γ</mi><mo>&gt;</mo><mn>0</mn></mrow><annotation encoding=\"application/x-tex\">\\gamma&gt;0</annotation></semantics></math>"
+  },
+  "EQM00131": {
+    "tex": "T",
+    "display": false,
+    "mathml": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\"><semantics><mrow><mi>T</mi></mrow><annotation encoding=\"application/x-tex\">T</annotation></semantics></math>"
+  },
+  "EQM00132": {
+    "tex": "\\beta",
+    "display": false,
+    "mathml": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\"><semantics><mrow><mi>β</mi></mrow><annotation encoding=\"application/x-tex\">\\beta</annotation></semantics></math>"
+  },
+  "EQM00133": {
+    "tex": "T=\\beta",
+    "display": false,
+    "mathml": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\"><semantics><mrow><mi>T</mi><mo>=</mo><mi>β</mi></mrow><annotation encoding=\"application/x-tex\">T=\\beta</annotation></semantics></math>"
+  },
+  "EQM00134": {
+    "tex": "\\beta",
+    "display": false,
+    "mathml": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\"><semantics><mrow><mi>β</mi></mrow><annotation encoding=\"application/x-tex\">\\beta</annotation></semantics></math>"
+  },
+  "EQM00135": {
+    "tex": "T=180^\\circ-\\beta",
+    "display": false,
+    "mathml": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\"><semantics><mrow><mi>T</mi><mo>=</mo><msup><mn>180</mn><mo>∘</mo></msup><mo>−</mo><mi>β</mi></mrow><annotation encoding=\"application/x-tex\">T=180^\\circ-\\beta</annotation></semantics></math>"
+  },
+  "EQM00136": {
+    "tex": "\\beta",
+    "display": false,
+    "mathml": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\"><semantics><mrow><mi>β</mi></mrow><annotation encoding=\"application/x-tex\">\\beta</annotation></semantics></math>"
+  },
+  "EQM00137": {
+    "tex": "T=180^\\circ+\\beta",
+    "display": false,
+    "mathml": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\"><semantics><mrow><mi>T</mi><mo>=</mo><msup><mn>180</mn><mo>∘</mo></msup><mo>+</mo><mi>β</mi></mrow><annotation encoding=\"application/x-tex\">T=180^\\circ+\\beta</annotation></semantics></math>"
+  },
+  "EQM00138": {
+    "tex": "\\beta",
+    "display": false,
+    "mathml": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\"><semantics><mrow><mi>β</mi></mrow><annotation encoding=\"application/x-tex\">\\beta</annotation></semantics></math>"
+  },
+  "EQM00139": {
+    "tex": "T=360^\\circ-\\beta",
+    "display": false,
+    "mathml": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\"><semantics><mrow><mi>T</mi><mo>=</mo><msup><mn>360</mn><mo>∘</mo></msup><mo>−</mo><mi>β</mi></mrow><annotation encoding=\"application/x-tex\">T=360^\\circ-\\beta</annotation></semantics></math>"
+  },
+  "EQM00140": {
+    "tex": "T=150^\\circ",
+    "display": false,
+    "mathml": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\"><semantics><mrow><mi>T</mi><mo>=</mo><msup><mn>150</mn><mo>∘</mo></msup></mrow><annotation encoding=\"application/x-tex\">T=150^\\circ</annotation></semantics></math>"
+  },
+  "EQM00141": {
+    "tex": "T=320^\\circ",
+    "display": false,
+    "mathml": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\"><semantics><mrow><mi>T</mi><mo>=</mo><msup><mn>320</mn><mo>∘</mo></msup></mrow><annotation encoding=\"application/x-tex\">T=320^\\circ</annotation></semantics></math>"
+  },
+  "EQM00142": {
+    "tex": "S",
+    "display": false,
+    "mathml": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\"><semantics><mrow><mi>S</mi></mrow><annotation encoding=\"application/x-tex\">S</annotation></semantics></math>"
+  },
+  "EQM00143": {
+    "tex": "T",
+    "display": false,
+    "mathml": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\"><semantics><mrow><mi>T</mi></mrow><annotation encoding=\"application/x-tex\">T</annotation></semantics></math>"
+  },
+  "EQM00144": {
+    "tex": "\\begin{aligned}X_B&=X_A+S\\cos T\\\\Y_B&=Y_A+S\\sin T\\end{aligned}\r",
+    "display": true,
+    "mathml": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\"><semantics><mtable rowspacing=\"0.25em\" columnalign=\"right left\" columnspacing=\"0em\"><mtr><mtd><mstyle scriptlevel=\"0\" displaystyle=\"true\"><msub><mi>X</mi><mi>B</mi></msub></mstyle></mtd><mtd><mstyle scriptlevel=\"0\" displaystyle=\"true\"><mrow><mrow></mrow><mo>=</mo><msub><mi>X</mi><mi>A</mi></msub><mo>+</mo><mi>S</mi><mi>cos</mi><mo>⁡</mo><mi>T</mi></mrow></mstyle></mtd></mtr><mtr><mtd><mstyle scriptlevel=\"0\" displaystyle=\"true\"><msub><mi>Y</mi><mi>B</mi></msub></mstyle></mtd><mtd><mstyle scriptlevel=\"0\" displaystyle=\"true\"><mrow><mrow></mrow><mo>=</mo><msub><mi>Y</mi><mi>A</mi></msub><mo>+</mo><mi>S</mi><mi>sin</mi><mo>⁡</mo><mi>T</mi></mrow></mstyle></mtd></mtr></mtable><annotation encoding=\"application/x-tex\">\\begin{aligned}X_B&amp;=X_A+S\\cos T\\\\Y_B&amp;=Y_A+S\\sin T\\end{aligned}\r</annotation></semantics></math>"
+  },
+  "EQM00145": {
+    "tex": "\\Delta X<0",
+    "display": false,
+    "mathml": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\"><semantics><mrow><mi mathvariant=\"normal\">Δ</mi><mi>X</mi><mo>&lt;</mo><mn>0</mn></mrow><annotation encoding=\"application/x-tex\">\\Delta X&lt;0</annotation></semantics></math>"
+  },
+  "EQM00146": {
+    "tex": "\\Delta Y>0",
+    "display": false,
+    "mathml": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\"><semantics><mrow><mi mathvariant=\"normal\">Δ</mi><mi>Y</mi><mo>&gt;</mo><mn>0</mn></mrow><annotation encoding=\"application/x-tex\">\\Delta Y&gt;0</annotation></semantics></math>"
+  },
+  "EQM00147": {
+    "tex": "(1000.000,\\ 2000.000)",
+    "display": false,
+    "mathml": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\"><semantics><mrow><mo stretchy=\"false\">(</mo><mn>1000.000</mn><mo separator=\"true\">,</mo><mtext> </mtext><mn>2000.000</mn><mo stretchy=\"false\">)</mo></mrow><annotation encoding=\"application/x-tex\">(1000.000,\\ 2000.000)</annotation></semantics></math>"
+  },
+  "EQM00148": {
+    "tex": "T=120^\\circ",
+    "display": false,
+    "mathml": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\"><semantics><mrow><mi>T</mi><mo>=</mo><msup><mn>120</mn><mo>∘</mo></msup></mrow><annotation encoding=\"application/x-tex\">T=120^\\circ</annotation></semantics></math>"
+  },
+  "EQM00149": {
+    "tex": "S=150.000\\ \\mathrm{m}",
+    "display": false,
+    "mathml": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\"><semantics><mrow><mi>S</mi><mo>=</mo><mn>150.000</mn><mtext> </mtext><mi mathvariant=\"normal\">m</mi></mrow><annotation encoding=\"application/x-tex\">S=150.000\\ \\mathrm{m}</annotation></semantics></math>"
+  },
+  "EQM00150": {
+    "tex": "\\begin{aligned}\r\n\\Delta X&=150\\cos120^\\circ=-75.000\\ \\mathrm{m}\\\\\r\n\\Delta Y&=150\\sin120^\\circ=+129.904\\ \\mathrm{m}\r\n\\end{aligned}\r",
+    "display": true,
+    "mathml": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\"><semantics><mtable rowspacing=\"0.25em\" columnalign=\"right left\" columnspacing=\"0em\"><mtr><mtd><mstyle scriptlevel=\"0\" displaystyle=\"true\"><mrow><mi mathvariant=\"normal\">Δ</mi><mi>X</mi></mrow></mstyle></mtd><mtd><mstyle scriptlevel=\"0\" displaystyle=\"true\"><mrow><mrow></mrow><mo>=</mo><mn>150</mn><mi>cos</mi><mo>⁡</mo><msup><mn>120</mn><mo>∘</mo></msup><mo>=</mo><mo>−</mo><mn>75.000</mn><mtext> </mtext><mi mathvariant=\"normal\">m</mi></mrow></mstyle></mtd></mtr><mtr><mtd><mstyle scriptlevel=\"0\" displaystyle=\"true\"><mrow><mi mathvariant=\"normal\">Δ</mi><mi>Y</mi></mrow></mstyle></mtd><mtd><mstyle scriptlevel=\"0\" displaystyle=\"true\"><mrow><mrow></mrow><mo>=</mo><mn>150</mn><mi>sin</mi><mo>⁡</mo><msup><mn>120</mn><mo>∘</mo></msup><mo>=</mo><mo>+</mo><mn>129.904</mn><mtext> </mtext><mi mathvariant=\"normal\">m</mi></mrow></mstyle></mtd></mtr></mtable><annotation encoding=\"application/x-tex\">\\begin{aligned}\r\n\\Delta X&amp;=150\\cos120^\\circ=-75.000\\ \\mathrm{m}\\\\\r\n\\Delta Y&amp;=150\\sin120^\\circ=+129.904\\ \\mathrm{m}\r\n\\end{aligned}\r</annotation></semantics></math>"
+  },
+  "EQM00151": {
+    "tex": "\\begin{aligned}\r\nX_B&=1000.000-75.000=925.000\\ \\mathrm{m}\\\\\r\nY_B&=2000.000+129.904=2129.904\\ \\mathrm{m}\r\n\\end{aligned}\r",
+    "display": true,
+    "mathml": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\"><semantics><mtable rowspacing=\"0.25em\" columnalign=\"right left\" columnspacing=\"0em\"><mtr><mtd><mstyle scriptlevel=\"0\" displaystyle=\"true\"><msub><mi>X</mi><mi>B</mi></msub></mstyle></mtd><mtd><mstyle scriptlevel=\"0\" displaystyle=\"true\"><mrow><mrow></mrow><mo>=</mo><mn>1000.000</mn><mo>−</mo><mn>75.000</mn><mo>=</mo><mn>925.000</mn><mtext> </mtext><mi mathvariant=\"normal\">m</mi></mrow></mstyle></mtd></mtr><mtr><mtd><mstyle scriptlevel=\"0\" displaystyle=\"true\"><msub><mi>Y</mi><mi>B</mi></msub></mstyle></mtd><mtd><mstyle scriptlevel=\"0\" displaystyle=\"true\"><mrow><mrow></mrow><mo>=</mo><mn>2000.000</mn><mo>+</mo><mn>129.904</mn><mo>=</mo><mn>2129.904</mn><mtext> </mtext><mi mathvariant=\"normal\">m</mi></mrow></mstyle></mtd></mtr></mtable><annotation encoding=\"application/x-tex\">\\begin{aligned}\r\nX_B&amp;=1000.000-75.000=925.000\\ \\mathrm{m}\\\\\r\nY_B&amp;=2000.000+129.904=2129.904\\ \\mathrm{m}\r\n\\end{aligned}\r</annotation></semantics></math>"
+  },
+  "EQM00152": {
+    "tex": "\\Delta X=X_B-X_A,\\qquad\\Delta Y=Y_B-Y_A\r",
+    "display": true,
+    "mathml": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\"><semantics><mrow><mi mathvariant=\"normal\">Δ</mi><mi>X</mi><mo>=</mo><msub><mi>X</mi><mi>B</mi></msub><mo>−</mo><msub><mi>X</mi><mi>A</mi></msub><mo separator=\"true\">,</mo><mspace width=\"2em\"/><mi mathvariant=\"normal\">Δ</mi><mi>Y</mi><mo>=</mo><msub><mi>Y</mi><mi>B</mi></msub><mo>−</mo><msub><mi>Y</mi><mi>A</mi></msub></mrow><annotation encoding=\"application/x-tex\">\\Delta X=X_B-X_A,\\qquad\\Delta Y=Y_B-Y_A\r</annotation></semantics></math>"
+  },
+  "EQM00153": {
+    "tex": "S=\\sqrt{\\Delta X^2+\\Delta Y^2},\\qquad\\tan T=\\frac{\\Delta Y}{\\Delta X}\r",
+    "display": true,
+    "mathml": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\"><semantics><mrow><mi>S</mi><mo>=</mo><msqrt><mrow><mi mathvariant=\"normal\">Δ</mi><msup><mi>X</mi><mn>2</mn></msup><mo>+</mo><mi mathvariant=\"normal\">Δ</mi><msup><mi>Y</mi><mn>2</mn></msup></mrow></msqrt><mo separator=\"true\">,</mo><mspace width=\"2em\"/><mi>tan</mi><mo>⁡</mo><mi>T</mi><mo>=</mo><mfrac><mrow><mi mathvariant=\"normal\">Δ</mi><mi>Y</mi></mrow><mrow><mi mathvariant=\"normal\">Δ</mi><mi>X</mi></mrow></mfrac></mrow><annotation encoding=\"application/x-tex\">S=\\sqrt{\\Delta X^2+\\Delta Y^2},\\qquad\\tan T=\\frac{\\Delta Y}{\\Delta X}\r</annotation></semantics></math>"
+  },
+  "EQM00154": {
+    "tex": "\\arctan",
+    "display": false,
+    "mathml": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\"><semantics><mrow><mi>arctan</mi><mo>⁡</mo></mrow><annotation encoding=\"application/x-tex\">\\arctan</annotation></semantics></math>"
+  },
+  "EQM00155": {
+    "tex": "\\Delta X=0",
+    "display": false,
+    "mathml": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\"><semantics><mrow><mi mathvariant=\"normal\">Δ</mi><mi>X</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding=\"application/x-tex\">\\Delta X=0</annotation></semantics></math>"
+  },
+  "EQM00156": {
+    "tex": "\\Delta X<0",
+    "display": false,
+    "mathml": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\"><semantics><mrow><mi mathvariant=\"normal\">Δ</mi><mi>X</mi><mo>&lt;</mo><mn>0</mn></mrow><annotation encoding=\"application/x-tex\">\\Delta X&lt;0</annotation></semantics></math>"
+  },
+  "EQM00157": {
+    "tex": "\\Delta X=-75.000",
+    "display": false,
+    "mathml": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\"><semantics><mrow><mi mathvariant=\"normal\">Δ</mi><mi>X</mi><mo>=</mo><mo>−</mo><mn>75.000</mn></mrow><annotation encoding=\"application/x-tex\">\\Delta X=-75.000</annotation></semantics></math>"
+  },
+  "EQM00158": {
+    "tex": "\\Delta Y=129.904",
+    "display": false,
+    "mathml": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\"><semantics><mrow><mi mathvariant=\"normal\">Δ</mi><mi>Y</mi><mo>=</mo><mn>129.904</mn></mrow><annotation encoding=\"application/x-tex\">\\Delta Y=129.904</annotation></semantics></math>"
+  },
+  "EQM00159": {
+    "tex": "S=\\sqrt{(-75.000)^2+129.904^2}\\approx150.000\\ \\mathrm{m}\r",
+    "display": true,
+    "mathml": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\"><semantics><mrow><mi>S</mi><mo>=</mo><msqrt><mrow><mo stretchy=\"false\">(</mo><mo>−</mo><mn>75.000</mn><msup><mo stretchy=\"false\">)</mo><mn>2</mn></msup><mo>+</mo><msup><mn>129.904</mn><mn>2</mn></msup></mrow></msqrt><mo>≈</mo><mn>150.000</mn><mtext> </mtext><mi mathvariant=\"normal\">m</mi></mrow><annotation encoding=\"application/x-tex\">S=\\sqrt{(-75.000)^2+129.904^2}\\approx150.000\\ \\mathrm{m}\r</annotation></semantics></math>"
+  },
+  "EQM00160": {
+    "tex": "\\begin{aligned}\r\nt&=\\arctan\\frac{129.904}{-75.000}\\approx-60^\\circ\\\\\r\nT&=t+180^\\circ\\approx120^\\circ\r\n\\end{aligned}\r",
+    "display": true,
+    "mathml": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\"><semantics><mtable rowspacing=\"0.25em\" columnalign=\"right left\" columnspacing=\"0em\"><mtr><mtd><mstyle scriptlevel=\"0\" displaystyle=\"true\"><mi>t</mi></mstyle></mtd><mtd><mstyle scriptlevel=\"0\" displaystyle=\"true\"><mrow><mrow></mrow><mo>=</mo><mi>arctan</mi><mo>⁡</mo><mfrac><mn>129.904</mn><mrow><mo>−</mo><mn>75.000</mn></mrow></mfrac><mo>≈</mo><mo>−</mo><msup><mn>60</mn><mo>∘</mo></msup></mrow></mstyle></mtd></mtr><mtr><mtd><mstyle scriptlevel=\"0\" displaystyle=\"true\"><mi>T</mi></mstyle></mtd><mtd><mstyle scriptlevel=\"0\" displaystyle=\"true\"><mrow><mrow></mrow><mo>=</mo><mi>t</mi><mo>+</mo><msup><mn>180</mn><mo>∘</mo></msup><mo>≈</mo><msup><mn>120</mn><mo>∘</mo></msup></mrow></mstyle></mtd></mtr></mtable><annotation encoding=\"application/x-tex\">\\begin{aligned}\r\nt&amp;=\\arctan\\frac{129.904}{-75.000}\\approx-60^\\circ\\\\\r\nT&amp;=t+180^\\circ\\approx120^\\circ\r\n\\end{aligned}\r</annotation></semantics></math>"
+  },
+  "EQM00161": {
+    "tex": "(150.00,\\ 250.00)",
+    "display": false,
+    "mathml": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\"><semantics><mrow><mo stretchy=\"false\">(</mo><mn>150.00</mn><mo separator=\"true\">,</mo><mtext> </mtext><mn>250.00</mn><mo stretchy=\"false\">)</mo></mrow><annotation encoding=\"application/x-tex\">(150.00,\\ 250.00)</annotation></semantics></math>"
+  },
+  "EQM00162": {
+    "tex": "T=60^\\circ",
+    "display": false,
+    "mathml": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\"><semantics><mrow><mi>T</mi><mo>=</mo><msup><mn>60</mn><mo>∘</mo></msup></mrow><annotation encoding=\"application/x-tex\">T=60^\\circ</annotation></semantics></math>"
+  },
+  "EQM00163": {
+    "tex": "S=200.00\\ \\mathrm{m}",
+    "display": false,
+    "mathml": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\"><semantics><mrow><mi>S</mi><mo>=</mo><mn>200.00</mn><mtext> </mtext><mi mathvariant=\"normal\">m</mi></mrow><annotation encoding=\"application/x-tex\">S=200.00\\ \\mathrm{m}</annotation></semantics></math>"
+  },
+  "EQM00164": {
+    "tex": "\\sin",
+    "display": false,
+    "mathml": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\"><semantics><mrow><mi>sin</mi><mo>⁡</mo></mrow><annotation encoding=\"application/x-tex\">\\sin</annotation></semantics></math>"
+  },
+  "EQM00165": {
+    "tex": "\\cos",
+    "display": false,
+    "mathml": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\"><semantics><mrow><mi>cos</mi><mo>⁡</mo></mrow><annotation encoding=\"application/x-tex\">\\cos</annotation></semantics></math>"
+  },
+  "EQM00166": {
+    "tex": "\\begin{aligned}\r\nX_B&=150.00+200.00\\times0.50000=250.00\\ \\mathrm{m}\\\\\r\nY_B&=250.00+200.00\\times0.86603=423.21\\ \\mathrm{m}\r\n\\end{aligned}\r",
+    "display": true,
+    "mathml": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\"><semantics><mtable rowspacing=\"0.25em\" columnalign=\"right left\" columnspacing=\"0em\"><mtr><mtd><mstyle scriptlevel=\"0\" displaystyle=\"true\"><msub><mi>X</mi><mi>B</mi></msub></mstyle></mtd><mtd><mstyle scriptlevel=\"0\" displaystyle=\"true\"><mrow><mrow></mrow><mo>=</mo><mn>150.00</mn><mo>+</mo><mn>200.00</mn><mo>×</mo><mn>0.50000</mn><mo>=</mo><mn>250.00</mn><mtext> </mtext><mi mathvariant=\"normal\">m</mi></mrow></mstyle></mtd></mtr><mtr><mtd><mstyle scriptlevel=\"0\" displaystyle=\"true\"><msub><mi>Y</mi><mi>B</mi></msub></mstyle></mtd><mtd><mstyle scriptlevel=\"0\" displaystyle=\"true\"><mrow><mrow></mrow><mo>=</mo><mn>250.00</mn><mo>+</mo><mn>200.00</mn><mo>×</mo><mn>0.86603</mn><mo>=</mo><mn>423.21</mn><mtext> </mtext><mi mathvariant=\"normal\">m</mi></mrow></mstyle></mtd></mtr></mtable><annotation encoding=\"application/x-tex\">\\begin{aligned}\r\nX_B&amp;=150.00+200.00\\times0.50000=250.00\\ \\mathrm{m}\\\\\r\nY_B&amp;=250.00+200.00\\times0.86603=423.21\\ \\mathrm{m}\r\n\\end{aligned}\r</annotation></semantics></math>"
+  },
+  "EQM00167": {
+    "tex": "\\Delta X,\\Delta Y",
+    "display": false,
+    "mathml": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\"><semantics><mrow><mi mathvariant=\"normal\">Δ</mi><mi>X</mi><mo separator=\"true\">,</mo><mi mathvariant=\"normal\">Δ</mi><mi>Y</mi></mrow><annotation encoding=\"application/x-tex\">\\Delta X,\\Delta Y</annotation></semantics></math>"
+  },
+  "EQM00168": {
+    "tex": "(-1000.00,\\ 500.00)",
+    "display": false,
+    "mathml": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\"><semantics><mrow><mo stretchy=\"false\">(</mo><mo>−</mo><mn>1000.00</mn><mo separator=\"true\">,</mo><mtext> </mtext><mn>500.00</mn><mo stretchy=\"false\">)</mo></mrow><annotation encoding=\"application/x-tex\">(-1000.00,\\ 500.00)</annotation></semantics></math>"
+  },
+  "EQM00169": {
+    "tex": "T=198^\\circ",
+    "display": false,
+    "mathml": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\"><semantics><mrow><mi>T</mi><mo>=</mo><msup><mn>198</mn><mo>∘</mo></msup></mrow><annotation encoding=\"application/x-tex\">T=198^\\circ</annotation></semantics></math>"
+  },
+  "EQM00170": {
+    "tex": "S=1200.00\\ \\mathrm{m}",
+    "display": false,
+    "mathml": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\"><semantics><mrow><mi>S</mi><mo>=</mo><mn>1200.00</mn><mtext> </mtext><mi mathvariant=\"normal\">m</mi></mrow><annotation encoding=\"application/x-tex\">S=1200.00\\ \\mathrm{m}</annotation></semantics></math>"
+  },
+  "EQM00171": {
+    "tex": "198^\\circ=180^\\circ+18^\\circ",
+    "display": false,
+    "mathml": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\"><semantics><mrow><msup><mn>198</mn><mo>∘</mo></msup><mo>=</mo><msup><mn>180</mn><mo>∘</mo></msup><mo>+</mo><msup><mn>18</mn><mo>∘</mo></msup></mrow><annotation encoding=\"application/x-tex\">198^\\circ=180^\\circ+18^\\circ</annotation></semantics></math>"
+  },
+  "EQM00172": {
+    "tex": "\\cos18^\\circ=0.95106",
+    "display": false,
+    "mathml": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\"><semantics><mrow><mi>cos</mi><mo>⁡</mo><msup><mn>18</mn><mo>∘</mo></msup><mo>=</mo><mn>0.95106</mn></mrow><annotation encoding=\"application/x-tex\">\\cos18^\\circ=0.95106</annotation></semantics></math>"
+  },
+  "EQM00173": {
+    "tex": "\\sin18^\\circ=0.30902",
+    "display": false,
+    "mathml": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\"><semantics><mrow><mi>sin</mi><mo>⁡</mo><msup><mn>18</mn><mo>∘</mo></msup><mo>=</mo><mn>0.30902</mn></mrow><annotation encoding=\"application/x-tex\">\\sin18^\\circ=0.30902</annotation></semantics></math>"
+  },
+  "EQM00174": {
+    "tex": "\\begin{aligned}\r\nX_B&=-1000.00-1200.00\\times0.95106\\\\\r\n   &=-2141.27\\ \\mathrm{m}\\\\\r\nY_B&=500.00-1200.00\\times0.30902\\\\\r\n   &=129.18\\ \\mathrm{m}\r\n\\end{aligned}\r",
+    "display": true,
+    "mathml": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\"><semantics><mtable rowspacing=\"0.25em\" columnalign=\"right left\" columnspacing=\"0em\"><mtr><mtd><mstyle scriptlevel=\"0\" displaystyle=\"true\"><msub><mi>X</mi><mi>B</mi></msub></mstyle></mtd><mtd><mstyle scriptlevel=\"0\" displaystyle=\"true\"><mrow><mrow></mrow><mo>=</mo><mo>−</mo><mn>1000.00</mn><mo>−</mo><mn>1200.00</mn><mo>×</mo><mn>0.95106</mn></mrow></mstyle></mtd></mtr><mtr><mtd><mstyle scriptlevel=\"0\" displaystyle=\"true\"><mrow></mrow></mstyle></mtd><mtd><mstyle scriptlevel=\"0\" displaystyle=\"true\"><mrow><mrow></mrow><mo>=</mo><mo>−</mo><mn>2141.27</mn><mtext> </mtext><mi mathvariant=\"normal\">m</mi></mrow></mstyle></mtd></mtr><mtr><mtd><mstyle scriptlevel=\"0\" displaystyle=\"true\"><msub><mi>Y</mi><mi>B</mi></msub></mstyle></mtd><mtd><mstyle scriptlevel=\"0\" displaystyle=\"true\"><mrow><mrow></mrow><mo>=</mo><mn>500.00</mn><mo>−</mo><mn>1200.00</mn><mo>×</mo><mn>0.30902</mn></mrow></mstyle></mtd></mtr><mtr><mtd><mstyle scriptlevel=\"0\" displaystyle=\"true\"><mrow></mrow></mstyle></mtd><mtd><mstyle scriptlevel=\"0\" displaystyle=\"true\"><mrow><mrow></mrow><mo>=</mo><mn>129.18</mn><mtext> </mtext><mi mathvariant=\"normal\">m</mi></mrow></mstyle></mtd></mtr></mtable><annotation encoding=\"application/x-tex\">\\begin{aligned}\r\nX_B&amp;=-1000.00-1200.00\\times0.95106\\\\\r\n   &amp;=-2141.27\\ \\mathrm{m}\\\\\r\nY_B&amp;=500.00-1200.00\\times0.30902\\\\\r\n   &amp;=129.18\\ \\mathrm{m}\r\n\\end{aligned}\r</annotation></semantics></math>"
+  },
+  "EQM00175": {
+    "tex": "X<0",
+    "display": false,
+    "mathml": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\"><semantics><mrow><mi>X</mi><mo>&lt;</mo><mn>0</mn></mrow><annotation encoding=\"application/x-tex\">X&lt;0</annotation></semantics></math>"
+  },
+  "EQM00176": {
+    "tex": "Y>0",
+    "display": false,
+    "mathml": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\"><semantics><mrow><mi>Y</mi><mo>&gt;</mo><mn>0</mn></mrow><annotation encoding=\"application/x-tex\">Y&gt;0</annotation></semantics></math>"
+  },
+  "EQM00177": {
+    "tex": "\\gamma<0",
+    "display": false,
+    "mathml": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\"><semantics><mrow><mi>γ</mi><mo>&lt;</mo><mn>0</mn></mrow><annotation encoding=\"application/x-tex\">\\gamma&lt;0</annotation></semantics></math>"
+  },
+  "EQM00178": {
+    "tex": "0.9999<m<1.0000",
+    "display": false,
+    "mathml": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\"><semantics><mrow><mn>0.9999</mn><mo>&lt;</mo><mi>m</mi><mo>&lt;</mo><mn>1.0000</mn></mrow><annotation encoding=\"application/x-tex\">0.9999&lt;m&lt;1.0000</annotation></semantics></math>"
+  },
+  "EQM00179": {
+    "tex": "\\Delta X=-100",
+    "display": false,
+    "mathml": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\"><semantics><mrow><mi mathvariant=\"normal\">Δ</mi><mi>X</mi><mo>=</mo><mo>−</mo><mn>100</mn></mrow><annotation encoding=\"application/x-tex\">\\Delta X=-100</annotation></semantics></math>"
+  },
+  "EQM00180": {
+    "tex": "\\Delta Y=-100",
+    "display": false,
+    "mathml": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\"><semantics><mrow><mi mathvariant=\"normal\">Δ</mi><mi>Y</mi><mo>=</mo><mo>−</mo><mn>100</mn></mrow><annotation encoding=\"application/x-tex\">\\Delta Y=-100</annotation></semantics></math>"
+  },
+  "EQM00181": {
+    "tex": "150^\\circ",
+    "display": false,
+    "mathml": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\"><semantics><mrow><msup><mn>150</mn><mo>∘</mo></msup></mrow><annotation encoding=\"application/x-tex\">150^\\circ</annotation></semantics></math>"
+  },
+  "EQM00182": {
+    "tex": "\\Delta X=S\\cos T",
+    "display": false,
+    "mathml": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\"><semantics><mrow><mi mathvariant=\"normal\">Δ</mi><mi>X</mi><mo>=</mo><mi>S</mi><mi>cos</mi><mo>⁡</mo><mi>T</mi></mrow><annotation encoding=\"application/x-tex\">\\Delta X=S\\cos T</annotation></semantics></math>"
+  },
+  "EQM00183": {
+    "tex": "\\Delta Y=S\\sin T",
+    "display": false,
+    "mathml": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\"><semantics><mrow><mi mathvariant=\"normal\">Δ</mi><mi>Y</mi><mo>=</mo><mi>S</mi><mi>sin</mi><mo>⁡</mo><mi>T</mi></mrow><annotation encoding=\"application/x-tex\">\\Delta Y=S\\sin T</annotation></semantics></math>"
+  },
+  "EQM00184": {
+    "tex": "\\arctan",
+    "display": false,
+    "mathml": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\"><semantics><mrow><mi>arctan</mi><mo>⁡</mo></mrow><annotation encoding=\"application/x-tex\">\\arctan</annotation></semantics></math>"
+  },
+  "EQM00185": {
+    "tex": "\\alpha=T-\\gamma",
+    "display": false,
+    "mathml": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\"><semantics><mrow><mi>α</mi><mo>=</mo><mi>T</mi><mo>−</mo><mi>γ</mi></mrow><annotation encoding=\"application/x-tex\">\\alpha=T-\\gamma</annotation></semantics></math>"
+  },
+  "EQM00186": {
+    "tex": "(X,Y,Z)",
+    "display": false,
+    "mathml": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\"><semantics><mrow><mo stretchy=\"false\">(</mo><mi>X</mi><mo separator=\"true\">,</mo><mi>Y</mi><mo separator=\"true\">,</mo><mi>Z</mi><mo stretchy=\"false\">)</mo></mrow><annotation encoding=\"application/x-tex\">(X,Y,Z)</annotation></semantics></math>"
+  },
+  "EQM00187": {
+    "tex": "(\\varphi,\\lambda,h)",
+    "display": false,
+    "mathml": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\"><semantics><mrow><mo stretchy=\"false\">(</mo><mi>φ</mi><mo separator=\"true\">,</mo><mi>λ</mi><mo separator=\"true\">,</mo><mi>h</mi><mo stretchy=\"false\">)</mo></mrow><annotation encoding=\"application/x-tex\">(\\varphi,\\lambda,h)</annotation></semantics></math>"
+  },
+  "EQM00188": {
+    "tex": "H=h-N",
+    "display": false,
+    "mathml": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\"><semantics><mrow><mi>H</mi><mo>=</mo><mi>h</mi><mo>−</mo><mi>N</mi></mrow><annotation encoding=\"application/x-tex\">H=h-N</annotation></semantics></math>"
+  },
+  "EQM00189": {
+    "tex": "T",
+    "display": false,
+    "mathml": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\"><semantics><mrow><mi>T</mi></mrow><annotation encoding=\"application/x-tex\">T</annotation></semantics></math>"
+  },
+  "EQM00190": {
+    "tex": "R=6370",
+    "display": false,
+    "mathml": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\"><semantics><mrow><mi>R</mi><mo>=</mo><mn>6370</mn></mrow><annotation encoding=\"application/x-tex\">R=6370</annotation></semantics></math>"
+  },
+  "EQM00191": {
+    "tex": "X",
+    "display": false,
+    "mathml": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\"><semantics><mrow><mi>X</mi></mrow><annotation encoding=\"application/x-tex\">X</annotation></semantics></math>"
+  },
+  "EQM00192": {
+    "tex": "Y",
+    "display": false,
+    "mathml": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\"><semantics><mrow><mi>Y</mi></mrow><annotation encoding=\"application/x-tex\">Y</annotation></semantics></math>"
+  },
+  "EQM00193": {
+    "tex": "S_{AB}",
+    "display": false,
+    "mathml": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\"><semantics><mrow><msub><mi>S</mi><mrow><mi>A</mi><mi>B</mi></mrow></msub></mrow><annotation encoding=\"application/x-tex\">S_{AB}</annotation></semantics></math>"
+  },
+  "EQM00194": {
+    "tex": "T_{AB}",
+    "display": false,
+    "mathml": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\"><semantics><mrow><msub><mi>T</mi><mrow><mi>A</mi><mi>B</mi></mrow></msub></mrow><annotation encoding=\"application/x-tex\">T_{AB}</annotation></semantics></math>"
+  },
+  "EQM00195": {
+    "tex": "T_{AC}=30^\\circ00' 00'' ",
+    "display": false,
+    "mathml": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\"><semantics><mrow><msub><mi>T</mi><mrow><mi>A</mi><mi>C</mi></mrow></msub><mo>=</mo><msup><mn>30</mn><mo>∘</mo></msup><msup><mn>00</mn><mo mathvariant=\"normal\" lspace=\"0em\" rspace=\"0em\">′</mo></msup><msup><mn>00</mn><mrow><mo mathvariant=\"normal\">′</mo><mo mathvariant=\"normal\">′</mo></mrow></msup></mrow><annotation encoding=\"application/x-tex\">T_{AC}=30^\\circ00&#x27; 00&#x27;&#x27; </annotation></semantics></math>"
+  },
+  "EQM00196": {
+    "tex": "S_{AC}=200.000",
+    "display": false,
+    "mathml": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\"><semantics><mrow><msub><mi>S</mi><mrow><mi>A</mi><mi>C</mi></mrow></msub><mo>=</mo><mn>200.000</mn></mrow><annotation encoding=\"application/x-tex\">S_{AC}=200.000</annotation></semantics></math>"
+  },
+  "EQM00197": {
+    "tex": "H=200",
+    "display": false,
+    "mathml": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\"><semantics><mrow><mi>H</mi><mo>=</mo><mn>200</mn></mrow><annotation encoding=\"application/x-tex\">H=200</annotation></semantics></math>"
+  },
+  "EQM00198": {
+    "tex": "L=500.020",
+    "display": false,
+    "mathml": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\"><semantics><mrow><mi>L</mi><mo>=</mo><mn>500.020</mn></mrow><annotation encoding=\"application/x-tex\">L=500.020</annotation></semantics></math>"
+  },
+  "EQM00199": {
+    "tex": "\\Delta h=4.500",
+    "display": false,
+    "mathml": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\"><semantics><mrow><mi mathvariant=\"normal\">Δ</mi><mi>h</mi><mo>=</mo><mn>4.500</mn></mrow><annotation encoding=\"application/x-tex\">\\Delta h=4.500</annotation></semantics></math>"
+  },
+  "EQM00200": {
+    "tex": "m=0.9999",
+    "display": false,
+    "mathml": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\"><semantics><mrow><mi>m</mi><mo>=</mo><mn>0.9999</mn></mrow><annotation encoding=\"application/x-tex\">m=0.9999</annotation></semantics></math>"
+  },
+  "EQM00201": {
+    "tex": "S",
+    "display": false,
+    "mathml": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\"><semantics><mrow><mi>S</mi></mrow><annotation encoding=\"application/x-tex\">S</annotation></semantics></math>"
+  },
+  "EQM00202": {
+    "tex": "S_0",
+    "display": false,
+    "mathml": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\"><semantics><mrow><msub><mi>S</mi><mn>0</mn></msub></mrow><annotation encoding=\"application/x-tex\">S_0</annotation></semantics></math>"
+  },
+  "EQM00203": {
+    "tex": "s",
+    "display": false,
+    "mathml": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\"><semantics><mrow><mi>s</mi></mrow><annotation encoding=\"application/x-tex\">s</annotation></semantics></math>"
+  },
+  "EQM00204": {
+    "tex": "\\Delta X^2+\\Delta Y^2=S^2",
+    "display": false,
+    "mathml": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\"><semantics><mrow><mi mathvariant=\"normal\">Δ</mi><msup><mi>X</mi><mn>2</mn></msup><mo>+</mo><mi mathvariant=\"normal\">Δ</mi><msup><mi>Y</mi><mn>2</mn></msup><mo>=</mo><msup><mi>S</mi><mn>2</mn></msup></mrow><annotation encoding=\"application/x-tex\">\\Delta X^2+\\Delta Y^2=S^2</annotation></semantics></math>"
+  },
+  "EQM00205": {
+    "tex": "H=h-N",
+    "display": false,
+    "mathml": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\"><semantics><mrow><mi>H</mi><mo>=</mo><mi>h</mi><mo>−</mo><mi>N</mi></mrow><annotation encoding=\"application/x-tex\">H=h-N</annotation></semantics></math>"
+  },
+  "EQM00206": {
+    "tex": "s=mS\\frac{R}{R+H}",
+    "display": false,
+    "mathml": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\"><semantics><mrow><mi>s</mi><mo>=</mo><mi>m</mi><mi>S</mi><mfrac><mi>R</mi><mrow><mi>R</mi><mo>+</mo><mi>H</mi></mrow></mfrac></mrow><annotation encoding=\"application/x-tex\">s=mS\\frac{R}{R+H}</annotation></semantics></math>"
+  },
+  "EQM00207": {
+    "tex": "\\Delta X=S\\cos T",
+    "display": false,
+    "mathml": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\"><semantics><mrow><mi mathvariant=\"normal\">Δ</mi><mi>X</mi><mo>=</mo><mi>S</mi><mi>cos</mi><mo>⁡</mo><mi>T</mi></mrow><annotation encoding=\"application/x-tex\">\\Delta X=S\\cos T</annotation></semantics></math>"
+  },
+  "EQM00208": {
+    "tex": "\\Delta Y=S\\sin T",
+    "display": false,
+    "mathml": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\"><semantics><mrow><mi mathvariant=\"normal\">Δ</mi><mi>Y</mi><mo>=</mo><mi>S</mi><mi>sin</mi><mo>⁡</mo><mi>T</mi></mrow><annotation encoding=\"application/x-tex\">\\Delta Y=S\\sin T</annotation></semantics></math>"
+  },
+  "EQM00209": {
+    "tex": "S=\\sqrt{\\Delta X^2+\\Delta Y^2}",
+    "display": false,
+    "mathml": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\"><semantics><mrow><mi>S</mi><mo>=</mo><msqrt><mrow><mi mathvariant=\"normal\">Δ</mi><msup><mi>X</mi><mn>2</mn></msup><mo>+</mo><mi mathvariant=\"normal\">Δ</mi><msup><mi>Y</mi><mn>2</mn></msup></mrow></msqrt></mrow><annotation encoding=\"application/x-tex\">S=\\sqrt{\\Delta X^2+\\Delta Y^2}</annotation></semantics></math>"
+  },
+  "EQM00210": {
+    "tex": "\\tan T=\\frac{\\Delta Y}{\\Delta X}",
+    "display": false,
+    "mathml": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\"><semantics><mrow><mi>tan</mi><mo>⁡</mo><mi>T</mi><mo>=</mo><mfrac><mrow><mi mathvariant=\"normal\">Δ</mi><mi>Y</mi></mrow><mrow><mi mathvariant=\"normal\">Δ</mi><mi>X</mi></mrow></mfrac></mrow><annotation encoding=\"application/x-tex\">\\tan T=\\frac{\\Delta Y}{\\Delta X}</annotation></semantics></math>"
+  },
+  "EQM00211": {
+    "tex": "h,H,N",
+    "display": false,
+    "mathml": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\"><semantics><mrow><mi>h</mi><mo separator=\"true\">,</mo><mi>H</mi><mo separator=\"true\">,</mo><mi>N</mi></mrow><annotation encoding=\"application/x-tex\">h,H,N</annotation></semantics></math>"
+  }
+}

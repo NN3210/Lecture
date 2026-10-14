@@ -1,0 +1,497 @@
+{
+  "schemaVersion": "presentation-finalization.v1",
+  "finalSha256": "febeed4ce12463f4c9ea1b1e1e05e0748a3db36342409f9e4495f802dc0c4324",
+  "byteCount": 16983096,
+  "packageIntegrity": {
+    "chart_count": 0,
+    "claim_boundary": "Structural package checks only; no slide text, notes, formulas, chart values, or native PowerPoint execution were inspected.",
+    "finding_count": 0,
+    "findings": [],
+    "notes_parts_skipped": 81,
+    "relationship_part_count": 172,
+    "slide_count": 81,
+    "status": "pass",
+    "exitCode": 0,
+    "findingCount": 0,
+    "warnings": []
+  },
+  "presentationLayout": {
+    "finding_count": 0,
+    "findings": [],
+    "font_policy": {
+      "checked_text_script_count": 1986,
+      "native_font_rendering_verified": false,
+      "observed_font_families": [
+        "Cambria Math",
+        "Meiryo"
+      ],
+      "observed_font_use_counts": {
+        "Cambria Math": 175,
+        "Meiryo": 1811
+      },
+      "passed": true,
+      "performed": true
+    },
+    "slide_count": 81,
+    "slide_size_in": [
+      13.3333,
+      7.5
+    ],
+    "warning_count": 0,
+    "warnings": [],
+    "exitCode": 0,
+    "findingCount": 0,
+    "fontPolicy": {
+      "checked_text_script_count": 1986,
+      "native_font_rendering_verified": false,
+      "observed_font_families": [
+        "Cambria Math",
+        "Meiryo"
+      ],
+      "observed_font_use_counts": {
+        "Cambria Math": 175,
+        "Meiryo": 1811
+      },
+      "passed": true,
+      "performed": true
+    }
+  },
+  "fontSelection": {
+    "basis": "design",
+    "approvedFamilies": [
+      "Meiryo",
+      "Cambria Math"
+    ],
+    "scriptFonts": {},
+    "referenceSha256": null,
+    "referenceFontsVerifiedInEncodedText": false,
+    "checked_text_script_count": 1986,
+    "native_font_rendering_verified": false,
+    "observed_font_families": [
+      "Cambria Math",
+      "Meiryo"
+    ],
+    "observed_font_use_counts": {
+      "Cambria Math": 175,
+      "Meiryo": 1811
+    },
+    "passed": true,
+    "performed": true
+  },
+  "firstPartyImport": {
+    "performed": false,
+    "passed": null,
+    "reason": "explicitly_not_requested"
+  },
+  "nativeTableArithmetic": {
+    "performed": true,
+    "checked_column_count": 0,
+    "checks": [],
+    "claim_boundary": "Displayed-value arithmetic with rounding tolerance; not source-data verification.",
+    "eligible_table_count": 0,
+    "finding_count": 0,
+    "findings": [],
+    "native_table_count": 58,
+    "passed": true,
+    "schema_version": "presentation-native-table-arithmetic.v1",
+    "skipped_tables": [
+      {
+        "reason": "no_numeric_amounts",
+        "slide": 2,
+        "table": 1
+      },
+      {
+        "reason": "no_numeric_amounts",
+        "slide": 2,
+        "table": 2
+      },
+      {
+        "reason": "no_numeric_amounts",
+        "slide": 3,
+        "table": 1
+      },
+      {
+        "reason": "no_numeric_amounts",
+        "slide": 3,
+        "table": 2
+      },
+      {
+        "reason": "no_numeric_amounts",
+        "slide": 5,
+        "table": 1
+      },
+      {
+        "reason": "insufficient_rows",
+        "slide": 8,
+        "table": 1
+      },
+      {
+        "reason": "insufficient_rows",
+        "slide": 9,
+        "table": 1
+      },
+      {
+        "reason": "no_unambiguous_bottom_total",
+        "slide": 10,
+        "table": 1
+      },
+      {
+        "reason": "insufficient_rows",
+        "slide": 10,
+        "table": 2
+      },
+      {
+        "reason": "insufficient_rows",
+        "slide": 11,
+        "table": 1
+      },
+      {
+        "reason": "no_unambiguous_bottom_total",
+        "slide": 12,
+        "table": 1
+      },
+      {
+        "reason": "no_unambiguous_bottom_total",
+        "slide": 12,
+        "table": 2
+      },
+      {
+        "reason": "no_numeric_amounts",
+        "slide": 18,
+        "table": 1
+      },
+      {
+        "reason": "no_numeric_amounts",
+        "slide": 20,
+        "table": 1
+      },
+      {
+        "reason": "no_numeric_amounts",
+        "slide": 20,
+        "table": 2
+      },
+      {
+        "reason": "no_numeric_amounts",
+        "slide": 27,
+        "table": 1
+      },
+      {
+        "reason": "no_numeric_amounts",
+        "slide": 27,
+        "table": 2
+      },
+      {
+        "reason": "no_unambiguous_bottom_total",
+        "slide": 28,
+        "table": 1
+      },
+      {
+        "reason": "no_unambiguous_bottom_total",
+        "slide": 28,
+        "table": 2
+      },
+      {
+        "reason": "no_numeric_amounts",
+        "slide": 31,
+        "table": 1
+      },
+      {
+        "reason": "no_numeric_amounts",
+        "slide": 33,
+        "table": 1
+      },
+      {
+        "reason": "no_numeric_amounts",
+        "slide": 35,
+        "table": 1
+      },
+      {
+        "reason": "no_numeric_amounts",
+        "slide": 35,
+        "table": 2
+      },
+      {
+        "reason": "no_unambiguous_bottom_total",
+        "slide": 42,
+        "table": 1
+      },
+      {
+        "reason": "no_unambiguous_bottom_total",
+        "slide": 42,
+        "table": 2
+      },
+      {
+        "reason": "no_numeric_amounts",
+        "slide": 43,
+        "table": 1
+      },
+      {
+        "reason": "no_numeric_amounts",
+        "slide": 44,
+        "table": 1
+      },
+      {
+        "reason": "no_numeric_amounts",
+        "slide": 45,
+        "table": 1
+      },
+      {
+        "reason": "no_numeric_amounts",
+        "slide": 46,
+        "table": 1
+      },
+      {
+        "reason": "no_numeric_amounts",
+        "slide": 46,
+        "table": 2
+      },
+      {
+        "reason": "no_numeric_amounts",
+        "slide": 49,
+        "table": 1
+      },
+      {
+        "reason": "no_numeric_amounts",
+        "slide": 49,
+        "table": 2
+      },
+      {
+        "reason": "no_numeric_amounts",
+        "slide": 50,
+        "table": 1
+      },
+      {
+        "reason": "no_numeric_amounts",
+        "slide": 54,
+        "table": 1
+      },
+      {
+        "reason": "no_numeric_amounts",
+        "slide": 54,
+        "table": 2
+      },
+      {
+        "reason": "no_unambiguous_bottom_total",
+        "slide": 55,
+        "table": 1
+      },
+      {
+        "reason": "no_unambiguous_bottom_total",
+        "slide": 55,
+        "table": 2
+      },
+      {
+        "reason": "no_numeric_amounts",
+        "slide": 58,
+        "table": 1
+      },
+      {
+        "reason": "no_numeric_amounts",
+        "slide": 58,
+        "table": 2
+      },
+      {
+        "reason": "no_numeric_amounts",
+        "slide": 60,
+        "table": 1
+      },
+      {
+        "reason": "no_numeric_amounts",
+        "slide": 60,
+        "table": 2
+      },
+      {
+        "reason": "no_numeric_amounts",
+        "slide": 61,
+        "table": 1
+      },
+      {
+        "reason": "no_numeric_amounts",
+        "slide": 61,
+        "table": 2
+      },
+      {
+        "reason": "no_unambiguous_bottom_total",
+        "slide": 67,
+        "table": 1
+      },
+      {
+        "reason": "no_unambiguous_bottom_total",
+        "slide": 67,
+        "table": 2
+      },
+      {
+        "reason": "no_numeric_amounts",
+        "slide": 69,
+        "table": 1
+      },
+      {
+        "reason": "no_numeric_amounts",
+        "slide": 69,
+        "table": 2
+      },
+      {
+        "reason": "no_numeric_amounts",
+        "slide": 71,
+        "table": 1
+      },
+      {
+        "reason": "no_numeric_amounts",
+        "slide": 71,
+        "table": 2
+      },
+      {
+        "reason": "no_unambiguous_bottom_total",
+        "slide": 74,
+        "table": 1
+      },
+      {
+        "reason": "no_unambiguous_bottom_total",
+        "slide": 74,
+        "table": 2
+      },
+      {
+        "reason": "no_numeric_amounts",
+        "slide": 76,
+        "table": 1
+      },
+      {
+        "reason": "no_numeric_amounts",
+        "slide": 76,
+        "table": 2
+      },
+      {
+        "reason": "no_numeric_amounts",
+        "slide": 78,
+        "table": 1
+      },
+      {
+        "reason": "no_numeric_amounts",
+        "slide": 78,
+        "table": 2
+      },
+      {
+        "reason": "no_numeric_amounts",
+        "slide": 79,
+        "table": 1
+      },
+      {
+        "reason": "no_numeric_amounts",
+        "slide": 79,
+        "table": 2
+      },
+      {
+        "reason": "no_numeric_amounts",
+        "slide": 81,
+        "table": 1
+      }
+    ],
+    "slide_count": 81,
+    "warning_count": 0,
+    "warnings": []
+  },
+  "nativeChartTitles": {
+    "performed": true,
+    "checks": [],
+    "finding_count": 0,
+    "findings": [],
+    "native_chart_count": 0,
+    "native_powerpoint_verified": false,
+    "passed": true,
+    "presentation_sha256": "febeed4ce12463f4c9ea1b1e1e05e0748a3db36342409f9e4495f802dc0c4324",
+    "schema_version": "presentation-native-chart-titles.v1",
+    "slide_count": 81,
+    "source_text_emitted": false,
+    "unresolved_linked_title_count": 0
+  },
+  "sourceDerivedPolicyFlags": [
+    "--expected-slide-size-emu",
+    "12192000,6858000",
+    "--require-native-table-slide",
+    "2",
+    "--require-native-table-slide",
+    "3",
+    "--require-native-table-slide",
+    "5",
+    "--require-native-table-slide",
+    "8",
+    "--require-native-table-slide",
+    "9",
+    "--require-native-table-slide",
+    "10",
+    "--require-native-table-slide",
+    "11",
+    "--require-native-table-slide",
+    "12",
+    "--require-native-table-slide",
+    "18",
+    "--require-native-table-slide",
+    "20",
+    "--require-native-table-slide",
+    "27",
+    "--require-native-table-slide",
+    "28",
+    "--require-native-table-slide",
+    "31",
+    "--require-native-table-slide",
+    "33",
+    "--require-native-table-slide",
+    "35",
+    "--require-native-table-slide",
+    "42",
+    "--require-native-table-slide",
+    "43",
+    "--require-native-table-slide",
+    "44",
+    "--require-native-table-slide",
+    "45",
+    "--require-native-table-slide",
+    "46",
+    "--require-native-table-slide",
+    "49",
+    "--require-native-table-slide",
+    "50",
+    "--require-native-table-slide",
+    "54",
+    "--require-native-table-slide",
+    "55",
+    "--require-native-table-slide",
+    "58",
+    "--require-native-table-slide",
+    "60",
+    "--require-native-table-slide",
+    "61",
+    "--require-native-table-slide",
+    "67",
+    "--require-native-table-slide",
+    "69",
+    "--require-native-table-slide",
+    "71",
+    "--require-native-table-slide",
+    "74",
+    "--require-native-table-slide",
+    "76",
+    "--require-native-table-slide",
+    "78",
+    "--require-native-table-slide",
+    "79",
+    "--require-native-table-slide",
+    "81",
+    "--cover-role",
+    "none",
+    "--expected-slide-count",
+    "81",
+    "--approved-font-family",
+    "Meiryo",
+    "--approved-font-family",
+    "Cambria Math"
+  ],
+  "nativeChartValidation": {
+    "detectedOwnerSlides": [],
+    "detectedChartCount": 0,
+    "targetApplication": null,
+    "sourceChartOwnersExplicitlyDeclared": false,
+    "validatorRan": false,
+    "passed": true
+  }
+}

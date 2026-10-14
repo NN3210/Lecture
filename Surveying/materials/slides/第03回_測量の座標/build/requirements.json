@@ -1,0 +1,48 @@
+{
+  "explicitTotalSlideCount": 81,
+  "requiredNativeTableOwnerSlides": [
+    2,
+    3,
+    5,
+    8,
+    9,
+    10,
+    11,
+    12,
+    18,
+    20,
+    27,
+    28,
+    31,
+    33,
+    35,
+    42,
+    43,
+    44,
+    45,
+    46,
+    49,
+    50,
+    54,
+    55,
+    58,
+    60,
+    61,
+    67,
+    69,
+    71,
+    74,
+    76,
+    78,
+    79,
+    81
+  ],
+  "fontPolicy": {
+    "basis": "design",
+    "families": [
+      "Meiryo",
+      "Cambria Math"
+    ]
+  },
+  "expectedSlideSizeEmu": "12192000,6858000"
+}

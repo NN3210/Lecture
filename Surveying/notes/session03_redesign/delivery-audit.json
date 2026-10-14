@@ -1,0 +1,12 @@
+{
+  "slides": 81,
+  "editable_equations": 211,
+  "native_tables_without_fallback_duplicates": 36,
+  "pptx_sha256": "febeed4ce12463f4c9ea1b1e1e05e0748a3db36342409f9e4495f802dc0c4324",
+  "pdf_sha256": "547cd4547d865469d9ba1c2fa5103adab53266b661bdc4aa36456e4dd4144377",
+  "powerpoint_pdf_export": "pass",
+  "pdf_text_bounds": "pass",
+  "unconverted_math": "none",
+  "personal_author_metadata": "none",
+  "visual_review": "全81枚を確認。表紙・句読点の折返し・表と式の重なり・数式変換を修正し、該当ページを再確認。"
+}
