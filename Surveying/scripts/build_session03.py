@@ -46,14 +46,47 @@ class FigureBuilder(m.Builder):
                 for run in list(par.runs)[before:]:
                     run.font.name = 'DejaVu Sans'
 
+    def _picture(self, slide, pic_block, left, top, maxw, maxh):
+        """PNG を枠 (left, top, maxw, maxh) インチの中央に、縦横比を保って置く。"""
+        src = re.search(r'\((.*?)\)', pic_block['text'])[1]
+        png = OUT / re.sub(r'\.svg$', '.png', src)
+        if not png.exists():
+            raise FileNotFoundError(f'図がありません: {png}（scripts/draw_session03_figures*.py を先に実行）')
+        with Image.open(png) as im:
+            w, h = im.size
+        scale = min(maxw / w, maxh / h)
+        pw, ph = w * scale, h * scale
+        pic = slide.shapes.add_picture(str(png), Inches(left + (maxw - pw) / 2), Inches(top + (maxh - ph) / 2),
+                                       Inches(pw), Inches(ph))
+        pic._element.nvPicPr.cNvPr.set('descr', re.search(r'!\[(.*?)\]', pic_block['text'])[1])
+        return pic
+
     def add_slide(self, blocks, notes, directives, paginate):
-        pics = [b for b in blocks if b['type'] == 'para' and re.fullmatch(r'!\[.*?\]\(.*?\.svg\)', b['text'])]
+        pics = [b for b in blocks if b['type'] == 'para' and re.fullmatch(r'!\[.*?\]\(.*?\.(svg|png)\)', b['text'])]
         if not pics:
             super().add_slide(blocks, notes, directives, paginate)
             return
         self.page += 1
         slide = self.prs.slides.add_slide(self.blank)
         title = next(b for b in blocks if b['type'] == 'heading')
+        body = [b for b in blocks if b is not title and b not in pics]
+        if title['level'] == 1:
+            # 表紙: イラストを全面に敷き、上 3 分の 1 の余白に題名を置く。
+            pic = self._picture(slide, pics[0], 0, 0, 13.333, 7.5)
+            pic.left, pic.top, pic.width, pic.height = 0, 0, m.SLIDE_W, m.SLIDE_H
+            _, tf = self._textbox(slide, m.MARGIN, Inches(.45), m.SLIDE_W - 2 * m.MARGIN, Inches(1.0))
+            tf.vertical_anchor = MSO_ANCHOR.MIDDLE
+            self._write_runs(tf.paragraphs[0], m.inline_to_runs(title['text']), 40, m.ACCENT, True)
+            _, tf2 = self._textbox(slide, m.MARGIN, Inches(1.45), m.SLIDE_W - 2 * m.MARGIN, Inches(1.5))
+            first = True
+            for b in body:
+                for text in self._flatten(b):
+                    p = tf2.paragraphs[0] if first else tf2.add_paragraph()
+                    first = False
+                    self._write_runs(p, m.inline_to_runs(text), 22, m.ACCENT)
+            self._footer(slide, paginate)
+            self._notes(slide, notes)
+            return
         _, tf = self._textbox(slide, m.MARGIN, Inches(.35), m.SLIDE_W - 2 * m.MARGIN, m.TITLE_H)
         tf.vertical_anchor = MSO_ANCHOR.MIDDLE
         self._write_runs(tf.paragraphs[0], m.inline_to_runs(title['text']), 30, m.ACCENT, True)
@@ -61,20 +94,17 @@ class FigureBuilder(m.Builder):
         ln.fill.solid()
         ln.fill.fore_color.rgb = m.ACCENT
         ln.line.fill.background()
-        body = [b for b in blocks if b is not title and b not in pics]
-        n_lines = self._estimate_lines(body)
-        size = 20 if n_lines <= 4 else 18
-        self._place_body(slide, body, m.MARGIN, Inches(1.5), m.SLIDE_W - 2 * m.MARGIN, Inches(2.2), size)
-        png = OUT / re.search(r'\((.*?)\)', pics[0]['text'])[1].replace('.svg', '.png')
-        if not png.exists():
-            raise FileNotFoundError(f'図がありません: {png}（scripts/draw_session03_figures.py を先に実行）')
-        with Image.open(png) as im:
-            w, h = im.size
-        maxw, maxh = 12.0, 2.85
-        scale = min(maxw / w, maxh / h)
-        pw, ph = w * scale, h * scale
-        pic = slide.shapes.add_picture(str(png), Inches((13.333 - pw) / 2), Inches(3.75 + (maxh - ph) / 2), Inches(pw), Inches(ph))
-        pic._element.nvPicPr.cNvPr.set('descr', re.search(r'!\[(.*?)\]', pics[0]['text'])[1])
+        bottom = 6.85
+        if not body:
+            # 図だけのスライド: 見出しの下を全部使う。
+            self._picture(slide, pics[0], .4, 1.5, 12.53, bottom - 1.5)
+        else:
+            n_lines = self._estimate_lines(body)
+            size = 20 if n_lines <= 4 else 18
+            body_h = min(2.2, max(.8, .5 * n_lines + .35))
+            self._place_body(slide, body, m.MARGIN, Inches(1.5), m.SLIDE_W - 2 * m.MARGIN, Inches(body_h), size)
+            top = 1.5 + body_h + .05
+            self._picture(slide, pics[0], .4, top, 12.53, bottom - top)
         self._footer(slide, paginate)
         self._notes(slide, notes)
 
