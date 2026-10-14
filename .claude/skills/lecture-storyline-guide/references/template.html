@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>第{{N}}回「{{テーマ}}」講師用解説 — 一本の筋と、教えるときに意識すること</title>
+<style>
+  /* 全回で共通にする CSS。色・余白は変えない（講師が読み慣れるため） */
+  :root {
+    --ink: #1f2a37;
+    --muted: #5b6b7c;
+    --line: #d7dee7;
+    --bg: #fbfcfd;
+    --accent: #1f5f8b;
+    --accent-soft: #e8f1f8;
+    --warn: #8b3a1f;
+    --warn-soft: #faeee8;
+    --ok: #2d6a4f;
+    --ok-soft: #e9f5ee;
+    --note: #6b5b1f;
+    --note-soft: #faf6e4;
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    font-family: "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Yu Gothic UI", "Yu Gothic", "Meiryo", "Noto Sans JP", sans-serif;
+    color: var(--ink);
+    background: var(--bg);
+    line-height: 1.85;
+    font-size: 16px;
+  }
+  .layout { display: grid; grid-template-columns: 260px 1fr; min-height: 100vh; }
+  nav.toc {
+    position: sticky; top: 0; height: 100vh; overflow-y: auto;
+    border-right: 1px solid var(--line); background: #fff; padding: 20px 16px; font-size: 13.5px;
+  }
+  nav.toc h2 { font-size: 13px; letter-spacing: .08em; color: var(--muted); margin: 0 0 8px; text-transform: uppercase; }
+  nav.toc ol { list-style: none; padding: 0; margin: 0 0 18px; }
+  nav.toc li { margin: 0 0 6px; }
+  nav.toc li.sub { padding-left: 14px; font-size: 12.5px; color: var(--muted); }
+  nav.toc a { color: var(--ink); text-decoration: none; }
+  nav.toc a:hover { color: var(--accent); text-decoration: underline; }
+  main { max-width: 960px; padding: 40px 48px 120px; }
+  header.title { border-bottom: 2px solid var(--accent); margin-bottom: 36px; padding-bottom: 20px; }
+  header.title h1 { font-size: 30px; line-height: 1.4; margin: 0 0 10px; }
+  header.title p.lead { font-size: 17px; color: var(--muted); margin: 0; }
+  header.title .meta { font-size: 13px; color: var(--muted); margin-top: 12px; }
+  h2 { font-size: 24px; margin: 56px 0 16px; padding-left: 12px; border-left: 6px solid var(--accent); line-height: 1.4; }
+  h3 { font-size: 19px; margin: 36px 0 10px; color: var(--accent); }
+  h4 { font-size: 16px; margin: 24px 0 6px; }
+  p { margin: 0 0 14px; }
+  ul, ol { margin: 0 0 14px; padding-left: 1.6em; }
+  li { margin-bottom: 4px; }
+  strong { color: #0f1a26; }
+  /* 要旨の強調ボックス */
+  .thesis {
+    background: var(--accent-soft); border-left: 6px solid var(--accent);
+    padding: 18px 22px; margin: 20px 0 26px; font-size: 17px; line-height: 1.9;
+  }
+  .thesis .big { font-size: 20px; font-weight: 700; display: block; margin-bottom: 8px; }
+  /* 4 種のボックス: say（こう言う）, trap（つまずき）, bg（背景）, bridge（節の橋渡し） */
+  .box { border: 1px solid var(--line); border-radius: 8px; padding: 16px 20px; margin: 16px 0 20px; background: #fff; }
+  .box.say { background: var(--ok-soft); border-color: #bfdcc9; }
+  .box.say::before { content: "こう言う"; display: block; font-size: 12px; font-weight: 700; color: var(--ok); letter-spacing: .08em; margin-bottom: 6px; }
+  .box.trap { background: var(--warn-soft); border-color: #ecc9b8; }
+  .box.trap::before { content: "つまずき"; display: block; font-size: 12px; font-weight: 700; color: var(--warn); letter-spacing: .08em; margin-bottom: 6px; }
+  .box.bg { background: var(--note-soft); border-color: #e6dcb0; }
+  .box.bg::before { content: "背景"; display: block; font-size: 12px; font-weight: 700; color: var(--note); letter-spacing: .08em; margin-bottom: 6px; }
+  .box.bridge { background: #fff; border-left: 5px solid var(--accent); }
+  .box.bridge::before { content: "節の橋渡し（最初の 30 秒で言うこと）"; display: block; font-size: 12px; font-weight: 700; color: var(--accent); letter-spacing: .08em; margin-bottom: 6px; }
+  table { border-collapse: collapse; width: 100%; margin: 14px 0 22px; font-size: 14.5px; background: #fff; }
+  th, td { border: 1px solid var(--line); padding: 8px 10px; vertical-align: top; text-align: left; }
+  th { background: #f1f5f9; font-weight: 700; }
+  td.n { white-space: nowrap; color: var(--muted); }
+  /* 地図（梯子）。段ごとに .rung、左が段名、中が約束（定義）、右が観測・対応する節 */
+  .ladder { margin: 20px 0 28px; }
+  .rung {
+    display: grid; grid-template-columns: 150px 1fr 1fr; gap: 0; border: 1px solid var(--line);
+    border-radius: 8px; margin-bottom: 8px; background: #fff; overflow: hidden;
+  }
+  .rung > div { padding: 10px 14px; }
+  .rung .lv { background: var(--accent); color: #fff; font-weight: 700; display: flex; align-items: center; font-size: 14px; }
+  .rung .pr { border-right: 1px dashed var(--line); }
+  .rung .pr b, .rung .ob b { display: block; font-size: 12px; color: var(--muted); letter-spacing: .06em; margin-bottom: 2px; }
+  .rung .ob { background: #fafbfc; }
+  .rung.earth .lv { background: #3b4b5c; }   /* 最上段（最も抽象） */
+  .rung.field .lv { background: var(--ok); } /* 最下段（現場） */
+  .arrowrow { text-align: center; color: var(--muted); font-size: 13px; margin: -4px 0 4px; }
+  figure { margin: 18px 0 24px; }
+  figure img { max-width: 100%; border: 1px solid var(--line); border-radius: 6px; background: #fff; }
+  figcaption { font-size: 13px; color: var(--muted); margin-top: 6px; }
+  .cols { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+  @media (max-width: 900px) {
+    .layout { grid-template-columns: 1fr; }
+    nav.toc { position: static; height: auto; border-right: none; border-bottom: 1px solid var(--line); }
+    main { padding: 24px 20px 80px; }
+    .cols { grid-template-columns: 1fr; }
+    .rung { grid-template-columns: 1fr; }
+  }
+  code { font-family: Consolas, "Courier New", monospace; font-size: 14px; background: #f1f5f9; padding: 1px 5px; border-radius: 3px; }
+  .small { font-size: 13.5px; color: var(--muted); }
+  .kw { color: var(--accent); font-weight: 700; }
+</style>
+</head>
+<body>
+<div class="layout">
+<nav class="toc">
+  <h2>目次</h2>
+  <ol>
+    <li><a href="#s0">0. 要旨：この回を一文で言うと</a></li>
+    <li><a href="#s1">1. 思想：{{分野}}にとって{{主題}}とは何か</a></li>
+    <li class="sub"><a href="#s1-1">1.1 {{思想の小節 1}}</a></li>
+    <li class="sub"><a href="#s1-2">1.2 {{思想の小節 2}}</a></li>
+    <li class="sub"><a href="#s1-3">1.3 {{思想の小節 3}}</a></li>
+    <li class="sub"><a href="#s1-4">1.4 {{対比の数}}つの対比</a></li>
+    <li><a href="#s2">2. 一本の筋：{{枚数}} 枚を一つの物語として読む</a></li>
+    <li class="sub"><a href="#s2-1">2.1 {{地図の名前}}（授業中ずっと見せる地図）</a></li>
+    <li class="sub"><a href="#s2-2">2.2 節ごとの役割</a></li>
+    <li class="sub"><a href="#s2-3">2.3 節と節の橋渡し</a></li>
+    <li><a href="#s3">3. 背景：話を太くする知識</a></li>
+    <li><a href="#s4">4. 節ごとの教え方</a></li>
+    <li class="sub"><a href="#s4-1">{{N}}-1 {{節 1 の名}}</a></li>
+    <li class="sub"><a href="#s4-2">{{N}}-2 {{節 2 の名}}</a></li>
+    <!-- 節の数だけ繰り返す -->
+    <li><a href="#s5">5. 試験の型を思想で読む</a></li>
+    <li><a href="#s6">6. 学生の質問への備え</a></li>
+    <li><a href="#s7">7. 時間が押したとき：筋を切らない削り方</a></li>
+    <li><a href="#s8">8. スライド構成の弱点と改訂案</a></li>
+  </ol>
+</nav>
+
+<main>
+<header class="title">
+  <h1>第{{N}}回「{{テーマ}}」講師用解説<br><span style="font-size:20px;font-weight:400;color:var(--muted)">一本の筋と、教えるときに意識すること</span></h1>
+  <p class="lead">対象はこの回を教える講師本人。{{枚数}} 枚のスライドがどういう思想で並んでいるか、どんな背景があるか、学生に何を意識させれば伝わるかをまとめた。スライド本体は <code>slides.md</code>、時間配分は <code>lesson_plan.md</code> にある。</p>
+  <div class="meta">作成 {{YYYY-MM-DD}}。スライドは {{YYYY-MM-DD}} 版（{{枚数}} 枚）。この文書はスライドを変更しない。</div>
+</header>
+
+<!-- ============================================================ -->
+<h2 id="s0">0. 要旨：この回を一文で言うと</h2>
+<div class="thesis">
+  <span class="big">{{一文の筋（主張＋理由＋帰結）}}</span>
+  {{二〜三文で補う。この回の各節がこの一文のどこに当たるかを一行で}}
+</div>
+<p>授業中に何度も口にする言葉は <span class="kw">{{語 1}}</span>・<span class="kw">{{語 2}}</span>・<span class="kw">{{語 3}}</span> の三つ。{{各語が何を指すか一文}}</p>
+
+<!-- ============================================================ -->
+<h2 id="s1">1. 思想：{{分野}}にとって{{主題}}とは何か</h2>
+<h3 id="s1-1">1.1 {{思想の小節 1}}</h3>
+<p>{{この分野の手法が直接できること／できないこと}}</p>
+
+<h3 id="s1-2">1.2 {{思想の小節 2}}</h3>
+<p>{{できない部分を何が決めるか}}</p>
+
+<h3 id="s1-3">1.3 {{思想の小節 3}}</h3>
+<p>{{単純で済まない理由。対象の性質 → 生じる問題 → 対応する節}}</p>
+<table>
+  <tr><th>対象の性質</th><th>生じる問題</th><th>対応する節</th></tr>
+  <tr><td>{{性質 1}}</td><td>{{問題 1}}</td><td>{{節}}（{{枚}}）</td></tr>
+  <tr><td>{{性質 2}}</td><td>{{問題 2}}</td><td>{{節}}（{{枚}}）</td></tr>
+</table>
+
+<h3 id="s1-4">1.4 {{対比の数}}つの対比</h3>
+<table>
+  <tr><th>対比</th><th>意味</th><th>効いてくる場所（枚）</th><th>取り違えると起きる誤り</th></tr>
+  <tr><td><strong>{{A}}／{{B}}</strong></td><td>{{説明}}</td><td>{{枚}}</td><td>{{誤り}}</td></tr>
+  <tr><td><strong>{{C}}／{{D}}</strong></td><td>{{説明}}</td><td>{{枚}}</td><td>{{誤り}}</td></tr>
+</table>
+
+<!-- ============================================================ -->
+<h2 id="s2">2. 一本の筋：{{枚数}} 枚を一つの物語として読む</h2>
+<h3 id="s2-1">2.1 {{地図の名前}}（授業中ずっと見せる地図）</h3>
+<p>{{この地図の読み方を二文で。上から下へ何が増え、何が決まっていくか}}</p>
+<div class="ladder">
+  <div class="rung earth">
+    <div class="lv">① {{最上段}}</div>
+    <div class="pr"><b>約束</b>{{定義・取り決め}}</div>
+    <div class="ob"><b>対応する節</b>{{節}}（{{枚}}）</div>
+  </div>
+  <div class="rung">
+    <div class="lv">② {{段}}</div>
+    <div class="pr"><b>約束</b>{{定義}}</div>
+    <div class="ob"><b>観測</b>{{この段で機器が何を出すか／対応する節}}</div>
+  </div>
+  <!-- 段の数だけ繰り返す -->
+  <div class="rung field">
+    <div class="lv">⑥ {{最下段：現場}}</div>
+    <div class="pr"><b>約束</b>{{既知点など}}</div>
+    <div class="ob"><b>観測</b>{{観測値 → 計算の流れ}}</div>
+  </div>
+</div>
+<figure>
+  <img src="diagrams/{{同じフォルダの図}}.png" alt="{{図の説明}}">
+  <figcaption>{{スライド {{枚}} の図。この地図と同じ構造}}</figcaption>
+</figure>
+
+<h3 id="s2-2">2.2 節ごとの役割</h3>
+<table>
+  <tr><th>節（枚）</th><th>地図の段</th><th>物語での役割</th><th>学生に残す一文</th></tr>
+  <tr><td class="n">{{N}}-1（{{枚}}）</td><td>{{段}}</td><td>{{役割}}</td><td>「{{一文}}」</td></tr>
+  <tr><td class="n">{{N}}-2（{{枚}}）</td><td>{{段}}</td><td>{{役割}}</td><td>「{{一文}}」</td></tr>
+  <!-- 節の数だけ -->
+</table>
+
+<h3 id="s2-3">2.3 節と節の橋渡し</h3>
+<p>節の最初の 30 秒で言う言葉。前の節の結論を一文で受け、次の節の問いを一文で立てる。これがないと節は「次の項目」になる。</p>
+<div class="box bridge">
+  <p><strong>導入 → {{N}}-1</strong>：「{{台詞}}」</p>
+  <p><strong>{{N}}-1 → {{N}}-2</strong>：「{{台詞}}」</p>
+  <!-- 節の境目の数だけ -->
+  <p><strong>{{N}}-{{最終}} → まとめ</strong>：「{{台詞}}」</p>
+</div>
+
+<!-- ============================================================ -->
+<h2 id="s3">3. 背景：話を太くする知識</h2>
+<p>スライドには書いていないが、講師が持っていると「なぜ」が一段深く言える知識。質問が出たとき・一言添えたいときに使う。</p>
+<h3>3.1 数学の背景</h3>
+<div class="box bg">
+  <ul>
+    <li><strong>{{項目}}</strong> — {{スライドのどこで効くか}}</li>
+  </ul>
+</div>
+<h3>3.2 物理の背景</h3>
+<div class="box bg">
+  <ul>
+    <li><strong>{{項目}}</strong> — {{効くところ}}</li>
+  </ul>
+</div>
+<h3>3.3 歴史の背景</h3>
+<div class="box bg">
+  <table>
+    <tr><th>年</th><th>出来事</th><th>授業での使い方</th></tr>
+    <tr><td class="n">{{年}}</td><td>{{出来事}}</td><td>{{どの枚でどう触れるか}}</td></tr>
+  </table>
+</div>
+<h3>3.4 制度の背景</h3>
+<div class="box bg">
+  <ul>
+    <li><strong>{{法令・告示・規程}}</strong> — {{要点と、どの枚に関わるか}}</li>
+  </ul>
+</div>
+<h3>3.5 {{専攻（農業農村工学など）}}への接続</h3>
+<div class="box bg">
+  <ul>
+    <li><strong>{{現場の場面}}</strong> — {{この回の内容が効く理由}}</li>
+  </ul>
+</div>
+
+<!-- ============================================================ -->
+<h2 id="s4">4. 節ごとの教え方</h2>
+<p>各節について、位置づけ・肝となる枚・言い回し・つまずき・飛ばせる枚。言い回しはそのまま口にできる文にしてある。</p>
+
+<h3 id="s4-1">{{N}}-1 {{節 1 の名}}（{{枚}}枚目、{{分}}分）</h3>
+<p><strong>位置づけ</strong>：{{地図のどの段で、何を決める節か}}</p>
+<p><strong>肝となる枚</strong>：{{枚}}（{{理由}}）</p>
+<div class="box say">
+  <ul>
+    <li>「{{台詞}}」</li>
+    <li>「{{台詞}}」</li>
+  </ul>
+</div>
+<div class="box trap">
+  <ul>
+    <li><strong>{{つまずき}}</strong> — {{どう直すか}}</li>
+  </ul>
+</div>
+<p class="small">飛ばせる枚：{{枚}}（{{理由}}）。</p>
+
+<h3 id="s4-2">{{N}}-2 {{節 2 の名}}（{{枚}}枚目、{{分}}分）</h3>
+<!-- 同じ構造を節の数だけ -->
+
+<!-- ============================================================ -->
+<h2 id="s5">5. 試験の型を思想で読む</h2>
+<p>定番の誤文を「どの対比・どの段の取り違えか」で読むと、暗記ではなく思想で判定できる。</p>
+<table>
+  <tr><th>誤文（試験でよく出る言い方）</th><th>取り違えている対比・段</th><th>正しい読み</th><th>枚</th></tr>
+  <tr><td>「{{誤文}}」</td><td>{{対比}}</td><td>{{正しい読み}}</td><td class="n">{{枚}}</td></tr>
+  <!-- 10〜15 行 -->
+</table>
+
+<!-- ============================================================ -->
+<h2 id="s6">6. 学生の質問への備え</h2>
+<div class="cols">
+<div class="box">
+  <p><strong>Q. {{質問}}</strong></p>
+  <p>{{答え。100 字程度}}</p>
+</div>
+<div class="box">
+  <p><strong>Q. {{質問}}</strong></p>
+  <p>{{答え}}</p>
+</div>
+<!-- 6〜8 件 -->
+</div>
+
+<!-- ============================================================ -->
+<h2 id="s7">7. 時間が押したとき：筋を切らない削り方</h2>
+<p>削る順位。上から順に削っても一本の筋は残る。</p>
+<table>
+  <tr><th>順位</th><th>削る枚</th><th>節約</th><th>残る理由</th></tr>
+  <tr><td class="n">1</td><td>{{枚}}</td><td>{{分}}分</td><td>{{理由}}</td></tr>
+</table>
+<p><strong>削らない背骨の枚</strong>：{{枚の列挙}}。これだけで地図の全段を一度通れる。</p>
+
+<!-- ============================================================ -->
+<h2 id="s8">8. スライド構成の弱点と改訂案</h2>
+<p>講師が「筋が見えない」と感じる原因を、構成の側から。</p>
+<ul>
+  <li><strong>{{弱点 1}}</strong> — {{具体的にどの枚で起きるか}}</li>
+  <li><strong>{{弱点 2}}</strong> — {{具体}}</li>
+</ul>
+<p>改訂するなら効果の大きい順に：</p>
+<ol>
+  <li>{{改訂案 1}}（{{枚数の増減}}）</li>
+  <li>{{改訂案 2}}</li>
+  <li>{{改訂案 3}}</li>
+</ol>
+<p class="small">注記：背景の年号・数値のうちスライドと lesson_plan に無いものは一般に確立した事実の範囲で書いた。授業で引用する前に一次資料で確認すること。</p>
+</main>
+</div>
+</body>
+</html>

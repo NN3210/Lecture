@@ -139,3 +139,9 @@
 - 全81枚の本文・表・余白・配色を整え、既存図を拡大。詳しい説明は発表者ノートに残し、GNSSとTSの観測イラストを追加した。
 - 本文・表の数式211件を編集可能なOffice数式に変更し、分数・根号・添字・行列・計算過程を整形。測地系・高さ・座標変換の説明も明確化した。
 - PowerPointからPPTX・PDFを生成して全ページを表示点検し、演習を検算。再生成スクリプト、README、画像生成指示、`notes/session03_redesign/`の検証記録を保存した。
+
+## 2026-10-15（Claude Fable 5.1、講師用解説 HTML を作るスキルの新設）
+
+- 第3回で作った講師用解説 HTML を以後の各回でも同じ形で作れるよう、プロジェクト内スキル `.claude/skills/lecture-storyline-guide/` を新設した（Lecture フォルダで Claude Code を起動したときだけ読み込まれる）。
+- `SKILL.md` に入力（slides.md・lesson_plan.md・README・lecture_plan_13.md・_guidelines）、手順（一文の筋 → 繰り返す語 → 対比 → 地図 → 節の順序の理由 → 固定 9 章の HTML → タグ点検 → README・worklog 追記 → 個別 add で commit）、やらないこと（スライド本体は変えない、要約にしない、褒めない）を書いた。
+- `references/template.html`（第3回と同じ CSS・章立ての雛形、`{{ }}` を埋める）と `references/method.md`（筋を見つける問いと第3回での答え、他の回での例文）を同梱。Codex 用ミラー `.agents/skills/` は作っていない。
