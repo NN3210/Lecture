@@ -6,6 +6,7 @@ import { fileURLToPath, pathToFileURL } from 'node:url';
 import { createRequire } from 'node:module';
 const root=path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const out=path.join(root,'materials/slides/第02回_測量の基礎と誤差論/補足_平均の誤差伝播_20261014');
+const outputStem='平均の誤差伝播_現場例追加_20261015';
 const modules=process.env.ARTIFACT_MODULES;
 const skill=process.env.PRESENTATION_SKILL;
 if(!modules || !skill || !process.env.RUNTIME_PYTHON) throw new Error('READMEの環境変数を指定してください。');
@@ -59,7 +60,7 @@ for(let i=0;i<pages.length;i++){
   const page=pages[i], slide=ppt.slides.add();slide.background.fill=C.bg;
   const title=page.match(/^#+ (.+)$/m)?.[1]||'';
   const notes=page.match(/<!-- notes: ([\s\S]*?) -->/)?.[1]||'';
-  slide.speakerNotes.text=notes+(i>=4&&i<=15?'\n参考：JCGM 100:2008 4.2.2–4.2.3、5.1.2、5.2.2。https://www.bipm.org/documents/20126/2071204/JCGM_100_2008_E.pdf':'');
+  slide.speakerNotes.text=notes+(i>=4&&i<=17?'\n参考：JCGM 100:2008 4.2.2–4.2.3、5.1.2、5.2.2。https://www.bipm.org/documents/20126/2071204/JCGM_100_2008_E.pdf':'');
   const layout=page.match(/<!-- layout: (\w+) -->/)?.[1];
   const body=page.replace(/^#+ .+$/m,'').replace(/<!--[\s\S]*?-->/g,'');
   if(layout==='cover'){
@@ -74,6 +75,35 @@ for(let i=0;i<pages.length;i++){
   text(slide,title,72,47,1136,76,40,C.navy,true);
   text(slide,String(i+1).padStart(2,'0'),1150,671,55,25,17,C.gray,false,'right');
   const bs=blocks(body);
+  if(layout==='field_count'){
+    const sc=JSON.parse(page.match(/<!-- scenario: (.*?) -->/)[1]);
+    const nMin=Math.ceil((sc.sigma/sc.target)**2), ns=Array.from({length:12},(_,k)=>k+1);
+    const sentences=bs.filter(b=>b.type==='body');
+    text(slide,sentences[0].value,80,142,1120,40,27);
+    text(slide,sentences[1].value,80,188,1120,40,27);
+    text(slide,'平均の標準偏差（mm）',80,241,650,32,22,C.gray);
+    const ch=slide.charts.add('line',{position:{left:70,top:280,width:730,height:310},categories:ns.map(String),series:[{name:'平均の標準偏差',values:ns.map(n=>Number((sc.sigma/Math.sqrt(n)).toPrecision(12))),fill:C.teal,line:{fill:C.teal,width:3}},{name:'目標 2 mm',values:ns.map(()=>sc.target),fill:C.gold,line:{fill:C.gold,width:2}}],hasLegend:true,legend:{position:'bottom',textStyle:{fontSize:19}},lineOptions:{smooth:false},xAxis:{textStyle:{fontSize:19,fill:C.ink}},yAxis:{min:0,max:6,majorUnit:2,textStyle:{fontSize:20,fill:C.gray},majorGridlines:{fill:C.line,width:1}},chartFill:C.bg,plotAreaFill:C.bg});
+    applyPresentationChartFont(ch,{fontFamily:F});chartOwners.push(i+1);
+    text(slide,'測定回数 n（回）',550,578,250,30,21,C.gray,false,'right');
+    const equations=bs.filter(b=>b.type==='formula');
+    equations.forEach((b,k)=>text(slide,b.value,855,271+k*56,350,50,32,C.navy,true));
+    text(slide,`${nMin}回以上`,850,459,350,80,57,C.teal,true);
+    text(slide,'独立・同精度、偏り補正済みの例。2 mmは最大誤差を保証する値ではない。',80,606,1120,30,21,C.gray);
+    text(slide,bs.find(b=>b.type==='take').value,80,646,1120,35,26,C.teal,true);
+    continue;
+  }
+  if(layout==='field_time'){
+    const sentences=bs.filter(b=>b.type==='body');
+    text(slide,sentences[0].value,80,142,1120,42,28);
+    text(slide,sentences[1].value,80,189,1120,42,28);
+    const rows=bs.find(b=>b.type==='table').rows;
+    const t=table(slide,rows,255,232);tableOwners.push(i+1);
+    for(let c=0;c<rows[0].length;c++) {t.getCell(2,c).fill='#DCEFE9';t.getCell(2,c).text.bold=true;}
+    text(slide,bs.find(b=>b.type==='formula').value,80,515,1120,50,31,C.navy,true);
+    text(slide,'時間は観測のみ。準備・器械設置・点検の時間は別途見込む。',80,581,1120,35,23,C.gray);
+    text(slide,bs.find(b=>b.type==='take').value,80,631,1120,45,27,C.teal,true);
+    continue;
+  }
   if(layout==='targets'){
     text(slide,'1回ずつの測定値',300,145,360,42,28,C.teal,true,'center');
     text(slide,'4回ずつ測った平均値',630,145,360,42,28,C.gold,true,'center');
@@ -112,7 +142,9 @@ console.log(`PPTX候補を保存：${pages.length}枚`);
 const values=[30,30.002,30.004,30.006,30.008],mean=values.reduce((a,b)=>a+b,0)/values.length;
 const ss=values.reduce((s,x)=>s+((x-mean)*1000)**2,0),sigma=Math.sqrt(ss/4),sem=sigma/Math.sqrt(5);
 if(Math.abs(mean-30.004)>1e-10||Math.abs(ss-40)>1e-7||Math.abs(sem-Math.sqrt(2))>1e-8)throw new Error('数値例の検算不一致');
-await fs.writeFile(path.join(out,'build/numerical_check.json'),JSON.stringify({mean,sumSquares_mm2:ss,sigma_mm:sigma,sem_mm:sem,quiz:[6/Math.sqrt(9),(6/1)**2]},null,2));
+const fieldScenarios=[3,2,1].map(target=>{const n=Math.ceil((6/target)**2);return {target_mm:target,n,seconds:n*30,sem_mm:6/Math.sqrt(n)};});
+if(JSON.stringify(fieldScenarios.map(v=>v.n))!=='[4,9,36]'||6/Math.sqrt(8)<=2||Math.ceil((6/2.5)**2)!==6)throw new Error('現場例の必要回数が不一致');
+await fs.writeFile(path.join(out,'build/numerical_check.json'),JSON.stringify({mean,sumSquares_mm2:ss,sigma_mm:sigma,sem_mm:sem,quiz:[6/Math.sqrt(9),(6/1)**2],fieldScenarios},null,2));
 for(let i=0;i<ppt.slides.items.length;i++){
   const blob=await ppt.export({slide:ppt.slides.items[i],format:'png',scale:1.5});
   await fs.writeFile(path.join(out,`preview/slide-${String(i+1).padStart(2,'0')}.png`),new Uint8Array(await blob.arrayBuffer()));
@@ -130,11 +162,11 @@ for(let i=0;i<pages.length;i++){
   const im=await pdf.embedPng(await fs.readFile(path.join(out,`preview/slide-${String(i+1).padStart(2,'0')}.png`)));
   const p=pdf.addPage([960,540]);p.drawImage(im,{x:0,y:0,width:960,height:540});
 }
-await fs.writeFile(path.join(out,'平均の誤差伝播_補足スライド.pdf'),await pdf.save());
+await fs.writeFile(path.join(out,`${outputStem}.pdf`),await pdf.save());
 }
-const final=path.join(out,'平均の誤差伝播_補足スライド.pptx');
+const final=path.join(out,`${outputStem}.pptx`);
 await finalizePresentation({workspaceDir:root,candidatePath:candidate,finalPath:final,pythonExecutable:process.env.RUNTIME_PYTHON,integrityValidatorPath:path.join(skill,'container_tools/inspect_presentation_package_integrity.py'),layoutValidatorPath:path.join(skill,'container_tools/inspect_presentation_layout_geometry.py'),layoutArgs:['--expected-slide-size-emu','12192000,6858000','--validate-bullet-geometry','--validate-heading-fit',...tableOwners.flatMap(n=>['--require-native-table-slide',String(n)])],requiredNativeTableOwnerSlides:tableOwners,requiredNativeChartOwnerSlides:chartOwners,materializeLiteralChartWorkbooks:true,fontPolicy:{basis:'design',families:[F,'Arial']},verifyArtifactToolImport:true,receiptPath:path.join(root,'notes/.mean_error_validation.json')});
 // オフライン閲覧用。矢印キー、クリック、印刷に対応。
 const html=`<!doctype html><html lang="ja"><meta charset="utf-8"><meta name="viewport" content="width=device-width"><title>平均の誤差伝播</title><style>body{margin:0;background:#183e50;color:white;font:18px sans-serif}main{max-width:1280px;margin:auto}img{display:block;width:100%;margin:30px 0}nav{position:fixed;bottom:12px;right:16px;background:#183e50;padding:10px}a{color:white}@media print{body{background:white}img{margin:0;break-after:page}nav{display:none}@page{size:landscape;margin:0}}</style><main>${pages.map((_,i)=>`<img id="s${i+1}" src="preview/slide-${String(i+1).padStart(2,'0')}.png" alt="スライド${i+1}">`).join('')}</main><nav><a href="平均の誤差伝播_補足スライド.pptx">PowerPoint</a> / <a href="平均の誤差伝播_補足スライド.pdf">PDF</a></nav><script>let i=1;document.onkeydown=e=>{if(['ArrowRight','ArrowDown','PageDown',' '].includes(e.key)){i=Math.min(${pages.length},i+1);e.preventDefault()}if(['ArrowLeft','ArrowUp','PageUp'].includes(e.key)){i=Math.max(1,i-1);e.preventDefault()}document.getElementById('s'+i).scrollIntoView()};</script></html>`;
-await fs.writeFile(path.join(out,'slides.html'),html);
+await fs.writeFile(path.join(out,'slides.html'),html.replaceAll('平均の誤差伝播_補足スライド',outputStem));
 console.log('完了：PPTX / PDF / HTML');
