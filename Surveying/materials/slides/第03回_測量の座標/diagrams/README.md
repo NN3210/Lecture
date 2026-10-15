@@ -66,3 +66,9 @@ Codex の組み込み画像生成ツールで作った概念イラスト（横�
 | `sea_level_station.png` | 平均海面と検潮所 |
 | `globe_cylinder_projection.png` | 球から円筒への投影（メルカトルの直観） |
 | `title_hero.png` | 表紙（農地で GNSS 受信機を据える測量の情景） |
+
+## 緯度・経度・楕円体高の修正図（2026-10-15）
+
+- `geodetic_coords_corrected.jpg`：3200×1800、16:9の差し替え用JPEG。地表のP・基準楕円体面のQ・楕円体高hを描き分け、経度は北極側から見た図に分離した。
+- `geodetic_coords_corrected.svg`：同じ図のベクトル版。模式図のため扁平率・起伏・高さは強調している。
+- 再生成：`python scripts/draw_geodetic_coords_corrected.py`。法線・接線・角度は楕円の式から計算。検算結果は `notes/geodetic_coords_correction_20261015/幾何検算.json`、経緯は `notes/geodetic_coords_correction_20261015.md`。
