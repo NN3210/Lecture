@@ -1,0 +1,134 @@
+[
+  {
+    "slide": 1,
+    "title": "軸回転の式の導出",
+    "notes": "添付画像と、このスレッドで説明した導出をもとにした補足教材。一般的な平面直交座標の約束として、x軸を右向き、y軸を上向き、角度を反時計回り正とする。日本の測量のX軸北向き・Y軸東向きや方向角の約束と混同しない。点そのものは移動させない。",
+    "formulae": []
+  },
+  {
+    "slide": 2,
+    "title": "同じ点を、新しい座標で読む",
+    "notes": "出典：ユーザー添付の座標変換の図（原図）。原図のQの新座標(1.54,2.33)は誤記。O′=(1,0.5)、θ=30度、Q=(1,3)からは(1.25,2.1650635…)となる。Pの新座標は原図と一致する。図は模式図として読む。",
+    "formulae": [
+      "P=(3,2)",
+      "O'=(1,0.5)",
+      "\\theta=30^\\circ"
+    ]
+  },
+  {
+    "slide": 3,
+    "title": "① 原点を移す",
+    "notes": "もとの原点Oから見たPとO′の座標を用意する。O′からPへのベクトルは、Pの位置ベクトルからO′の位置ベクトルを引いたもの。原点だけを移した座標を一時的に大文字X,Yで表し、軸回転と分けて計算する。",
+    "formulae": [
+      "P=(x,y),\\qquad O'=(x_0,y_0)",
+      "\\overrightarrow{O'P}=\\begin{pmatrix}x-x_0\\\\y-y_0\\end{pmatrix}",
+      "X=x-x_0,\\qquad Y=y-y_0"
+    ]
+  },
+  {
+    "slide": 4,
+    "title": "② 新しい x′ 軸の向き",
+    "notes": "新しいx′軸はもとのx軸から反時計回りにθの方向を向く。この軸に沿って1だけ進むと、もとのx方向にはcosθ、y方向にはsinθ進む。したがって新しいx′軸の単位ベクトルは(cosθ,sinθ)。",
+    "formulae": [
+      "\\boldsymbol e_{x'}=\\begin{pmatrix}\\cos\\theta\\\\\\sin\\theta\\end{pmatrix}",
+      "x\\text{方向}:\\cos\\theta,\\qquad y\\text{方向}:\\sin\\theta"
+    ]
+  },
+  {
+    "slide": 5,
+    "title": "③ 新しい y′ 軸の向き",
+    "notes": "y′軸はx′軸からさらに反時計回りに90度の方向。cos(θ+90度)=-sinθ、sin(θ+90度)=cosθを用いる。0<θ<90度ならy′軸は左上向きなので、横成分の符号は負、縦成分は正になる。",
+    "formulae": [
+      "\\boldsymbol e_{y'}=\\begin{pmatrix}\\cos(\\theta+90^\\circ)\\\\\\sin(\\theta+90^\\circ)\\end{pmatrix}=\\begin{pmatrix}-\\sin\\theta\\\\\\cos\\theta\\end{pmatrix}",
+      "\\cos(\\theta+90^\\circ)=-\\sin\\theta",
+      "\\sin(\\theta+90^\\circ)=\\cos\\theta"
+    ]
+  },
+  {
+    "slide": 6,
+    "title": "④ 同じベクトルを二通りに表す",
+    "notes": "新しい座標(x′,y′)は、x′軸とy′軸を基底としたベクトルの係数である。O′P=x′e_x′+y′e_y′と書き、もとの軸での成分(X,Y)と比較する。次の2枚ではこの連立方程式を解く。",
+    "formulae": [
+      "\\overrightarrow{O'P}=x'\\boldsymbol e_{x'}+y'\\boldsymbol e_{y'}",
+      "\\begin{pmatrix}X\\\\Y\\end{pmatrix}=x'\\begin{pmatrix}\\cos\\theta\\\\\\sin\\theta\\end{pmatrix}+y'\\begin{pmatrix}-\\sin\\theta\\\\\\cos\\theta\\end{pmatrix}",
+      "X=x'\\cos\\theta-y'\\sin\\theta\\qquad(1)",
+      "Y=x'\\sin\\theta+y'\\cos\\theta\\qquad(2)"
+    ]
+  },
+  {
+    "slide": 7,
+    "title": "⑤ x′ の導出：y′ を消去する",
+    "notes": "式(1)をcosθ倍、式(2)をsinθ倍して加える。-y′sinθcosθと+y′cosθsinθが打ち消し合う。残ったx′(cos²θ+sin²θ)は三角関数の恒等式によりx′となる。",
+    "formulae": [
+      "X\\cos\\theta+Y\\sin\\theta",
+      "=(x'\\cos\\theta-y'\\sin\\theta)\\cos\\theta+(x'\\sin\\theta+y'\\cos\\theta)\\sin\\theta",
+      "=x'\\cos^2\\theta-y'\\sin\\theta\\cos\\theta+x'\\sin^2\\theta+y'\\cos\\theta\\sin\\theta",
+      "=x'(\\cos^2\\theta+\\sin^2\\theta)=x'",
+      "x'=X\\cos\\theta+Y\\sin\\theta"
+    ]
+  },
+  {
+    "slide": 8,
+    "title": "⑥ y′ の導出：x′ を消去する",
+    "notes": "式(1)を-sinθ倍、式(2)をcosθ倍して加える。-x′cosθsinθと+x′sinθcosθが打ち消し合う。残ったy′(sin²θ+cos²θ)はy′となる。x′の式と同じ恒等式を使う。",
+    "formulae": [
+      "-X\\sin\\theta+Y\\cos\\theta",
+      "=-(x'\\cos\\theta-y'\\sin\\theta)\\sin\\theta+(x'\\sin\\theta+y'\\cos\\theta)\\cos\\theta",
+      "=-x'\\cos\\theta\\sin\\theta+y'\\sin^2\\theta+x'\\sin\\theta\\cos\\theta+y'\\cos^2\\theta",
+      "=y'(\\sin^2\\theta+\\cos^2\\theta)=y'",
+      "y'=-X\\sin\\theta+Y\\cos\\theta"
+    ]
+  },
+  {
+    "slide": 9,
+    "title": "⑦ 原点移動と軸回転を合わせる",
+    "notes": "X=x−x0、Y=y−y0を、導出したx′とy′の式に代入する。計算の順は、元の座標から新しい原点を引き、続いて軸回転の式を適用する。平面内の剛体的な座標系変更であり、長さの単位は共通とする。",
+    "formulae": [
+      "X=x-x_0,\\qquad Y=y-y_0",
+      "x'=(x-x_0)\\cos\\theta+(y-y_0)\\sin\\theta",
+      "y'=-(x-x_0)\\sin\\theta+(y-y_0)\\cos\\theta"
+    ]
+  },
+  {
+    "slide": 10,
+    "title": "符号の確認：軸を回すと、角度を引く",
+    "notes": "原点移動後のベクトルを極座標でX=r cosφ、Y=r sinφとする。軸をθ回すと、新しいx′軸から測る点の方向はφ−θになる。加法定理から同じ座標変換式を確認できる。θ=90度、X=1、Y=0ならx′=0、y′=−1となり、新しい軸では下側に位置する。点を回す能動回転とは符号の組合せが異なる。",
+    "formulae": [
+      "X=r\\cos\\varphi,\\qquad Y=r\\sin\\varphi",
+      "x'=r\\cos(\\varphi-\\theta)=X\\cos\\theta+Y\\sin\\theta",
+      "y'=r\\sin(\\varphi-\\theta)=-X\\sin\\theta+Y\\cos\\theta",
+      "(X,Y)=(1,0),\\quad\\theta=90^\\circ\\qquad(x',y')=(0,-1)"
+    ]
+  },
+  {
+    "slide": 11,
+    "title": "計算例 P：原点を移して回転する",
+    "notes": "条件はP=(3,2)、O′=(1,0.5)、θ=30度。原点移動後は(X,Y)=(2,1.5)。cos30度=√3/2、sin30度=1/2を代入するとx′=√3+0.75=2.4820508…、y′=−1+3√3/4=0.2990381…。小数第2位へ丸める。",
+    "formulae": [
+      "P=(3,2),\\quad O'=(1,0.5),\\quad\\theta=30^\\circ",
+      "(X,Y)=(3-1,\\ 2-0.5)=(2,\\ 1.5)",
+      "x'=2\\frac{\\sqrt3}{2}+1.5\\frac12=\\sqrt3+0.75\\approx2.48",
+      "y'=-2\\frac12+1.5\\frac{\\sqrt3}{2}=-1+\\frac{3\\sqrt3}{4}\\approx0.30"
+    ]
+  },
+  {
+    "slide": 12,
+    "title": "計算例 Q：同じ式で確かめる",
+    "notes": "条件はQ=(1,3)、O′=(1,0.5)、θ=30度。原点移動後は(X,Y)=(0,2.5)なので、x′=1.25、y′=5√3/4=2.1650635…。元画像の(1.54,2.33)は同じ条件を満たさない。原点O′からの距離は元も新も2.5で、1.25²+(5√3/4)²=6.25を確認できる。",
+    "formulae": [
+      "Q=(1,3),\\quad O'=(1,0.5),\\quad\\theta=30^\\circ",
+      "(X,Y)=(1-1,\\ 3-0.5)=(0,\\ 2.5)",
+      "x'=0\\frac{\\sqrt3}{2}+2.5\\frac12=1.25",
+      "y'=-0\\frac12+2.5\\frac{\\sqrt3}{2}=\\frac{5\\sqrt3}{4}\\approx2.17"
+    ]
+  },
+  {
+    "slide": 13,
+    "title": "行列での表現と逆変換",
+    "notes": "導出した2式を行列にまとめる。軸を反時計回りにθ回した座標の変換行列は、成分で見た点の回転行列R(−θ)に対応する。逆変換ではθの符号を反転し、最後に原点の座標を足す。回転行列の逆行列は転置行列であり、距離と角度を保つ。日本の測量の軸・方向角へ適用するときは、その約束に合わせて符号を確認する。",
+    "formulae": [
+      "\\begin{pmatrix}x'\\\\y'\\end{pmatrix}=\\begin{pmatrix}\\cos\\theta&\\sin\\theta\\\\-\\sin\\theta&\\cos\\theta\\end{pmatrix}\\begin{pmatrix}x-x_0\\\\y-y_0\\end{pmatrix}",
+      "\\begin{pmatrix}x\\\\y\\end{pmatrix}=\\begin{pmatrix}x_0\\\\y_0\\end{pmatrix}+\\begin{pmatrix}\\cos\\theta&-\\sin\\theta\\\\\\sin\\theta&\\cos\\theta\\end{pmatrix}\\begin{pmatrix}x'\\\\y'\\end{pmatrix}"
+    ]
+  }
+]

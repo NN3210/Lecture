@@ -1,0 +1,212 @@
+{
+  "EQM00001": {
+    "tex": "P=(3,2)",
+    "display": true,
+    "mathml": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\"><semantics><mrow><mi>P</mi><mo>=</mo><mo stretchy=\"false\">(</mo><mn>3</mn><mo separator=\"true\">,</mo><mn>2</mn><mo stretchy=\"false\">)</mo></mrow><annotation encoding=\"application/x-tex\">P=(3,2)</annotation></semantics></math>"
+  },
+  "EQM00002": {
+    "tex": "O'=(1,0.5)",
+    "display": true,
+    "mathml": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\"><semantics><mrow><msup><mi>O</mi><mo mathvariant=\"normal\" lspace=\"0em\" rspace=\"0em\">′</mo></msup><mo>=</mo><mo stretchy=\"false\">(</mo><mn>1</mn><mo separator=\"true\">,</mo><mn>0.5</mn><mo stretchy=\"false\">)</mo></mrow><annotation encoding=\"application/x-tex\">O&#x27;=(1,0.5)</annotation></semantics></math>"
+  },
+  "EQM00003": {
+    "tex": "\\theta=30^\\circ",
+    "display": true,
+    "mathml": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\"><semantics><mrow><mi>θ</mi><mo>=</mo><msup><mn>30</mn><mo>∘</mo></msup></mrow><annotation encoding=\"application/x-tex\">\\theta=30^\\circ</annotation></semantics></math>"
+  },
+  "EQM00004": {
+    "tex": "P=(x,y),\\qquad O'=(x_0,y_0)",
+    "display": true,
+    "mathml": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\"><semantics><mrow><mi>P</mi><mo>=</mo><mo stretchy=\"false\">(</mo><mi>x</mi><mo separator=\"true\">,</mo><mi>y</mi><mo stretchy=\"false\">)</mo><mo separator=\"true\">,</mo><mspace width=\"2em\"/><msup><mi>O</mi><mo mathvariant=\"normal\" lspace=\"0em\" rspace=\"0em\">′</mo></msup><mo>=</mo><mo stretchy=\"false\">(</mo><msub><mi>x</mi><mn>0</mn></msub><mo separator=\"true\">,</mo><msub><mi>y</mi><mn>0</mn></msub><mo stretchy=\"false\">)</mo></mrow><annotation encoding=\"application/x-tex\">P=(x,y),\\qquad O&#x27;=(x_0,y_0)</annotation></semantics></math>"
+  },
+  "EQM00005": {
+    "tex": "\\overrightarrow{O'P}=\\begin{pmatrix}x-x_0\\\\y-y_0\\end{pmatrix}",
+    "display": true,
+    "mathml": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\"><semantics><mrow><mover accent=\"true\"><mrow><msup><mi>O</mi><mo mathvariant=\"normal\" lspace=\"0em\" rspace=\"0em\">′</mo></msup><mi>P</mi></mrow><mo stretchy=\"true\">→</mo></mover><mo>=</mo><mrow><mo fence=\"true\">(</mo><mtable rowspacing=\"0.16em\" columnalign=\"center\" columnspacing=\"1em\"><mtr><mtd><mstyle scriptlevel=\"0\" displaystyle=\"false\"><mrow><mi>x</mi><mo>−</mo><msub><mi>x</mi><mn>0</mn></msub></mrow></mstyle></mtd></mtr><mtr><mtd><mstyle scriptlevel=\"0\" displaystyle=\"false\"><mrow><mi>y</mi><mo>−</mo><msub><mi>y</mi><mn>0</mn></msub></mrow></mstyle></mtd></mtr></mtable><mo fence=\"true\">)</mo></mrow></mrow><annotation encoding=\"application/x-tex\">\\overrightarrow{O&#x27;P}=\\begin{pmatrix}x-x_0\\\\y-y_0\\end{pmatrix}</annotation></semantics></math>"
+  },
+  "EQM00006": {
+    "tex": "X=x-x_0,\\qquad Y=y-y_0",
+    "display": true,
+    "mathml": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\"><semantics><mrow><mi>X</mi><mo>=</mo><mi>x</mi><mo>−</mo><msub><mi>x</mi><mn>0</mn></msub><mo separator=\"true\">,</mo><mspace width=\"2em\"/><mi>Y</mi><mo>=</mo><mi>y</mi><mo>−</mo><msub><mi>y</mi><mn>0</mn></msub></mrow><annotation encoding=\"application/x-tex\">X=x-x_0,\\qquad Y=y-y_0</annotation></semantics></math>"
+  },
+  "EQM00007": {
+    "tex": "\\boldsymbol e_{x'}=\\begin{pmatrix}\\cos\\theta\\\\\\sin\\theta\\end{pmatrix}",
+    "display": true,
+    "mathml": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\"><semantics><mrow><msub><mi mathvariant=\"bold-italic\">e</mi><msup><mi>x</mi><mo mathvariant=\"normal\" lspace=\"0em\" rspace=\"0em\">′</mo></msup></msub><mo>=</mo><mrow><mo fence=\"true\">(</mo><mtable rowspacing=\"0.16em\" columnalign=\"center\" columnspacing=\"1em\"><mtr><mtd><mstyle scriptlevel=\"0\" displaystyle=\"false\"><mrow><mi>cos</mi><mo>⁡</mo><mi>θ</mi></mrow></mstyle></mtd></mtr><mtr><mtd><mstyle scriptlevel=\"0\" displaystyle=\"false\"><mrow><mi>sin</mi><mo>⁡</mo><mi>θ</mi></mrow></mstyle></mtd></mtr></mtable><mo fence=\"true\">)</mo></mrow></mrow><annotation encoding=\"application/x-tex\">\\boldsymbol e_{x&#x27;}=\\begin{pmatrix}\\cos\\theta\\\\\\sin\\theta\\end{pmatrix}</annotation></semantics></math>"
+  },
+  "EQM00008": {
+    "tex": "x\\text{方向}:\\cos\\theta,\\qquad y\\text{方向}:\\sin\\theta",
+    "display": true,
+    "mathml": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\"><semantics><mrow><mi>x</mi><mtext>方向</mtext><mo>:</mo><mi>cos</mi><mo>⁡</mo><mi>θ</mi><mo separator=\"true\">,</mo><mspace width=\"2em\"/><mi>y</mi><mtext>方向</mtext><mo>:</mo><mi>sin</mi><mo>⁡</mo><mi>θ</mi></mrow><annotation encoding=\"application/x-tex\">x\\text{方向}:\\cos\\theta,\\qquad y\\text{方向}:\\sin\\theta</annotation></semantics></math>"
+  },
+  "EQM00009": {
+    "tex": "\\boldsymbol e_{y'}=\\begin{pmatrix}\\cos(\\theta+90^\\circ)\\\\\\sin(\\theta+90^\\circ)\\end{pmatrix}=\\begin{pmatrix}-\\sin\\theta\\\\\\cos\\theta\\end{pmatrix}",
+    "display": true,
+    "mathml": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\"><semantics><mrow><msub><mi mathvariant=\"bold-italic\">e</mi><msup><mi>y</mi><mo mathvariant=\"normal\" lspace=\"0em\" rspace=\"0em\">′</mo></msup></msub><mo>=</mo><mrow><mo fence=\"true\">(</mo><mtable rowspacing=\"0.16em\" columnalign=\"center\" columnspacing=\"1em\"><mtr><mtd><mstyle scriptlevel=\"0\" displaystyle=\"false\"><mrow><mi>cos</mi><mo>⁡</mo><mo stretchy=\"false\">(</mo><mi>θ</mi><mo>+</mo><msup><mn>90</mn><mo>∘</mo></msup><mo stretchy=\"false\">)</mo></mrow></mstyle></mtd></mtr><mtr><mtd><mstyle scriptlevel=\"0\" displaystyle=\"false\"><mrow><mi>sin</mi><mo>⁡</mo><mo stretchy=\"false\">(</mo><mi>θ</mi><mo>+</mo><msup><mn>90</mn><mo>∘</mo></msup><mo stretchy=\"false\">)</mo></mrow></mstyle></mtd></mtr></mtable><mo fence=\"true\">)</mo></mrow><mo>=</mo><mrow><mo fence=\"true\">(</mo><mtable rowspacing=\"0.16em\" columnalign=\"center\" columnspacing=\"1em\"><mtr><mtd><mstyle scriptlevel=\"0\" displaystyle=\"false\"><mrow><mo>−</mo><mi>sin</mi><mo>⁡</mo><mi>θ</mi></mrow></mstyle></mtd></mtr><mtr><mtd><mstyle scriptlevel=\"0\" displaystyle=\"false\"><mrow><mi>cos</mi><mo>⁡</mo><mi>θ</mi></mrow></mstyle></mtd></mtr></mtable><mo fence=\"true\">)</mo></mrow></mrow><annotation encoding=\"application/x-tex\">\\boldsymbol e_{y&#x27;}=\\begin{pmatrix}\\cos(\\theta+90^\\circ)\\\\\\sin(\\theta+90^\\circ)\\end{pmatrix}=\\begin{pmatrix}-\\sin\\theta\\\\\\cos\\theta\\end{pmatrix}</annotation></semantics></math>"
+  },
+  "EQM00010": {
+    "tex": "\\cos(\\theta+90^\\circ)=-\\sin\\theta",
+    "display": true,
+    "mathml": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\"><semantics><mrow><mi>cos</mi><mo>⁡</mo><mo stretchy=\"false\">(</mo><mi>θ</mi><mo>+</mo><msup><mn>90</mn><mo>∘</mo></msup><mo stretchy=\"false\">)</mo><mo>=</mo><mo>−</mo><mi>sin</mi><mo>⁡</mo><mi>θ</mi></mrow><annotation encoding=\"application/x-tex\">\\cos(\\theta+90^\\circ)=-\\sin\\theta</annotation></semantics></math>"
+  },
+  "EQM00011": {
+    "tex": "\\sin(\\theta+90^\\circ)=\\cos\\theta",
+    "display": true,
+    "mathml": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\"><semantics><mrow><mi>sin</mi><mo>⁡</mo><mo stretchy=\"false\">(</mo><mi>θ</mi><mo>+</mo><msup><mn>90</mn><mo>∘</mo></msup><mo stretchy=\"false\">)</mo><mo>=</mo><mi>cos</mi><mo>⁡</mo><mi>θ</mi></mrow><annotation encoding=\"application/x-tex\">\\sin(\\theta+90^\\circ)=\\cos\\theta</annotation></semantics></math>"
+  },
+  "EQM00012": {
+    "tex": "\\overrightarrow{O'P}=x'\\boldsymbol e_{x'}+y'\\boldsymbol e_{y'}",
+    "display": true,
+    "mathml": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\"><semantics><mrow><mover accent=\"true\"><mrow><msup><mi>O</mi><mo mathvariant=\"normal\" lspace=\"0em\" rspace=\"0em\">′</mo></msup><mi>P</mi></mrow><mo stretchy=\"true\">→</mo></mover><mo>=</mo><msup><mi>x</mi><mo mathvariant=\"normal\" lspace=\"0em\" rspace=\"0em\">′</mo></msup><msub><mi mathvariant=\"bold-italic\">e</mi><msup><mi>x</mi><mo mathvariant=\"normal\" lspace=\"0em\" rspace=\"0em\">′</mo></msup></msub><mo>+</mo><msup><mi>y</mi><mo mathvariant=\"normal\" lspace=\"0em\" rspace=\"0em\">′</mo></msup><msub><mi mathvariant=\"bold-italic\">e</mi><msup><mi>y</mi><mo mathvariant=\"normal\" lspace=\"0em\" rspace=\"0em\">′</mo></msup></msub></mrow><annotation encoding=\"application/x-tex\">\\overrightarrow{O&#x27;P}=x&#x27;\\boldsymbol e_{x&#x27;}+y&#x27;\\boldsymbol e_{y&#x27;}</annotation></semantics></math>"
+  },
+  "EQM00013": {
+    "tex": "\\begin{pmatrix}X\\\\Y\\end{pmatrix}=x'\\begin{pmatrix}\\cos\\theta\\\\\\sin\\theta\\end{pmatrix}+y'\\begin{pmatrix}-\\sin\\theta\\\\\\cos\\theta\\end{pmatrix}",
+    "display": true,
+    "mathml": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\"><semantics><mrow><mrow><mo fence=\"true\">(</mo><mtable rowspacing=\"0.16em\" columnalign=\"center\" columnspacing=\"1em\"><mtr><mtd><mstyle scriptlevel=\"0\" displaystyle=\"false\"><mi>X</mi></mstyle></mtd></mtr><mtr><mtd><mstyle scriptlevel=\"0\" displaystyle=\"false\"><mi>Y</mi></mstyle></mtd></mtr></mtable><mo fence=\"true\">)</mo></mrow><mo>=</mo><msup><mi>x</mi><mo mathvariant=\"normal\" lspace=\"0em\" rspace=\"0em\">′</mo></msup><mrow><mo fence=\"true\">(</mo><mtable rowspacing=\"0.16em\" columnalign=\"center\" columnspacing=\"1em\"><mtr><mtd><mstyle scriptlevel=\"0\" displaystyle=\"false\"><mrow><mi>cos</mi><mo>⁡</mo><mi>θ</mi></mrow></mstyle></mtd></mtr><mtr><mtd><mstyle scriptlevel=\"0\" displaystyle=\"false\"><mrow><mi>sin</mi><mo>⁡</mo><mi>θ</mi></mrow></mstyle></mtd></mtr></mtable><mo fence=\"true\">)</mo></mrow><mo>+</mo><msup><mi>y</mi><mo mathvariant=\"normal\" lspace=\"0em\" rspace=\"0em\">′</mo></msup><mrow><mo fence=\"true\">(</mo><mtable rowspacing=\"0.16em\" columnalign=\"center\" columnspacing=\"1em\"><mtr><mtd><mstyle scriptlevel=\"0\" displaystyle=\"false\"><mrow><mo>−</mo><mi>sin</mi><mo>⁡</mo><mi>θ</mi></mrow></mstyle></mtd></mtr><mtr><mtd><mstyle scriptlevel=\"0\" displaystyle=\"false\"><mrow><mi>cos</mi><mo>⁡</mo><mi>θ</mi></mrow></mstyle></mtd></mtr></mtable><mo fence=\"true\">)</mo></mrow></mrow><annotation encoding=\"application/x-tex\">\\begin{pmatrix}X\\\\Y\\end{pmatrix}=x&#x27;\\begin{pmatrix}\\cos\\theta\\\\\\sin\\theta\\end{pmatrix}+y&#x27;\\begin{pmatrix}-\\sin\\theta\\\\\\cos\\theta\\end{pmatrix}</annotation></semantics></math>"
+  },
+  "EQM00014": {
+    "tex": "X=x'\\cos\\theta-y'\\sin\\theta\\qquad(1)",
+    "display": true,
+    "mathml": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\"><semantics><mrow><mi>X</mi><mo>=</mo><msup><mi>x</mi><mo mathvariant=\"normal\" lspace=\"0em\" rspace=\"0em\">′</mo></msup><mi>cos</mi><mo>⁡</mo><mi>θ</mi><mo>−</mo><msup><mi>y</mi><mo mathvariant=\"normal\" lspace=\"0em\" rspace=\"0em\">′</mo></msup><mi>sin</mi><mo>⁡</mo><mi>θ</mi><mspace width=\"2em\"/><mo stretchy=\"false\">(</mo><mn>1</mn><mo stretchy=\"false\">)</mo></mrow><annotation encoding=\"application/x-tex\">X=x&#x27;\\cos\\theta-y&#x27;\\sin\\theta\\qquad(1)</annotation></semantics></math>"
+  },
+  "EQM00015": {
+    "tex": "Y=x'\\sin\\theta+y'\\cos\\theta\\qquad(2)",
+    "display": true,
+    "mathml": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\"><semantics><mrow><mi>Y</mi><mo>=</mo><msup><mi>x</mi><mo mathvariant=\"normal\" lspace=\"0em\" rspace=\"0em\">′</mo></msup><mi>sin</mi><mo>⁡</mo><mi>θ</mi><mo>+</mo><msup><mi>y</mi><mo mathvariant=\"normal\" lspace=\"0em\" rspace=\"0em\">′</mo></msup><mi>cos</mi><mo>⁡</mo><mi>θ</mi><mspace width=\"2em\"/><mo stretchy=\"false\">(</mo><mn>2</mn><mo stretchy=\"false\">)</mo></mrow><annotation encoding=\"application/x-tex\">Y=x&#x27;\\sin\\theta+y&#x27;\\cos\\theta\\qquad(2)</annotation></semantics></math>"
+  },
+  "EQM00016": {
+    "tex": "X\\cos\\theta+Y\\sin\\theta",
+    "display": true,
+    "mathml": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\"><semantics><mrow><mi>X</mi><mi>cos</mi><mo>⁡</mo><mi>θ</mi><mo>+</mo><mi>Y</mi><mi>sin</mi><mo>⁡</mo><mi>θ</mi></mrow><annotation encoding=\"application/x-tex\">X\\cos\\theta+Y\\sin\\theta</annotation></semantics></math>"
+  },
+  "EQM00017": {
+    "tex": "=(x'\\cos\\theta-y'\\sin\\theta)\\cos\\theta+(x'\\sin\\theta+y'\\cos\\theta)\\sin\\theta",
+    "display": true,
+    "mathml": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\"><semantics><mrow><mo>=</mo><mo stretchy=\"false\">(</mo><msup><mi>x</mi><mo mathvariant=\"normal\" lspace=\"0em\" rspace=\"0em\">′</mo></msup><mi>cos</mi><mo>⁡</mo><mi>θ</mi><mo>−</mo><msup><mi>y</mi><mo mathvariant=\"normal\" lspace=\"0em\" rspace=\"0em\">′</mo></msup><mi>sin</mi><mo>⁡</mo><mi>θ</mi><mo stretchy=\"false\">)</mo><mi>cos</mi><mo>⁡</mo><mi>θ</mi><mo>+</mo><mo stretchy=\"false\">(</mo><msup><mi>x</mi><mo mathvariant=\"normal\" lspace=\"0em\" rspace=\"0em\">′</mo></msup><mi>sin</mi><mo>⁡</mo><mi>θ</mi><mo>+</mo><msup><mi>y</mi><mo mathvariant=\"normal\" lspace=\"0em\" rspace=\"0em\">′</mo></msup><mi>cos</mi><mo>⁡</mo><mi>θ</mi><mo stretchy=\"false\">)</mo><mi>sin</mi><mo>⁡</mo><mi>θ</mi></mrow><annotation encoding=\"application/x-tex\">=(x&#x27;\\cos\\theta-y&#x27;\\sin\\theta)\\cos\\theta+(x&#x27;\\sin\\theta+y&#x27;\\cos\\theta)\\sin\\theta</annotation></semantics></math>"
+  },
+  "EQM00018": {
+    "tex": "=x'\\cos^2\\theta-y'\\sin\\theta\\cos\\theta+x'\\sin^2\\theta+y'\\cos\\theta\\sin\\theta",
+    "display": true,
+    "mathml": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\"><semantics><mrow><mo>=</mo><msup><mi>x</mi><mo mathvariant=\"normal\" lspace=\"0em\" rspace=\"0em\">′</mo></msup><msup><mrow><mi>cos</mi><mo>⁡</mo></mrow><mn>2</mn></msup><mi>θ</mi><mo>−</mo><msup><mi>y</mi><mo mathvariant=\"normal\" lspace=\"0em\" rspace=\"0em\">′</mo></msup><mi>sin</mi><mo>⁡</mo><mi>θ</mi><mi>cos</mi><mo>⁡</mo><mi>θ</mi><mo>+</mo><msup><mi>x</mi><mo mathvariant=\"normal\" lspace=\"0em\" rspace=\"0em\">′</mo></msup><msup><mrow><mi>sin</mi><mo>⁡</mo></mrow><mn>2</mn></msup><mi>θ</mi><mo>+</mo><msup><mi>y</mi><mo mathvariant=\"normal\" lspace=\"0em\" rspace=\"0em\">′</mo></msup><mi>cos</mi><mo>⁡</mo><mi>θ</mi><mi>sin</mi><mo>⁡</mo><mi>θ</mi></mrow><annotation encoding=\"application/x-tex\">=x&#x27;\\cos^2\\theta-y&#x27;\\sin\\theta\\cos\\theta+x&#x27;\\sin^2\\theta+y&#x27;\\cos\\theta\\sin\\theta</annotation></semantics></math>"
+  },
+  "EQM00019": {
+    "tex": "=x'(\\cos^2\\theta+\\sin^2\\theta)=x'",
+    "display": true,
+    "mathml": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\"><semantics><mrow><mo>=</mo><msup><mi>x</mi><mo mathvariant=\"normal\" lspace=\"0em\" rspace=\"0em\">′</mo></msup><mo stretchy=\"false\">(</mo><msup><mrow><mi>cos</mi><mo>⁡</mo></mrow><mn>2</mn></msup><mi>θ</mi><mo>+</mo><msup><mrow><mi>sin</mi><mo>⁡</mo></mrow><mn>2</mn></msup><mi>θ</mi><mo stretchy=\"false\">)</mo><mo>=</mo><msup><mi>x</mi><mo mathvariant=\"normal\" lspace=\"0em\" rspace=\"0em\">′</mo></msup></mrow><annotation encoding=\"application/x-tex\">=x&#x27;(\\cos^2\\theta+\\sin^2\\theta)=x&#x27;</annotation></semantics></math>"
+  },
+  "EQM00020": {
+    "tex": "x'=X\\cos\\theta+Y\\sin\\theta",
+    "display": true,
+    "mathml": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\"><semantics><mrow><msup><mi>x</mi><mo mathvariant=\"normal\" lspace=\"0em\" rspace=\"0em\">′</mo></msup><mo>=</mo><mi>X</mi><mi>cos</mi><mo>⁡</mo><mi>θ</mi><mo>+</mo><mi>Y</mi><mi>sin</mi><mo>⁡</mo><mi>θ</mi></mrow><annotation encoding=\"application/x-tex\">x&#x27;=X\\cos\\theta+Y\\sin\\theta</annotation></semantics></math>"
+  },
+  "EQM00021": {
+    "tex": "-X\\sin\\theta+Y\\cos\\theta",
+    "display": true,
+    "mathml": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\"><semantics><mrow><mo>−</mo><mi>X</mi><mi>sin</mi><mo>⁡</mo><mi>θ</mi><mo>+</mo><mi>Y</mi><mi>cos</mi><mo>⁡</mo><mi>θ</mi></mrow><annotation encoding=\"application/x-tex\">-X\\sin\\theta+Y\\cos\\theta</annotation></semantics></math>"
+  },
+  "EQM00022": {
+    "tex": "=-(x'\\cos\\theta-y'\\sin\\theta)\\sin\\theta+(x'\\sin\\theta+y'\\cos\\theta)\\cos\\theta",
+    "display": true,
+    "mathml": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\"><semantics><mrow><mo>=</mo><mo>−</mo><mo stretchy=\"false\">(</mo><msup><mi>x</mi><mo mathvariant=\"normal\" lspace=\"0em\" rspace=\"0em\">′</mo></msup><mi>cos</mi><mo>⁡</mo><mi>θ</mi><mo>−</mo><msup><mi>y</mi><mo mathvariant=\"normal\" lspace=\"0em\" rspace=\"0em\">′</mo></msup><mi>sin</mi><mo>⁡</mo><mi>θ</mi><mo stretchy=\"false\">)</mo><mi>sin</mi><mo>⁡</mo><mi>θ</mi><mo>+</mo><mo stretchy=\"false\">(</mo><msup><mi>x</mi><mo mathvariant=\"normal\" lspace=\"0em\" rspace=\"0em\">′</mo></msup><mi>sin</mi><mo>⁡</mo><mi>θ</mi><mo>+</mo><msup><mi>y</mi><mo mathvariant=\"normal\" lspace=\"0em\" rspace=\"0em\">′</mo></msup><mi>cos</mi><mo>⁡</mo><mi>θ</mi><mo stretchy=\"false\">)</mo><mi>cos</mi><mo>⁡</mo><mi>θ</mi></mrow><annotation encoding=\"application/x-tex\">=-(x&#x27;\\cos\\theta-y&#x27;\\sin\\theta)\\sin\\theta+(x&#x27;\\sin\\theta+y&#x27;\\cos\\theta)\\cos\\theta</annotation></semantics></math>"
+  },
+  "EQM00023": {
+    "tex": "=-x'\\cos\\theta\\sin\\theta+y'\\sin^2\\theta+x'\\sin\\theta\\cos\\theta+y'\\cos^2\\theta",
+    "display": true,
+    "mathml": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\"><semantics><mrow><mo>=</mo><mo>−</mo><msup><mi>x</mi><mo mathvariant=\"normal\" lspace=\"0em\" rspace=\"0em\">′</mo></msup><mi>cos</mi><mo>⁡</mo><mi>θ</mi><mi>sin</mi><mo>⁡</mo><mi>θ</mi><mo>+</mo><msup><mi>y</mi><mo mathvariant=\"normal\" lspace=\"0em\" rspace=\"0em\">′</mo></msup><msup><mrow><mi>sin</mi><mo>⁡</mo></mrow><mn>2</mn></msup><mi>θ</mi><mo>+</mo><msup><mi>x</mi><mo mathvariant=\"normal\" lspace=\"0em\" rspace=\"0em\">′</mo></msup><mi>sin</mi><mo>⁡</mo><mi>θ</mi><mi>cos</mi><mo>⁡</mo><mi>θ</mi><mo>+</mo><msup><mi>y</mi><mo mathvariant=\"normal\" lspace=\"0em\" rspace=\"0em\">′</mo></msup><msup><mrow><mi>cos</mi><mo>⁡</mo></mrow><mn>2</mn></msup><mi>θ</mi></mrow><annotation encoding=\"application/x-tex\">=-x&#x27;\\cos\\theta\\sin\\theta+y&#x27;\\sin^2\\theta+x&#x27;\\sin\\theta\\cos\\theta+y&#x27;\\cos^2\\theta</annotation></semantics></math>"
+  },
+  "EQM00024": {
+    "tex": "=y'(\\sin^2\\theta+\\cos^2\\theta)=y'",
+    "display": true,
+    "mathml": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\"><semantics><mrow><mo>=</mo><msup><mi>y</mi><mo mathvariant=\"normal\" lspace=\"0em\" rspace=\"0em\">′</mo></msup><mo stretchy=\"false\">(</mo><msup><mrow><mi>sin</mi><mo>⁡</mo></mrow><mn>2</mn></msup><mi>θ</mi><mo>+</mo><msup><mrow><mi>cos</mi><mo>⁡</mo></mrow><mn>2</mn></msup><mi>θ</mi><mo stretchy=\"false\">)</mo><mo>=</mo><msup><mi>y</mi><mo mathvariant=\"normal\" lspace=\"0em\" rspace=\"0em\">′</mo></msup></mrow><annotation encoding=\"application/x-tex\">=y&#x27;(\\sin^2\\theta+\\cos^2\\theta)=y&#x27;</annotation></semantics></math>"
+  },
+  "EQM00025": {
+    "tex": "y'=-X\\sin\\theta+Y\\cos\\theta",
+    "display": true,
+    "mathml": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\"><semantics><mrow><msup><mi>y</mi><mo mathvariant=\"normal\" lspace=\"0em\" rspace=\"0em\">′</mo></msup><mo>=</mo><mo>−</mo><mi>X</mi><mi>sin</mi><mo>⁡</mo><mi>θ</mi><mo>+</mo><mi>Y</mi><mi>cos</mi><mo>⁡</mo><mi>θ</mi></mrow><annotation encoding=\"application/x-tex\">y&#x27;=-X\\sin\\theta+Y\\cos\\theta</annotation></semantics></math>"
+  },
+  "EQM00026": {
+    "tex": "X=x-x_0,\\qquad Y=y-y_0",
+    "display": true,
+    "mathml": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\"><semantics><mrow><mi>X</mi><mo>=</mo><mi>x</mi><mo>−</mo><msub><mi>x</mi><mn>0</mn></msub><mo separator=\"true\">,</mo><mspace width=\"2em\"/><mi>Y</mi><mo>=</mo><mi>y</mi><mo>−</mo><msub><mi>y</mi><mn>0</mn></msub></mrow><annotation encoding=\"application/x-tex\">X=x-x_0,\\qquad Y=y-y_0</annotation></semantics></math>"
+  },
+  "EQM00027": {
+    "tex": "x'=(x-x_0)\\cos\\theta+(y-y_0)\\sin\\theta",
+    "display": true,
+    "mathml": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\"><semantics><mrow><msup><mi>x</mi><mo mathvariant=\"normal\" lspace=\"0em\" rspace=\"0em\">′</mo></msup><mo>=</mo><mo stretchy=\"false\">(</mo><mi>x</mi><mo>−</mo><msub><mi>x</mi><mn>0</mn></msub><mo stretchy=\"false\">)</mo><mi>cos</mi><mo>⁡</mo><mi>θ</mi><mo>+</mo><mo stretchy=\"false\">(</mo><mi>y</mi><mo>−</mo><msub><mi>y</mi><mn>0</mn></msub><mo stretchy=\"false\">)</mo><mi>sin</mi><mo>⁡</mo><mi>θ</mi></mrow><annotation encoding=\"application/x-tex\">x&#x27;=(x-x_0)\\cos\\theta+(y-y_0)\\sin\\theta</annotation></semantics></math>"
+  },
+  "EQM00028": {
+    "tex": "y'=-(x-x_0)\\sin\\theta+(y-y_0)\\cos\\theta",
+    "display": true,
+    "mathml": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\"><semantics><mrow><msup><mi>y</mi><mo mathvariant=\"normal\" lspace=\"0em\" rspace=\"0em\">′</mo></msup><mo>=</mo><mo>−</mo><mo stretchy=\"false\">(</mo><mi>x</mi><mo>−</mo><msub><mi>x</mi><mn>0</mn></msub><mo stretchy=\"false\">)</mo><mi>sin</mi><mo>⁡</mo><mi>θ</mi><mo>+</mo><mo stretchy=\"false\">(</mo><mi>y</mi><mo>−</mo><msub><mi>y</mi><mn>0</mn></msub><mo stretchy=\"false\">)</mo><mi>cos</mi><mo>⁡</mo><mi>θ</mi></mrow><annotation encoding=\"application/x-tex\">y&#x27;=-(x-x_0)\\sin\\theta+(y-y_0)\\cos\\theta</annotation></semantics></math>"
+  },
+  "EQM00029": {
+    "tex": "X=r\\cos\\varphi,\\qquad Y=r\\sin\\varphi",
+    "display": true,
+    "mathml": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\"><semantics><mrow><mi>X</mi><mo>=</mo><mi>r</mi><mi>cos</mi><mo>⁡</mo><mi>φ</mi><mo separator=\"true\">,</mo><mspace width=\"2em\"/><mi>Y</mi><mo>=</mo><mi>r</mi><mi>sin</mi><mo>⁡</mo><mi>φ</mi></mrow><annotation encoding=\"application/x-tex\">X=r\\cos\\varphi,\\qquad Y=r\\sin\\varphi</annotation></semantics></math>"
+  },
+  "EQM00030": {
+    "tex": "x'=r\\cos(\\varphi-\\theta)=X\\cos\\theta+Y\\sin\\theta",
+    "display": true,
+    "mathml": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\"><semantics><mrow><msup><mi>x</mi><mo mathvariant=\"normal\" lspace=\"0em\" rspace=\"0em\">′</mo></msup><mo>=</mo><mi>r</mi><mi>cos</mi><mo>⁡</mo><mo stretchy=\"false\">(</mo><mi>φ</mi><mo>−</mo><mi>θ</mi><mo stretchy=\"false\">)</mo><mo>=</mo><mi>X</mi><mi>cos</mi><mo>⁡</mo><mi>θ</mi><mo>+</mo><mi>Y</mi><mi>sin</mi><mo>⁡</mo><mi>θ</mi></mrow><annotation encoding=\"application/x-tex\">x&#x27;=r\\cos(\\varphi-\\theta)=X\\cos\\theta+Y\\sin\\theta</annotation></semantics></math>"
+  },
+  "EQM00031": {
+    "tex": "y'=r\\sin(\\varphi-\\theta)=-X\\sin\\theta+Y\\cos\\theta",
+    "display": true,
+    "mathml": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\"><semantics><mrow><msup><mi>y</mi><mo mathvariant=\"normal\" lspace=\"0em\" rspace=\"0em\">′</mo></msup><mo>=</mo><mi>r</mi><mi>sin</mi><mo>⁡</mo><mo stretchy=\"false\">(</mo><mi>φ</mi><mo>−</mo><mi>θ</mi><mo stretchy=\"false\">)</mo><mo>=</mo><mo>−</mo><mi>X</mi><mi>sin</mi><mo>⁡</mo><mi>θ</mi><mo>+</mo><mi>Y</mi><mi>cos</mi><mo>⁡</mo><mi>θ</mi></mrow><annotation encoding=\"application/x-tex\">y&#x27;=r\\sin(\\varphi-\\theta)=-X\\sin\\theta+Y\\cos\\theta</annotation></semantics></math>"
+  },
+  "EQM00032": {
+    "tex": "(X,Y)=(1,0),\\quad\\theta=90^\\circ\\qquad(x',y')=(0,-1)",
+    "display": true,
+    "mathml": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\"><semantics><mrow><mo stretchy=\"false\">(</mo><mi>X</mi><mo separator=\"true\">,</mo><mi>Y</mi><mo stretchy=\"false\">)</mo><mo>=</mo><mo stretchy=\"false\">(</mo><mn>1</mn><mo separator=\"true\">,</mo><mn>0</mn><mo stretchy=\"false\">)</mo><mo separator=\"true\">,</mo><mspace width=\"1em\"/><mi>θ</mi><mo>=</mo><msup><mn>90</mn><mo>∘</mo></msup><mspace width=\"2em\"/><mo stretchy=\"false\">(</mo><msup><mi>x</mi><mo mathvariant=\"normal\" lspace=\"0em\" rspace=\"0em\">′</mo></msup><mo separator=\"true\">,</mo><msup><mi>y</mi><mo mathvariant=\"normal\" lspace=\"0em\" rspace=\"0em\">′</mo></msup><mo stretchy=\"false\">)</mo><mo>=</mo><mo stretchy=\"false\">(</mo><mn>0</mn><mo separator=\"true\">,</mo><mo>−</mo><mn>1</mn><mo stretchy=\"false\">)</mo></mrow><annotation encoding=\"application/x-tex\">(X,Y)=(1,0),\\quad\\theta=90^\\circ\\qquad(x&#x27;,y&#x27;)=(0,-1)</annotation></semantics></math>"
+  },
+  "EQM00033": {
+    "tex": "P=(3,2),\\quad O'=(1,0.5),\\quad\\theta=30^\\circ",
+    "display": true,
+    "mathml": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\"><semantics><mrow><mi>P</mi><mo>=</mo><mo stretchy=\"false\">(</mo><mn>3</mn><mo separator=\"true\">,</mo><mn>2</mn><mo stretchy=\"false\">)</mo><mo separator=\"true\">,</mo><mspace width=\"1em\"/><msup><mi>O</mi><mo mathvariant=\"normal\" lspace=\"0em\" rspace=\"0em\">′</mo></msup><mo>=</mo><mo stretchy=\"false\">(</mo><mn>1</mn><mo separator=\"true\">,</mo><mn>0.5</mn><mo stretchy=\"false\">)</mo><mo separator=\"true\">,</mo><mspace width=\"1em\"/><mi>θ</mi><mo>=</mo><msup><mn>30</mn><mo>∘</mo></msup></mrow><annotation encoding=\"application/x-tex\">P=(3,2),\\quad O&#x27;=(1,0.5),\\quad\\theta=30^\\circ</annotation></semantics></math>"
+  },
+  "EQM00034": {
+    "tex": "(X,Y)=(3-1,\\ 2-0.5)=(2,\\ 1.5)",
+    "display": true,
+    "mathml": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\"><semantics><mrow><mo stretchy=\"false\">(</mo><mi>X</mi><mo separator=\"true\">,</mo><mi>Y</mi><mo stretchy=\"false\">)</mo><mo>=</mo><mo stretchy=\"false\">(</mo><mn>3</mn><mo>−</mo><mn>1</mn><mo separator=\"true\">,</mo><mtext> </mtext><mn>2</mn><mo>−</mo><mn>0.5</mn><mo stretchy=\"false\">)</mo><mo>=</mo><mo stretchy=\"false\">(</mo><mn>2</mn><mo separator=\"true\">,</mo><mtext> </mtext><mn>1.5</mn><mo stretchy=\"false\">)</mo></mrow><annotation encoding=\"application/x-tex\">(X,Y)=(3-1,\\ 2-0.5)=(2,\\ 1.5)</annotation></semantics></math>"
+  },
+  "EQM00035": {
+    "tex": "x'=2\\frac{\\sqrt3}{2}+1.5\\frac12=\\sqrt3+0.75\\approx2.48",
+    "display": true,
+    "mathml": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\"><semantics><mrow><msup><mi>x</mi><mo mathvariant=\"normal\" lspace=\"0em\" rspace=\"0em\">′</mo></msup><mo>=</mo><mn>2</mn><mfrac><msqrt><mn>3</mn></msqrt><mn>2</mn></mfrac><mo>+</mo><mn>1.5</mn><mfrac><mn>1</mn><mn>2</mn></mfrac><mo>=</mo><msqrt><mn>3</mn></msqrt><mo>+</mo><mn>0.75</mn><mo>≈</mo><mn>2.48</mn></mrow><annotation encoding=\"application/x-tex\">x&#x27;=2\\frac{\\sqrt3}{2}+1.5\\frac12=\\sqrt3+0.75\\approx2.48</annotation></semantics></math>"
+  },
+  "EQM00036": {
+    "tex": "y'=-2\\frac12+1.5\\frac{\\sqrt3}{2}=-1+\\frac{3\\sqrt3}{4}\\approx0.30",
+    "display": true,
+    "mathml": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\"><semantics><mrow><msup><mi>y</mi><mo mathvariant=\"normal\" lspace=\"0em\" rspace=\"0em\">′</mo></msup><mo>=</mo><mo>−</mo><mn>2</mn><mfrac><mn>1</mn><mn>2</mn></mfrac><mo>+</mo><mn>1.5</mn><mfrac><msqrt><mn>3</mn></msqrt><mn>2</mn></mfrac><mo>=</mo><mo>−</mo><mn>1</mn><mo>+</mo><mfrac><mrow><mn>3</mn><msqrt><mn>3</mn></msqrt></mrow><mn>4</mn></mfrac><mo>≈</mo><mn>0.30</mn></mrow><annotation encoding=\"application/x-tex\">y&#x27;=-2\\frac12+1.5\\frac{\\sqrt3}{2}=-1+\\frac{3\\sqrt3}{4}\\approx0.30</annotation></semantics></math>"
+  },
+  "EQM00037": {
+    "tex": "Q=(1,3),\\quad O'=(1,0.5),\\quad\\theta=30^\\circ",
+    "display": true,
+    "mathml": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\"><semantics><mrow><mi>Q</mi><mo>=</mo><mo stretchy=\"false\">(</mo><mn>1</mn><mo separator=\"true\">,</mo><mn>3</mn><mo stretchy=\"false\">)</mo><mo separator=\"true\">,</mo><mspace width=\"1em\"/><msup><mi>O</mi><mo mathvariant=\"normal\" lspace=\"0em\" rspace=\"0em\">′</mo></msup><mo>=</mo><mo stretchy=\"false\">(</mo><mn>1</mn><mo separator=\"true\">,</mo><mn>0.5</mn><mo stretchy=\"false\">)</mo><mo separator=\"true\">,</mo><mspace width=\"1em\"/><mi>θ</mi><mo>=</mo><msup><mn>30</mn><mo>∘</mo></msup></mrow><annotation encoding=\"application/x-tex\">Q=(1,3),\\quad O&#x27;=(1,0.5),\\quad\\theta=30^\\circ</annotation></semantics></math>"
+  },
+  "EQM00038": {
+    "tex": "(X,Y)=(1-1,\\ 3-0.5)=(0,\\ 2.5)",
+    "display": true,
+    "mathml": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\"><semantics><mrow><mo stretchy=\"false\">(</mo><mi>X</mi><mo separator=\"true\">,</mo><mi>Y</mi><mo stretchy=\"false\">)</mo><mo>=</mo><mo stretchy=\"false\">(</mo><mn>1</mn><mo>−</mo><mn>1</mn><mo separator=\"true\">,</mo><mtext> </mtext><mn>3</mn><mo>−</mo><mn>0.5</mn><mo stretchy=\"false\">)</mo><mo>=</mo><mo stretchy=\"false\">(</mo><mn>0</mn><mo separator=\"true\">,</mo><mtext> </mtext><mn>2.5</mn><mo stretchy=\"false\">)</mo></mrow><annotation encoding=\"application/x-tex\">(X,Y)=(1-1,\\ 3-0.5)=(0,\\ 2.5)</annotation></semantics></math>"
+  },
+  "EQM00039": {
+    "tex": "x'=0\\frac{\\sqrt3}{2}+2.5\\frac12=1.25",
+    "display": true,
+    "mathml": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\"><semantics><mrow><msup><mi>x</mi><mo mathvariant=\"normal\" lspace=\"0em\" rspace=\"0em\">′</mo></msup><mo>=</mo><mn>0</mn><mfrac><msqrt><mn>3</mn></msqrt><mn>2</mn></mfrac><mo>+</mo><mn>2.5</mn><mfrac><mn>1</mn><mn>2</mn></mfrac><mo>=</mo><mn>1.25</mn></mrow><annotation encoding=\"application/x-tex\">x&#x27;=0\\frac{\\sqrt3}{2}+2.5\\frac12=1.25</annotation></semantics></math>"
+  },
+  "EQM00040": {
+    "tex": "y'=-0\\frac12+2.5\\frac{\\sqrt3}{2}=\\frac{5\\sqrt3}{4}\\approx2.17",
+    "display": true,
+    "mathml": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\"><semantics><mrow><msup><mi>y</mi><mo mathvariant=\"normal\" lspace=\"0em\" rspace=\"0em\">′</mo></msup><mo>=</mo><mo>−</mo><mn>0</mn><mfrac><mn>1</mn><mn>2</mn></mfrac><mo>+</mo><mn>2.5</mn><mfrac><msqrt><mn>3</mn></msqrt><mn>2</mn></mfrac><mo>=</mo><mfrac><mrow><mn>5</mn><msqrt><mn>3</mn></msqrt></mrow><mn>4</mn></mfrac><mo>≈</mo><mn>2.17</mn></mrow><annotation encoding=\"application/x-tex\">y&#x27;=-0\\frac12+2.5\\frac{\\sqrt3}{2}=\\frac{5\\sqrt3}{4}\\approx2.17</annotation></semantics></math>"
+  },
+  "EQM00041": {
+    "tex": "\\begin{pmatrix}x'\\\\y'\\end{pmatrix}=\\begin{pmatrix}\\cos\\theta&\\sin\\theta\\\\-\\sin\\theta&\\cos\\theta\\end{pmatrix}\\begin{pmatrix}x-x_0\\\\y-y_0\\end{pmatrix}",
+    "display": true,
+    "mathml": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\"><semantics><mrow><mrow><mo fence=\"true\">(</mo><mtable rowspacing=\"0.16em\" columnalign=\"center\" columnspacing=\"1em\"><mtr><mtd><mstyle scriptlevel=\"0\" displaystyle=\"false\"><msup><mi>x</mi><mo mathvariant=\"normal\" lspace=\"0em\" rspace=\"0em\">′</mo></msup></mstyle></mtd></mtr><mtr><mtd><mstyle scriptlevel=\"0\" displaystyle=\"false\"><msup><mi>y</mi><mo mathvariant=\"normal\" lspace=\"0em\" rspace=\"0em\">′</mo></msup></mstyle></mtd></mtr></mtable><mo fence=\"true\">)</mo></mrow><mo>=</mo><mrow><mo fence=\"true\">(</mo><mtable rowspacing=\"0.16em\" columnalign=\"center center\" columnspacing=\"1em\"><mtr><mtd><mstyle scriptlevel=\"0\" displaystyle=\"false\"><mrow><mi>cos</mi><mo>⁡</mo><mi>θ</mi></mrow></mstyle></mtd><mtd><mstyle scriptlevel=\"0\" displaystyle=\"false\"><mrow><mi>sin</mi><mo>⁡</mo><mi>θ</mi></mrow></mstyle></mtd></mtr><mtr><mtd><mstyle scriptlevel=\"0\" displaystyle=\"false\"><mrow><mo>−</mo><mi>sin</mi><mo>⁡</mo><mi>θ</mi></mrow></mstyle></mtd><mtd><mstyle scriptlevel=\"0\" displaystyle=\"false\"><mrow><mi>cos</mi><mo>⁡</mo><mi>θ</mi></mrow></mstyle></mtd></mtr></mtable><mo fence=\"true\">)</mo></mrow><mrow><mo fence=\"true\">(</mo><mtable rowspacing=\"0.16em\" columnalign=\"center\" columnspacing=\"1em\"><mtr><mtd><mstyle scriptlevel=\"0\" displaystyle=\"false\"><mrow><mi>x</mi><mo>−</mo><msub><mi>x</mi><mn>0</mn></msub></mrow></mstyle></mtd></mtr><mtr><mtd><mstyle scriptlevel=\"0\" displaystyle=\"false\"><mrow><mi>y</mi><mo>−</mo><msub><mi>y</mi><mn>0</mn></msub></mrow></mstyle></mtd></mtr></mtable><mo fence=\"true\">)</mo></mrow></mrow><annotation encoding=\"application/x-tex\">\\begin{pmatrix}x&#x27;\\\\y&#x27;\\end{pmatrix}=\\begin{pmatrix}\\cos\\theta&amp;\\sin\\theta\\\\-\\sin\\theta&amp;\\cos\\theta\\end{pmatrix}\\begin{pmatrix}x-x_0\\\\y-y_0\\end{pmatrix}</annotation></semantics></math>"
+  },
+  "EQM00042": {
+    "tex": "\\begin{pmatrix}x\\\\y\\end{pmatrix}=\\begin{pmatrix}x_0\\\\y_0\\end{pmatrix}+\\begin{pmatrix}\\cos\\theta&-\\sin\\theta\\\\\\sin\\theta&\\cos\\theta\\end{pmatrix}\\begin{pmatrix}x'\\\\y'\\end{pmatrix}",
+    "display": true,
+    "mathml": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\"><semantics><mrow><mrow><mo fence=\"true\">(</mo><mtable rowspacing=\"0.16em\" columnalign=\"center\" columnspacing=\"1em\"><mtr><mtd><mstyle scriptlevel=\"0\" displaystyle=\"false\"><mi>x</mi></mstyle></mtd></mtr><mtr><mtd><mstyle scriptlevel=\"0\" displaystyle=\"false\"><mi>y</mi></mstyle></mtd></mtr></mtable><mo fence=\"true\">)</mo></mrow><mo>=</mo><mrow><mo fence=\"true\">(</mo><mtable rowspacing=\"0.16em\" columnalign=\"center\" columnspacing=\"1em\"><mtr><mtd><mstyle scriptlevel=\"0\" displaystyle=\"false\"><msub><mi>x</mi><mn>0</mn></msub></mstyle></mtd></mtr><mtr><mtd><mstyle scriptlevel=\"0\" displaystyle=\"false\"><msub><mi>y</mi><mn>0</mn></msub></mstyle></mtd></mtr></mtable><mo fence=\"true\">)</mo></mrow><mo>+</mo><mrow><mo fence=\"true\">(</mo><mtable rowspacing=\"0.16em\" columnalign=\"center center\" columnspacing=\"1em\"><mtr><mtd><mstyle scriptlevel=\"0\" displaystyle=\"false\"><mrow><mi>cos</mi><mo>⁡</mo><mi>θ</mi></mrow></mstyle></mtd><mtd><mstyle scriptlevel=\"0\" displaystyle=\"false\"><mrow><mo>−</mo><mi>sin</mi><mo>⁡</mo><mi>θ</mi></mrow></mstyle></mtd></mtr><mtr><mtd><mstyle scriptlevel=\"0\" displaystyle=\"false\"><mrow><mi>sin</mi><mo>⁡</mo><mi>θ</mi></mrow></mstyle></mtd><mtd><mstyle scriptlevel=\"0\" displaystyle=\"false\"><mrow><mi>cos</mi><mo>⁡</mo><mi>θ</mi></mrow></mstyle></mtd></mtr></mtable><mo fence=\"true\">)</mo></mrow><mrow><mo fence=\"true\">(</mo><mtable rowspacing=\"0.16em\" columnalign=\"center\" columnspacing=\"1em\"><mtr><mtd><mstyle scriptlevel=\"0\" displaystyle=\"false\"><msup><mi>x</mi><mo mathvariant=\"normal\" lspace=\"0em\" rspace=\"0em\">′</mo></msup></mstyle></mtd></mtr><mtr><mtd><mstyle scriptlevel=\"0\" displaystyle=\"false\"><msup><mi>y</mi><mo mathvariant=\"normal\" lspace=\"0em\" rspace=\"0em\">′</mo></msup></mstyle></mtd></mtr></mtable><mo fence=\"true\">)</mo></mrow></mrow><annotation encoding=\"application/x-tex\">\\begin{pmatrix}x\\\\y\\end{pmatrix}=\\begin{pmatrix}x_0\\\\y_0\\end{pmatrix}+\\begin{pmatrix}\\cos\\theta&amp;-\\sin\\theta\\\\\\sin\\theta&amp;\\cos\\theta\\end{pmatrix}\\begin{pmatrix}x&#x27;\\\\y&#x27;\\end{pmatrix}</annotation></semantics></math>"
+  }
+}
