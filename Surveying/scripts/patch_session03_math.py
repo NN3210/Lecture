@@ -6,6 +6,8 @@ import json,re,zipfile,sys
 
 ROOT=Path(__file__).resolve().parents[1]
 OUT=ROOT/'materials/slides/第03回_測量の座標'
+if len(sys.argv)>2:
+    OUT=Path(sys.argv[2]).resolve()
 BUILD=OUT/'build'
 NS={'a':'http://schemas.openxmlformats.org/drawingml/2006/main',
     'm':'http://schemas.openxmlformats.org/officeDocument/2006/math',
