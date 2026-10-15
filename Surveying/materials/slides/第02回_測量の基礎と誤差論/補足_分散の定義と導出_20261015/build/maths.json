@@ -1,0 +1,72 @@
+{
+  "EQM00000": {
+    "tex": "x_i=X+e_i,\\qquad e_i=x_i-X",
+    "mathml": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\"><semantics><mrow><msub><mi>x</mi><mi>i</mi></msub><mo>=</mo><mi>X</mi><mo>+</mo><msub><mi>e</mi><mi>i</mi></msub><mo separator=\"true\">,</mo><mspace width=\"2em\"/><msub><mi>e</mi><mi>i</mi></msub><mo>=</mo><msub><mi>x</mi><mi>i</mi></msub><mo>−</mo><mi>X</mi></mrow><annotation encoding=\"application/x-tex\">x_i=X+e_i,\\qquad e_i=x_i-X</annotation></semantics></math>",
+    "display": true
+  },
+  "EQM00001": {
+    "tex": "\\mathrm{E}[e_i]=0",
+    "mathml": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\"><semantics><mrow><mi mathvariant=\"normal\">E</mi><mo stretchy=\"false\">[</mo><msub><mi>e</mi><mi>i</mi></msub><mo stretchy=\"false\">]</mo><mo>=</mo><mn>0</mn></mrow><annotation encoding=\"application/x-tex\">\\mathrm{E}[e_i]=0</annotation></semantics></math>",
+    "display": true
+  },
+  "EQM00002": {
+    "tex": "\\mathrm{E}[e_i]=(-2)\\cdot\\frac14+0\\cdot\\frac12+2\\cdot\\frac14=0\\,\\mathrm{mm}",
+    "mathml": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\"><semantics><mrow><mi mathvariant=\"normal\">E</mi><mo stretchy=\"false\">[</mo><msub><mi>e</mi><mi>i</mi></msub><mo stretchy=\"false\">]</mo><mo>=</mo><mo stretchy=\"false\">(</mo><mo>−</mo><mn>2</mn><mo stretchy=\"false\">)</mo><mo>⋅</mo><mfrac><mn>1</mn><mn>4</mn></mfrac><mo>+</mo><mn>0</mn><mo>⋅</mo><mfrac><mn>1</mn><mn>2</mn></mfrac><mo>+</mo><mn>2</mn><mo>⋅</mo><mfrac><mn>1</mn><mn>4</mn></mfrac><mo>=</mo><mn>0</mn><mtext> </mtext><mrow><mi mathvariant=\"normal\">m</mi><mi mathvariant=\"normal\">m</mi></mrow></mrow><annotation encoding=\"application/x-tex\">\\mathrm{E}[e_i]=(-2)\\cdot\\frac14+0\\cdot\\frac12+2\\cdot\\frac14=0\\,\\mathrm{mm}</annotation></semantics></math>",
+    "display": true
+  },
+  "EQM00003": {
+    "tex": "\\mathrm{E}[e_i^2]=4\\cdot\\frac14+0\\cdot\\frac12+4\\cdot\\frac14=2\\,\\mathrm{mm}^2",
+    "mathml": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\"><semantics><mrow><mi mathvariant=\"normal\">E</mi><mo stretchy=\"false\">[</mo><msubsup><mi>e</mi><mi>i</mi><mn>2</mn></msubsup><mo stretchy=\"false\">]</mo><mo>=</mo><mn>4</mn><mo>⋅</mo><mfrac><mn>1</mn><mn>4</mn></mfrac><mo>+</mo><mn>0</mn><mo>⋅</mo><mfrac><mn>1</mn><mn>2</mn></mfrac><mo>+</mo><mn>4</mn><mo>⋅</mo><mfrac><mn>1</mn><mn>4</mn></mfrac><mo>=</mo><mn>2</mn><mtext> </mtext><msup><mrow><mi mathvariant=\"normal\">m</mi><mi mathvariant=\"normal\">m</mi></mrow><mn>2</mn></msup></mrow><annotation encoding=\"application/x-tex\">\\mathrm{E}[e_i^2]=4\\cdot\\frac14+0\\cdot\\frac12+4\\cdot\\frac14=2\\,\\mathrm{mm}^2</annotation></semantics></math>",
+    "display": true
+  },
+  "EQM00004": {
+    "tex": "\\mu_e=\\mathrm{E}[e_i],\\qquad \\operatorname{Var}(e_i)=\\mathrm{E}[(e_i-\\mu_e)^2]",
+    "mathml": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\"><semantics><mrow><msub><mi>μ</mi><mi>e</mi></msub><mo>=</mo><mi mathvariant=\"normal\">E</mi><mo stretchy=\"false\">[</mo><msub><mi>e</mi><mi>i</mi></msub><mo stretchy=\"false\">]</mo><mo separator=\"true\">,</mo><mspace width=\"2em\"/><mi mathvariant=\"normal\">Var</mi><mo>⁡</mo><mo stretchy=\"false\">(</mo><msub><mi>e</mi><mi>i</mi></msub><mo stretchy=\"false\">)</mo><mo>=</mo><mi mathvariant=\"normal\">E</mi><mo stretchy=\"false\">[</mo><mo stretchy=\"false\">(</mo><msub><mi>e</mi><mi>i</mi></msub><mo>−</mo><msub><mi>μ</mi><mi>e</mi></msub><msup><mo stretchy=\"false\">)</mo><mn>2</mn></msup><mo stretchy=\"false\">]</mo></mrow><annotation encoding=\"application/x-tex\">\\mu_e=\\mathrm{E}[e_i],\\qquad \\operatorname{Var}(e_i)=\\mathrm{E}[(e_i-\\mu_e)^2]</annotation></semantics></math>",
+    "display": true
+  },
+  "EQM00005": {
+    "tex": "\\mu_e=0:\\qquad\\tau^2=\\operatorname{Var}(e_i)=\\mathrm{E}[(e_i-0)^2]=\\mathrm{E}[e_i^2]",
+    "mathml": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\"><semantics><mrow><msub><mi>μ</mi><mi>e</mi></msub><mo>=</mo><mn>0</mn><mo>:</mo><mspace width=\"2em\"/><msup><mi>τ</mi><mn>2</mn></msup><mo>=</mo><mi mathvariant=\"normal\">Var</mi><mo>⁡</mo><mo stretchy=\"false\">(</mo><msub><mi>e</mi><mi>i</mi></msub><mo stretchy=\"false\">)</mo><mo>=</mo><mi mathvariant=\"normal\">E</mi><mo stretchy=\"false\">[</mo><mo stretchy=\"false\">(</mo><msub><mi>e</mi><mi>i</mi></msub><mo>−</mo><mn>0</mn><msup><mo stretchy=\"false\">)</mo><mn>2</mn></msup><mo stretchy=\"false\">]</mo><mo>=</mo><mi mathvariant=\"normal\">E</mi><mo stretchy=\"false\">[</mo><msubsup><mi>e</mi><mi>i</mi><mn>2</mn></msubsup><mo stretchy=\"false\">]</mo></mrow><annotation encoding=\"application/x-tex\">\\mu_e=0:\\qquad\\tau^2=\\operatorname{Var}(e_i)=\\mathrm{E}[(e_i-0)^2]=\\mathrm{E}[e_i^2]</annotation></semantics></math>",
+    "display": true
+  },
+  "EQM00006": {
+    "tex": "\\tau=\\sqrt{\\mathrm{E}[e_i^2]}",
+    "mathml": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\"><semantics><mrow><mi>τ</mi><mo>=</mo><msqrt><mrow><mi mathvariant=\"normal\">E</mi><mo stretchy=\"false\">[</mo><msubsup><mi>e</mi><mi>i</mi><mn>2</mn></msubsup><mo stretchy=\"false\">]</mo></mrow></msqrt></mrow><annotation encoding=\"application/x-tex\">\\tau=\\sqrt{\\mathrm{E}[e_i^2]}</annotation></semantics></math>",
+    "display": true
+  },
+  "EQM00007": {
+    "tex": "\\operatorname{Var}(e_i)=\\mathrm{E}[(e_i-\\mu_e)^2]",
+    "mathml": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\"><semantics><mrow><mi mathvariant=\"normal\">Var</mi><mo>⁡</mo><mo stretchy=\"false\">(</mo><msub><mi>e</mi><mi>i</mi></msub><mo stretchy=\"false\">)</mo><mo>=</mo><mi mathvariant=\"normal\">E</mi><mo stretchy=\"false\">[</mo><mo stretchy=\"false\">(</mo><msub><mi>e</mi><mi>i</mi></msub><mo>−</mo><msub><mi>μ</mi><mi>e</mi></msub><msup><mo stretchy=\"false\">)</mo><mn>2</mn></msup><mo stretchy=\"false\">]</mo></mrow><annotation encoding=\"application/x-tex\">\\operatorname{Var}(e_i)=\\mathrm{E}[(e_i-\\mu_e)^2]</annotation></semantics></math>",
+    "display": true
+  },
+  "EQM00008": {
+    "tex": "=\\mathrm{E}[e_i^2-2\\mu_e e_i+\\mu_e^2]",
+    "mathml": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\"><semantics><mrow><mo>=</mo><mi mathvariant=\"normal\">E</mi><mo stretchy=\"false\">[</mo><msubsup><mi>e</mi><mi>i</mi><mn>2</mn></msubsup><mo>−</mo><mn>2</mn><msub><mi>μ</mi><mi>e</mi></msub><msub><mi>e</mi><mi>i</mi></msub><mo>+</mo><msubsup><mi>μ</mi><mi>e</mi><mn>2</mn></msubsup><mo stretchy=\"false\">]</mo></mrow><annotation encoding=\"application/x-tex\">=\\mathrm{E}[e_i^2-2\\mu_e e_i+\\mu_e^2]</annotation></semantics></math>",
+    "display": true
+  },
+  "EQM00009": {
+    "tex": "=\\mathrm{E}[e_i^2]-2\\mu_e\\mathrm{E}[e_i]+\\mu_e^2",
+    "mathml": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\"><semantics><mrow><mo>=</mo><mi mathvariant=\"normal\">E</mi><mo stretchy=\"false\">[</mo><msubsup><mi>e</mi><mi>i</mi><mn>2</mn></msubsup><mo stretchy=\"false\">]</mo><mo>−</mo><mn>2</mn><msub><mi>μ</mi><mi>e</mi></msub><mi mathvariant=\"normal\">E</mi><mo stretchy=\"false\">[</mo><msub><mi>e</mi><mi>i</mi></msub><mo stretchy=\"false\">]</mo><mo>+</mo><msubsup><mi>μ</mi><mi>e</mi><mn>2</mn></msubsup></mrow><annotation encoding=\"application/x-tex\">=\\mathrm{E}[e_i^2]-2\\mu_e\\mathrm{E}[e_i]+\\mu_e^2</annotation></semantics></math>",
+    "display": true
+  },
+  "EQM00010": {
+    "tex": "=\\mathrm{E}[e_i^2]-2\\mu_e^2+\\mu_e^2=\\mathrm{E}[e_i^2]-\\mu_e^2",
+    "mathml": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\"><semantics><mrow><mo>=</mo><mi mathvariant=\"normal\">E</mi><mo stretchy=\"false\">[</mo><msubsup><mi>e</mi><mi>i</mi><mn>2</mn></msubsup><mo stretchy=\"false\">]</mo><mo>−</mo><mn>2</mn><msubsup><mi>μ</mi><mi>e</mi><mn>2</mn></msubsup><mo>+</mo><msubsup><mi>μ</mi><mi>e</mi><mn>2</mn></msubsup><mo>=</mo><mi mathvariant=\"normal\">E</mi><mo stretchy=\"false\">[</mo><msubsup><mi>e</mi><mi>i</mi><mn>2</mn></msubsup><mo stretchy=\"false\">]</mo><mo>−</mo><msubsup><mi>μ</mi><mi>e</mi><mn>2</mn></msubsup></mrow><annotation encoding=\"application/x-tex\">=\\mathrm{E}[e_i^2]-2\\mu_e^2+\\mu_e^2=\\mathrm{E}[e_i^2]-\\mu_e^2</annotation></semantics></math>",
+    "display": true
+  },
+  "EQM00011": {
+    "tex": "\\mu_e=0\\quad\\Longrightarrow\\quad\\operatorname{Var}(e_i)=\\mathrm{E}[e_i^2]",
+    "mathml": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\"><semantics><mrow><msub><mi>μ</mi><mi>e</mi></msub><mo>=</mo><mn>0</mn><mspace width=\"1em\"/><mo>⟹</mo><mspace width=\"1em\"/><mi mathvariant=\"normal\">Var</mi><mo>⁡</mo><mo stretchy=\"false\">(</mo><msub><mi>e</mi><mi>i</mi></msub><mo stretchy=\"false\">)</mo><mo>=</mo><mi mathvariant=\"normal\">E</mi><mo stretchy=\"false\">[</mo><msubsup><mi>e</mi><mi>i</mi><mn>2</mn></msubsup><mo stretchy=\"false\">]</mo></mrow><annotation encoding=\"application/x-tex\">\\mu_e=0\\quad\\Longrightarrow\\quad\\operatorname{Var}(e_i)=\\mathrm{E}[e_i^2]</annotation></semantics></math>",
+    "display": true
+  },
+  "EQM00012": {
+    "tex": "\\mathrm{E}[e_i]=3\\,\\mathrm{mm},\\qquad\\operatorname{Var}(e_i)=2\\,\\mathrm{mm}^2",
+    "mathml": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\"><semantics><mrow><mi mathvariant=\"normal\">E</mi><mo stretchy=\"false\">[</mo><msub><mi>e</mi><mi>i</mi></msub><mo stretchy=\"false\">]</mo><mo>=</mo><mn>3</mn><mtext> </mtext><mrow><mi mathvariant=\"normal\">m</mi><mi mathvariant=\"normal\">m</mi></mrow><mo separator=\"true\">,</mo><mspace width=\"2em\"/><mi mathvariant=\"normal\">Var</mi><mo>⁡</mo><mo stretchy=\"false\">(</mo><msub><mi>e</mi><mi>i</mi></msub><mo stretchy=\"false\">)</mo><mo>=</mo><mn>2</mn><mtext> </mtext><msup><mrow><mi mathvariant=\"normal\">m</mi><mi mathvariant=\"normal\">m</mi></mrow><mn>2</mn></msup></mrow><annotation encoding=\"application/x-tex\">\\mathrm{E}[e_i]=3\\,\\mathrm{mm},\\qquad\\operatorname{Var}(e_i)=2\\,\\mathrm{mm}^2</annotation></semantics></math>",
+    "display": true
+  },
+  "EQM00013": {
+    "tex": "\\mathrm{E}[e_i^2]=\\operatorname{Var}(e_i)+\\{\\mathrm{E}[e_i]\\}^2=2+9=11\\,\\mathrm{mm}^2",
+    "mathml": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\"><semantics><mrow><mi mathvariant=\"normal\">E</mi><mo stretchy=\"false\">[</mo><msubsup><mi>e</mi><mi>i</mi><mn>2</mn></msubsup><mo stretchy=\"false\">]</mo><mo>=</mo><mi mathvariant=\"normal\">Var</mi><mo>⁡</mo><mo stretchy=\"false\">(</mo><msub><mi>e</mi><mi>i</mi></msub><mo stretchy=\"false\">)</mo><mo>+</mo><mo stretchy=\"false\">{</mo><mi mathvariant=\"normal\">E</mi><mo stretchy=\"false\">[</mo><msub><mi>e</mi><mi>i</mi></msub><mo stretchy=\"false\">]</mo><msup><mo stretchy=\"false\">}</mo><mn>2</mn></msup><mo>=</mo><mn>2</mn><mo>+</mo><mn>9</mn><mo>=</mo><mn>11</mn><mtext> </mtext><msup><mrow><mi mathvariant=\"normal\">m</mi><mi mathvariant=\"normal\">m</mi></mrow><mn>2</mn></msup></mrow><annotation encoding=\"application/x-tex\">\\mathrm{E}[e_i^2]=\\operatorname{Var}(e_i)+\\{\\mathrm{E}[e_i]\\}^2=2+9=11\\,\\mathrm{mm}^2</annotation></semantics></math>",
+    "display": true
+  }
+}
