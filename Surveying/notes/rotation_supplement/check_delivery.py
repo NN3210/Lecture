@@ -3,16 +3,16 @@ from pathlib import Path
 import hashlib
 import json
 import zipfile
-import fitz
+from pypdf import PdfReader
 from lxml import etree as E
 
 ROOT = Path(__file__).resolve().parents[2]
 OUT = ROOT / 'materials/slides/第03回_測量の座標/補足_点と座標軸の回転_20261015'
 pptx = OUT / '点の回転と座標軸の回転_図解.pptx'
 pdf = OUT / '点の回転と座標軸の回転_図解.pdf'
-with fitz.open(pdf) as doc:
-    assert len(doc) == 2
-    assert not doc.metadata.get('author')
+doc = PdfReader(pdf)
+assert len(doc.pages) == 2
+assert not doc.metadata.author
 with zipfile.ZipFile(pptx) as package:
     ns = {'m': 'http://schemas.openxmlformats.org/officeDocument/2006/math'}
     slides = [n for n in package.namelist() if n.startswith('ppt/slides/slide') and n.endswith('.xml')]
