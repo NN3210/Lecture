@@ -1,0 +1,758 @@
+[
+  {
+    "slide": 1,
+    "shape": 5,
+    "old": "√n",
+    "tex": "\\sqrt{n}",
+    "size": null
+  },
+  {
+    "slide": 2,
+    "shape": 5,
+    "old": "x̄ = (30.000 + 30.004 + 30.002 + 30.006) / 4",
+    "tex": "\\bar{x}=\\frac{30.000+30.004+30.002+30.006}{4}",
+    "size": null
+  },
+  {
+    "slide": 2,
+    "shape": 6,
+    "old": "x̄ = 30.003 m",
+    "tex": "\\bar{x}=30.003\\,\\mathrm{m}",
+    "size": null
+  },
+  {
+    "slide": 4,
+    "shape": 3,
+    "old": "xᵢ = X + eᵢ",
+    "tex": "x_i=X+e_i",
+    "size": null
+  },
+  {
+    "slide": 4,
+    "shape": 4,
+    "old": "X",
+    "tex": "X",
+    "size": null
+  },
+  {
+    "slide": 4,
+    "shape": 4,
+    "old": "xᵢ",
+    "tex": "x_i",
+    "size": null
+  },
+  {
+    "slide": 4,
+    "shape": 4,
+    "old": "i",
+    "tex": "i",
+    "size": null
+  },
+  {
+    "slide": 4,
+    "shape": 5,
+    "old": "eᵢ",
+    "tex": "e_i",
+    "size": null
+  },
+  {
+    "slide": 4,
+    "shape": 6,
+    "old": "n",
+    "tex": "n",
+    "size": null
+  },
+  {
+    "slide": 4,
+    "shape": 6,
+    "old": "x̄",
+    "tex": "\\bar{x}",
+    "size": null
+  },
+  {
+    "slide": 4,
+    "shape": 7,
+    "old": "x̄ = (x₁ + ⋯ + xₙ) / n = X + (e₁ + ⋯ + eₙ) / n",
+    "tex": "\\bar{x}=\\frac{x_1+\\cdots+x_n}{n}=X+\\frac{e_1+\\cdots+e_n}{n}",
+    "size": null
+  },
+  {
+    "slide": 5,
+    "shape": 4,
+    "old": "x̄ = (x₁ + x₂ + x₃ + x₄) / 4",
+    "tex": "\\bar{x}=\\frac{x_1+x_2+x_3+x_4}{4}",
+    "size": null
+  },
+  {
+    "slide": 5,
+    "shape": 5,
+    "old": "4 mm / 4 = 1 mm",
+    "tex": "\\frac{4\\,\\mathrm{mm}}{4}=1\\,\\mathrm{mm}",
+    "size": null
+  },
+  {
+    "slide": 5,
+    "shape": 6,
+    "old": "1/4",
+    "tex": "\\frac{1}{4}",
+    "size": null
+  },
+  {
+    "slide": 5,
+    "shape": 8,
+    "old": "1/4",
+    "tex": "\\frac{1}{4}",
+    "size": null
+  },
+  {
+    "slide": 6,
+    "shape": 3,
+    "old": "E[ ]",
+    "tex": "\\mathrm{E}[\\;]",
+    "size": null
+  },
+  {
+    "slide": 6,
+    "shape": 5,
+    "old": "E[eᵢ] = 0",
+    "tex": "\\mathrm{E}[e_i]=0",
+    "size": null
+  },
+  {
+    "slide": 6,
+    "shape": 6,
+    "old": "τ² = E[eᵢ²]",
+    "tex": "\\tau^2=\\mathrm{E}[e_i^2]",
+    "size": null
+  },
+  {
+    "slide": 6,
+    "shape": 6,
+    "old": "τ = √E[eᵢ²]",
+    "tex": "\\tau=\\sqrt{\\mathrm{E}[e_i^2]}",
+    "size": 24
+  },
+  {
+    "slide": 7,
+    "shape": 3,
+    "old": "e₁",
+    "tex": "e_1",
+    "size": null
+  },
+  {
+    "slide": 7,
+    "shape": 3,
+    "old": "e₂",
+    "tex": "e_2",
+    "size": null
+  },
+  {
+    "slide": 7,
+    "shape": 5,
+    "old": "E[e₁e₂] = (1 − 1 − 1 + 1) / 4 = 0",
+    "tex": "\\mathrm{E}[e_1e_2]=\\frac{1-1-1+1}{4}=0",
+    "size": null
+  },
+  {
+    "slide": 7,
+    "shape": null,
+    "old": "e₁＋e₂",
+    "tex": "e_1+e_2",
+    "size": null
+  },
+  {
+    "slide": 7,
+    "shape": null,
+    "old": "e₁e₂",
+    "tex": "e_1e_2",
+    "size": null
+  },
+  {
+    "slide": 7,
+    "shape": null,
+    "old": "e₁",
+    "tex": "e_1",
+    "size": null
+  },
+  {
+    "slide": 7,
+    "shape": null,
+    "old": "e₂",
+    "tex": "e_2",
+    "size": null
+  },
+  {
+    "slide": 8,
+    "shape": 3,
+    "old": "Var",
+    "tex": "\\operatorname{Var}",
+    "size": null
+  },
+  {
+    "slide": 8,
+    "shape": 4,
+    "old": "(e₁ + e₂)² = e₁² + 2e₁e₂ + e₂²",
+    "tex": "(e_1+e_2)^2=e_1^2+2e_1e_2+e_2^2",
+    "size": null
+  },
+  {
+    "slide": 8,
+    "shape": 5,
+    "old": "E[(e₁ + e₂)²] = E[e₁²] + 2E[e₁e₂] + E[e₂²]",
+    "tex": "\\mathrm{E}[(e_1+e_2)^2]=\\mathrm{E}[e_1^2]+2\\mathrm{E}[e_1e_2]+\\mathrm{E}[e_2^2]",
+    "size": null
+  },
+  {
+    "slide": 8,
+    "shape": 6,
+    "old": "E[e₁e₂] = 0",
+    "tex": "\\mathrm{E}[e_1e_2]=0",
+    "size": null
+  },
+  {
+    "slide": 8,
+    "shape": 7,
+    "old": "Var(e₁ + e₂) = Var(e₁) + Var(e₂)",
+    "tex": "\\operatorname{Var}(e_1+e_2)=\\operatorname{Var}(e_1)+\\operatorname{Var}(e_2)",
+    "size": null
+  },
+  {
+    "slide": 9,
+    "shape": 8,
+    "old": "1/n²",
+    "tex": "1/n^2",
+    "size": null
+  },
+  {
+    "slide": 9,
+    "shape": 8,
+    "old": "1/n",
+    "tex": "1/n",
+    "size": null
+  },
+  {
+    "slide": 9,
+    "shape": 3,
+    "old": "eᵢ/n",
+    "tex": "e_i/n",
+    "size": null
+  },
+  {
+    "slide": 9,
+    "shape": 3,
+    "old": "eᵢ",
+    "tex": "e_i",
+    "size": null
+  },
+  {
+    "slide": 9,
+    "shape": 4,
+    "old": "(eᵢ / n)² = eᵢ² / n²",
+    "tex": "\\left(\\frac{e_i}{n}\\right)^2=\\frac{e_i^2}{n^2}",
+    "size": null
+  },
+  {
+    "slide": 9,
+    "shape": 5,
+    "old": "Var(eᵢ / n) = τ² / n²",
+    "tex": "\\operatorname{Var}\\left(\\frac{e_i}{n}\\right)=\\frac{\\tau^2}{n^2}",
+    "size": null
+  },
+  {
+    "slide": 9,
+    "shape": 6,
+    "old": "τ²/16",
+    "tex": "\\tau^2/16",
+    "size": null
+  },
+  {
+    "slide": 9,
+    "shape": 7,
+    "old": "1/n²",
+    "tex": "1/n^2",
+    "size": null
+  },
+  {
+    "slide": 10,
+    "shape": 9,
+    "old": "n",
+    "tex": "n",
+    "size": null
+  },
+  {
+    "slide": 10,
+    "shape": 3,
+    "old": "n",
+    "tex": "n",
+    "size": null
+  },
+  {
+    "slide": 10,
+    "shape": 4,
+    "old": "Var(x̄) = τ²/n² + ⋯ + τ²/n²",
+    "tex": "\\operatorname{Var}(\\bar{x})=\\frac{\\tau^2}{n^2}+\\cdots+\\frac{\\tau^2}{n^2}",
+    "size": 22.5
+  },
+  {
+    "slide": 10,
+    "shape": 5,
+    "old": "　　　 = n × τ²/n² = τ²/n",
+    "tex": "=n\\times\\frac{\\tau^2}{n^2}=\\frac{\\tau^2}{n}",
+    "size": 22.5
+  },
+  {
+    "slide": 10,
+    "shape": 6,
+    "old": "SD(x̄) = √(τ²/n) = τ/√n",
+    "tex": "\\operatorname{SD}(\\bar{x})=\\sqrt{\\frac{\\tau^2}{n}}=\\frac{\\tau}{\\sqrt{n}}",
+    "size": 20.25
+  },
+  {
+    "slide": 10,
+    "shape": 7,
+    "old": "SD",
+    "tex": "\\operatorname{SD}",
+    "size": null
+  },
+  {
+    "slide": 10,
+    "shape": 7,
+    "old": "X",
+    "tex": "X",
+    "size": null
+  },
+  {
+    "slide": 10,
+    "shape": 8,
+    "old": "1/n²",
+    "tex": "1/n^2",
+    "size": null
+  },
+  {
+    "slide": 10,
+    "shape": 8,
+    "old": "1/n",
+    "tex": "1/n",
+    "size": null
+  },
+  {
+    "slide": 10,
+    "shape": 8,
+    "old": "1/√n",
+    "tex": "1/\\sqrt{n}",
+    "size": null
+  },
+  {
+    "slide": 10,
+    "shape": 8,
+    "old": "n",
+    "tex": "n",
+    "size": null
+  },
+  {
+    "slide": 11,
+    "shape": 3,
+    "old": "τ = 4 mm",
+    "tex": "\\tau=4\\,\\mathrm{mm}",
+    "size": null
+  },
+  {
+    "slide": 11,
+    "shape": null,
+    "old": "4 / 4",
+    "tex": "\\frac{4}{4}",
+    "size": 18.75
+  },
+  {
+    "slide": 11,
+    "shape": null,
+    "old": "1²",
+    "tex": "1^2",
+    "size": null
+  },
+  {
+    "slide": 11,
+    "shape": null,
+    "old": "1＋1＋1＋1",
+    "tex": "1+1+1+1",
+    "size": null
+  },
+  {
+    "slide": 11,
+    "shape": null,
+    "old": "√4",
+    "tex": "\\sqrt{4}",
+    "size": null
+  },
+  {
+    "slide": 12,
+    "shape": 9,
+    "old": "τ",
+    "tex": "\\tau",
+    "size": null
+  },
+  {
+    "slide": 12,
+    "shape": 3,
+    "old": "vᵢ = xᵢ − x̄",
+    "tex": "v_i=x_i-\\bar{x}",
+    "size": null
+  },
+  {
+    "slide": 12,
+    "shape": 4,
+    "old": "σ = √[ (v₁² + ⋯ + vₙ²) / (n − 1) ]",
+    "tex": "\\sigma=\\sqrt{\\frac{v_1^2+\\cdots+v_n^2}{n-1}}",
+    "size": 20.25
+  },
+  {
+    "slide": 12,
+    "shape": 5,
+    "old": "σ(x̄) = σ / √n",
+    "tex": "\\sigma(\\bar{x})=\\frac{\\sigma}{\\sqrt{n}}",
+    "size": 24
+  },
+  {
+    "slide": 12,
+    "shape": 6,
+    "old": "σ(x̄)",
+    "tex": "\\sigma(\\bar{x})",
+    "size": null
+  },
+  {
+    "slide": 12,
+    "shape": 6,
+    "old": "σ",
+    "tex": "\\sigma",
+    "size": null
+  },
+  {
+    "slide": 12,
+    "shape": 7,
+    "old": "σ(x̄)",
+    "tex": "\\sigma(\\bar{x})",
+    "size": null
+  },
+  {
+    "slide": 12,
+    "shape": 8,
+    "old": "n−1",
+    "tex": "n-1",
+    "size": null
+  },
+  {
+    "slide": 12,
+    "shape": 8,
+    "old": "√n",
+    "tex": "\\sqrt{n}",
+    "size": null
+  },
+  {
+    "slide": 13,
+    "shape": 3,
+    "old": "x̄ = 30.004 m",
+    "tex": "\\bar{x}=30.004\\,\\mathrm{m}",
+    "size": null
+  },
+  {
+    "slide": 13,
+    "shape": 3,
+    "old": "Σ",
+    "tex": "\\sum",
+    "size": null
+  },
+  {
+    "slide": 13,
+    "shape": null,
+    "old": "xᵢ",
+    "tex": "x_i",
+    "size": null
+  },
+  {
+    "slide": 13,
+    "shape": null,
+    "old": "vᵢ²",
+    "tex": "v_i^2",
+    "size": null
+  },
+  {
+    "slide": 13,
+    "shape": null,
+    "old": "vᵢ",
+    "tex": "v_i",
+    "size": null
+  },
+  {
+    "slide": 13,
+    "shape": 5,
+    "old": "Σvᵢ² = 40 mm²",
+    "tex": "\\sum v_i^2=40\\,\\mathrm{mm}^2",
+    "size": null
+  },
+  {
+    "slide": 13,
+    "shape": 5,
+    "old": "σ = √(40/4) = √10 ≈ 3.16 mm",
+    "tex": "\\sigma=\\sqrt{\\frac{40}{4}}=\\sqrt{10}\\approx3.16\\,\\mathrm{mm}",
+    "size": 23
+  },
+  {
+    "slide": 13,
+    "shape": 6,
+    "old": "σ(x̄) = √10/√5 = √2 ≈ 1.41 mm",
+    "tex": "\\sigma(\\bar{x})=\\frac{\\sqrt{10}}{\\sqrt{5}}=\\sqrt{2}\\approx1.41\\,\\mathrm{mm}",
+    "size": 23
+  },
+  {
+    "slide": 14,
+    "shape": 3,
+    "old": "τ = 4 mm",
+    "tex": "\\tau=4\\,\\mathrm{mm}",
+    "size": null
+  },
+  {
+    "slide": 14,
+    "shape": 6,
+    "old": "SD(x̄) = 4/√n mm",
+    "tex": "\\operatorname{SD}(\\bar{x})=\\frac{4}{\\sqrt{n}}\\,\\mathrm{mm}",
+    "size": 22.5
+  },
+  {
+    "slide": 14,
+    "shape": 7,
+    "old": "1/2",
+    "tex": "\\frac{1}{2}",
+    "size": 24
+  },
+  {
+    "slide": 14,
+    "shape": 8,
+    "old": "1/4",
+    "tex": "\\frac{1}{4}",
+    "size": 24
+  },
+  {
+    "slide": 15,
+    "shape": 4,
+    "old": "σ = 6 mm",
+    "tex": "\\sigma=6\\,\\mathrm{mm}",
+    "size": null
+  },
+  {
+    "slide": 15,
+    "shape": 4,
+    "old": "t = 2 mm",
+    "tex": "t=2\\,\\mathrm{mm}",
+    "size": null
+  },
+  {
+    "slide": 15,
+    "shape": 7,
+    "old": "n",
+    "tex": "n",
+    "size": null
+  },
+  {
+    "slide": 15,
+    "shape": 8,
+    "old": "σ/√n ≤ t",
+    "tex": "\\frac{\\sigma}{\\sqrt{n}}\\le t",
+    "size": 20
+  },
+  {
+    "slide": 15,
+    "shape": 9,
+    "old": "n ≥ (σ/t)²",
+    "tex": "n\\ge\\left(\\frac{\\sigma}{t}\\right)^2",
+    "size": 19.5
+  },
+  {
+    "slide": 15,
+    "shape": 10,
+    "old": "n ≥ (6/2)² = 9",
+    "tex": "n\\ge\\left(\\frac{6}{2}\\right)^2=9",
+    "size": 19.5
+  },
+  {
+    "slide": 16,
+    "shape": null,
+    "old": "(6/3)² = 4",
+    "tex": "\\left(\\frac{6}{3}\\right)^2=4",
+    "size": 18.75
+  },
+  {
+    "slide": 16,
+    "shape": null,
+    "old": "(6/2)² = 9",
+    "tex": "\\left(\\frac{6}{2}\\right)^2=9",
+    "size": 18.75
+  },
+  {
+    "slide": 16,
+    "shape": null,
+    "old": "(6/1)² = 36",
+    "tex": "\\left(\\frac{6}{1}\\right)^2=36",
+    "size": 18.75
+  },
+  {
+    "slide": 17,
+    "shape": 3,
+    "old": "b = ＋2 mm",
+    "tex": "b=+2\\,\\mathrm{mm}",
+    "size": null
+  },
+  {
+    "slide": 17,
+    "shape": 4,
+    "old": "xᵢ = X + b + eᵢ",
+    "tex": "x_i=X+b+e_i",
+    "size": null
+  },
+  {
+    "slide": 17,
+    "shape": 5,
+    "old": "x̄ = X + b + (e₁ + ⋯ + eₙ) / n",
+    "tex": "\\bar{x}=X+b+\\frac{e_1+\\cdots+e_n}{n}",
+    "size": null
+  },
+  {
+    "slide": 17,
+    "shape": 6,
+    "old": "X＋2 mm",
+    "tex": "X+2\\,\\mathrm{mm}",
+    "size": null
+  },
+  {
+    "slide": 18,
+    "shape": 4,
+    "old": "e",
+    "tex": "e",
+    "size": null
+  },
+  {
+    "slide": 18,
+    "shape": 5,
+    "old": "(e + e + e + e) / 4 = e",
+    "tex": "\\frac{e+e+e+e}{4}=e",
+    "size": null
+  },
+  {
+    "slide": 18,
+    "shape": 8,
+    "old": "σ/√n",
+    "tex": "\\sigma/\\sqrt{n}",
+    "size": null
+  },
+  {
+    "slide": 20,
+    "shape": 3,
+    "old": "6/√9 = 2 mm",
+    "tex": "\\frac{6}{\\sqrt{9}}=2\\,\\mathrm{mm}",
+    "size": null
+  },
+  {
+    "slide": 20,
+    "shape": 4,
+    "old": "6/√n = 1",
+    "tex": "\\frac{6}{\\sqrt{n}}=1",
+    "size": null
+  },
+  {
+    "slide": 20,
+    "shape": 4,
+    "old": "√n = 6",
+    "tex": "\\sqrt{n}=6",
+    "size": null
+  },
+  {
+    "slide": 20,
+    "shape": 4,
+    "old": "n = 36",
+    "tex": "n=36",
+    "size": null
+  },
+  {
+    "slide": 20,
+    "shape": 6,
+    "old": "1回の標準偏差 / √観測回数",
+    "tex": "\\frac{\\text{1回の標準偏差}}{\\sqrt{\\text{観測回数}}}",
+    "size": 23.25
+  },
+  {
+    "slide": 21,
+    "shape": 3,
+    "old": "y = f(x₁, …, xₙ)",
+    "tex": "y=f(x_1,\\ldots,x_n)",
+    "size": null
+  },
+  {
+    "slide": 21,
+    "shape": 3,
+    "old": "cᵢ = ∂f/∂xᵢ",
+    "tex": "c_i=\\partial f/\\partial x_i",
+    "size": null
+  },
+  {
+    "slide": 21,
+    "shape": 4,
+    "old": "cᵢ",
+    "tex": "c_i",
+    "size": null
+  },
+  {
+    "slide": 21,
+    "shape": 4,
+    "old": "xᵢ",
+    "tex": "x_i",
+    "size": null
+  },
+  {
+    "slide": 21,
+    "shape": 5,
+    "old": "Var(y) ≈ Σ cᵢ² Var(xᵢ)",
+    "tex": "\\operatorname{Var}(y)\\approx\\sum c_i^2\\operatorname{Var}(x_i)",
+    "size": null
+  },
+  {
+    "slide": 21,
+    "shape": 6,
+    "old": "cᵢ = 1/n",
+    "tex": "c_i=\\frac{1}{n}",
+    "size": null
+  },
+  {
+    "slide": 21,
+    "shape": 6,
+    "old": "Var(x̄) = Σ τ²/n² = τ²/n",
+    "tex": "\\operatorname{Var}(\\bar{x})=\\sum\\frac{\\tau^2}{n^2}=\\frac{\\tau^2}{n}",
+    "size": null
+  },
+  {
+    "slide": 22,
+    "shape": 7,
+    "old": "τ",
+    "tex": "\\tau",
+    "size": null
+  },
+  {
+    "slide": 22,
+    "shape": 7,
+    "old": "σ",
+    "tex": "\\sigma",
+    "size": null
+  },
+  {
+    "slide": 22,
+    "shape": 7,
+    "old": "s",
+    "tex": "s",
+    "size": null
+  },
+  {
+    "slide": 22,
+    "shape": 8,
+    "old": "σ(x̄)",
+    "tex": "\\sigma(\\bar{x})",
+    "size": null
+  }
+]

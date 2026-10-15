@@ -1,0 +1,16 @@
+{"kind":"slide","id":"sl/y90nupkv","slideIndex":0,"layout":{"id":"ly/14ra9krq","name":"Blank"},"title":"測量学 第2回 補足","textShapes":5,"backgroundColor":"rgba(250,248,242,1)"}
+{"kind":"slide","id":"sl/hwbqtkby","slideIndex":1,"layout":{"id":"ly/14ra9krq","name":"Blank"},"title":"補足01 同じ距離でも、測定値は少しずつ違う","textShapes":6,"backgroundColor":"rgba(250,248,242,1)"}
+{"kind":"slide","id":"sl/ofy9wn61","slideIndex":2,"layout":{"id":"ly/14ra9krq","name":"Blank"},"title":"補足02 「1回の値」と「平均」のばらつき","textShapes":6,"backgroundColor":"rgba(250,248,242,1)"}
+{"kind":"slide","id":"sl/jyx0ra1s","slideIndex":3,"layout":{"id":"ly/14ra9krq","name":"Blank"},"title":"補足03 観測値を「真値＋偶然のずれ」で表す","textShapes":8,"backgroundColor":"rgba(250,248,242,1)"}
+{"kind":"slide","id":"sl/i107q5of","slideIndex":4,"layout":{"id":"ly/14ra9krq","name":"Blank"},"title":"補足04 誤差伝播は「入力のずれが結果へ伝わること」","textShapes":8,"backgroundColor":"rgba(250,248,242,1)"}
+{"kind":"slide","id":"sl/x8f69ofe","slideIndex":5,"layout":{"id":"ly/14ra9krq","name":"Blank"},"title":"補足05 ばらつきを測る「分散」と「標準偏差」","textShapes":8,"backgroundColor":"rgba(250,248,242,1)"}
+{"kind":"slide","id":"sl/gnmp4jqx","slideIndex":6,"layout":{"id":"ly/14ra9krq","name":"Blank"},"title":"補足06 独立な誤差を、4通りの例で見る","textShapes":4,"backgroundColor":"rgba(250,248,242,1)"}
+{"kind":"slide","id":"sl/fu1gfa1s","slideIndex":7,"layout":{"id":"ly/14ra9krq","name":"Blank"},"title":"補足07 独立なら、分散を足し算できる","textShapes":8,"backgroundColor":"rgba(250,248,242,1)"}
+{"kind":"slide","id":"sl/udsvah03","slideIndex":8,"layout":{"id":"ly/14ra9krq","name":"Blank"},"title":"補足08 ずれを 1/n にすると、分散は 1/n²","textShapes":7,"backgroundColor":"rgba(250,248,242,1)"}
+{"kind":"slide","id":"sl/m90b6t0r","slideIndex":9,"layout":{"id":"ly/14ra9krq","name":"Blank"},"title":"補足09 n 個分の寄与を足し、平方根を取る","textShapes":8,"backgroundColor":"rgba(250,248,242,1)"}
+{"kind":"slide","id":"sl/jetc3ut0","slideIndex":10,"layout":{"id":"ly/14ra9krq","name":"Blank"},"title":"補足10 1回の標準偏差 4 mm、4回の平均なら","textShapes":4,"backgroundColor":"rgba(250,248,242,1)"}
+{"kind":"slide","id":"sl/8f2psfyx","slideIndex":11,"layout":{"id":"ly/14ra9krq","name":"Blank"},"title":"補足11 未知の τ は、観測データから推定する","textShapes":8,"backgroundColor":"rgba(250,248,242,1)"}
+{"kind":"slide","id":"sl/hgzapcr6","slideIndex":12,"layout":{"id":"ly/14ra9krq","name":"Blank"},"title":"補足12 実際のデータで計算する","textShapes":5,"backgroundColor":"rgba(250,248,242,1)"}
+{"kind":"slide","id":"sl/6lsnupw7","slideIndex":13,"layout":{"id":"ly/14ra9krq","name":"Blank"},"title":"補足13 標準偏差を半分にするには、回数を4倍に","textShapes":8,"backgroundColor":"rgba(250,248,242,1)"}
+{"kind":"slide","id":"sl/vaxsvy10","slideIndex":14,"layout":{"id":"ly/14ra9krq","name":"Blank"},"title":"現場例① 30 m の基準線を、何回測ればよいか","textShapes":12,"backgroundColor":"rgba(250,248,242,1)"}
+{"kind":"slide","id":"sl/gny5sjyp","slideIndex":15,"layout":{"id":"ly/14ra9krq","name":"Blank"},"title":"現場例② 必要な精度から、作業時間も見積もれる","textShapes":7,"backgroundColor":"rgba(250,248,242,1)"}
