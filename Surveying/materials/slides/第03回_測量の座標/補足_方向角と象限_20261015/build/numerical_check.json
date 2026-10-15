@@ -1,0 +1,57 @@
+[
+  {
+    "deltaX": 1,
+    "deltaY": 1,
+    "directionDegrees": 45
+  },
+  {
+    "deltaX": -1,
+    "deltaY": 1,
+    "directionDegrees": 135
+  },
+  {
+    "deltaX": -1,
+    "deltaY": -1,
+    "directionDegrees": 225
+  },
+  {
+    "deltaX": 1,
+    "deltaY": -1,
+    "directionDegrees": 315
+  },
+  {
+    "deltaX": -30,
+    "deltaY": 40,
+    "directionDegrees": 126.86989764584402
+  },
+  {
+    "deltaX": 30,
+    "deltaY": -40,
+    "directionDegrees": 306.86989764584405
+  },
+  {
+    "deltaX": 30,
+    "deltaY": 40,
+    "directionDegrees": 53.13010235415598
+  },
+  {
+    "deltaX": 1,
+    "deltaY": 0,
+    "directionDegrees": 0
+  },
+  {
+    "deltaX": 0,
+    "deltaY": 1,
+    "directionDegrees": 90
+  },
+  {
+    "deltaX": -1,
+    "deltaY": 0,
+    "directionDegrees": 180
+  },
+  {
+    "deltaX": 0,
+    "deltaY": -1,
+    "directionDegrees": 270
+  }
+]
