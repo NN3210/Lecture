@@ -15,8 +15,9 @@ from pptx.oxml.xmlchemy import OxmlElement
 
 ROOT=Path(__file__).resolve().parents[1]
 SRC=ROOT/'materials/slides/第03回_測量の座標'
-OUT=SRC/'視覚リニューアル_20261020'
-for sub in ['build','review']: (OUT/sub).mkdir(parents=True,exist_ok=True)
+OUT=SRC
+REVIEW=ROOT/'notes/session03_visual_20261020'
+REVIEW.mkdir(parents=True,exist_ok=True)
 NS={'a':'http://schemas.openxmlformats.org/drawingml/2006/main','p':'http://schemas.openxmlformats.org/presentationml/2006/main','mc':'http://schemas.openxmlformats.org/markup-compatibility/2006','m':'http://schemas.openxmlformats.org/officeDocument/2006/math'}
 U=9525
 BG='FAF9F5'; NAVY='173C4D'; TEAL='117E7A'; BLUE='287EAF'; GOLD='B57B16'; RED='C65C42'; INK='243F4C'; GRAY='647880'; PALE='E8F2EF'; WHITE='FFFFFF'; LINE='D6E2E2'
@@ -373,7 +374,7 @@ for s in p.slides:
     for el in s._element.iter():
         if el.tag in [f'{{{NS["a"]}}}latin',f'{{{NS["a"]}}}ea',f'{{{NS["a"]}}}cs'] and el.get('typeface')=='Meiryo':
             if not any(a.tag==f'{{{NS["m"]}}}oMath' for a in el.iterancestors()):el.set('typeface',FONT)
-dest=OUT/'測量学第03回_視覚リニューアル.pptx'
+dest=OUT/'slides_視覚リニューアル_20261020.pptx'
 p.save(dest)
 # 全Office数式の内容と順序が同じことを照合（名前空間宣言の差は除く）。
 def math_signature(file):
@@ -388,5 +389,5 @@ before=math_signature(SRC/'slides.pptx');after=math_signature(dest)
 assert before==after,'Office math changed'
 assert hashes=={f:hashlib.sha256((SRC/f).read_bytes()).hexdigest() for f in hashes},'Original changed'
 report={'slides':len(p.slides),'redrawn_slides':redrawn,'math_diagram_slides':side_diagrams,'native_equations_preserved':sum(map(len,before.values())),'compatibility_fallbacks':fallback_count,'original_sha256':hashes,'source_unchanged':True,'native_math_unchanged':True}
-(OUT/'review/validation.json').write_text(json.dumps(report,ensure_ascii=False,indent=2))
+(REVIEW/'validation.json').write_text(json.dumps(report,ensure_ascii=False,indent=2))
 print(json.dumps(report,ensure_ascii=False,indent=2))

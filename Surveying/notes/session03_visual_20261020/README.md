@@ -1,9 +1,9 @@
 # 第3回 測量の座標：視覚リニューアル版
 
-高校生にもイメージしやすい、図と問いから始める81枚の別版。元の `../slides.md`・`../slides.pptx`・`../slides.pdf` は変更していません。
+高校生にもイメージしやすい、図と問いから始める81枚の別版。元の `slides.md`・`slides.pptx`・`slides.pdf` は変更していません。
 
-- [PowerPoint](測量学第03回_視覚リニューアル.pptx)
-- [閲覧・配布用PDF](測量学第03回_視覚リニューアル.pdf)
+- [PowerPoint](../../materials/slides/第03回_測量の座標/slides_視覚リニューアル_20261020.pptx)
+- [閲覧・配布用PDF](../../materials/slides/第03回_測量の座標/slides_視覚リニューアル_20261020.pdf)
 
 ## 変更内容
 
@@ -25,8 +25,12 @@ PDFはLibreOfficeで書き出し、81枚の一覧と変更箇所の拡大表示�
 
 ```sh
 python scripts/redesign_session03_20261020.py
-soffice --headless --convert-to pdf --outdir materials/slides/第03回_測量の座標/視覚リニューアル_20261020 materials/slides/第03回_測量の座標/視覚リニューアル_20261020/測量学第03回_視覚リニューアル.pptx
+soffice --headless --convert-to pdf --outdir materials/slides/第03回_測量の座標 materials/slides/第03回_測量の座標/slides_視覚リニューアル_20261020.pptx
 python scripts/verify_session03_20261020.py
 ```
 
-`review/validation.json` に元ファイルのSHA-256と数式保持の記録、`review/pdf-validation.json` に表示用テキストの照合、`review/contact_*.jpg` に全81枚の一覧を保存します。内容上の新しい出典は追加していません。新規の図は説明用の模式図です。
+`validation.json` に元ファイルのSHA-256と数式保持の記録、`pdf-validation.json` に表示用テキストの照合、`contact_*.jpg` に全81枚の一覧を保存します。内容上の新しい出典は追加していません。新規の図は説明用の模式図です。
+
+## 保存場所の整理
+
+ユーザーの指定により、完成したPPTX・PDFを第03回の既存 `slides.pptx` と同じフォルダーへ移動。検証画像と記録はこの `notes/session03_visual_20261020/` に集約し、以前の新規サブフォルダーは削除しました。ファイル移動の前後でPPTX・PDFのSHA-256一致を確認しています。
