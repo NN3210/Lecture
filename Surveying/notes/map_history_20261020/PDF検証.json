@@ -1,0 +1,23 @@
+{
+  "pages": 20,
+  "outside_page_text": [],
+  "pptx_text_missing_in_pdf": [],
+  "zip_integrity": true,
+  "notes_on_every_slide": true,
+  "page_size": [
+    0.0,
+    0.0,
+    959.9810791015625,
+    540.0
+  ],
+  "files": {
+    "地図と図法の歴史_補足スライド.pptx": {
+      "bytes": 386335,
+      "sha256": "c047b931ae24751fc891977f460b45916db158dd49b14952ce5aa72afc781f8d"
+    },
+    "地図と図法の歴史_補足スライド.pdf": {
+      "bytes": 1262566,
+      "sha256": "303336d4bc0e61b8a9c983a7f2de1908b482ca350dd2675870d3ad6ed3677590"
+    }
+  }
+}

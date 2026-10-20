@@ -1,0 +1,88 @@
+{
+  "slides": 20,
+  "checks": [
+    {
+      "slide": 1,
+      "shapes_within_slide": true
+    },
+    {
+      "slide": 2,
+      "shapes_within_slide": true
+    },
+    {
+      "slide": 3,
+      "shapes_within_slide": true
+    },
+    {
+      "slide": 4,
+      "shapes_within_slide": true
+    },
+    {
+      "slide": 5,
+      "shapes_within_slide": true
+    },
+    {
+      "slide": 6,
+      "shapes_within_slide": true
+    },
+    {
+      "slide": 7,
+      "shapes_within_slide": true
+    },
+    {
+      "slide": 8,
+      "shapes_within_slide": true
+    },
+    {
+      "slide": 9,
+      "shapes_within_slide": true
+    },
+    {
+      "slide": 10,
+      "shapes_within_slide": true
+    },
+    {
+      "slide": 11,
+      "shapes_within_slide": true
+    },
+    {
+      "slide": 12,
+      "shapes_within_slide": true
+    },
+    {
+      "slide": 13,
+      "shapes_within_slide": true
+    },
+    {
+      "slide": 14,
+      "shapes_within_slide": true
+    },
+    {
+      "slide": 15,
+      "shapes_within_slide": true
+    },
+    {
+      "slide": 16,
+      "shapes_within_slide": true
+    },
+    {
+      "slide": 17,
+      "shapes_within_slide": true
+    },
+    {
+      "slide": 18,
+      "shapes_within_slide": true
+    },
+    {
+      "slide": 19,
+      "shapes_within_slide": true
+    },
+    {
+      "slide": 20,
+      "shapes_within_slide": true
+    }
+  ],
+  "editable_text": true,
+  "notes_on_every_slide": true,
+  "mercator_local_area_scale_60deg": 4
+}
