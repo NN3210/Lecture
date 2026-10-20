@@ -1,0 +1,40 @@
+{
+  "slides": 81,
+  "redrawn_slides": [
+    1,
+    5,
+    6,
+    14,
+    17,
+    18,
+    19,
+    22,
+    23,
+    24,
+    26,
+    37,
+    38,
+    40,
+    45,
+    52,
+    77,
+    80
+  ],
+  "math_diagram_slides": [
+    16,
+    36,
+    63,
+    66,
+    67,
+    68
+  ],
+  "native_equations_preserved": 211,
+  "compatibility_fallbacks": 115,
+  "original_sha256": {
+    "slides.md": "6aa9493eb41a8824633fc335dfae8245d0ab04aaa745c091b20eec928fbf2db5",
+    "slides.pptx": "febeed4ce12463f4c9ea1b1e1e05e0748a3db36342409f9e4495f802dc0c4324",
+    "slides.pdf": "547cd4547d865469d9ba1c2fa5103adab53266b661bdc4aa36456e4dd4144377"
+  },
+  "source_unchanged": true,
+  "native_math_unchanged": true
+}
