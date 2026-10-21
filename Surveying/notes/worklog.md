@@ -256,3 +256,11 @@
 - 改1 の 132 枚を `改1_構成診断.md` で診断し、`04_改2構成案.md`（104 枚を並べ替え、28 枚を外す）と `04_新規枚.md`（橋渡し 4 枚：緯度経度の定義、高さ→測地系の橋、正角と縮尺係数の意味、平面直角座標系の定義）を作成。`scripts/kai2_build_pptx.py` で改2（108 枚、非表示解除、章ヘッダー 3 枚書き換え、ページ番号振り直し）を組み立て、`scripts/pptx_compress_images.py` で約 29 MB に抑え、PowerPoint COM で PDF と確認用 PNG を出力して目視点検し、全 108 枚の PNG は Sonnet のサブエージェントに点検させた（新規枚 2 枚の文字あふれ、13 枚目の章ヘッダー、旧版由来 10 枚の古い脚注番号を直して 3 回組み直し）。
 - 手順書 04（改2 の組み立てと確認）を追加し、手順書 02 の OK/NG 件数を 92/18 に修正。第3回 README に改2 の項を追加。
 - 作業前からある第2回・第3回の未コミット変更と、50 MB を超える pptx（改1 ほか、ローカルのみ）は今回の commit に含めず保持。
+
+## 2026-10-22（第5回オンデマンド化に向けた TTS 環境と「本人の声の複製」指南書）
+
+- 第5回（トラバース測量 I）をオンデマンド動画にするため、`ondemand/` に README・指南書 `01_指南書_声の複製TTSと動画化.md`・`台本の書き方.md`・選択肢の比較 `02_TTSと声の複製の選択肢_20261022.md` を作成。AI エージェントがそのまま実行できる手順（環境構築 → 台本 → PLAUD/Circleback から本人の発話区間の切り出し → 参照音声 → XTTS v2 / ElevenLabs で声の複製 → mp4 化 → 点検）を書いた。
+- `scripts/ondemand/` にスクリプト 10 本（tts_backends, tts_synth, extract_notes, build_video, plaud_download, extract_speaker, prepare_reference, voice_similarity, check_asr, audio_io）。仮想環境 `%USERPROFILE%\.venvs\ondemand-tts`（torch CPU、coqui-tts 0.28、speechbrain、faster-whisper）を構築し、Windows 特有の 2 件（speechbrain の symlink → COPY、torchcodec の DLL → soundfile で代替）を回避。
+- 動作確認: edge-tts で 2 枚 57 秒の試作 mp4 + srt、XTTS v2 日本語合成（読込後 RTF 4〜7、話者類似度 0.81）、ECAPA 話者判定（同一 0.84 / 別人 0.1）、PLAUD 一覧・取得、Circleback JSON 構造、check_asr（読みに直した CER で XTTS 9.7%）。
+- 第5回は Marp の `slides.md`（62 枚、発表者ノート付き）が別セッションで作成中（未コミット）だったので、`extract_notes.py` を Marp md にも対応させ（枚数の数え方は md2pptx.py と同じ）、62 枚の台本下書きが出ることを確認した（出力は作業フォルダーの外に置き、スライドのフォルダーには書いていない）。
+- 未実施: 本人の実録音からの抽出（enroll 用の短い録音が要る。指南書 5 章）、ElevenLabs のアカウント作成と IVC（講師の判断）、第5回の台本の読み上げ向け書き直しと動画化（指南書 8 章の手順）。音声・動画・`ondemand/voice/`・`ondemand/work/` は .gitignore で commit から除外。作業前からある第2回・第3回・第5回の未コミット変更は含めず保持。

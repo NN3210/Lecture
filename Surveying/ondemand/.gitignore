@@ -1,0 +1,12 @@
+# 本人の声の音声・作業ファイルは公開リポジトリに入れない
+voice/
+work/
+*.wav
+*.mp3
+*.m4a
+*.flac
+*.ogg
+*.opus
+*.mp4
+*.mkv
+*.json.bak

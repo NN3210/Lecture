@@ -1,0 +1,302 @@
+# 指南書：講師の声に似せた TTS ナレーションでオンデマンド講義動画を作る
+
+対象: AI エージェント（Claude Code / Codex）と、TTS を初めて扱う講師。
+目的: 講義スライド（pptx）と台本（Markdown）から、講師本人の声に似せたナレーション付きの動画（mp4 + 字幕 srt）を作る。最初の対象は **第5回 トラバース測量 I**。
+前提: この文書のコマンドはリポジトリの `Surveying/` を作業ディレクトリとして実行する。文書内の `<...>` は実行時に置き換える。
+
+## 0. 守ること（最初に読む）
+
+1. **本人の声の音声は commit しない。** `ondemand/voice/` と `ondemand/work/`、音声・動画の拡張子は `ondemand/.gitignore` で除外済み。別の場所に音声を置くときも commit しない。
+2. **他人の声をクラウド（ElevenLabs 等）に上げない。** 会議録音は同僚・学生・外部の人の声を含む。アップロードするのは `extract_speaker.py` → `prepare_reference.py` で本人の区間だけにした参照音声に限る。切り出し後も、必ず聞いて他人の声が混ざっていないか確かめる。
+3. **複製するのは講師本人の声だけ。** 本人の依頼（この作業の発端）に基づく。動画の冒頭か概要欄に「ナレーションは講師の声をもとに合成した音声」と明記する。
+4. **API キー・トークンは環境変数か `C:\MyProjects\auto-tools\audio2md\.env` に置き、値を文書・ログ・commit に書かない。**
+5. **公開リポジトリ**なので、個人名・メール・会議の内容（文字起こしの text）を文書に転記しない。`index.csv` の text 列は `voice/` 内にだけ残す。
+6. 50 MB を超えるファイル（動画・録音・モデル）は commit しない。完成した動画の置き場所は `notes/worklog.md` に書く。
+
+## 1. 環境を整える
+
+### 1.1 何がどこで動くか
+
+| 処理 | 使う Python | 理由 |
+| --- | --- | --- |
+| edge-tts、台本抽出、動画化（ffmpeg）、PLAUD ダウンロード | システムの `python`（3.11） | 軽い。edge-tts と python-pptx は入っている |
+| XTTS v2、speechbrain（話者判定）、voice_similarity | 仮想環境 `%USERPROFILE%\.venvs\ondemand-tts` | torch 等 3 GB 超。システムを汚さない |
+| ElevenLabs | どちらでも | 標準ライブラリ（urllib）だけで呼ぶ |
+
+以下、仮想環境の python を `$PY` と書く。PowerShell では `$PY = "$env:USERPROFILE\.venvs\ondemand-tts\Scripts\python.exe"`、bash では `PY="$HOME/.venvs/ondemand-tts/Scripts/python.exe"`。
+
+### 1.2 確認（既に構築済みの PC ではここだけ）
+
+```powershell
+python -c "import edge_tts, pptx; print('system ok')"
+ffmpeg -version | Select-Object -First 1
+& $PY -c "import torch, TTS, speechbrain, soundfile; print('venv ok', torch.__version__, TTS.__version__)"
+```
+
+3 行とも通れば 1.3 は飛ばす。
+
+### 1.3 構築（新しい PC、または venv が無いとき）
+
+```powershell
+python -m venv "$env:USERPROFILE\.venvs\ondemand-tts"
+& $PY -m pip install --upgrade pip
+& $PY -m pip install torch torchaudio --index-url https://download.pytorch.org/whl/cpu
+& $PY -m pip install "coqui-tts[ja]" "coqui-tts[codec]" speechbrain soundfile edge-tts faster-whisper
+python -m pip install edge-tts python-pptx
+```
+
+- 所要: 10〜20 分（torch 約 200 MB、依存を含め 3 GB 超）。
+- `coqui-tts[codec]`（torchcodec）は `import TTS` の起動チェックのためだけに入れる。Windows の static ビルド ffmpeg では torchcodec の DLL が読めないが、`scripts/ondemand/audio_io.py` が `torchaudio.load` を soundfile に差し替えるので実行には支障ない（1.4）。
+- ffmpeg が無ければ `winget install Gyan.FFmpeg`。PowerPoint が無い PC ではスライド PNG を別の PC で作る。
+
+### 1.4 既知の問題と対処（この PC で 2026-10-22 に遭遇したもの）
+
+| 症状 | 原因 | 対処（実装済み） |
+| --- | --- | --- |
+| speechbrain のモデル取得で `OSError: symbolic link` | Windows はシンボリックリンクに特権が要る | `extract_speaker.py` は `LocalStrategy.COPY` で `~/.cache/speechbrain/` に複製する |
+| `Could not load libtorchcodec` / `libtorchcodec_core*.dll` | torchcodec が FFmpeg の共有 DLL を要求。winget の ffmpeg は static | `audio_io.patch_torchaudio_load()` で `torchaudio.load` を soundfile 実装に差し替え。XTTS・speechbrain の読み込みはこれで動く |
+| `import TTS` が `TORCHCODEC_IMPORT_ERROR` | torchcodec 未インストール | `pip install "coqui-tts[codec]"`（DLL が読めなくても import は通る） |
+| XTTS 初回起動が長い | モデル 1.9 GB のダウンロード | 回線次第で数分〜。2 回目以降は `~/.cache/huggingface/hub/models--tts-hub--XTTS-v2` を使う |
+| XTTS の警告 `exceeds the character limit of 71` | 日本語は 1 文 71 字まで | 台本の 1 文を 60 字以内にする（`台本の書き方.md`）。`split_sentences=True` は実装済み |
+| PowerPoint の PNG 書き出しが失敗 | 空の `preview/` を事前に作った | `preview/` を消してから `pptx_export.ps1` を実行 |
+| edge-tts が音声を返さない | Microsoft 側の仕様変更 | `python -m pip install -U edge-tts` |
+
+## 2. 全体の流れと所要時間の目安
+
+| 段階 | 入力 → 出力 | 時間の目安（90 分の講義） |
+| --- | --- | --- |
+| A. 台本 | pptx の発表者ノート → `narration.md` を読み上げ用に書き直す | 2〜4 時間（人または LLM。内容の正しさは講師が確認） |
+| B. 仮動画（edge-tts） | narration.md + PNG → mp4/srt | 10 分（合成は数分） |
+| C. 声の素材 | PLAUD 録音 + Circleback 文字起こし → 本人の区間 → 参照音声 | 1〜2 時間（録音 3〜5 本分） |
+| D. 声の複製 | 参照音声 → XTTS（ローカル）/ ElevenLabs（クラウド）で合成 | XTTS: CPU で音声時間の約 10 倍 / ElevenLabs: 数分 |
+| E. 本番動画 | 複製した声で mp4/srt、点検、章立て | 1 時間 + 合成時間 |
+
+A と C は独立。B を先に作って台本を直し切ってから D に進むと、合成のやり直しが減る。
+
+## 3. 台本（narration.md）を作る
+
+1. スライドを用意する。第5回は 2026-10-22 時点で Marp 形式の下書き `materials/slides/第05回_トラバース測量I/slides.md`（約 64 枚、各枚に `<!-- -->` の発表者ノート付き。別セッションが作成中で未コミット）がある。無い回は講義計画 `materials/lecture_plan_13.md` と既存回の作り方（`materials/slides/第03回_測量の座標/README.md`）に従って作る。pptx と PNG は第3回と同じ手順で作る（Marp CLI の pptx 書き出しはこの PC では動かない）。
+
+```powershell
+python scripts/md2pptx.py "materials/slides/第05回_トラバース測量I/slides.md" -o "materials/slides/第05回_トラバース測量I/slides.pptx"
+powershell -ExecutionPolicy Bypass -File scripts/pptx_export.ps1 -Pptx "materials/slides/第05回_トラバース測量I/slides.pptx" -PngDir "materials/slides/第05回_トラバース測量I/preview"
+```
+
+2. 発表者ノートから下書きを作る。Marp の `slides.md` を直接渡しても（`<!-- -->` を発表者ノートとして読む）、md2pptx.py で作った pptx を渡してもよい。枚数の数え方は md2pptx.py と同じなので、PNG の番号と一致する。
+
+```powershell
+python scripts/ondemand/extract_notes.py "materials/slides/第05回_トラバース測量I/slides.md" -o "materials/slides/第05回_トラバース測量I/narration.md"
+```
+
+3. `ondemand/台本の書き方.md` に従って書き直す。要点: `## N` がスライド番号、1 文 60 字以内、記号・式・単位・略語は仮名で書き下す（緯距 → いきょ、(n−2)×180° → n 引く 2 かける 180 度）、各スライド 150〜350 字。
+4. `TODO` が残っていないことを確認する（残ると無音 2 秒になる）。
+
+```powershell
+python scripts/ondemand/build_video.py --narration "materials/slides/第05回_トラバース測量I/narration.md" --png-dir "materials/slides/第05回_トラバース測量I/preview" --out ondemand/work/lecture05_edge.mp4 --dry-run
+```
+
+## 4. まず edge-tts で仮動画を作る（声の複製なし）
+
+```powershell
+# スライド PNG（1280x720、「スライド1.PNG」…）。preview/ は事前に作らない
+powershell -ExecutionPolicy Bypass -File scripts/pptx_export.ps1 -Pptx "materials/slides/第05回_トラバース測量I/slides.pptx" -PngDir "materials/slides/第05回_トラバース測量I/preview"
+# 動画
+python scripts/ondemand/build_video.py --narration "materials/slides/第05回_トラバース測量I/narration.md" --png-dir "materials/slides/第05回_トラバース測量I/preview" --out ondemand/work/lecture05_edge.mp4 --engine edge --voice ja-JP-KeitaNeural --rate -5%
+```
+
+- 出力: `lecture05_edge.mp4`、`lecture05_edge.srt`、`lecture05_edge.timings.json`（スライドごとの開始秒。章立てに使う）。作業ファイルは `ondemand/work/work_lecture05_edge/`。
+- 聞いて直す: 誤読・不自然な間は台本側を直して再実行する。変えたスライドだけ再合成される（manifest.json によるキャッシュ）。特定の枚を強制的に作り直すなら `--only 3,5`。
+- 声の候補: 男性 `ja-JP-KeitaNeural`、女性 `ja-JP-NanamiNeural`。`--rate -5%`〜`-10%` で講義向けにややゆっくり。
+- 点検のしかた: `ffmpeg -ss <秒> -i <mp4> -frames:v 1 frame.png` で任意の時刻の画面を取り出して見る。`ffprobe` で動画長と音声長が同じことを確認する。
+
+ここまでで「動画としては完成」。以降は声を本人に似せる工程。
+
+## 5. 本人の声の素材を作る
+
+### 5.1 方針
+
+- 材料は 2 系統。**(a) 本人だけの短い録音（enroll）**: 話者判定の基準と、XTTS / IVC の参照に直接使える。**(b) 会議録音（PLAUD → Circleback）**: 量はあるが他人の声・雑音が混ざる。(a) を基準に (b) から本人の区間だけを切り出す。
+- (a) が無いと、`extract_speaker.py` は「最も長く話している人 = 装着者（本人）」とみなす。会議では外れることがあるので、**必ず (a) を先に作る**。
+- 録音の圧縮が強い（PLAUD クラウドの音声は Opus 約 32 kbps）ので、声の似方を上げたいなら (a) を PC のマイクで WAV 録音し、量（PVC 用 30 分以上）もそこで稼ぐのが結局早い。
+
+### 5.2 (a) enroll 録音を作る
+
+静かな部屋で、普段の講義の調子で 2〜3 分（できれば第5回の台本の冒頭を読む）。
+
+```powershell
+# 方法 1: ffmpeg で PC のマイクから録る（デバイス名は一覧で確認）
+ffmpeg -list_devices true -f dshow -i dummy
+ffmpeg -f dshow -i audio="<マイク名>" -ac 1 -ar 44100 -t 180 ondemand/voice/enroll/enroll_raw.wav
+# 方法 2: Windows の「サウンド レコーダー」で録って m4a を変換
+ffmpeg -i "<録音.m4a>" -ac 1 -ar 44100 ondemand/voice/enroll/enroll_raw.wav
+# 方法 3: PLAUD で一人で録って 5.3 の手順でダウンロード（音質は劣る）
+# 整音（ハイパス + 音量正規化）して enroll.wav に
+ffmpeg -i ondemand/voice/enroll/enroll_raw.wav -af "highpass=f=80,loudnorm=I=-19:TP=-3:LRA=11" -ac 1 -ar 44100 ondemand/voice/enroll/enroll.wav
+```
+
+確認: `ffprobe ondemand/voice/enroll/enroll.wav` で 120 秒以上あること。再生して雑音・途切れが無いこと。
+
+### 5.3 (b) PLAUD の録音をダウンロードする
+
+```powershell
+python scripts/ondemand/plaud_download.py list --limit 50
+#   id  開始日時(ローカル)  長さ(分)  サイズ(MB)  ファイル名
+python scripts/ondemand/plaud_download.py get <id1> <id2> --out ondemand/voice/raw
+```
+
+- 選ぶ録音: 本人が長く話している回（講義・説明・一人での打ち合わせ）を 3〜5 本。雑踏・車内は避ける。
+- 保存名は `<開始日時>_<id>.ogg`（中身を見て拡張子を決める。実体は Ogg/Opus が多い）。300 分の録音で約 72 MB。
+- トークンは `C:\MyProjects\auto-tools\audio2md\.env` の `PLAUD_TOKEN`（2027-01-01 まで）。切れたら audio2md の手順で更新する。
+
+### 5.4 (b) Circleback の文字起こし（話者分離済み）を取る
+
+PLAUD の録音は Circleback に自動で取り込まれ、話者分離（"Participant N"）付きの文字起こしになっている。
+
+```powershell
+cd C:\MyProjects\auto-tools\audio2md
+python tools\circleback_transcript.py check-auth
+python tools\circleback_transcript.py list --since 2026-09-01      # 会議一覧（新しい順）。linkId と日時と長さ
+python tools\circleback_transcript.py fetch <linkId> --json         # data\transcripts\<日付>_<linkId>.md と .json
+cd <Surveying に戻る>
+```
+
+- PLAUD の録音と Circleback の会議は **日付と長さ（duration）** で突き合わせる（Circleback の `createdAt` は UTC）。
+- JSON の形: `segments[] = {id, speaker: "Participant N", start, end, text}`（秒）。`stats.speakers` に話者一覧。
+- セッショントークン `CIRCLEBACK_SESSION` は 2026-11-19 まで。切れたら `tools\refresh_circleback_token.py`。
+- 一覧だけなら Claude Code のスキル `circleback-access` でもよい。
+
+### 5.5 本人の区間を切り出す
+
+```powershell
+# まず話者ごとの発話量を見る
+& $PY scripts/ondemand/extract_speaker.py --audio ondemand/voice/raw/<録音>.ogg --segments C:\MyProjects\auto-tools\audio2md\data\transcripts\<日付>_<linkId>.json --out ondemand/voice/segments/<日付> --stats-only
+# enroll で本人を判定して切り出す（speechbrain ECAPA。初回はモデル 80 MB を取得）
+& $PY scripts/ondemand/extract_speaker.py --audio ondemand/voice/raw/<録音>.ogg --segments <同上>.json --out ondemand/voice/segments/<日付> --enroll ondemand/voice/enroll/enroll.wav --min-dur 3 --max-dur 20 --max-total 2400
+```
+
+出力: `seg_0001.wav …`、`index.csv`（file, start, end, dur, sim, text）、`meta.json`（判定した Participant と各話者の類似度）。
+
+判定の読み方:
+
+- 類似度は 1 に近いほど同一人物。本人の中央値が **0.5 以上**で、2 位との差が **0.1 以上**なら信頼してよい。差が小さいと警告が出る。その場合は `--participant "Participant 2"` のように人が決める。
+- **時刻ずれの確認**: `seg_0001.wav` など 2〜3 本を再生し、`index.csv` の text と合っているか聞く。ずれていれば `--offset <秒>` を付けて切り直す。
+- `sim` 列が 0.45 未満の区間は他人の声の重なりか雑音が多い。次の 5.6 で `--min-sim 0.5` で落とす。
+- 切り出した区間を数本ランダムに再生し、**他人の声が入っていないことを耳で確認**する（クラウドに上げる前の必須手順）。
+
+### 5.6 参照音声を作る
+
+```powershell
+# XTTS 用（10〜20 秒の良い区間を 3 本、22.05 kHz）
+python scripts/ondemand/prepare_reference.py --in ondemand/voice/segments/<日付1> ondemand/voice/segments/<日付2> --out ondemand/voice/reference --target xtts --min-sim 0.5 --n 3
+# ElevenLabs IVC 用（良い区間を 2.5 分まで連結、mp3 192 kbps）
+python scripts/ondemand/prepare_reference.py --in ondemand/voice/segments/<日付1> ondemand/voice/segments/<日付2> --out ondemand/voice/reference --target ivc --min-sim 0.5 --minutes 2.5
+# ElevenLabs PVC 用（全部連結して 10 分ごとに分割。合計 30 分以上）
+python scripts/ondemand/prepare_reference.py --in ondemand/voice/segments/* --out ondemand/voice/reference --target pvc --min-sim 0.5 --chunk 10
+```
+
+- 整音は控えめ（ハイパス 80 Hz + loudnorm）。雑音が気になる録音だけ `--denoise`（afftdn）を付ける。かけ過ぎると声が変わる。
+- enroll 録音が良質なら、それ自体を XTTS の参照（10〜20 秒を切り出して 22.05 kHz）や IVC の参照（1〜3 分）に使ってよい。会議録音より似ることが多い。
+- 参照の品質確認: `& $PY scripts/ondemand/voice_similarity.py --ref ondemand/voice/enroll/enroll.wav ondemand/voice/reference/xtts_ref_01.wav ...` で 0.6 以上を目安にする。
+
+## 6. 声を複製して合成する
+
+### 6.1 XTTS v2（ローカル、無料、試作向け）
+
+```powershell
+# 1 文で試す
+& $PY scripts/ondemand/tts_synth.py --engine xtts --ref ondemand/voice/reference/xtts_ref_01.wav --ref ondemand/voice/reference/xtts_ref_02.wav --text "測量学 第5回、トラバース測量の1回目です。" --out ondemand/work/xtts_test.wav
+# 動画（スライド数枚で試してから全体）
+& $PY scripts/ondemand/build_video.py --narration <narration.md> --png-dir <preview> --out ondemand/work/lecture05_xtts.mp4 --engine xtts --ref ondemand/voice/reference/xtts_ref_01.wav --ref ondemand/voice/reference/xtts_ref_02.wav --only 1,2
+```
+
+- 実測（この PC、2026-10-22、合成音声を参照にした検証）: 日本語 80 字 → 音声 12.1 秒を 129 秒（モデル読込を含む、RTF 約 10.7）。モデル読込後だけを測ると 61 字 → 11.8 秒を 84 秒（RTF 7.1）、78 字 → 13.3 秒を 50 秒（RTF 3.8）。つまり読込を除けば RTF 4〜7 で、音声 60 分の講義なら 4〜7 時間。参照音声との話者類似度 0.81（同一話者の実音声どうしの 0.84 とほぼ同じ）。
+- 聞き取りやすさ（`check_asr.py`、faster-whisper small で文字に戻した CER）: 上の XTTS 音声は 9.7%（読みで比較。文字のままなら 21.9%）、edge-tts で作った試作動画の 2 枚は 15.4% と 8.6%。音声認識側も同音の専門用語を取り違える（測角→即格、内角の和→内閣の輪）ので、`check_asr.py` は漢字を読みに直してから比べる。それでも「閉合→平均」のような取り違えは残るので、CER は絶対値でなく edge-tts との比較と、他の枚より目立って高いかで見る。
+- 90 分の講義（音声約 60 分）は約 10 時間。夜間に `--work` を固定して流し、途中で止まっても再実行すれば続きから（manifest.json）。
+- 似方が足りないときは、参照を変える（息継ぎのない 10〜15 秒、感情の平坦な区間）、本数を 2〜3 本にする、`--denoise` を外す／付ける、の順で試す。
+- ライセンスは非商用（CPML）。学内配信の授業用途を超える公開には使わない。
+
+### 6.2 ElevenLabs Instant Voice Clone（本番の第一候補）
+
+手順（ブラウザー操作は講師が行う。エージェントは準備と合成を担当）:
+
+1. ElevenLabs のアカウントを作り、有料プラン（IVC は Starter 以上、PVC は Creator 以上）にする。料金と月間文字数は https://elevenlabs.io/pricing で確認。
+2. Voices → Add a new voice → Instant Voice Clone。`ondemand/voice/reference/ivc_reference.mp3`（または enroll 録音 1〜3 分）をアップロード。言語に Japanese、「自分の声である」旨の確認にチェック。
+3. 作成した声の **voice_id** を控える（Voices の一覧 → ID をコピー）。
+4. Profile → API Keys で API キーを作り、環境変数に入れる（値は書かない）。
+
+```powershell
+$env:ELEVENLABS_API_KEY = "<key>"      # そのセッションだけ。恒久化するなら audio2md の .env に ELEVENLABS_API_KEY=... を追記
+python scripts/ondemand/tts_synth.py --engine elevenlabs --voice <voice_id> --text "測量学 第5回、トラバース測量の1回目です。" --out ondemand/work/eleven_test.wav
+python scripts/ondemand/build_video.py --narration <narration.md> --png-dir <preview> --out ondemand/work/lecture05_eleven.mp4 --engine elevenlabs --voice <voice_id> --model-id eleven_multilingual_v2
+```
+
+- モデル: `eleven_multilingual_v2` が安定。表現力を上げるなら `--model-id eleven_v3`（読みの揺れを点検する）。
+- 文字数: 90 分の台本で 1.2〜1.8 万字程度。プランの残り文字数を先に見る。合成は 1 スライドずつ呼ぶ（キャッシュが効く）。
+- 似方の確認: `& $PY scripts/ondemand/voice_similarity.py --ref ondemand/voice/enroll/enroll.wav ondemand/work/eleven_test.wav`。0.6 以上なら実用、0.7 以上なら良好。
+
+### 6.3 ElevenLabs Professional Voice Clone（似方を上げたいとき）
+
+- 材料: 本人だけの音声 30 分以上（推奨 1〜3 時間）。`--target pvc` の出力（`pvc_part_NN.mp3`）か、PC のマイクで新たに読んだ録音。雑音・他人の声は厳禁。
+- Voices → Add a new voice → Professional Voice Clone → ファイルをアップロード → 本人確認（画面の指定文を自分の声で録音）→ 学習（数時間〜1 日）。
+- 学習後の voice_id で 6.2 と同じ手順。
+- 録音の作り方（推奨）: 第5回の台本をそのまま読む。30〜60 分で材料になり、用語の読みも本人のものになる。
+
+### 6.4 合成結果の点検（共通）
+
+| 観点 | やり方 | 合格の目安 |
+| --- | --- | --- |
+| 誤読・途切れ（機械で） | `& $PY scripts/ondemand/check_asr.py --narration <narration.md> --work ondemand/work/work_<名前>` で音声認識（faster-whisper）に戻し、漢字を読みに直して台本と比較 | スライドごとの CER 15% 未満（edge-tts の素の音声でも 9〜15% 出る）。他の枚より目立って高い枚、長い delete（途切れ）がある枚だけ人が聞く |
+| 誤読（人で） | 動画を通しで聞く、または字幕 srt と照合 | 専門用語の誤読ゼロ（台本側で仮名にして直す） |
+| 似方 | `voice_similarity.py --ref enroll.wav <合成 wav>` | 0.6 以上 |
+| 間・速度 | 1 分あたり 280〜330 字が講義の速さ。`timings.json` の speech 秒 ÷ 文字数で確認 | 速ければ台本に読点を足す（edge は `--rate`） |
+| 音量 | `ffmpeg -i <mp4> -af loudnorm=print_format=summary -f null -` | 入力ラウドネス −20〜−16 LUFS |
+| 画面 | 任意の時刻の静止画を取り出す | 文字あふれ・白縁の崩れがない |
+
+## 7. 動画の仕上げと公開
+
+- `build_video.py` の既定: 1280x720、10 fps（静止画なので十分）、H.264 crf 20、AAC 128 kbps、各スライドの前後に 0.3 / 0.8 秒の無音。90 分で約 90 MB。
+- 章立て: `<out>.timings.json` のスライド開始秒から、動画の概要欄用に「00:00 表紙 / 01:20 到達目標 …」を作る。
+- 字幕: `<out>.srt` は文字数比の近似。長い文を分ければ精度が上がる。LMS によっては srt を別途アップロードする。
+- 演習パート: 「ここで一時停止して解いてください」の指示を台本に入れ、解答スライドは別の章にする（講義計画の演習 25 分）。
+- 公開先（LMS、学内の動画配信、限定公開の動画サイト等）に上げたら、場所と日付を `notes/worklog.md` に記す。mp4 は commit しない。
+- 冒頭か概要欄に「ナレーションは講師の声をもとにした合成音声です」と明記する。
+
+## 8. 第5回 トラバース測量 I への適用手順（エージェント向けチェックリスト）
+
+- [ ] 第5回のスライドを作る（`materials/slides/第05回_トラバース測量I/`。講義計画: 到達目標・講義・演習 25 分・最新技術・試験の型は `materials/lecture_plan_13.md` の「第 5 回」）。
+- [ ] `extract_notes.py slides.md` → `narration.md`（2026-10-22 時点の下書きは 62 枚、ノートは 1 枚 30〜250 字で読み上げには短い）。`台本の書き方.md` の用語の読み（いきょ・けいきょ、ほうこうかく、こうさ 等）と分量（1 枚 150〜350 字）で書き直す。演習は一時停止の指示にする。
+- [ ] `pptx_export.ps1` で PNG、`build_video.py --engine edge` で仮動画。通しで聞いて台本を直す。
+- [ ] enroll 録音（5.2）を講師に依頼。無いうちは最多発話者で仮判定しない（他人の声の混入を避ける）。
+- [ ] PLAUD 3〜5 本 → Circleback JSON → `extract_speaker.py` → 耳で確認 → `prepare_reference.py --target xtts` と `--target ivc`。
+- [ ] XTTS で数枚だけ試作し、似方（0.6 以上）と誤読を確認。
+- [ ] 講師が ElevenLabs のプランと voice_id を用意したら、`--engine elevenlabs` で全体を合成。
+- [ ] 6.4 の点検 → 章立て・字幕 → 公開先へ。`notes/worklog.md` に記録、`narration.md` と `timings.json` を commit（音声・動画は除く）。
+
+## 9. 困ったとき
+
+| 状況 | 対処 |
+| --- | --- |
+| 話者判定で本人が決まらない | enroll を 3 分以上の静かな録音にする。`--probe 40` で判定に使う区間を増やす。それでも駄目なら `--participant` で指定し、耳で確認 |
+| 切り出した区間に他人の声が混ざる | `--min-dur 4` で短い相づちを除く。`--min-sim` を上げる。会議の種類を変える（一人で話す録音を優先） |
+| XTTS がメモリ不足で落ちる | 他のアプリを閉じる（モデルで約 3 GB）。`--only` で数枚ずつ。台本の 1 文を短くする |
+| XTTS の日本語が途切れる | 1 文 71 字の上限。`。` を増やす |
+| ElevenLabs が 401 / 402 | API キー、プランの文字数残を確認 |
+| 動画と音声の長さが違う | `build_video.py` は `-t` で明示しているので起きないはず。起きたら `work_*/all.wav` の長さと `timings.json` の最後の end を比べる |
+| PowerPoint の PNG が出ない | `preview/` を削除してから実行。PowerPoint が他のファイルを開いていたら閉じる |
+
+## 10. ファイルと責任の対応
+
+| ファイル | 役割 | 実行環境 |
+| --- | --- | --- |
+| `scripts/ondemand/extract_notes.py` | pptx のノート、または Marp slides.md の `<!-- -->` → narration.md の下書き | system |
+| `scripts/ondemand/build_video.py` | narration.md + PNG → mp4/srt/timings | system（xtts のときは venv） |
+| `scripts/ondemand/tts_synth.py` / `tts_backends.py` | TTS エンジン共通 | system（xtts は venv） |
+| `scripts/ondemand/plaud_download.py` | PLAUD 一覧・取得 | system |
+| `scripts/ondemand/extract_speaker.py` | 本人の区間の切り出し | venv |
+| `scripts/ondemand/prepare_reference.py` | 参照音声の整音・連結 | system |
+| `scripts/ondemand/voice_similarity.py` | 話者類似度の確認 | venv |
+| `scripts/ondemand/check_asr.py` | 合成音声を音声認識に戻して台本と比較（誤読・途切れの検出） | venv |
+| `scripts/ondemand/audio_io.py` | torchaudio.load の差し替え | venv（自動で使われる） |
+| `scripts/pptx_export.ps1` | pptx → PDF/PNG | PowerShell + PowerPoint |
+| `ondemand/台本の書き方.md` | 台本の規則 | — |
+| `ondemand/02_TTSと声の複製の選択肢_20261022.md` | 選択肢の比較と出典 | — |

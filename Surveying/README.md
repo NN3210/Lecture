@@ -16,7 +16,8 @@ Claude Code（ローカル）と Codex（Cloud、Lecture リポジトリ全体�
 | `notes/` | 背景メモ、作業ログ、決定事項 |
 | `materials/` | 講義スライド・配布資料・課題 |
 | `data/` | 実習用データ（匿名化済みのもののみ） |
-| `scripts/` | 計算・作図スクリプト |
+| `scripts/` | 計算・作図スクリプト（`scripts/ondemand/` はオンデマンド動画用） |
+| `ondemand/` | オンデマンド講義動画（TTS ナレーション、講師の声の複製）の指南書と作業環境。音声・動画は commit しない |
 
 ## 背景
 
