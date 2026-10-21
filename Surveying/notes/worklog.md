@@ -271,6 +271,7 @@
 - PLAUD の録音 5 本（10/12〜10/17、合計約 10 時間、Ogg/Opus）と対応する Circleback の文字起こし 5 件（全区間あり）を `ondemand/voice/raw/`（ローカルのみ、commit しない）に取得した。
 - `find_self.py` の実行は PC の空きメモリが 2 GB まで落ちて Claude Code に止められた（録音全体を読み込む実装だったため）。`extract_speaker.py` と共に 16 kHz WAV の区間だけをディスクから読む方式（`embed_span_file`、`--wav16`）に直し、録音ごとの埋め込みを `cache/` に保存して途中から再開できるようにした。再実行は指南書 5.7 のコマンド（空きメモリ 3 GB 以上で）。
 - 残り: find_self.py の再実行 → `auto_enroll.wav` を耳で確認 → `extract_speaker.py --enroll` → `prepare_reference.py` → XTTS で第5回の数枚を試作。第5回の slides.md は別セッションが作成中のため、台本の書き直しと全体の動画化はその完成後。
+- 注記: この作業の commit `351520b` には、別セッションが同じ作業ツリーでステージ済みだったスキル化の変更（`.claude/skills/lecture-*` 5 件、ルート README、`_スキル化について.md`、下の worklog 記事）も一緒に入った。内容はその記事を参照。
 
 ## 2026-10-22（第3回 改2 の中間ファイルを Claude Code スキル 5 件に落とし込み）
 
