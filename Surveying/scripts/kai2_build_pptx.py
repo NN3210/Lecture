@@ -11,6 +11,8 @@
     | 順 | 元 | 題 | 備考 |
     | 1 | k1:1 | 表紙 | |
     | 2 | new:goal | 今日のゴール | 新規 |
+    | 3 | k1:22 | みかんの皮 | 章を移した。header=測量学 第3回  /  03  \|  地球を地図にする |
+    備考欄の「header=…」は、その枚の「測量学 第3回  /  …」で始まるヘッダー文字列を書き換える（表の中なので | は \| と書く）。
 
 新規枚の仕様（Markdown）:
     ## new:goal
@@ -50,13 +52,43 @@ T25 = {
 }
 
 
-def read_plan(path: Path) -> list[tuple[str, str]]:
+HEADER_PAT = re.compile(r"^\s*測量学 第3回\s*/")
+
+
+def read_plan(path: Path) -> tuple[list[tuple[str, str]], dict[int, str]]:
+    """構成案の行を読む。備考欄に `header=測量学 第3回  /  03  |  地球を地図にする` と書くと、
+    その枚のヘッダー文字列（「測量学 第3回  /  …」で始まるテキストボックス）を書き換える。"""
     plan = []
+    headers: dict[int, str] = {}
     for line in path.read_text(encoding="utf-8").splitlines():
         m = ROW.match(line)
         if m:
             plan.append(("k1", m.group(2)) if m.group(2) else ("new", m.group(3)))
-    return plan
+            # Markdown の表の中なので「|」は「\|」と書く
+            hm = re.search(r"header=((?:\\\||[^|])+)", line[m.end():])
+            if hm:
+                headers[len(plan) - 1] = hm.group(1).replace("\\|", "|").strip()
+    return plan, headers
+
+
+def replace_para_text(slide, pat: re.Pattern, new_text: str, min_top: int | None = None) -> int:
+    """pat に合う段落すべてで、1 つ目の run に new_text を入れ、他の run を空にする（書式は 1 つ目の run のまま）。
+    min_top を与えると、上端がそれより下にある枠だけを対象にする（脚注の番号だけを狙うため）。
+    書き換えた段落数を返す。"""
+    n = 0
+    for shape in slide.shapes:
+        if not shape.has_text_frame:
+            continue
+        if min_top is not None and (shape.top is None or shape.top < min_top):
+            continue
+        for para in shape.text_frame.paragraphs:
+            txt = "".join(r.text for r in para.runs)
+            if pat.match(txt) and para.runs:
+                para.runs[0].text = new_text
+                for r in para.runs[1:]:
+                    r.text = ""
+                n += 1
+    return n
 
 
 def read_spec(path: Path) -> dict[str, dict]:
@@ -158,10 +190,11 @@ def main() -> None:
     ap.add_argument("plan")
     ap.add_argument("dst")
     ap.add_argument("--new-spec", default="")
-    ap.add_argument("--renumber", action="store_true", help="「NN / 81」形式のページ番号を新しい番号に書き換える")
+    ap.add_argument("--renumber", action="store_true",
+                    help="ページ番号を新しい番号に書き換える（視覚版の「NN / 81」→「NN / 総数」、旧版の数字だけの脚注「14」→「NN」）")
     a = ap.parse_args()
 
-    plan = read_plan(Path(a.plan))
+    plan, headers = read_plan(Path(a.plan))
     if not plan:
         sys.exit("構成案に k1:/new: の行が無い")
     spec = read_spec(Path(a.new_spec)) if a.new_spec else {}
@@ -208,23 +241,30 @@ def main() -> None:
         if slide._element.get("show") == "0":
             del slide._element.attrib["show"]
 
+    # ヘッダーの書き換え（備考欄の header=…）
+    n_hdr = 0
+    for pos, slide in enumerate(prs.slides):
+        if pos in headers:
+            if replace_para_text(slide, HEADER_PAT, headers[pos]):
+                n_hdr += 1
+            else:
+                print(f"警告: {pos + 1} 枚目にヘッダー文字列が見つからない（header= は無視）")
+
     # ページ番号の書き換え
     if a.renumber:
         total = len(plan)
-        pat = re.compile(r"^\s*\d{1,3}\s*/\s*\d{2,3}\s*$")
+        pat = re.compile(r"^\s*\d{1,3}\s*/\s*\d{2,3}\s*$")      # 視覚版の「NN / 81」
+        bare = re.compile(r"^\s*\d{1,3}\s*$")                   # 旧版の「14」（数字だけの脚注）
+        foot = int(prs.slide_height * 0.85)                     # 下端 15% にある枠だけを脚注とみなす
+        n_num = 0
         for pos, slide in enumerate(prs.slides, 1):
-            for shape in slide.shapes:
-                if not shape.has_text_frame:
-                    continue
-                for para in shape.text_frame.paragraphs:
-                    txt = "".join(r.text for r in para.runs)
-                    if pat.match(txt) and para.runs:
-                        para.runs[0].text = f"{pos:02d} / {total}"
-                        for r in para.runs[1:]:
-                            r.text = ""
+            n_num += replace_para_text(slide, pat, f"{pos:02d} / {total}")
+            n_num += replace_para_text(slide, bare, str(pos), min_top=foot)
+        print(f"ページ番号書換 {n_num} 段落（番号の無い枚はそのまま）")
 
     prs.save(a.dst)
-    print(f"改1 {n_src} 枚 → 使用 {len(used)} 枚、削除 {removed} 枚、新規 {len(new_ids)} 枚、出力 {len(prs.slides)} 枚: {a.dst}")
+    print(f"改1 {n_src} 枚 → 使用 {len(used)} 枚、削除 {removed} 枚、新規 {len(new_ids)} 枚、"
+          f"ヘッダー書換 {n_hdr} 枚、出力 {len(prs.slides)} 枚: {a.dst}")
 
 
 if __name__ == "__main__":

@@ -249,3 +249,10 @@
 - YouTube の字幕は yt-dlp の既定クライアントで HTTP 429 になるため、`scripts/kai2_prefetch_subs.py`（player_client=ios）で先取りして `codex/cache/` に置き Codex に読ませる方式へ変更（字幕は著作物のため cache は .gitignore で除外）。
 - 手順書 01〜03、統合の指示書 `codex/merge_instructions.md`、再実行バッチ作成 `scripts/kai2_make_rerun_batch.py`、連結 `scripts/kai2_concat_merged.py` を追加。p01 の圧縮 `codex/merged/p01.md` を Sonnet で作成。Codex が前回勝手に追記した worklog の 5 行は削除。
 - 残り：p02r・p03〜p06・v02r・v03〜v06・v01r・r02 を 1 本ずつ再開 → 02・03 の統合と抽象化 → 04 構成案 → 改2 の pptx。再開手順は手順書 02 の 7 節。
+
+## 2026-10-22（第3回 改2 の完成：構成抽出の統合、順序の抽象化、改2 の組み立て）
+
+- Codex（gpt-6-astra、推論 High）の計算機操作による構成抽出を 110 件すべて完了（実在確認 OK 92・NG 18）。Sonnet で圧縮・連結して `notes/session03_kai2_20261021/02_各資料の構成抽出.md`、段階統計 `codex/stage_stats.md`、つなぎの理由の整理 `codex/つなぎ理由と工夫の整理.md` を作り、`03_順序の抽象化と理由.md`（どの順番か・なぜその順番か・なぜ分かりやすいか・飛び石チェック表）にまとめた。
+- 改1 の 132 枚を `改1_構成診断.md` で診断し、`04_改2構成案.md`（104 枚を並べ替え、28 枚を外す）と `04_新規枚.md`（橋渡し 4 枚：緯度経度の定義、高さ→測地系の橋、正角と縮尺係数の意味、平面直角座標系の定義）を作成。`scripts/kai2_build_pptx.py` で改2（108 枚、非表示解除、章ヘッダー 3 枚書き換え、ページ番号振り直し）を組み立て、`scripts/pptx_compress_images.py` で約 29 MB に抑え、PowerPoint COM で PDF と確認用 PNG を出力して目視点検し、全 108 枚の PNG は Sonnet のサブエージェントに点検させた（新規枚 2 枚の文字あふれ、13 枚目の章ヘッダー、旧版由来 10 枚の古い脚注番号を直して 3 回組み直し）。
+- 手順書 04（改2 の組み立てと確認）を追加し、手順書 02 の OK/NG 件数を 92/18 に修正。第3回 README に改2 の項を追加。
+- 作業前からある第2回・第3回の未コミット変更と、50 MB を超える pptx（改1 ほか、ローカルのみ）は今回の commit に含めず保持。

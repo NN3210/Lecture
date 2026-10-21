@@ -34,10 +34,11 @@ sys.stdout.reconfigure(encoding="utf-8")
 ROOT = Path("notes/session03_kai2_20261021/codex")
 MODEL = "gpt-6-astra"
 TIMEOUT_SEC = 90 * 60
+TEMPLATE = "batch_prompt_template.md"  # --light で batch_prompt_template_light.md（ブラウザーを使わない省メモリ版）
 
 
 def fill_prompt(batch_id: str) -> Path:
-    tmpl = (ROOT / "batch_prompt_template.md").read_text(encoding="utf-8")
+    tmpl = (ROOT / TEMPLATE).read_text(encoding="utf-8")
     table = (ROOT / "batches" / f"batch_{batch_id}.md").read_text(encoding="utf-8").strip()
     n = sum(1 for ln in table.splitlines() if re.match(r"\|\s*\d+\s*\|", ln))
     prompt = (
@@ -105,6 +106,9 @@ def list_batches() -> None:
 
 if __name__ == "__main__":
     args = sys.argv[1:]
+    if "--light" in args:
+        TEMPLATE = "batch_prompt_template_light.md"
+        args = [a for a in args if a != "--light"]
     if not args or args == ["--list"]:
         list_batches()
     else:
