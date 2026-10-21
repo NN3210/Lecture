@@ -98,6 +98,23 @@ class Embedder:
             e = self.model.encode_batch(sig).squeeze()
         return e / (e.norm() + 1e-9)
 
+    def embed_span_file(self, wav16k_path: Path, start: float, end: float):
+        """16 kHz モノラル WAV の該当区間だけをディスクから読んで埋め込む。
+        録音全体をメモリに載せない（3 時間の録音を丸ごと読むと 1 GB を超え、メモリ 16 GB の PC では他の作業を止める）。"""
+        import soundfile as sf
+
+        sr = 16000
+        a, b = int(start * sr), int(end * sr)
+        if b - a < sr // 2:
+            return None
+        data, file_sr = sf.read(str(wav16k_path), start=a, stop=b, dtype="float32", always_2d=True)
+        if file_sr != sr or data.shape[0] < sr // 2:
+            return None
+        sig = self.torch.from_numpy(data.mean(axis=1)).unsqueeze(0)
+        with self.torch.no_grad():
+            e = self.model.encode_batch(sig).squeeze()
+        return e / (e.norm() + 1e-9)
+
 
 def main() -> None:
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
@@ -113,6 +130,7 @@ def main() -> None:
     ap.add_argument("--offset", type=float, default=0.0,
                     help="文字起こしの時刻に足す秒（録音と文字起こしの時刻がずれている場合。先に数本切り出して聞いて決める）")
     ap.add_argument("--stats-only", action="store_true")
+    ap.add_argument("--wav16", help="変換済みの 16 kHz モノラル WAV（find_self.py の cache/<id>.16k.wav）。あれば変換を省く")
     args = ap.parse_args()
 
     audio = Path(args.audio)
@@ -139,20 +157,22 @@ def main() -> None:
     scores: dict[str, float] = {}
     emb = None
     wav16 = None
+    td = None
     if args.enroll:
         emb = Embedder()
-        import torchaudio
-
         ref = emb.embed_file(Path(args.enroll))
-        with tempfile.TemporaryDirectory() as td:
-            w16 = Path(td) / "a16.wav"
-            to_wav16k(audio, w16)
-            wav16, sr = torchaudio.load(str(w16))
+        # 16 kHz WAV はディスクに置き、区間ごとに読む（録音全体をメモリに載せない）
+        if args.wav16 and Path(args.wav16).exists():
+            wav16 = Path(args.wav16)
+        else:
+            td = tempfile.TemporaryDirectory()
+            wav16 = Path(td.name) / "a16.wav"
+            to_wav16k(audio, wav16)
         for spk, ss in by_spk.items():
             cand = sorted(ss, key=lambda x: -(x["end"] - x["start"]))[: args.probe]
             sims = []
             for s in cand:
-                e = emb.embed_span(wav16, sr, s["start"], min(s["end"], s["start"] + args.max_dur))
+                e = emb.embed_span_file(wav16, s["start"], min(s["end"], s["start"] + args.max_dur))
                 if e is not None:
                     sims.append(float((e * ref).sum()))
             if sims:
@@ -187,7 +207,7 @@ def main() -> None:
         cut(audio, dst, s["start"], end)
         sim = ""
         if emb is not None and wav16 is not None:
-            e = emb.embed_span(wav16, 16000, s["start"], end)
+            e = emb.embed_span_file(wav16, s["start"], end)
             if e is not None:
                 sim = f"{float((e * ref).sum()):.3f}"
         rows.append({"file": dst.name, "start": f"{s['start']:.2f}", "end": f"{end:.2f}",
@@ -204,6 +224,8 @@ def main() -> None:
                                                "n": len(rows), "total_sec": round(total, 1)},
                                               ensure_ascii=False, indent=1), encoding="utf-8")
     print(f"wrote {len(rows)} segments, {total / 60:.1f} 分 → {out}/ (index.csv, meta.json)")
+    if td is not None:
+        td.cleanup()
 
 
 if __name__ == "__main__":

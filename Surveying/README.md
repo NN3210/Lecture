@@ -17,6 +17,7 @@ Claude Code（ローカル）と Codex（Cloud、Lecture リポジトリ全体�
 | `materials/` | 講義スライド・配布資料・課題 |
 | `data/` | 実習用データ（匿名化済みのもののみ） |
 | `scripts/` | 計算・作図スクリプト（`scripts/ondemand/` はオンデマンド動画用） |
+| `../.claude/skills/` | 講義設計パイプラインのスキル 5 件（`lecture-design-pipeline` が入口。世界の講義資料の収集 → 構成抽出 → 順序の指針 → 構成案と pptx）。Claude Code がこのリポジトリで自動で読む |
 | `ondemand/` | オンデマンド講義動画（TTS ナレーション、講師の声の複製）の指南書と作業環境。音声・動画は commit しない |
 
 ## 背景

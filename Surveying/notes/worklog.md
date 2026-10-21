@@ -264,3 +264,17 @@
 - 動作確認: edge-tts で 2 枚 57 秒の試作 mp4 + srt、XTTS v2 日本語合成（読込後 RTF 4〜7、話者類似度 0.81）、ECAPA 話者判定（同一 0.84 / 別人 0.1）、PLAUD 一覧・取得、Circleback JSON 構造、check_asr（読みに直した CER で XTTS 9.7%）。
 - 第5回は Marp の `slides.md`（62 枚、発表者ノート付き）が別セッションで作成中（未コミット）だったので、`extract_notes.py` を Marp md にも対応させ（枚数の数え方は md2pptx.py と同じ）、62 枚の台本下書きが出ることを確認した（出力は作業フォルダーの外に置き、スライドのフォルダーには書いていない）。
 - 未実施: 本人の実録音からの抽出（enroll 用の短い録音が要る。指南書 5 章）、ElevenLabs のアカウント作成と IVC（講師の判断）、第5回の台本の読み上げ向け書き直しと動画化（指南書 8 章の手順）。音声・動画・`ondemand/voice/`・`ondemand/work/` は .gitignore で commit から除外。作業前からある第2回・第3回・第5回の未コミット変更は含めず保持。
+
+## 2026-10-22（本人の声の抽出：enroll 録音なしで本人を見つける find_self.py、実行はメモリ不足で中断）
+
+- enroll 録音が無くても本人を見つけられるよう `scripts/ondemand/find_self.py` を追加。会議ごと・話者ごとの声の埋め込み（ECAPA）を会議をまたいでクラスタリングし、最も多くの録音に現れたクラスターを装着者（本人）とみなして `auto_enroll.wav`・`self_map.json`・`report.md` を出す。録音と Circleback JSON は長さ（±1%）で自動で組にする。指南書に 5.7 節と、Circleback `list` が最新 20 件しか返さない注意を追記。
+- PLAUD の録音 5 本（10/12〜10/17、合計約 10 時間、Ogg/Opus）と対応する Circleback の文字起こし 5 件（全区間あり）を `ondemand/voice/raw/`（ローカルのみ、commit しない）に取得した。
+- `find_self.py` の実行は PC の空きメモリが 2 GB まで落ちて Claude Code に止められた（録音全体を読み込む実装だったため）。`extract_speaker.py` と共に 16 kHz WAV の区間だけをディスクから読む方式（`embed_span_file`、`--wav16`）に直し、録音ごとの埋め込みを `cache/` に保存して途中から再開できるようにした。再実行は指南書 5.7 のコマンド（空きメモリ 3 GB 以上で）。
+- 残り: find_self.py の再実行 → `auto_enroll.wav` を耳で確認 → `extract_speaker.py --enroll` → `prepare_reference.py` → XTTS で第5回の数枚を試作。第5回の slides.md は別セッションが作成中のため、台本の書き直しと全体の動画化はその完成後。
+
+## 2026-10-22（第3回 改2 の中間ファイルを Claude Code スキル 5 件に落とし込み）
+
+- 第3回 改2 で通した「世界の講義資料・動画の収集 → Codex による構成抽出 → 順序の抽象化（指針）→ 構成案と pptx の組み立て」を、`Lecture/.claude/skills/` の 5 スキルに分けて書いた：`lecture-design-pipeline`（入口・役割分担・作業ディレクトリ）、`lecture-source-search`（段階 1）、`lecture-structure-extract`（段階 2）、`lecture-order-guideline`（段階 3）、`lecture-deck-build`（段階 4）。各スキルに雛形（設定・収集指示・Codex 雛形・段階コード表・03 の雛形・構成診断・構成案・Sonnet 用プロンプト）と、`--root` で作業ディレクトリを渡す形に一般化したスクリプトを同梱。
+- 動作確認：session03 のデータで `merge_sources.py --check`・`check_results.py`・`concat_merged.py`・`stage_stats.py` の出力が既存ファイルと一致（日付・凡例の行のみ差）。`build_pptx.py` で改1 → 改2 を組み直して枚数（使用 104・削除 28・新規 4・ヘッダー 3 → 108）と `check_headers.py` の集計が commit 済みの改2 と一致。
+- 第5回「トラバース測量 I」向けに段階コード表の草案 `stage_codes_トラバース測量.md` と、入口スキルに第5回での使い方を記載。`手順書/_スキル化について.md` と README に対応表・所在を追加。デスクトップの SKILLS_OVERVIEW.md に 5 件を追記（リポジトリ外）。
+- 作業前からある第2回・第3回・第5回の未コミット変更（`scripts/pptx_export.ps1` の経路正規化を含む）は含めず保持。

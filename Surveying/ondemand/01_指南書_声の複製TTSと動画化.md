@@ -116,7 +116,7 @@ python scripts/ondemand/build_video.py --narration "materials/slides/第05回_�
 ### 5.1 方針
 
 - 材料は 2 系統。**(a) 本人だけの短い録音（enroll）**: 話者判定の基準と、XTTS / IVC の参照に直接使える。**(b) 会議録音（PLAUD → Circleback）**: 量はあるが他人の声・雑音が混ざる。(a) を基準に (b) から本人の区間だけを切り出す。
-- (a) が無いと、`extract_speaker.py` は「最も長く話している人 = 装着者（本人）」とみなす。会議では外れることがあるので、**必ず (a) を先に作る**。
+- (a) が無いとき、`extract_speaker.py` 単体では「最も長く話している人 = 装着者（本人）」とみなすが、会議では外れる。録音が 3 本以上あるなら **5.7 の `find_self.py`** で会議をまたいで本人を見つけ、その出力 `auto_enroll.wav` を (a) の代わりに使う。PC のマイクで録れるなら (a) を作る方が確実で早い。
 - 録音の圧縮が強い（PLAUD クラウドの音声は Opus 約 32 kbps）ので、声の似方を上げたいなら (a) を PC のマイクで WAV 録音し、量（PVC 用 30 分以上）もそこで稼ぐのが結局早い。
 
 ### 5.2 (a) enroll 録音を作る
@@ -164,6 +164,9 @@ cd <Surveying に戻る>
 - JSON の形: `segments[] = {id, speaker: "Participant N", start, end, text}`（秒）。`stats.speakers` に話者一覧。
 - セッショントークン `CIRCLEBACK_SESSION` は 2026-11-19 まで。切れたら `tools\refresh_circleback_token.py`。
 - 一覧だけなら Claude Code のスキル `circleback-access` でもよい。
+- **注意（2026-10-22 に確認）**: `list` は `--since` やページ指定に関わらず **最新 20 件しか返さない**（ページ送りが効かず同じページを繰り返す）。それより古い会議は Circleback の画面で linkId を調べて `fetch` する。`fetch` は全区間を返す（`meeting.duration` と最後の区間の `end` が一致すれば完全）。
+- PLAUD の録音と Circleback の会議は、PLAUD の開始日時（ローカル）と `createdAt`（UTC → +9 時間）が一致し、長さが ±1% で合うものを組にする。`find_self.py`（5.7）はこの長さの一致で自動で組にする。
+- 取得した JSON と md は `ondemand/voice/raw/transcripts/` に置く。会議名に人名が入るので commit しない（`voice/` は .gitignore 済み）。
 
 ### 5.5 本人の区間を切り出す
 
@@ -197,6 +200,25 @@ python scripts/ondemand/prepare_reference.py --in ondemand/voice/segments/* --ou
 - 整音は控えめ（ハイパス 80 Hz + loudnorm）。雑音が気になる録音だけ `--denoise`（afftdn）を付ける。かけ過ぎると声が変わる。
 - enroll 録音が良質なら、それ自体を XTTS の参照（10〜20 秒を切り出して 22.05 kHz）や IVC の参照（1〜3 分）に使ってよい。会議録音より似ることが多い。
 - 参照の品質確認: `& $PY scripts/ondemand/voice_similarity.py --ref ondemand/voice/enroll/enroll.wav ondemand/voice/reference/xtts_ref_01.wav ...` で 0.6 以上を目安にする。
+
+### 5.7 enroll 録音が無いとき: 会議録音だけから本人を見つける（find_self.py）
+
+Circleback の話者ラベル（Participant N）は会議ごとに振り直されるので、会議をまたいで同じ人を追えない。しかし録音機の装着者（本人）は全部の録音に出ている。`find_self.py` は録音ごと・話者ごとに声の埋め込み（speechbrain ECAPA）の代表ベクトルを作り、会議をまたいでクラスタリングして、**最も多くの録音に現れたクラスター**を本人とみなす。補助の手掛かり: 装着者はマイクに近いので発話量が多い。本人の姓を三人称（「〇〇先生」）で呼ぶ話者は本人でない（`--not-self-regex`。姓は**コマンドラインにだけ**書き、ファイルには残さない）。
+
+準備: 5.3 で録音 3〜5 本を `ondemand/voice/raw/` に、5.4 でその文字起こし JSON を `ondemand/voice/raw/transcripts/` に置く。録音と JSON は長さ（±1%）で自動で組にし、組を最初に表示する。
+
+```powershell
+# 空きメモリを確認（3 GB 未満ならブラウザー等を閉じる。話者モデルで約 1 GB 使う。録音全体はメモリに載せない）
+Get-CimInstance Win32_OperatingSystem | % { "{0:N1} GB free" -f ($_.FreePhysicalMemory/1MB) }
+$env:PYTHONUTF8 = "1"
+& $PY -u scripts/ondemand/find_self.py --audio-dir ondemand/voice/raw --transcripts ondemand/voice/raw/transcripts --out ondemand/voice/self_search --per-spk 30 --not-self-regex "<姓>(先生|さん)"
+```
+
+- 出力 `ondemand/voice/self_search/`: `report.md`（クラスターの表）、`self_map.json`（録音ごとの本人ラベルと類似度）、`auto_enroll.wav`（本人クラスターの代表に近い区間を会議をまたいで集めた約 90 秒、16 kHz）、`cache/`（録音ごとの 16 kHz WAV と埋め込み。**途中で止まっても再実行すれば済んだ録音は飛ばす**。やり直すときは消す）。
+- 採用の目安: 本人クラスターが **録音の 8 割以上に出現**し、各録音での代表との類似度（表の内訳の数値）が **0.5 以上**、三人称言及が 0。満たさないときは `report.md` を見て、録音ごとに `extract_speaker.py --participant` で手で決める。
+- `auto_enroll.wav` を **必ず再生して本人の声だけか確認**してから、5.5 の `--enroll ondemand/voice/self_search/auto_enroll.wav` として使う。`--wav16 ondemand/voice/self_search/cache/<id>.16k.wav` を付けると 16 kHz への変換を省ける。
+- 所要時間の目安: 録音 1 本（2〜3 時間）につき変換 1〜2 分 + 埋め込み 2〜5 分（CPU）。
+- 2026-10-22 の実行記録: 録音 5 本（10/12〜10/17、合計約 10 時間）と文字起こし 5 件を取得して開始したが、PC の空きメモリが 2 GB まで落ちて Claude Code に止められた（当時は録音全体をメモリに載せる実装だった。今は区間ごとに読む）。再実行は上のコマンドそのまま。
 
 ## 6. 声を複製して合成する
 
@@ -266,8 +288,8 @@ python scripts/ondemand/build_video.py --narration <narration.md> --png-dir <pre
 - [ ] 第5回のスライドを作る（`materials/slides/第05回_トラバース測量I/`。講義計画: 到達目標・講義・演習 25 分・最新技術・試験の型は `materials/lecture_plan_13.md` の「第 5 回」）。
 - [ ] `extract_notes.py slides.md` → `narration.md`（2026-10-22 時点の下書きは 62 枚、ノートは 1 枚 30〜250 字で読み上げには短い）。`台本の書き方.md` の用語の読み（いきょ・けいきょ、ほうこうかく、こうさ 等）と分量（1 枚 150〜350 字）で書き直す。演習は一時停止の指示にする。
 - [ ] `pptx_export.ps1` で PNG、`build_video.py --engine edge` で仮動画。通しで聞いて台本を直す。
-- [ ] enroll 録音（5.2）を講師に依頼。無いうちは最多発話者で仮判定しない（他人の声の混入を避ける）。
-- [ ] PLAUD 3〜5 本 → Circleback JSON → `extract_speaker.py` → 耳で確認 → `prepare_reference.py --target xtts` と `--target ivc`。
+- [ ] enroll 録音（5.2）を講師に依頼。無いうちは最多発話者で仮判定しない（他人の声の混入を避ける）。代わりに 5.7 の `find_self.py` で `auto_enroll.wav` を作ってもよい（2026-10-22: 録音 5 本と JSON 5 件は `ondemand/voice/raw/` に取得済み。実行は空きメモリ 3 GB 以上で再開）。
+- [ ] PLAUD 3〜5 本 → Circleback JSON → `extract_speaker.py --enroll` → 耳で確認 → `prepare_reference.py --target xtts` と `--target ivc`。
 - [ ] XTTS で数枚だけ試作し、似方（0.6 以上）と誤読を確認。
 - [ ] 講師が ElevenLabs のプランと voice_id を用意したら、`--engine elevenlabs` で全体を合成。
 - [ ] 6.4 の点検 → 章立て・字幕 → 公開先へ。`notes/worklog.md` に記録、`narration.md` と `timings.json` を commit（音声・動画は除く）。
@@ -293,6 +315,7 @@ python scripts/ondemand/build_video.py --narration <narration.md> --png-dir <pre
 | `scripts/ondemand/tts_synth.py` / `tts_backends.py` | TTS エンジン共通 | system（xtts は venv） |
 | `scripts/ondemand/plaud_download.py` | PLAUD 一覧・取得 | system |
 | `scripts/ondemand/extract_speaker.py` | 本人の区間の切り出し | venv |
+| `scripts/ondemand/find_self.py` | enroll なしで会議録音をまたいで本人を見つける（5.7） | venv |
 | `scripts/ondemand/prepare_reference.py` | 参照音声の整音・連結 | system |
 | `scripts/ondemand/voice_similarity.py` | 話者類似度の確認 | venv |
 | `scripts/ondemand/check_asr.py` | 合成音声を音声認識に戻して台本と比較（誤読・途切れの検出） | venv |
