@@ -243,7 +243,9 @@
 - md2pptx.py で編集可能なPPTX、PowerPoint COM でPDFと確認PNG2枚を出力し、目視点検した。空の preview/ を事前作成すると PNG 書き出しが失敗するため README に注記した。
 - 作業開始時から存在する第2回補足フォルダーの未コミット変更（削除・変更・未追跡PPTX）と slides_actual/ は今回の変更に含めず保持した。
 
-## 2026-10-21（Codex、ブラウザー動作確認の再実施）
+## 2026-10-22（第3回 改2 の準備：世界の講義資料の収集と Codex による構成抽出、途中）
 
-- Chromeで指定された国土地理院ページを表示し、下方向に1回スクロールしてh1〜h3を3件取得した。
-- `notes/session03_kai2_20261021/codex/test_browser_result.md` をUTF-8で更新し、ツールの使用順と操作時のエラー・解決方法を記録した。
+- 「座標系」の講義資料・動画 110 件を `notes/session03_kai2_20261021/01_資料一覧.md` に一覧化し、Codex（gpt-6-astra、推論 High）の計算機操作で資料ごとの教える順番を `codex/results/資料NNN.md` に抽出中（24 件完了。p02・v02 は 00:30 に PC のメモリ不足で Claude Code が停止）。
+- YouTube の字幕は yt-dlp の既定クライアントで HTTP 429 になるため、`scripts/kai2_prefetch_subs.py`（player_client=ios）で先取りして `codex/cache/` に置き Codex に読ませる方式へ変更（字幕は著作物のため cache は .gitignore で除外）。
+- 手順書 01〜03、統合の指示書 `codex/merge_instructions.md`、再実行バッチ作成 `scripts/kai2_make_rerun_batch.py`、連結 `scripts/kai2_concat_merged.py` を追加。p01 の圧縮 `codex/merged/p01.md` を Sonnet で作成。Codex が前回勝手に追記した worklog の 5 行は削除。
+- 残り：p02r・p03〜p06・v02r・v03〜v06・v01r・r02 を 1 本ずつ再開 → 02・03 の統合と抽象化 → 04 構成案 → 改2 の pptx。再開手順は手順書 02 の 7 節。

@@ -1,0 +1,36 @@
+# 資料収集 A：英語圏の講義スライド・講義ノート・教科書章
+
+検索語：surveying coordinate systems lecture notes / geodetic datums / transverse mercator lecture / state plane UTM grid scale factor / azimuth bearing latitude departure / geoid ellipsoid orthometric height / NPTEL surveying / Penn State GEOG 862 / MIT OCW / Curtin・Calgary・UNB など（標準モード、一部は拡張せず）。
+URL は WebSearch 結果をそのまま記録。WebFetch で開けて内容を確認できたものは備考に「確認済」、それ以外は「未確認」（検索結果の要約のみ）。動画は担当外。
+注：Calgary・Curtin・UNSW・RMIT・ナイジェリア・南アの講義資料そのものは検索に出ず（シラバスのみ）。追加探索が必要。
+
+| No. | 種別 | タイトル | 作成者（機関・チャンネル） | 言語 | 年 | URL | 扱う話題（順に、「→」でつなぐ） | 長さ | 備考 |
+|---|---|---|---|---|---|---|---|---|---|
+| 1 | 講義ノート | Lesson 5: Geodetic Datums（GEOG 862） | Penn State（米） | 英 | 要確認 | https://courses.ems.psu.edu/geog862/book/export/html/1669 | 平面測量の平面近似→測地座標→測地系の要素→ジオイド→NAD83 | Web 1 レッスン | 未確認（検索要約。再取得は 404） |
+| 2 | 講義ノート | Lesson 6: State Plane Coordinates and Heights（GEOG 862） | Penn State（米） | 英 | 要確認 | https://courses.ems.psu.edu/geog862/print/l6.html | SPCS27 と SPCS83→投影の選択→歪み→高さ | Web 1 レッスン | 未確認 |
+| 3 | 講義ノート | GEOG 862 State Plane / UTM と縮尺係数の章 | Penn State（米） | 英 | 要確認 | https://www.e-education.psu.edu/geog862/print/book/export/html/1817 | 要確認（UTM 縮尺係数 0.9996→State Plane 1/10,000 との比較→地上距離と格子距離） | Web 章 | 未確認 |
+| 4 | 解説ページ | 24. State Plane Coordinate System（Nature of Geographic Information） | Penn State（米） | 英 | 要確認 | https://courses.ems.psu.edu/natureofgeoinfo/web/node/1698 | State Plane の考え方→ゾーン分割→投影法の選択 | Web 1 ページ | 未確認 |
+| 5 | スライド | Lecture 4 - Datums and Geoid（Geodesy 2） | Benha University（エジプト） | 英 | 要確認 | https://feng.stafpu.bu.edu.eg/Surveying Engineering/4251/crs-18842/Files/Lecture 4 - Datums and Geoid.pdf | 前回の復習→水平・鉛直測地系→ジオイド（詳細は要確認） | 19 枚 | 確認済（PDF 取得、枚数のみ。URL に空白あり） |
+| 6 | スライド | Lecture 9 - Height Systems（Geodesy 2） | Benha University（エジプト） | 英 | 要確認 | https://feng.stafpu.bu.edu.eg/Surveying Engineering/4251/crs-18842/Files/Lecture 9 - Height Systems.pdf | 高さの体系→h=H+N→水準測量・重力・GPS+ジオイドモデルによる正標高 | 要確認 | 未確認（検索要約） |
+| 7 | スライド | Lecture 4 Height Systems for students | Benha University（エジプト） | 英 | 要確認 | https://feng.stafpu.bu.edu.eg/Surveying Engineering/4266/crs-18651/Files/Lecture 4 Height Systems for students.pdf | 高さの体系→正標高・正規標高・力学高→楕円体高との関係 | 要確認 | 未確認 |
+| 8 | スライド | Surveying Engineering Lecture 3: Bearings | Benha University（エジプト） | 英 | 2021-22 | https://feng.stafpu.bu.edu.eg/Surveying Engineering/897/crs-18550/Files/Surveying Lec 3 2021-2022.pdf | 座標系（測地・平面）→全円方位（WCB）→前方・後方方位→象限方位→座標の基本概念→座標から距離・方位を計算 | 10 枚 | 確認済（PDF 取得。見出し抽出） |
+| 9 | 講義ノート | Reference Systems for Surveying and Mapping（TRS 3-1） | TU Delft（オランダ） | 英 | 2020 | https://filelist.tudelft.nl/CiTG/Over%20faculteit/Afdelingen/Geoscience%20%26%20Remote%20sensing/Study/TRS_3-1.pdf | 要確認（測量・地図のための座標参照系。CC BY-NC-SA） | 要確認 | 未確認（PDF が画像のみで内容読めず） |
+| 10 | 講義ノート | Lecture Notes Referenzsysteme（LNRefSyst） | University of Stuttgart（独、英語版ノート。Calgary K.P.Schwarz 講義ノートを下敷き） | 英 | 2018 | https://www.gis.uni-stuttgart.de/lehre/LectureNotes/LNRefSyst_180529.pdf | 要確認（楕円体座標系→参照系→座標変換） | 75 ページ | 確認済（PDF 取得、ページ数のみ） |
+| 11 | 講義ノート | 12.215 Modern Navigation, Lecture 2（緯度経度の定義・XYZ との関係・測地系） | MIT OpenCourseWare（米） | 英 | 2006 | https://ocw.mit.edu/courses/12-215-modern-navigation-fall-2006/10ed0c71305cd32af8b44720195d31b5_12_215_lec02.pdf | 緯度経度の種類→直交座標 XYZ との関係→測地系 | 要確認 | 確認済 2026-10-22（Lecture 7 は推測航法の回で対象外のため Lecture 2 に差し替え。PDF 取得可） |
+| 12 | 講義ノート | 12.215 Modern Navigation, Lecture 3（高さ） | MIT OCW（ミラー: ups.edu.ec） | 英 | 2006 | https://mitocw.ups.edu.ec/courses/earth-atmospheric-and-planetary-sciences/12-215-modern-navigation-fall-2006/lecture-notes/12_215_lec03.pdf | 楕円体高→正標高（ポテンシャル）→ジオイド高 | 要確認 | 未確認。ミラーサイト |
+| 13 | 講義ノート | 12.215 Modern Navigation, Lecture 10（地図投影の種類と数学） | MIT OpenCourseWare（米） | 英 | 2006 | https://ocw.mit.edu/courses/12-215-modern-navigation-fall-2006/resources/12_215_lec10 | 地図投影の種類→数式 | 要確認 | 未確認 |
+| 14 | 講義ノート | Lecture 3: Map Projections and Coordinate Systems（11.520） | MIT Urban Studies and Planning（米） | 英 | 2010 | https://web.mit.edu/11.520/www/lectures/lecture3.html | 楕円体→緯度経度→投影の歪み→円筒・方位・円錐→UTM→State Plane→データ間変換 | Web 1 回 | 確認済。GIS 講義で測量ではない |
+| 15 | スライド | MapBasics: Datums, Land Division etc. (ESRM 304) | University of Washington（米） | 英 | 2015 | https://courses.washington.edu/esrm304a/Modules/Surveying/MapBasics-Datums,LandDivision,etc_au2015.pdf | 測地系（WGS84・NAD27・NAD83）→土地区画（詳細は要確認） | 26 枚 | 確認済（PDF 取得、枚数のみ） |
+| 16 | 解説ページ | What is a datum?（NGS Facts） | NOAA National Geodetic Survey（米） | 英 | 要確認 | https://geodesy.noaa.gov/INFO/facts/datum.shtml | 測地系の定義→用途→水平・鉛直測地系→実現（観測点・験潮場） | Web 1 ページ | 確認済 |
+| 17 | 教科書章 | Geodesy for the Layman（NOAA 再刊） | NOAA / NGS（米） | 英 | 1977 | https://repository.library.noaa.gov/view/noaa/66401 | 楕円体→ジオイド→水平測量→水準測量→測地系→重力 | 要確認 | 未確認（検索要約） |
+| 18 | 講義ノート | Lecture Notes 37: Conformal Map Projections in Geodesy | University of New Brunswick（加） | 英 | 1973 | https://gge.ext.unb.ca/Pubs/LN37.pdf | 微分幾何→等角写像→メルカトル→横メルカトル→ランベルト→ステレオ | 要確認 | 未確認（スキャン PDF） |
+| 19 | 講義ノート | Lecture Notes 34: Systematic Analysis of Distortions in Map Projections | University of New Brunswick（加） | 英 | 1973頃 | https://gge.ext.unb.ca/Pubs/LN34.pdf | 投影による歪みの体系的解析 | 要確認 | 未確認（スキャン PDF） |
+| 20 | 教科書章 | A Primer of Geodesy for GIS Users（Heft 64） | TU Wien（墺） | 英 | 2003 | https://opac.geologie.ac.at/ais312/dokumente/GM64.pdf | 要確認（測地基礎→子午線帯投影→UTM） | 要確認 | 未確認（検索要約） |
+| 21 | 動画/講義ページ（講義リスト） | NPTEL Higher Surveying, Module 2: Coordinate System and Reference Frame | IIT Guwahati / NPTEL（印） | 英 | 要確認 | https://fac.iitg.ac.in/abd/nptel1.html | 地球の参照系・フレーム・座標系→座標・測地系変換→投影座標系 | 3 講（L2〜L4） | 確認済（講義題名のみ。資料 PDF へのリンクではない） |
+| 22 | 講義ノート | NPTEL Basic Surveying シラバス | NPTEL / IIT（印） | 英 | 要確認 | https://archive.nptel.ac.in/content/syllabus_pdf/105104101.pdf | ジオイドと参照回転楕円体→座標系→平面測量と測地測量 | 要確認 | 未確認。シラバスのみで講義本文ではない |
+| 23 | 解説ページ | National Grid Transformation OSTN15 (ETRS89-OSGB36)（A guide to coordinate systems in Great Britain） | Ordnance Survey（英） | 英 | 要確認 | https://docs.os.uk/more-than-maps/a-guide-to-coordinate-systems-in-great-britain/from-one-coordinate-system-to-another-geodetic-transformations/national-grid-transformation-ostn15-etrs89-osgb36 | ETRS89 と OSGB36→ヘルマート変換の限界（約3m）→OSTN15 格子補正 | Web 1 ページ（ガイドの一部） | 未確認 |
+| 24 | 解説ページ | Height（geoid separation）チュートリアル | Naval Postgraduate School（米） | 英 | 要確認 | https://www.oc.nps.edu/oc2902w/c_mtutor/height/height2.htm | 2 種の高さ→基準面の違い→ジオイド分離 N | Web 1 ページ | 未確認 |
+| 25 | スライド | GIS Lesson 3（座標系・投影） | University of Idaho（米） | 英 | 要確認 | https://www.webpages.uidaho.edu/nrgis/secure/pdf_slides/lesson3.pdf | 要確認（UTM の適用範囲→アルベルス・ランベルトの使い分け） | 要確認 | 未確認。GIS 寄り |
+| 26 | スライド | Lecture 11: Traverse Computations | UET Lahore（パキスタン） | 英 | 要確認 | https://www.slideshare.net/slideshow/lecture-11-traverse-computations/137827094 | 角度調整→方位角の計算→緯距・経距→閉合差の配分→座標計算 | 要確認 | 未確認 |
+| 27 | スライド | Traversing lecture notes for geomatics engineering | 大学名要確認 | 英 | 要確認 | https://www.slideshare.net/slideshow/traversing-lecture-notes-for-geomatics-engineering/278732174 | 緯距=D cos Az・経距=D sin Az→閉合差→座標 | 要確認 | 未確認 |
+| 28 | 解説ページ | Working with Grid Coordinates | RPLS.com（測量技術者向け、米） | 英 | 要確認 | https://rpls.com/wp-content/uploads/converted_files/401705=6997-Working with Grid Coordinates.pdf | 格子座標→縮尺係数・標高係数→結合係数（地上距離と格子距離の換算） | 要確認 | 未確認。大学資料ではない |

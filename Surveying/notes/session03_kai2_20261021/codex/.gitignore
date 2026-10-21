@@ -1,0 +1,4 @@
+cache/
+tmp/
+logs/*_stdout.log
+test*_stdout.log
