@@ -1,0 +1,59 @@
+[
+  {
+    "file": "materials/slides/第05回_トラバース測量I/illustrations/title_hero.png",
+    "exists": true,
+    "format": "PNG",
+    "mode": "RGB",
+    "size": [
+      1600,
+      900
+    ],
+    "source": {
+      "format": "PNG",
+      "mode": "RGB",
+      "size": [
+        1672,
+        941
+      ]
+    },
+    "regenerations": 0
+  },
+  {
+    "file": "materials/slides/第05回_トラバース測量I/illustrations/traverse_chain.png",
+    "exists": true,
+    "format": "PNG",
+    "mode": "RGB",
+    "size": [
+      1600,
+      900
+    ],
+    "source": {
+      "format": "PNG",
+      "mode": "RGB",
+      "size": [
+        1672,
+        941
+      ]
+    },
+    "regenerations": 1
+  },
+  {
+    "file": "materials/slides/第05回_トラバース測量I/illustrations/ts_coordinate.png",
+    "exists": true,
+    "format": "PNG",
+    "mode": "RGB",
+    "size": [
+      1600,
+      900
+    ],
+    "source": {
+      "format": "PNG",
+      "mode": "RGB",
+      "size": [
+        1672,
+        941
+      ]
+    },
+    "regenerations": 1
+  }
+]

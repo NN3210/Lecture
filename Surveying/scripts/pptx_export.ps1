@@ -8,6 +8,9 @@ param(
 )
 $Pptx = (Resolve-Path $Pptx).Path
 if ($Pdf -eq "") { $Pdf = [System.IO.Path]::ChangeExtension($Pptx, ".pdf") }
+# SaveAs は "/" 区切りの経路だと E_FAIL になるため、絶対経路（"\" 区切り）に正規化する。
+$Pdf = [System.IO.Path]::GetFullPath($Pdf)
+if ($PngDir -ne "") { $PngDir = [System.IO.Path]::GetFullPath($PngDir) }
 $app = New-Object -ComObject PowerPoint.Application
 try {
     $pres = $app.Presentations.Open($Pptx, $true, $false, $false)

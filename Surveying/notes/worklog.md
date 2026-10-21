@@ -279,3 +279,11 @@
 - 動作確認：session03 のデータで `merge_sources.py --check`・`check_results.py`・`concat_merged.py`・`stage_stats.py` の出力が既存ファイルと一致（日付・凡例の行のみ差）。`build_pptx.py` で改1 → 改2 を組み直して枚数（使用 104・削除 28・新規 4・ヘッダー 3 → 108）と `check_headers.py` の集計が commit 済みの改2 と一致。
 - 第5回「トラバース測量 I」向けに段階コード表の草案 `stage_codes_トラバース測量.md` と、入口スキルに第5回での使い方を記載。`手順書/_スキル化について.md` と README に対応表・所在を追加。デスクトップの SKILLS_OVERVIEW.md に 5 件を追記（リポジトリ外）。
 - 作業前からある第2回・第3回・第5回の未コミット変更（`scripts/pptx_export.ps1` の経路正規化を含む）は含めず保持。
+
+## 2026-10-22（第5回 トラバース測量 I の講義資料：Markdown → PowerPoint・PDF・HTML、Codex による図とイラスト）
+
+- 講義計画の第 5 回に沿って `materials/slides/第05回_トラバース測量I/slides.md`（Marp、64 枚、発表者ノート付き）を書き、`scripts/build_session05.py`（md2pptx.py を継承）で `slides.pptx` を生成。数式 21 式は KaTeX → MathML → Office 同梱の MML2OMML.XSL で編集できる Office 数式にした（`scripts/katex_mathml.mjs`、`scripts/omml_equations.py`）。PowerPoint COM で `slides.pdf` と `preview/`（64 枚の PNG）を書き出し、Marp CLI で `slides.html` を生成。README に構成・時間配分・作り直し方を記載。
+- 概念図 12 点は Codex（gpt-6-astra）に `scripts/draw_session05_figures.py`（matplotlib、SVG+PNG）で描かせ、イラスト 3 点（表紙、折れ線、TS の座標観測）は Codex の画像生成で文字なしの概念画として作った。指示と報告は `notes/session05_figures/`、プロンプトの記録は `illustrations/生成プロンプト.md`。
+- 手計算テスト（問 1 閉合トラバースの調整と方向角 6 点、問 2 座標の逆計算 4 点、25 分）を `materials/exercises/第05回_トラバース測量I/` に作り、`scripts/check_exercise_05.py` で講義の数値例と答を検算した。
+- 点検で直した点：PowerPoint の PDF 書き出しが E_FAIL になる原因は `pptx_export.ps1` の `-Pdf` 経路（"/" 区切り）だったので GetFullPath で正規化（Office 数式は無関係だった）。表の折り返し行の高さ、数式の高さの見積もり、行頭に「。」が来る問題（全段落に ja-JP と句読点のぶら下げを指定）、長い見出し 1 枚を直し、全 64 枚を縮小一覧で確認した。
+- 作業前からある第2回・第3回の未コミット変更、`hm_slides_actual/`、`ondemand/` の音声は含めず保持。

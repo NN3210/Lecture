@@ -1,0 +1,1445 @@
+OpenAI Codex v0.162.1
+--------
+workdir: %USERPROFILE%\Documents\Workplace\MISC\Lecture\Surveying
+model: gpt-6-astra
+provider: openai
+approval: never
+sandbox: danger-full-access
+reasoning effort: high
+reasoning summaries: none
+session id: 01a160c0-4891-7642-99e8-31feff38d2be
+--------
+user
+# 第5回 イラスト生成の指示（Codex、gpt-6-astra）
+
+あなたは測量学の講義資料の図版担当です。組み込みの画像生成ツール（image_gen）で、次の 3 枚の概念イラストを作り、`materials/slides/第05回_トラバース測量I/illustrations/` に PNG で保存してください。作業ディレクトリは `Surveying/` です。
+
+## 共通の指定
+
+- 横長 16:9、長辺 1600 px 程度の PNG（RGB）。
+- **文字・数字・ロゴ・記号列は一切入れない**（生成画像の文字は崩れるため）。プロンプトにも「no text, no numbers, no letters, no logos, no watermark」を明記する。
+- 写実的な人物・風景は求めない。教科書の図版（plate）のような、落ち着いた温かみのあるアイボリー背景（#FAF9F5 付近）、線は紺（#1F4E79）、強調は青緑（#13877B）と橙（#BD512B）の少色構成。平面的で整った概念図。
+- 実在の製品・企業ロゴ・地名・人物を描かない。
+- 生成後、Pillow で PNG の形式・大きさを確認し、画像を目視して、文字や数字の混入、崩れた形があれば作り直す。
+- 第3回の記録 `materials/slides/第03回_測量の座標/illustrations/生成プロンプト.md` を読み、同じ書式で `materials/slides/第05回_トラバース測量I/illustrations/生成プロンプト.md` を日本語で作る。各画像について、使用ツール、出力ファイル、指定（大きさ・文字なし）、生成・確認結果（日付 2026-10-22、形式、画素数、やり直した回数）、実際に使ったプロンプト（```text ブロック）を記録する。
+
+## 3 枚の内容
+
+1. `title_hero.png`（表紙）
+   俯瞰で見た農地（水田や畑の区画）を囲む多角形の測線。頂点に小さな杭または三脚の記号を置き、辺は矢印付きの線で順に結んで一筆書きのように見せる。区画の緑・黄土色は控えめに、測線の紺を主役にする。
+2. `traverse_chain.png`（5-1 トラバース測量とは）
+   測点を折れ線でつなぎ、各頂点で角（扇形の弧）、各辺で距離（両矢印）を測っていく様子。三脚に載せた測量器械と反射プリズムの簡略シルエットを 2〜3 個。角の弧は青緑、距離の矢印は橙。
+3. `ts_coordinate.png`（5-6 TS の座標観測）
+   トータルステーションの簡略シルエットから、方向と距離を表す矢印が座標格子上の点へと変わるイメージ。格子・矢印・点で表し、器械の画面には抽象的なバーだけを描く（数字は描かない）。
+
+## 禁止事項
+
+- git の操作（add / commit / push / checkout / stash など）は一切しない。
+- 上記の `illustrations/` フォルダと `notes/session05_figures/` 以外のファイルを変更しない。
+- 質問をせずに最後まで進め、最後に日本語で結果（各ファイルの有無・画素数・やり直した回数・気づいた点）を報告する。
+
+warning: Codex is ignoring 1 unrecognized configuration setting. Check for typos or deprecated settings.
+  user (%USERPROFILE%\.codex\config.toml): `computer_use.windows.always_allowed_app_ids` is ignored.
+warning: Codex is ignoring 1 unrecognized configuration setting. Check for typos or deprecated settings.
+  user (%USERPROFILE%\.codex\config.toml): `computer_use.windows.always_allowed_app_ids` is ignored.
+codex
+imagegen スキルを使い、第3回の記録書式を確認してから3枚を生成します。PNGの形式・画素数と図の見た目を確認し、指定フォルダに画像と生成記録を保存します。git操作は行いません。
+
+exec
+"C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -Command "Get-Content -LiteralPath '%USERPROFILE%/.codex/skills/.system/imagegen/SKILL.md'; Get-Content -LiteralPath 'materials/slides/第03回_測量の座標/illustrations/生成プロンプト.md'; Get-ChildItem -LiteralPath . -Filter AGENTS.md; Get-ChildItem -LiteralPath 'materials' -Filter AGENTS.md -Recurse; Get-ChildItem -LiteralPath 'notes' -Filter AGENTS.md -Recurse" in %USERPROFILE%\Documents\Workplace\MISC\Lecture\Surveying
+ succeeded in 23374ms:
+---
+name: "imagegen"
+description: "Generate or edit raster images when the task benefits from AI-created bitmap visuals such as photos, illustrations, textures, sprites, mockups, or transparent-background cutouts. Use when Codex should create a brand-new image, transform an existing image, or derive visual variants from references, and the output should be a bitmap asset rather than repo-native code or vector. Do not use when the task is better handled by editing existing SVG/vector/code-native assets, extending an established icon or logo system, or building the visual directly in HTML/CSS/canvas."
+---
+
+# Image Generation Skill
+
+Generates or edits images for the current project (for example website assets, game assets, UI mockups, product mockups, wireframes, logo design, photorealistic images, or infographics).
+
+## Top-level modes and rules
+
+This skill has exactly two top-level modes:
+
+- **Default built-in tool mode (preferred):** built-in `image_gen` tool for image generation, editing, and transparent-image requests. Does not require `OPENAI_API_KEY`.
+- **Fallback CLI mode:** `scripts/image_gen.py` CLI. Use when the user explicitly asks for or confirms the CLI/API/model path. Requires `OPENAI_API_KEY`.
+
+Within CLI fallback, the CLI exposes three subcommands:
+
+- `generate`
+- `edit`
+- `generate-batch`
+
+Rules:
+- Use the built-in `image_gen` tool by default for normal image generation and editing requests.
+- Do not switch to CLI fallback for ordinary quality, size, or file-path control.
+- For transparent images, ask built-in `image_gen` for a transparent background and preserve the generated alpha.
+- Never silently switch from built-in `image_gen` or CLI `gpt-image-2` to CLI `gpt-image-1.5`; ask the user first unless they explicitly requested `gpt-image-1.5`.
+- The word `batch` by itself does not mean CLI fallback. If the user asks for many assets or says to batch-generate assets without explicitly asking for CLI/API/model controls, stay on the built-in path and issue one built-in call per requested asset or variant.
+- If the built-in tool fails or is unavailable, tell the user the CLI fallback exists and that it requires `OPENAI_API_KEY`. Proceed only if the user explicitly asks for that fallback.
+- If the user explicitly asks for CLI mode, use the bundled `scripts/image_gen.py` workflow. Do not create one-off SDK runners.
+- Never modify `scripts/image_gen.py`. If something is missing, ask the user before doing anything else.
+
+Built-in save-path policy:
+- In built-in tool mode, Codex saves generated images under `$CODEX_HOME/*` by default.
+- Do not describe or rely on OS temp as the default built-in destination.
+- Do not describe or rely on a destination-path argument (if any) on the built-in `image_gen` tool. If a specific location is needed, generate first and then move or copy the selected output from `$CODEX_HOME/generated_images/...`.
+- Save-path precedence in built-in mode:
+  1. If the user names a destination, move or copy the selected output there.
+  2. If the image is meant for the current project, move or copy the final selected image into the workspace before finishing.
+  3. If the image is only for preview or brainstorming, render it inline; the underlying file can remain at the default `$CODEX_HOME/*` path.
+- Never leave a project-referenced asset only at the default `$CODEX_HOME/*` path.
+- Do not overwrite an existing asset unless the user explicitly asked for replacement; otherwise create a sibling versioned filename such as `hero-v2.png` or `item-icon-edited.png`.
+
+Shared prompt guidance for both modes lives in `references/prompting.md` and `references/sample-prompts.md`.
+
+Fallback-only docs/resources for CLI mode:
+- `references/cli.md`
+- `references/image-api.md`
+- `references/codex-network.md`
+- `scripts/image_gen.py`
+
+## When to use
+- Generate a new image (concept art, product shot, cover, website hero)
+- Generate a new image using one or more reference images for style, composition, or mood
+- Edit an existing image (inpainting, lighting or weather transformations, background replacement, object removal, compositing, transparent background)
+- Produce many assets or variants for one task
+
+## When not to use
+- Extending or matching an existing SVG/vector icon set, logo system, or illustration library inside the repo
+- Creating simple shapes, diagrams, wireframes, or icons that are better produced directly in SVG, HTML/CSS, or canvas
+- Making a small project-local asset edit when the source file already exists in an editable native format
+- Any task where the user clearly wants deterministic code-native output instead of a generated bitmap
+
+## Decision tree
+
+Think about two separate questions:
+
+1. **Intent:** is this a new image or an edit of an existing image?
+2. **Execution strategy:** is this one asset or many assets/variants?
+
+Intent:
+- If the user wants to modify an existing image while preserving parts of it, treat the request as **edit**.
+- If the user provides images only as references for style, composition, mood, or subject guidance, treat the request as **generate**.
+- If the user provides no images, treat the request as **generate**.
+
+Built-in edit semantics:
+- Built-in edit mode is for images already visible in the conversation context, such as attached images or images generated earlier in the thread.
+- If the user wants to edit a local image file with the built-in tool, first load it with built-in `view_image` tool so the image is visible in the conversation context, then proceed with the built-in edit flow.
+- Do not promise arbitrary filesystem-path editing through the built-in tool.
+- If a local file still needs direct file-path control, masks, or other explicit CLI-only parameters, use the explicit CLI fallback only when the user asks for it.
+- For edits, preserve invariants aggressively and save non-destructively by default.
+
+Execution strategy:
+- In the built-in default path, produce many assets or variants by issuing one `image_gen` call per requested asset or variant.
+- In the CLI fallback path, use the CLI `generate-batch` subcommand only when the user explicitly chose CLI mode and needs many prompts/assets.
+- For many distinct assets, do not use `n` as a substitute for separate prompts. `n` is for variants of one prompt; distinct assets need distinct built-in calls or distinct CLI `generate-batch` jobs.
+
+Assume the user wants a new image unless they clearly ask to change an existing one.
+
+## Workflow
+1. Decide the top-level mode: built-in by default, including transparent-output requests; fallback CLI only if explicitly requested or confirmed.
+2. Decide the intent: `generate` or `edit`.
+3. Decide whether the output is preview-only or meant to be consumed by the current project.
+4. Decide the execution strategy: single asset vs repeated built-in calls vs CLI `generate-batch`.
+5. Collect inputs up front: prompt(s), exact text (verbatim), constraints/avoid list, and any input images.
+6. For every input image, label its role explicitly:
+   - reference image
+   - edit target
+   - supporting insert/style/compositing input
+7. If the edit target is only on the local filesystem and you are staying on the built-in path, inspect it with `view_image` first so the image is available in conversation context.
+8. If the user asked for a photo, illustration, sprite, product image, banner, or other explicitly raster-style asset, use `image_gen` rather than substituting SVG/HTML/CSS placeholders. If the request is for an icon, logo, or UI graphic that should match existing repo-native SVG/vector/code assets, prefer editing those directly instead.
+9. Augment the prompt based on specificity:
+   - If the user's prompt is already specific and detailed, normalize it into a clear spec without adding creative requirements.
+   - If the user's prompt is generic, add tasteful augmentation only when it materially improves output quality.
+10. Use the built-in `image_gen` tool by default.
+11. For transparent-output requests, ask built-in `image_gen` for a transparent background and preserve the generated alpha channel.
+12. Inspect outputs and validate: subject, style, composition, text accuracy, and invariants/avoid items.
+13. Iterate with a single targeted change, then re-check.
+14. For preview-only work, render the image inline; the underlying file may remain at the default `$CODEX_HOME/generated_images/...` path.
+15. For project-bound work, move or copy the selected artifact into the workspace and update any consuming code or references. Never leave a project-referenced asset only at the default `$CODEX_HOME/generated_images/...` path.
+16. For batches or multi-asset requests, persist every requested deliverable final in the workspace unless the user explicitly asked to keep outputs preview-only. Discarded variants do not need to be kept unless requested.
+17. If the user explicitly chooses or confirms the CLI fallback, then use the fallback-only docs for model, quality, size, `input_fidelity`, masks, output format, output paths, and network setup.
+18. Always report the final saved path(s) for any workspace-bound asset(s), plus the final prompt or prompt set and whether the built-in tool or fallback CLI mode was used.
+
+## Transparent image requests
+
+Ask built-in `image_gen` for a genuinely transparent background and preserve its alpha.
+
+## Prompt augmentation
+
+Reformat user prompts into a structured, production-oriented spec. Make the user's goal clearer and more actionable, but do not blindly add detail.
+
+Treat this as prompt-shaping guidance, not a closed schema. Use only the lines that help, and add a short extra labeled line when it materially improves clarity.
+
+### Specificity policy
+
+Use the user's prompt specificity to decide how much augmentation is appropriate:
+
+- If the prompt is already specific and detailed, preserve that specificity and only normalize/structure it.
+- If the prompt is generic, you may add tasteful augmentation when it will materially improve the result.
+
+Allowed augmentations:
+- composition or framing hints
+- polish level or intended-use hints
+- practical layout guidance
+- reasonable scene concreteness that supports the stated request
+
+Not allowed augmentations:
+- extra characters or objects that are not implied by the request
+- brand names, slogans, palettes, or narrative beats that are not implied
+- arbitrary side-specific placement unless the surrounding layout supports it
+
+## Use-case taxonomy (exact slugs)
+
+Classify each request into one of these buckets and keep the slug consistent across prompts and references.
+
+Generate:
+- photorealistic-natural 窶・candid/editorial lifestyle scenes with real texture and natural lighting.
+- product-mockup 窶・product/packaging shots, catalog imagery, merch concepts.
+- ui-mockup 窶・app/web interface mockups and wireframes; specify the desired fidelity.
+- infographic-diagram 窶・diagrams/infographics with structured layout and text.
+- scientific-educational 窶・classroom explainers, scientific diagrams, and learning visuals with required labels and accuracy constraints.
+- ads-marketing 窶・campaign concepts and ad creatives with audience, brand position, scene, and exact tagline/copy.
+- productivity-visual 窶・slide, chart, workflow, and data-heavy business visuals.
+- logo-brand 窶・logo/mark exploration, vector-friendly.
+- illustration-story 窶・comics, children窶冱 book art, narrative scenes.
+- stylized-concept 窶・style-driven concept art, 3D/stylized renders.
+- historical-scene 窶・period-accurate/world-knowledge scenes.
+
+Edit:
+- text-localization 窶・translate/replace in-image text, preserve layout.
+- identity-preserve 窶・try-on, person-in-scene; lock face/body/pose.
+- precise-object-edit 窶・remove/replace a specific element (including interior swaps).
+- lighting-weather 窶・time-of-day/season/atmosphere changes only.
+- background-extraction 窶・transparent background / clean cutout. Ask built-in `image_gen` for actual transparency.
+- style-transfer 窶・apply reference style while changing subject/scene.
+- compositing 窶・multi-image insert/merge with matched lighting/perspective.
+- sketch-to-render 窶・drawing/line art to photoreal render.
+
+## Shared prompt schema
+
+Use the following labeled spec as shared prompt scaffolding for both top-level modes:
+
+```text
+Use case: <taxonomy slug>
+Asset type: <where the asset will be used>
+Primary request: <user's main prompt>
+Input images: <Image 1: role; Image 2: role> (optional)
+Scene/backdrop: <environment>
+Subject: <main subject>
+Style/medium: <photo/illustration/3D/etc>
+Composition/framing: <wide/close/top-down; placement>
+Lighting/mood: <lighting + mood>
+Color palette: <palette notes>
+Materials/textures: <surface details>
+Text (verbatim): "<exact text>"
+Constraints: <must keep/must avoid>
+Avoid: <negative constraints>
+```
+
+Notes:
+- `Asset type` and `Input images` are prompt scaffolding, not dedicated CLI flags.
+- `Scene/backdrop` refers to the visual setting. It is not the same as the fallback CLI `background` parameter, which controls output transparency behavior.
+- Fallback-only execution notes such as `Quality:`, `Input fidelity:`, masks, output format, and output paths belong in the CLI path only. Do not treat them as built-in `image_gen` tool arguments.
+
+Augmentation rules:
+- Keep it short.
+- Add only the details needed to improve the prompt materially.
+- For edits, explicitly list invariants (`change only X; keep Y unchanged`).
+- If any critical detail is missing and blocks success, ask a question; otherwise proceed.
+
+## Examples
+
+### Generation example (hero image)
+```text
+Use case: product-mockup
+Asset type: landing page hero
+Primary request: a minimal hero image of a ceramic coffee mug
+Style/medium: clean product photography
+Composition/framing: wide composition with usable negative space for page copy if needed
+Lighting/mood: soft studio lighting
+Constraints: no logos, no text, no watermark
+```
+
+### Edit example (invariants)
+```text
+Use case: precise-object-edit
+Asset type: product photo background replacement
+Primary request: replace only the background with a warm sunset gradient
+Constraints: change only the background; keep the product and its edges unchanged; no text; no watermark
+```
+
+## Prompting best practices
+- Structure prompt as scene/backdrop -> subject -> details -> constraints.
+- Include intended use (ad, UI mock, infographic) to set the mode and polish level.
+- Use camera/composition language for photorealism.
+- Only use SVG/vector stand-ins when the user explicitly asked for vector output or a non-image placeholder.
+- Quote exact text and specify typography + placement.
+- For tricky words, spell them letter-by-letter and require verbatim rendering.
+- For multi-image inputs, reference images by index and describe how they should be used.
+- For edits, repeat invariants every iteration to reduce drift.
+- Iterate with single-change follow-ups.
+- If the prompt is generic, add only the extra detail that will materially help.
+- If the prompt is already detailed, normalize it instead of expanding it.
+- For CLI fallback only, see `references/cli.md` and `references/image-api.md` for model, `quality`, `input_fidelity`, masks, output format, and output-path guidance.
+- For transparent images, ask built-in `image_gen` for actual transparency and preserve its alpha.
+
+More principles shared by both modes: `references/prompting.md`.
+Copy/paste specs shared by both modes: `references/sample-prompts.md`.
+
+## Guidance by asset type
+Asset-type templates (website assets, game assets, wireframes, logo) are consolidated in `references/sample-prompts.md`.
+
+## gpt-image-2 guidance for CLI fallback
+
+The fallback CLI defaults to `gpt-image-2`.
+
+- Use `gpt-image-2` for new CLI/API workflows unless the user confirms a different model.
+- CLI `gpt-image-2` does not support `background=transparent`; ask before using `gpt-image-1.5` unless the user explicitly requested that model.
+- `gpt-image-2` always uses high fidelity for image inputs; do not set `input_fidelity` with this model.
+- `gpt-image-2` supports `quality` values `low`, `medium`, `high`, and `auto`.
+- Use `quality low` for fast drafts, thumbnails, and quick iterations. Use `medium`, `high`, or `auto` for final assets, dense text, diagrams, identity-sensitive edits, or high-resolution outputs.
+- Square images are typically fastest to generate. Use `1024x1024` for fast square drafts.
+- If the user asks for 4K-style output, use `3840x2160` for landscape or `2160x3840` for portrait.
+- `gpt-image-2` size may be `auto` or `WIDTHxHEIGHT` if all constraints hold: max edge `<= 3840px`, both edges multiples of `16px`, long-to-short ratio `<= 3:1`, total pixels between `655,360` and `8,294,400`.
+
+Popular `gpt-image-2` sizes:
+- `1024x1024` square
+- `1536x1024` landscape
+- `1024x1536` portrait
+- `2048x2048` 2K square
+- `2048x1152` 2K landscape
+- `3840x2160` 4K landscape
+- `2160x3840` 4K portrait
+- `auto`
+
+## Fallback CLI mode only
+
+### Temp and output conventions
+These conventions apply only to the CLI fallback. They do not describe built-in `image_gen` output behavior.
+- Use `tmp/imagegen/` for intermediate files (for example JSONL batches); delete them when done.
+- Write final artifacts under `output/imagegen/`.
+- Use `--out` or `--out-dir` to control output paths; keep filenames stable and descriptive.
+
+### Dependencies
+Prefer `uv` for dependency management in this repo.
+
+Required Python package:
+```bash
+uv pip install openai
+```
+
+Optional for image inspection and downscaling:
+```bash
+uv pip install pillow
+```
+
+Portability note:
+- If you are using the installed skill outside this repo, install dependencies into that environment with its package manager.
+- In uv-managed environments, `uv pip install ...` remains the preferred path.
+
+### Environment
+- `OPENAI_API_KEY` must be set for live API calls.
+- Do not ask the user for `OPENAI_API_KEY` when using the built-in `image_gen` tool.
+- Never ask the user to paste the full key in chat. Ask them to set it locally and confirm when ready.
+
+If the key is missing, give the user these steps:
+1. Create an API key in the OpenAI platform UI: https://platform.openai.com/api-keys
+2. Set `OPENAI_API_KEY` as an environment variable in their system.
+3. Offer to guide them through setting the environment variable for their OS/shell if needed.
+
+If installation is not possible in this environment, tell the user which dependency is missing and how to install it into their active environment.
+
+### Script-mode notes
+- CLI commands + examples: `references/cli.md`
+- API parameter quick reference: `references/image-api.md`
+- Network approvals / sandbox settings for CLI mode: `references/codex-network.md`
+
+## Reference map
+- `references/prompting.md`: shared prompting principles for both modes.
+- `references/sample-prompts.md`: shared copy/paste prompt recipes for both modes.
+- `references/cli.md`: fallback-only CLI usage via `scripts/image_gen.py`.
+- `references/image-api.md`: fallback-only API/CLI parameter reference.
+- `references/codex-network.md`: fallback-only network/sandbox troubleshooting for CLI mode.
+- `scripts/image_gen.py`: fallback-only CLI implementation. Use only when the user explicitly chooses or confirms CLI mode.
+# 繧ｸ繧ｪ繧､繝峨・讎ょｿｵ蝗ｳ・夂判蜒冗函謌舌・繝ｭ繝ｳ繝励ヨ
+
+- 菴ｿ逕ｨ繝・・繝ｫ・夂ｵ・∩霎ｼ縺ｿ逕ｻ蜒冗函謌舌ヤ繝ｼ繝ｫ・・mage_gen・・
+- 蜃ｺ蜉帙ヵ繧｡繧､繝ｫ・啻geoid_earth.png`
+- 謖・ｮ夲ｼ壽ｨｪ髟ｷ 16:9縲∝ｹ・ｴ・1600 px縲よ枚蟄励・謨ｰ蟄励・繝ｭ繧ｴ繝ｻ險伜捷縺ｪ縺励・
+
+## 逕滓・繝ｻ遒ｺ隱咲ｵ先棡
+
+- 2026-10-15・夂ｵ・∩霎ｼ縺ｿ逕ｻ蜒冗函謌舌ヤ繝ｼ繝ｫ縺ｧ逕滓・縺励∵欠螳壹ヵ繧ｩ繝ｫ繝縺ｫ PNG 繧剃ｿ晏ｭ倥・
+- Pillow 縺ｧ髢九＞縺ｦ蜈ｨ逕ｻ邏繧定ｪｭ縺ｿ霎ｼ縺ｿ縲￣NG・蹴GB・・672 ﾃ・941 px 繧堤｢ｺ隱搾ｼ育函謌先凾縺ｮ遶ｯ謨ｰ縺ｫ繧医ｊ邵ｦ讓ｪ豈斐・邏・16:9・峨・
+- 逶ｮ隕悶〒譁・ｭ励・謨ｰ蟄励・繝ｭ繧ｴ繝ｻ荳崎ｦ√↑險伜捷縺ｮ豺ｷ蜈･縺後↑縺・％縺ｨ縲∵･募・菴薙・霈ｪ驛ｭ縺ｨ繧ｸ繧ｪ繧､繝峨・襍ｷ莨上∝承蛛ｴ縺ｮ菴咏區繧堤｢ｺ隱阪・
+
+## 菴ｿ逕ｨ縺励◆繝励Ο繝ｳ繝励ヨ
+
+```text
+Use case: scientific-educational.
+Create one refined science textbook illustration explaining the geoid to high-school students, with absolutely no text.
+Canvas: wide 16:9, approximately 1600 pixels wide (prefer 1600 x 900).
+Backdrop: uniform warm ivory.
+Subject: a single Earth-sized abstract geoid centered slightly left of the canvas center. Its surface is like a gently lumpy potato, with broad smooth bulges and depressions strongly exaggerated so that the deviation from an ideal ellipsoid is easy to see. This represents a gravitational equipotential surface, the level of a hypothetical ocean extended over the whole Earth; it is NOT terrain, continents, mountains or ocean waves. Show the low areas in calm blue, intermediate areas in muted green, and high areas in gentle yellow, all connected by smooth gradients. Restrained soft volume shading.
+Superimpose a smooth reference ellipsoid at exactly the same center and approximately the same mean radius: draw only its thin precise light-gray outer circular/very slightly oblate elliptical outline, without fill. The reference outline should remain visibly readable across the colored surface and against the ivory wherever the geoid dips inside it; some bulges extend outside it. Make the outline subtle but discernible. No wireframe or latitude/longitude grid.
+Composition: one overlapping comparison, not two separate globes. Entire object visible, generous margins. Leave the rightmost 30 percent largely empty ivory for later slide text. The object occupies roughly the middle-left 60 percent of the canvas.
+Style: dignified, calm, precise scientific textbook plate, fine delicate edges, smooth matte color, no dramatic lighting.
+Strict exclusions: no letters, Japanese or English text, numbers, labels, logos, watermark, legends, colorbars, arrows, ticks, axes, symbols, decorative marks, continents, geographic borders, stars, or additional objects.
+```
+
+
+## 2026-10-15 霑ｽ蜉繧､繝ｩ繧ｹ繝茨ｼ壼・騾壻ｻ墓ｧ・
+
+- 菴ｿ逕ｨ繝・・繝ｫ・夂ｵ・∩霎ｼ縺ｿ逕ｻ蜒冗函謌舌ヤ繝ｼ繝ｫ・・mage_gen・峨・
+- 讓ｪ髟ｷ16:9繧呈欠螳壹よｸｩ縺九＞繧｢繧､繝懊Μ繝ｼ閭梧勹縲∬誠縺｡逹縺・◆遘大ｭｦ謨咏ｧ第嶌縺ｮ謖ｿ邨ｵ縲∵枚蟄励・謨ｰ蟄励・繝ｭ繧ｴ繝ｻ險伜捷縺ｪ縺励・
+- 譌｢蟄倥・ geoid_earth.png 縺ｨ譛ｬ繝輔ぃ繧､繝ｫ縺ｮ譌｢蟄倬Κ蛻・・螟画峩縺帙★縲∽ｻ･荳九ｒ霑ｽ險倥＠縺溘・
+
+## orange_peel.png
+
+### 逕滓・繝励Ο繝ｳ繝励ヨ
+
+```text
+逕ｨ騾費ｼ壽ｸｬ驥丞ｭｦ縺ｮ隰帷ｾｩ繧ｹ繝ｩ繧､繝臥畑縲∫ｧ大ｭｦ縺ｮ謨咏ｧ第嶌縺ｮ謖ｿ邨ｵ縲よ眠縺励＞逕ｻ蜒上ｒ1譫夂函謌舌よｨｪ髟ｷ16:9縲・600ﾃ・00 px遞句ｺｦ縲りレ譎ｯ縺ｯ貂ｩ縺九∩縺ｮ縺ゅｋ繧｢繧､繝懊Μ繝ｼ縲よ里蟄倥・繧ｸ繧ｪ繧､繝画諺邨ｵ縺ｨ隱ｿ蜥後☆繧九∫ｩ上ｄ縺九↑繝槭ャ繝亥ｽｩ濶ｲ縲∫ｴｰ縺冗ｲｾ蟇・↑霈ｪ驛ｭ縲∵而縺医ａ縺ｪ雉ｪ諢溘∵沐繧峨°縺ｪ髯ｰ蠖ｱ縲・
+譛ｨ縺ｮ繝・・繝悶Ν縺ｮ荳翫↓縲∽ｸｸ縺・∩縺九ｓ1蛟九→縲∝挨縺ｮ縺ｿ縺九ｓ縺九ｉ1譫壹↓縺､縺ｪ縺後▲縺溘∪縺ｾ繧縺・◆逧ｮ繧貞ｹｳ繧峨↓謚ｼ縺怜ｺ・￡縺溘ｂ縺ｮ繧剃ｸｦ縺ｹ繧九ゅｄ繧・ｸ翫°繧芽ｦ九ｋ縲ゆｸｸ縺・∩縺九ｓ縺ｯ蟾ｦ螂･縲∝ｺ・￡縺溽坩縺ｯ蟾ｦ蟇・ｊ縺ｮ謇句燕縲ら坩縺ｯ荳ｭ蠢・〒縺､縺ｪ縺後▲縺滉ｸ崎ｦ丞援縺ｪ闃ｱ蠖｢縺ｧ縲・縲・譛ｬ縺ｮ謾ｾ蟆・憾縺ｮ豺ｱ縺・｣ゅ￠逶ｮ縺ｨ蟷・・縺ゅｋ髫咎俣縺悟､也ｸ√°繧我ｸｭ蠢・ｿ代￥縺ｾ縺ｧ蜈･繧九り｣ゅ￠逶ｮ縺九ｉ譛ｨ縺ｮ螟ｩ譚ｿ縺後・縺｣縺阪ｊ隕九∴繧九ら坩縺ｮ螟門・縺ｯ縺ｿ縺九ｓ濶ｲ縲∵釜繧後◆邵√↓逋ｽ縺・・逧ｮ縺悟ｰ代＠隕九∴繧九ら坩繧貞ｮ悟・縺ｪ蜀・攸繧・挨縲・・遐ｴ迚・↓縺励↑縺・ら坩縺ｮ蜴壹＆縺ｨ逅・擇縺ｮ譖ｲ縺後ｊ縺檎ｸ√↓繧上★縺九↓谿九ｊ縲∫帥髱｢縺檎┌蛯ｷ縺ｮ縺ｾ縺ｾ蟷ｳ髱｢縺ｫ縺ｪ繧峨↑縺・％縺ｨ縺檎峩隕ｳ逧・↓蛻・°繧九ゆｽ吝・縺ｪ譫懆ｉ繝ｻ蛹・ｸ√・鬟溷勣縺ｯ鄂ｮ縺九↑縺・ょ承蛛ｴ縺ｮ邏・5%縺ｯ譁・ｭ励ｒ蠕後〒鄂ｮ縺上◆繧√√⊇縺ｼ菴輔ｂ縺ｪ縺・・繧九＞繧｢繧､繝懊Μ繝ｼ縺ｮ菴咏區縺ｫ縺吶ｋ縲よ惠逶ｮ縺ｯ荳ｻ鬘後・蜻ｨ霎ｺ縺縺第ｷ｡縺上＠縲∬レ譎ｯ縺ｸ閾ｪ辟ｶ縺ｫ縺ｪ縺倥∪縺帙ｋ縲・
+逕ｻ蜒丞・縺ｫ譁・ｭ励・謨ｰ蟄励・繝ｭ繧ｴ繝ｻ騾上°縺励・險伜捷繝ｻ遏｢蜊ｰ繝ｻ逶ｮ逶帙・陬・｣ｾ繝槭・繧ｯ繧剃ｸ蛻・・繧後↑縺・ゆｺｺ迚ｩ縺ｪ縺励・
+```
+
+## sea_level_station.png
+
+### 逕滓・繝励Ο繝ｳ繝励ヨ
+
+```text
+逕ｨ騾費ｼ壽ｸｬ驥丞ｭｦ縺ｮ隰帷ｾｩ繧ｹ繝ｩ繧､繝臥畑縺ｮ邊ｾ蟇・〒關ｽ縺｡逹縺・◆遘大ｭｦ謨咏ｧ第嶌縺ｮ謖ｿ邨ｵ縲よ眠縺励＞逕ｻ蜒上ｒ1譫夂函謌舌よｨｪ髟ｷ16:9縲・600ﾃ・00 px遞句ｺｦ縲よｸｩ縺九＞繧｢繧､繝懊Μ繝ｼ縺ｮ閭梧勹縺ｨ遨ｺ縲∫ｴｰ縺・ｼｪ驛ｭ縲∫ｩ上ｄ縺九↑繝槭ャ繝医・豺｡蠖ｩ縲∵而縺医ａ縺ｪ髯ｰ蠖ｱ縲・
+髱吶°縺ｪ貂ｯ縺ｮ遨上ｄ縺九↑豌ｴ髱｢縺悟ｺ・￥豌ｴ蟷ｳ縺ｫ邯壹￥諠・勹縲ゆｸ句濠蛻・↓阮・＞髱堤ｷ代・豬ｷ繧貞ｺ・￥謠上″縲∵ｰｴ蟷ｳ縺ｪ驕譎ｯ縺ｮ豬ｷ髱｢繧剃ｸｻ蠖ｹ縺ｫ縺吶ｋ縲ょｷｦ遶ｯ縺ｮ蟯ｸ螢√↓蟆上＆縺ｪ辟｡蝨ｰ縺ｮ讀懈ｽｮ謇縺ｮ蟆丞ｱ九′縺ゅｋ縲ょｰ丞ｱ九・豬ｷ蛛ｴ縺ｫ邏ｰ縺・央逶ｴ縺ｮ隕ｳ貂ｬ遲抵ｼ磯撕豌ｴ莠包ｼ峨′蜿悶ｊ莉倥￠繧峨ｌ縲∝ｲｸ螢√↓豐ｿ縺｣縺ｦ豬ｷ髱｢繧定ｲｫ縺肴ｰｴ荳ｭ縺ｸ逵溘▲逶ｴ縺蝉ｼｸ縺ｳ繧九ょｲｸ螢√→蟆丞ｱ九→遲偵・讒矩逧・↓縺､縺ｪ縺後▲縺ｦ縺・ｋ縲よ焔蜑阪・豌ｴ縺後ｏ縺壹°縺ｫ騾上￠縺ｦ遲偵・豌ｴ荳ｭ驛ｨ蛻・′蛻・°繧九よｰｴ髱｢縺ｫ縺ｯ縺斐￥蠑ｱ縺・ｨｪ髟ｷ縺ｮ縺輔＊豕｢縺縺代る□譎ｯ縺ｫ縺ｯ菴弱＞螻ｱ荳ｦ縺ｿ縺後°縺吶°縺ｫ隕九∴繧九ゆｸ雁濠蛻・・縺ｻ縺ｨ繧薙←菴輔ｂ縺ｪ縺・・繧九＞繧｢繧､繝懊Μ繝ｼ縺ｮ遨ｺ縺ｧ縲∵枚蟄励ｒ蠕檎ｽｮ縺ｧ縺阪ｋ菴咏區縲ょｰ丞ｱ九・蟆上＆縺上∵ｰｴ髱｢縺ｮ蠎・′繧翫ｒ驍ｪ鬲斐＠縺ｪ縺・ゆｺｺ迚ｩ繝ｻ闊ｹ繝ｻ螟ｧ豕｢縺ｪ縺励・
+譁・ｭ励・謨ｰ蟄励・繝ｭ繧ｴ繝ｻ騾上°縺励・險伜捷繝ｻ遏｢蜊ｰ繝ｻ逶ｮ逶帙・陬・｣ｾ繝槭・繧ｯ繧剃ｸ蛻・緒縺九↑縺・よｽｮ菴榊ｰｺ縺ｮ謨ｰ蟄励ｂ謠上°縺ｪ縺・・
+```
+
+## globe_cylinder_projection.png
+
+### 逕滓・繝励Ο繝ｳ繝励ヨ
+
+```text
+逕ｨ騾費ｼ壽ｸｬ驥丞ｭｦ縺ｮ隰帷ｾｩ縺ｧ蜀・ｭ偵∈縺ｮ謚募ｽｱ縺ｨ鬮倡ｷｯ蠎ｦ縺ｮ諡｡螟ｧ繧堤峩隕ｳ逧・↓隱ｬ譏弱☆繧狗ｧ大ｭｦ謨咏ｧ第嶌縺ｮ讓｡蝙区諺邨ｵ縲よ眠縺励＞逕ｻ蜒上ｒ1譫夂函謌舌よｨｪ髟ｷ16:9縲・600ﾃ・00 px遞句ｺｦ縲よｸｩ縺九＞繧｢繧､繝懊Μ繝ｼ縺ｮ辟｡蝨ｰ閭梧勹縲らｲｾ蟇・↑邏ｰ縺・ｷ夂判縺ｨ豺｡縺・・繝・ヨ蠖ｩ濶ｲ縲ゅΛ繝吶Ν縺ｯ荳蛻・↑縺励・
+蜊企乗・縺ｮ豺｡髱定牡縺ｮ逅・ｽ薙ｒ荳ｭ蠢・↓鄂ｮ縺上ら帥菴薙・螟ｧ髯ｸ繧呈緒縺九★縲∫ｴｰ縺・搨轣ｰ濶ｲ縺ｮ邨檎ｷ壹・邱ｯ邱壹□縺代ｒ遲芽ｧ貞ｺｦ髢馴囈縺ｧ謠上￥縲ょ慍逅・・閾ｪ霆｢霆ｸ縺ｯ驩帷峩縲∝圏讌ｵ縺檎悄荳翫〒蜊玲･ｵ縺檎悄荳九∬ｻｸ縺ｮ譽定・菴薙・謠上°縺ｪ縺・ら帥荳ｭ蠢・↓縺ｯ蟆上＆縺ｪ證冶牡縺ｮ蜈画ｺ舌ｒ鄂ｮ縺上′譏溷魂繧・ｨ伜捷縺ｫ縺ｯ縺励↑縺・ら帥縺ｮ蜻ｨ蝗ｲ繧呈ｷ｡縺・け繝ｪ繝ｼ繝濶ｲ縺ｮ邏吶・蜀・ｭ偵′蝗ｲ繧縲ょ・遲偵・霆ｸ縺ｯ逅・・蜊怜圏讌ｵ繧帝壹ｋ驩帷峩霆ｸ縺ｫ蜴ｳ蟇・↓荳閾ｴ縺励∝・遲偵・蜀・濠蠕・・逅・・蜊雁ｾ・→蜷後§縺ｧ縲∬ｵ､驕薙・蜀・捉縺縺代〒謗･縺吶ｋ縲ょ・遲偵・鬮倥＆縺檎帥縺ｮ逶ｴ蠕・ｈ繧企聞縺上∽ｸ顔ｫｯ縺ｨ荳狗ｫｯ縺碁幕縺・◆遲偵よ万繧∝ｰ代＠荳翫°繧芽ｦ九※荳顔ｫｯ縺ｨ荳狗ｫｯ縺ｮ讌募・蠖｢縺ｮ髢句哨縺悟・縺九ｋ縲ら帥縺ｨ蜈画ｺ舌′隕九∴繧九ｈ縺・↓謇句燕縺ｮ蜀・ｭ貞｣√・荳驛ｨ繧貞・繧企幕縺阪∝承蛛ｴ縺ｸ貊代ｉ縺九↓蠎・′繧倶ｸ邯壹″縺ｮ蟷ｳ繧峨↑邏吶↓縺吶ｋ縲ょ・遲偵ｂ蟷ｳ繧峨↑邏吶ｂ蜷御ｸ縺ｮ驩帷峩譁ｹ蜷代ｒ菫昴▽縲ら悄荳翫・逵滉ｸ九ｒ髢峨§繧九・縺溘・縺ｪ縺・・
+蜈画ｺ舌°繧峨・邨檎ｷｯ邱壹・蠖ｱ繧貞・遲貞・蛛ｴ縺翫ｈ縺ｳ螻暮幕縺輔ｌ縺九￠縺溽ｴ吩ｸ翫↓謚募ｽｱ縺吶ｋ縲らｵ檎ｷ壹・蠖ｱ縺ｯ莠偵＞縺ｫ蟷ｳ陦後↑驩帷峩逶ｴ邱壹〒縲∝捉譁ｹ蜷代↓遲蛾俣髫斐らｷｯ邱壹・蠖ｱ縺ｯ荳螳夐ｫ倥＆縺ｫ縺ゅｋ豌ｴ蟷ｳ縺ｪ邱壹〒縲∝・遲偵・荳翫〒縺ｯ騾剰ｦ門峙縺ｫ蠕薙▲縺ｦ譖ｲ縺後▲縺ｦ隕九∴縲∝ｹｳ繧峨↑邏吶・荳翫〒縺ｯ逶ｴ邱壹りｵ､驕謎ｻ倩ｿ代・邱ｯ邱壹・髢馴囈縺ｯ迢ｭ縺上∽ｸ贋ｸ九・鬮倡ｷｯ蠎ｦ縺ｻ縺ｩ髢馴囈縺悟､ｧ縺阪￥縺ｪ繧九らｷ壹ｒ譁懊ａ譬ｼ蟄舌↓縺励↑縺・ょ・縺ｮ邨瑚ｷｯ縺ｯ縺斐￥阮・＞蜈峨・蠎・′繧翫□縺代〒陦ｨ縺励∫泙蜊ｰ繝ｻ險伜捷縺ｫ縺励↑縺・ゆｸｭ蠢・・貅舌↓繧医ｋ荳ｭ蠢・・遲呈兜蠖ｱ縺ｮ迚ｩ逅・ｨ｡蝙九〒縺ゅｊ縲∝宍蟇・↑繝｡繝ｫ繧ｫ繝医Ν蝗ｳ豕輔・邱ｯ蠎ｦ髢馴囈縺ｨ蜷御ｸ縺縺ｨ荳ｻ蠑ｵ縺吶ｋ謠丞・縺ｯ縺励↑縺・・
+縺吶∋縺ｦ縺ｮ迚ｩ菴薙ｒ逕ｻ髱｢蜀・↓蜿弱ａ繧九よ枚蟄励・謨ｰ蟄励・繝ｭ繧ｴ繝ｻ騾上°縺励・險伜捷繝ｻ逶ｮ逶帙・譁ｹ菴阪・繝ｼ繧ｯ繝ｻ螟ｧ髯ｸ繝ｻ蝗ｽ蠅・・莠ｺ迚ｩ縺ｯ荳蛻・緒縺九↑縺・・
+```
+
+### 菫ｮ豁｣繝励Ο繝ｳ繝励ヨ
+
+蛻晉ｨｿ縺ｮ襍､驕謎ｻ倩ｿ代↓菴吝・縺ｪ邱壹・驥阪↑繧翫′縺ゅ▲縺溘◆繧√∽ｻ･荳九・謖・､ｺ縺ｧ蜀咲函謌舌＠縺溘・
+
+```text
+縺薙・逕ｻ蜒上ｒ遘大ｭｦ謨咏ｧ第嶌縺ｮ謖ｿ邨ｵ縺ｨ縺励※菫ｮ豁｣縺励※縺上□縺輔＞縲よｸｩ縺九＞繧｢繧､繝懊Μ繝ｼ閭梧勹縲∵ｨｪ髟ｷ16:9縲∫ｴｰ縺・搨轣ｰ濶ｲ邱壹∵ｷ｡縺・ｽｩ濶ｲ縲∫帥菴薙→蜀・ｭ偵・驩帷峩縺ｪ蜈ｱ騾夊ｻｸ縲∽ｸｭ蠢・・蟆上＆縺ｪ蜈画ｺ舌∝承縺ｫ螻暮幕縺吶ｋ邏吶・菫昴▲縺ｦ縺上□縺輔＞縲・
+譛驥崎ｦ・ｼ夊ｵ､驕謎ｻ倩ｿ代↓蟇・寔縺励※驥阪↑縺｣縺溷､壽焚縺ｮ讓ｪ邱壹ｒ縺吶∋縺ｦ髯､蜴ｻ縺励∫ｷｯ邱壹・謚募ｽｱ繧呈紛逅・＠縺ｦ縺上□縺輔＞縲ら帥荳翫・邱ｯ邱壹・襍､驕・譛ｬ縲∝圏邱ｯ20蠎ｦ繝ｻ40蠎ｦ繝ｻ60蠎ｦ縲∝漉邱ｯ20蠎ｦ繝ｻ40蠎ｦ繝ｻ60蠎ｦ縺ｮ蜷郁ｨ・譛ｬ縺縺代ょ・遲偵→邏吩ｸ翫・蟇ｾ蠢懊☆繧句ｽｱ繧よｭ｣遒ｺ縺ｫ7譛ｬ縺縺代∬ｵ､驕薙ｒ荳ｭ蠢・↓荳贋ｸ句ｯｾ遘ｰ縲りｵ､驕薙°繧峨・鬮倥＆縺ｯ逅・濠蠕С縺ｫ蟇ｾ縺・縲・ｱ0.364R縲・ｱ0.839R縲・ｱ1.732R縺ｧ縲∽ｸ翫→荳九∈陦後￥縺ｻ縺ｩ髢馴囈縺悟｢励☆縲よ焚蛟､繧・枚蟄励・逕ｻ蜒上↓譖ｸ縺九↑縺・ら帥縺ｮ蠖ｱ縺ｧ縺ｪ縺・ｽ吝・縺ｪ譬ｼ蟄舌ｄ莠碁㍾邱壹・荳蛻・↑縺励らｵ檎ｷ壹・蠖ｱ縺ｯ遲蛾俣髫斐・驩帷峩邱壹・
+蜀・ｭ偵ｒ逅・・逶ｴ蠕・・邏・蛟阪・鬮倥＆縺ｫ縺励∫帥繧貞・遲偵・鬮倥＆縺ｮ荳ｭ螟ｮ縺ｫ鄂ｮ縺上ょ・遲貞濠蠕・・逅・濠蠕・→荳閾ｴ縲らｴ吶・謇句燕蛛ｴ繧呈・迸ｭ縺ｫ蛻・ｊ髢九＞縺ｦ逅・ｽ薙ｒ隕九○縲√◎縺ｮ蛻・ｊ髢九＞縺溽ｴ吶′蜿ｳ縺ｫ邯壹￥縲ょ承蛛ｴ縺ｮ譛繧ょ､門・縺ｮ驛ｨ蛻・・蟷ｳ繧峨↑驩帷峩縺ｮ邏吶→縺励※縲√◎縺薙〒讓ｪ縺ｮ邱ｯ邱壹・縺ｾ縺｣縺吶＄蟷ｳ陦後↑豌ｴ蟷ｳ逶ｴ邱壹↓縺吶ｋ縲ょ・遲偵・荳贋ｸ九・髢句哨縺ｯ荳ｭ遨ｺ縺ｧ縺ゅｊ縲∝ｺ墓攸繝ｻ縺ｵ縺溘・謠上°縺ｪ縺・ら帥菴薙ｒ邏ｰ髟ｷ縺・･募・菴薙↓縺励↑縺・・
+譁・ｭ励・謨ｰ蟄励・繝ｭ繧ｴ繝ｻ險伜捷繝ｻ遏｢蜊ｰ繝ｻ逶ｮ逶帙・螟ｧ髯ｸ繝ｻ莠ｺ迚ｩ縺ｯ荳蛻・↑縺励ょ・菴薙ｒ逕ｻ髱｢縺ｫ蜿弱ａ繧九・
+```
+
+### 隰帷ｾｩ縺ｧ縺ｮ菴ｿ逕ｨ荳翫・蛹ｺ蛻･
+
+荳ｭ蠢・・貅舌°繧画磁蜀・ｭ偵∈謚募ｽｱ縺吶ｋ讓｡蝙九・荳ｭ蠢・・遲呈兜蠖ｱ縺ｮ讎ょｿｵ蝗ｳ縺ｧ縺ゅｊ縲∝宍蟇・↑繝｡繝ｫ繧ｫ繝医Ν蝗ｳ豕輔◎縺ｮ繧ゅ・縺ｧ縺ｯ縺ｪ縺・ゅΓ繝ｫ繧ｫ繝医Ν蝗ｳ豕輔・騾剰ｦ匁兜蠖ｱ縺ｧ縺ｯ縺ｪ縺・◆繧√∬ｬ帷ｾｩ縺ｧ縺ｯ縺薙・讓｡蝙九ｒ蜀・ｭ偵∈縺ｮ螻暮幕縺ｨ鬮倡ｷｯ蠎ｦ縺ｮ諡｡螟ｧ縺ｮ蟆主・縺ｨ縺励※菴ｿ縺・∝峙豕輔・螳夂ｾｩ縺ｨ蛹ｺ蛻･縺吶ｋ縲ょ・蜈ｸ・喙USGS縲皿ap Projections窶尿 Working Manual縲上Γ繝ｫ繧ｫ繝医Ν蝗ｳ豕輔・遽](https://pubs.usgs.gov/pp/1395/report.pdf)縲ら判蜒上・譬ｼ蟄舌・螳壽ｧ逧・↑隱ｬ譏守畑縺ｧ縲∫ｷｯ邱壻ｽ咲ｽｮ縺ｮ險域ｸｬ繧・焚蛟､險育ｮ励↓縺ｯ逕ｨ縺・↑縺・・
+
+## title_hero.png
+
+### 逕滓・繝励Ο繝ｳ繝励ヨ
+
+```text
+逕ｨ騾費ｼ壽ｸｬ驥丞ｭｦ縺ｮ隰帷ｾｩ繧ｹ繝ｩ繧､繝峨・陦ｨ邏咏畑縲よ眠縺励＞逕ｻ蜒上ｒ1譫夂函謌舌よｨｪ髟ｷ16:9縲・600ﾃ・00 px遞句ｺｦ縲らｧ大ｭｦ縺ｮ謨咏ｧ第嶌縺ｮ謖ｿ邨ｵ縺ｮ繧医≧縺ｫ關ｽ縺｡逹縺・◆邊ｾ蟇・↑霈ｪ驛ｭ縺ｨ豺｡縺・・繝・ヨ蠖ｩ濶ｲ縲∵而縺医ａ縺ｪ閾ｪ辟ｶ縺ｪ雉ｪ諢溘りレ譎ｯ縺ｨ遨ｺ縺ｯ貂ｩ縺九∩縺ｮ縺ゅｋ繧｢繧､繝懊Μ繝ｼ縲よ悃縺ｮ譟斐ｉ縺九↑蜈峨・
+蛹玲ｵｷ驕薙ｉ縺励＞蠎・＞霎ｲ蝨ｰ縲らｩ上ｄ縺九↑邱代→蝨溯牡縺ｮ逡代′螂･縺ｾ縺ｧ蠎・′繧翫∝ｸｯ迥ｶ縺ｮ髦ｲ鬚ｨ譫励・□縺上↓菴弱￥縺ｪ縺繧峨°縺ｪ荳倥′縺ゅｋ縲よ焔蜑榊ｷｦ蟇・ｊ縺ｮ螳牙ｮ壹＠縺滉ｸ芽・縺ｮ荳翫↓貂ｬ驥冗畑GNSS蜿嶺ｿ｡讖溘ｒ謐ｮ縺医ｋ縲ょ女菫｡讖溘・逋ｽ縺・・逶､蠖｢縺ｮ蟆丞梛繧｢繝ｳ繝・リ縺ｧ縲∽ｸ芽・縺ｮ荳ｭ蠢・・遏ｭ縺・央逶ｴ謾ｯ謖・Κ縺ｫ豌ｴ蟷ｳ縺ｫ蝗ｺ螳壹＆繧後∽ｸ芽・縺ｮ3譛ｬ縺ｮ閼壹・縺昴ｌ縺槭ｌ蝨ｰ髱｢縺ｫ謗･縺吶ｋ縲ょｰ代＠髮｢繧後◆蜿ｳ蟇・ｊ縺ｮ荳ｭ譎ｯ縺ｫ蛻･縺ｮ荳芽・繧呈紺縺医√◎縺ｮ荳翫↓貂ｬ驥冗畑繝医・繧ｿ繝ｫ繧ｹ繝・・繧ｷ繝ｧ繝ｳ繧堤ｽｮ縺上ゅヨ繝ｼ繧ｿ繝ｫ繧ｹ繝・・繧ｷ繝ｧ繝ｳ縺ｯ豺｡縺・・邱題牡縺ｮ邊ｾ蟇・↑貂ｬ驥乗ｩ溷勣縺ｧ縲∝ｷｦ蜿ｳ縺ｮ謾ｯ謖・Κ縺ｮ髢薙↓蟆上＆縺ｪ豌ｴ蟷ｳ譛幃□髀｡縲∽ｸｸ縺・ｻ偵＞蟇ｾ迚ｩ繝ｬ繝ｳ繧ｺ縲∵紛貅門床縺後≠繧翫∵悍驕髀｡縺御ｸ芽・縺ｮ鬆るΚ縺ｫ豁｣縺励￥謾ｯ謖√＆繧後ｋ縲ら判髱｢繧・・繧ｿ繝ｳ縺ｫ譁・ｭ励・謨ｰ蟄励・繝悶Λ繝ｳ繝峨ｒ謠上°縺ｪ縺・・蜿ｰ縺ｮ讖溷勣縺ｮ遞ｮ鬘槭ｒ譏守｢ｺ縺ｫ蛹ｺ蛻･縺ｧ縺阪ｋ縺薙→縲よｩ溷勣縺ｨ閼壹ｒ騾比ｸｭ縺ｧ蛻・ｉ縺壹∝・菴薙ｒ逕ｻ髱｢蜀・↓蜿弱ａ繧九ゆｺｺ迚ｩ縺ｯ謠上°縺ｪ縺・・
+荳企Κ3蛻・・1縺ｯ縲∝ｾ後°繧芽｡ｨ邏呎枚蟄励ｒ驟咲ｽｮ縺ｧ縺阪ｋ縺ｻ縺ｼ菴輔ｂ縺ｪ縺・・繧九＞繧｢繧､繝懊Μ繝ｼ縺ｮ遨ｺ縲ょ慍蟷ｳ邱壹・荳企Κ3蛻・・1繧医ｊ荳九ら舞繝ｻ髦ｲ鬚ｨ譫励・荳倥・豌ｴ蟷ｳ縺ｮ蠎・′繧翫′諢溘§繧峨ｌ繧区ｧ句峙縲・
+譁・ｭ励・謨ｰ蟄励・繝ｭ繧ｴ繝ｻ繝悶Λ繝ｳ繝峨・騾上°縺励・險伜捷繝ｻ遏｢蜊ｰ繝ｻ逶ｮ逶帙・陬・｣ｾ繝槭・繧ｯ繧剃ｸ蛻・緒縺九↑縺・・
+```
+
+## 霑ｽ蜉4轤ｹ縺ｮ菫晏ｭ倥・遒ｺ隱咲ｵ先棡
+
+- 4轤ｹ縺ｨ繧・Pillow 縺ｧ PNG・蹴GB・・672 ﾃ・941 px 縺ｨ遒ｺ隱阪＠縲∝・逕ｻ邏繧定ｪｭ縺ｿ霎ｼ繧√◆縲ら函謌舌ヤ繝ｼ繝ｫ縺ｮ蟇ｸ豕慕ｫｯ謨ｰ縺ｫ繧医ｊ邏・6:9・亥宍蟇・↑16:9縺ｨ縺ｯ鬮倥＆邏・.5 px逶ｸ蠖薙・蟾ｮ・峨・
+- 逶ｮ隕也｢ｺ隱搾ｼ壽枚蟄励・謨ｰ蟄励・繝ｭ繧ｴ繝ｻ騾上°縺励・荳崎ｦ√↑險伜捷繝ｻ莠ｺ迚ｩ縺ｮ鬘斐・豺ｷ蜈･縺ｪ縺励・
+- orange_peel.png・壹▽縺ｪ縺後▲縺溽坩縺ｮ謾ｾ蟆・憾縺ｮ陬ゅ￠逶ｮ縺ｨ髫咎俣縲∝承蛛ｴ縺ｮ菴咏區繧堤｢ｺ隱阪・
+- sea_level_station.png・壼ｲｸ螢√・蟆丞ｱ九→驩帷峩縺ｮ遲偵∵ｰｴ蟷ｳ縺ｫ蠎・′繧区ｵｷ髱｢縲∽ｸ企Κ縺ｮ蠎・＞菴咏區繧堤｢ｺ隱阪・
+- globe_cylinder_projection.png・壻ｿｮ豁｣蠕後・蜀・ｭ定ｻｸ縺ｨ逅・・蜊怜圏霆ｸ縺ｮ荳閾ｴ縲∽ｸ贋ｸ九・髢句哨縲∝承縺ｸ螻暮幕縺吶ｋ邏吶・ｫ倡ｷｯ蠎ｦ蛛ｴ縺ｮ髢馴囈諡｡螟ｧ繧堤｢ｺ隱阪ょ宍蟇・↑繝｡繝ｫ繧ｫ繝医Ν蝗ｳ豕輔→縺ｮ蟾ｮ縺ｯ荳願ｨ伜盾辣ｧ縲・
+- title_hero.png・夂區縺・・逶､蠖｢GNSS繧｢繝ｳ繝・リ縺ｨ蛻･縺ｮ荳芽・荳翫・繝医・繧ｿ繝ｫ繧ｹ繝・・繧ｷ繝ｧ繝ｳ縲∬ｾｲ蝨ｰ繝ｻ髦ｲ鬚ｨ譫励・荳倥∽ｸ企Κ3蛻・・1縺ｮ遨ｺ繧堤｢ｺ隱阪ゆｺｺ迚ｩ縺ｪ縺励・
+
+## 2026-10-15 霑ｽ蜉・哦NSS繝ｻTS縺ｮ隕ｳ貂ｬ繧､繝ｩ繧ｹ繝・
+
+Codex邨・∩霎ｼ縺ｿ逕ｻ蜒冗函謌舌ヤ繝ｼ繝ｫ縺ｧ菴懈・縲ょｮ滓ｸｬ繝・・繧ｿ繧・ｮ溷惠縺ｮ迴ｾ蝣ｴ蜀咏悄縺ｧ縺ｯ縺ｪ縺上∬ｦｳ貂ｬ縺ｮ讎ょｿｵ繧剃ｼ昴∴繧九◆繧√・謖ｿ邨ｵ縲ゆｻ･荳九・蜀咲函謌千畑縺ｫ謨ｴ逅・＠縺滓欠遉ｺ縲・
+
+### gnss_observation.png
+
+遘大ｭｦ謨咏ｧ第嶌縺ｮ邊ｾ蟇・〒關ｽ縺｡逹縺・◆謖ｿ邨ｵ縲よｸｩ縺九＞繧｢繧､繝懊Μ繝ｼ縺ｮ遨ｺ縲∵ｷ｡縺・ｷ代・霎ｲ蝨ｰ縲ょ慍荳翫↓驩帷峩縺ｪ謾ｯ譟ｱ縺ｧ謾ｯ謖√＆繧後◆蜀・乢迥ｶGNSS蜿嶺ｿ｡讖溘∽ｸ顔ｩｺ縺ｫ貂ｬ菴崎｡帶弌繧帝・鄂ｮ縺励∬｡帶弌縺九ｉ蜿嶺ｿ｡讖溘↓髮ｻ豕｢縺悟ｱ翫￥髢｢菫ゅｒ遉ｺ縺吶よｨｪ髟ｷ縲√ヶ繝ｩ繝ｳ繝峨・繝ｭ繧ｴ繝ｻ譁・ｭ励・謨ｰ蟄励・莠ｺ迚ｩ縺ｪ縺励る搨邱代→閾ｪ辟ｶ縺ｪ蝨溯牡繧剃ｸｭ蠢・↓縲∵ｩ溷勣縺ｮ讒矩縺瑚ｪｭ縺ｿ蜿悶ｌ繧区ｧ句峙縲・
+
+陦帶弌謨ｰ繝ｻ霆碁％繝ｻ霍晞屬繝ｻ髮ｻ豕｢縺ｮ邱壹・讓｡蠑剰｡ｨ迴ｾ縲る壼ｸｸ縺ｮ荳画ｬ｡蜈・腰迢ｬ貂ｬ菴阪↓縺ｯ蜿嶺ｿ｡讖滓凾險医・隱､蟾ｮ繧ょ性繧√※4陦帶弌莉･荳翫′蠢・ｦ√〒縺ゅｊ縲∝峙縺ｮ陦帶弌謨ｰ繧呈ｸｬ菴肴擅莉ｶ縺ｨ縺励※謨ｰ縺医↑縺・ｼ医せ繝ｩ繧､繝・2縺ｮ繝弱・繝医↓繧りｨ倩ｼ会ｼ峨・
+
+### ts_observation.png
+
+蜷後§謨咏ｧ第嶌謖ｿ邨ｵ縺ｮ逕ｻ鬚ｨ縲ょｺ・＞霎ｲ蝨ｰ縺ｧ縲∵焔蜑阪・荳芽・縺ｫ繝医・繧ｿ繝ｫ繧ｹ繝・・繧ｷ繝ｧ繝ｳ縲・屬繧後◆蝨ｰ轤ｹ縺ｫ驩帷峩縺ｪ繝昴・繝ｫ荳翫・繝励Μ繧ｺ繝繧帝・鄂ｮ縲よ悍驕髀｡縺後・繝ｪ繧ｺ繝繧定ｦ匁ｺ悶☆繧矩未菫ゅｒ隕冶ｦ夂噪縺ｫ遉ｺ縺吶よｸｩ縺九＞繧｢繧､繝懊Μ繝ｼ閭梧勹縲∫ｩ上ｄ縺九↑邱代→蝨溯牡縲よｨｪ髟ｷ縲∵ｩ溷勣繝ｻ荳芽・繝ｻ繝昴・繝ｫ蜈ｨ菴薙′蜿弱∪繧翫∵枚蟄励・謨ｰ蟄励・繝ｭ繧ｴ繝ｻ莠ｺ迚ｩ縺ｪ縺励・
+
+讖溷勣縺ｨ繝励Μ繧ｺ繝縺ｮ驟咲ｽｮ縺ｯ讓｡蠑剰｡ｨ迴ｾ縲りｧ貞ｺｦ繝ｻ霍晞屬縺ｮ謨ｰ蛟､繧堤判蜒上°繧芽ｪｭ縺ｿ蜿悶ｋ逕ｨ騾斐↓縺ｯ菴ｿ繧上↑縺・・
+
+exec
+"C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -NoProfile -Command "Get-Content -Encoding UTF8 -LiteralPath 'materials/slides/第03回_測量の座標/illustrations/生成プロンプト.md'; Get-ChildItem -LiteralPath 'materials/slides/第05回_トラバース測量I/illustrations' -ErrorAction SilentlyContinue; Get-Item -LiteralPath '../AGENTS.md','AGENTS.md','materials/AGENTS.md','materials/slides/AGENTS.md','materials/slides/第05回_トラバース測量I/AGENTS.md','notes/AGENTS.md' -ErrorAction SilentlyContinue | ForEach-Object { "'$_.FullName; Get-Content -Encoding UTF8 -LiteralPath $_.FullName }' in %USERPROFILE%\Documents\Workplace\MISC\Lecture\Surveying
+ exited 1 in 4121ms:
+# ジオイドの概念図：画像生成プロンプト
+
+- 使用ツール：組み込み画像生成ツール（image_gen）
+- 出力ファイル：`geoid_earth.png`
+- 指定：横長 16:9、幅約 1600 px。文字・数字・ロゴ・記号なし。
+
+## 生成・確認結果
+
+- 2026-10-15：組み込み画像生成ツールで生成し、指定フォルダに PNG を保存。
+- Pillow で開いて全画素を読み込み、PNG／RGB／1672 × 941 px を確認（生成時の端数により縦横比は約 16:9）。
+- 目視で文字・数字・ロゴ・不要な記号の混入がないこと、楕円体の輪郭とジオイドの起伏、右側の余白を確認。
+
+## 使用したプロンプト
+
+```text
+Use case: scientific-educational.
+Create one refined science textbook illustration explaining the geoid to high-school students, with absolutely no text.
+Canvas: wide 16:9, approximately 1600 pixels wide (prefer 1600 x 900).
+Backdrop: uniform warm ivory.
+Subject: a single Earth-sized abstract geoid centered slightly left of the canvas center. Its surface is like a gently lumpy potato, with broad smooth bulges and depressions strongly exaggerated so that the deviation from an ideal ellipsoid is easy to see. This represents a gravitational equipotential surface, the level of a hypothetical ocean extended over the whole Earth; it is NOT terrain, continents, mountains or ocean waves. Show the low areas in calm blue, intermediate areas in muted green, and high areas in gentle yellow, all connected by smooth gradients. Restrained soft volume shading.
+Superimpose a smooth reference ellipsoid at exactly the same center and approximately the same mean radius: draw only its thin precise light-gray outer circular/very slightly oblate elliptical outline, without fill. The reference outline should remain visibly readable across the colored surface and against the ivory wherever the geoid dips inside it; some bulges extend outside it. Make the outline subtle but discernible. No wireframe or latitude/longitude grid.
+Composition: one overlapping comparison, not two separate globes. Entire object visible, generous margins. Leave the rightmost 30 percent largely empty ivory for later slide text. The object occupies roughly the middle-left 60 percent of the canvas.
+Style: dignified, calm, precise scientific textbook plate, fine delicate edges, smooth matte color, no dramatic lighting.
+Strict exclusions: no letters, Japanese or English text, numbers, labels, logos, watermark, legends, colorbars, arrows, ticks, axes, symbols, decorative marks, continents, geographic borders, stars, or additional objects.
+```
+
+
+## 2026-10-15 追加イラスト：共通仕様
+
+- 使用ツール：組み込み画像生成ツール（image_gen）。
+- 横長16:9を指定。温かいアイボリー背景、落ち着いた科学教科書の挿絵、文字・数字・ロゴ・記号なし。
+- 既存の geoid_earth.png と本ファイルの既存部分は変更せず、以下を追記した。
+
+## orange_peel.png
+
+### 生成プロンプト
+
+```text
+用途：測量学の講義スライド用、科学の教科書の挿絵。新しい画像を1枚生成。横長16:9、1600×900 px程度。背景は温かみのあるアイボリー。既存のジオイド挿絵と調和する、穏やかなマット彩色、細く精密な輪郭、控えめな質感、柔らかな陰影。
+木のテーブルの上に、丸いみかん1個と、別のみかんから1枚につながったままむいた皮を平らに押し広げたものを並べる。やや上から見る。丸いみかんは左奥、広げた皮は左寄りの手前。皮は中心でつながった不規則な花形で、6〜8本の放射状の深い裂け目と幅のある隙間が外縁から中心近くまで入る。裂け目から木の天板がはっきり見える。皮の外側はみかん色、折れた縁に白い内皮が少し見える。皮を完全な円板や別々の破片にしない。皮の厚さと球面の曲がりが縁にわずかに残り、球面が無傷のまま平面にならないことが直観的に分かる。余分な果肉・包丁・食器は置かない。右側の約35%は文字を後で置くため、ほぼ何もない明るいアイボリーの余白にする。木目は主題の周辺だけ淡くし、背景へ自然になじませる。
+画像内に文字・数字・ロゴ・透かし・記号・矢印・目盛・装飾マークを一切入れない。人物なし。
+```
+
+## sea_level_station.png
+
+### 生成プロンプト
+
+```text
+用途：測量学の講義スライド用の精密で落ち着いた科学教科書の挿絵。新しい画像を1枚生成。横長16:9、1600×900 px程度。温かいアイボリーの背景と空、細い輪郭、穏やかなマットの淡彩、控えめな陰影。
+静かな港の穏やかな水面が広く水平に続く情景。下半分に薄い青緑の海を広く描き、水平な遠景の海面を主役にする。左端の岸壁に小さな無地の検潮所の小屋がある。小屋の海側に細い鉛直の観測筒（静水井）が取り付けられ、岸壁に沿って海面を貫き水中へ真っ直ぐ伸びる。岸壁と小屋と筒は構造的につながっている。手前の水がわずかに透けて筒の水中部分が分かる。水面にはごく弱い横長のさざ波だけ。遠景には低い山並みがかすかに見える。上半分はほとんど何もない明るいアイボリーの空で、文字を後置できる余白。小屋は小さく、水面の広がりを邪魔しない。人物・船・大波なし。
+文字・数字・ロゴ・透かし・記号・矢印・目盛・装飾マークを一切描かない。潮位尺の数字も描かない。
+```
+
+## globe_cylinder_projection.png
+
+### 生成プロンプト
+
+```text
+用途：測量学の講義で円筒への投影と高緯度の拡大を直観的に説明する科学教科書の模型挿絵。新しい画像を1枚生成。横長16:9、1600×900 px程度。温かいアイボリーの無地背景。精密な細い線画と淡いマット彩色。ラベルは一切なし。
+半透明の淡青色の球体を中心に置く。球体は大陸を描かず、細い青灰色の経線・緯線だけを等角度間隔で描く。地球の自転軸は鉛直、北極が真上で南極が真下、軸の棒自体は描かない。球中心には小さな暖色の光源を置くが星印や記号にはしない。球の周囲を淡いクリーム色の紙の円筒が囲む。円筒の軸は球の南北極を通る鉛直軸に厳密に一致し、円筒の内半径は球の半径と同じで、赤道の円周だけで接する。円筒は高さが球の直径より長く、上端と下端が開いた筒。斜め少し上から見て上端と下端の楕円形の開口が分かる。球と光源が見えるように手前の円筒壁の一部を切り開き、右側へ滑らかに広がる一続きの平らな紙にする。円筒も平らな紙も同一の鉛直方向を保つ。真上・真下を閉じるふたはない。
+光源からの経緯線の影を円筒内側および展開されかけた紙上に投影する。経線の影は互いに平行な鉛直直線で、周方向に等間隔。緯線の影は一定高さにある水平な線で、円筒の上では透視図に従って曲がって見え、平らな紙の上では直線。赤道付近の緯線の間隔は狭く、上下の高緯度ほど間隔が大きくなる。線を斜め格子にしない。光の経路はごく薄い光の広がりだけで表し、矢印・記号にしない。中心光源による中心円筒投影の物理模型であり、厳密なメルカトル図法の緯度間隔と同一だと主張する描写はしない。
+すべての物体を画面内に収める。文字・数字・ロゴ・透かし・記号・目盛・方位マーク・大陸・国境・人物は一切描かない。
+```
+
+### 修正プロンプト
+
+初稿の赤道付近に余分な線の重なりがあったため、以下の指示で再生成した。
+
+```text
+この画像を科学教科書の挿絵として修正してください。温かいアイボリー背景、横長16:9、細い青灰色線、淡い彩色、球体と円筒の鉛直な共通軸、中心の小さな光源、右に展開する紙は保ってください。
+最重要：赤道付近に密集して重なった多数の横線をすべて除去し、緯線の投影を整理してください。球上の緯線は赤道1本、北緯20度・40度・60度、南緯20度・40度・60度の合計7本だけ。円筒と紙上の対応する影も正確に7本だけ、赤道を中心に上下対称。赤道からの高さは球半径Rに対し0、±0.364R、±0.839R、±1.732Rで、上と下へ行くほど間隔が増す。数値や文字は画像に書かない。球の影でない余分な格子や二重線は一切なし。経線の影は等間隔の鉛直線。
+円筒を球の直径の約2倍の高さにし、球を円筒の高さの中央に置く。円筒半径は球半径と一致。紙の手前側を明瞭に切り開いて球体を見せ、その切り開いた紙が右に続く。右側の最も外側の部分は平らな鉛直の紙として、そこで横の緯線はまっすぐ平行な水平直線にする。円筒の上下の開口は中空であり、底板・ふたは描かない。球体を細長い楕円体にしない。
+文字・数字・ロゴ・記号・矢印・目盛・大陸・人物は一切なし。全体を画面に収める。
+```
+
+### 講義での使用上の区別
+
+中心光源から接円筒へ投影する模型は中心円筒投影の概念図であり、厳密なメルカトル図法そのものではない。メルカトル図法は透視投影ではないため、講義ではこの模型を円筒への展開と高緯度の拡大の導入として使い、図法の定義と区別する。出典：[USGS『Map Projections—A Working Manual』メルカトル図法の節](https://pubs.usgs.gov/pp/1395/report.pdf)。画像の格子は定性的な説明用で、緯線位置の計測や数値計算には用いない。
+
+## title_hero.png
+
+### 生成プロンプト
+
+```text
+用途：測量学の講義スライドの表紙用。新しい画像を1枚生成。横長16:9、1600×900 px程度。科学の教科書の挿絵のように落ち着いた精密な輪郭と淡いマット彩色、控えめな自然な質感。背景と空は温かみのあるアイボリー。朝の柔らかな光。
+北海道らしい広い農地。穏やかな緑と土色の畑が奥まで広がり、帯状の防風林、遠くに低くなだらかな丘がある。手前左寄りの安定した三脚の上に測量用GNSS受信機を据える。受信機は白い円盤形の小型アンテナで、三脚の中心の短い鉛直支持部に水平に固定され、三脚の3本の脚はそれぞれ地面に接する。少し離れた右寄りの中景に別の三脚を据え、その上に測量用トータルステーションを置く。トータルステーションは淡い灰緑色の精密な測量機器で、左右の支持部の間に小さな水平望遠鏡、丸い黒い対物レンズ、整準台があり、望遠鏡が三脚の頂部に正しく支持される。画面やボタンに文字・数字・ブランドを描かない。2台の機器の種類を明確に区別できること。機器と脚を途中で切らず、全体を画面内に収める。人物は描かない。
+上部3分の1は、後から表紙文字を配置できるほぼ何もない明るいアイボリーの空。地平線は上部3分の1より下。畑・防風林・丘は水平の広がりが感じられる構図。
+文字・数字・ロゴ・ブランド・透かし・記号・矢印・目盛・装飾マークを一切描かない。
+```
+
+## 追加4点の保存・確認結果
+
+- 4点とも Pillow で PNG／RGB／1672 × 941 px と確認し、全画素を読み込めた。生成ツールの寸法端数により約16:9（厳密な16:9とは高さ約0.5 px相当の差）。
+- 目視確認：文字・数字・ロゴ・透かし・不要な記号・人物の顔の混入なし。
+- orange_peel.png：つながった皮の放射状の裂け目と隙間、右側の余白を確認。
+- sea_level_station.png：岸壁の小屋と鉛直の筒、水平に広がる海面、上部の広い余白を確認。
+- globe_cylinder_projection.png：修正後の円筒軸と球の南北軸の一致、上下の開口、右へ展開する紙、高緯度側の間隔拡大を確認。厳密なメルカトル図法との差は上記参照。
+- title_hero.png：白い円盤形GNSSアンテナと別の三脚上のトータルステーション、農地・防風林・丘、上部3分の1の空を確認。人物なし。
+
+## 2026-10-15 追加：GNSS・TSの観測イラスト
+
+Codex組み込み画像生成ツールで作成。実測データや実在の現場写真ではなく、観測の概念を伝えるための挿絵。以下は再生成用に整理した指示。
+
+### gnss_observation.png
+
+科学教科書の精密で落ち着いた挿絵。温かいアイボリーの空、淡い緑の農地。地上に鉛直な支柱で支持された円盤状GNSS受信機、上空に測位衛星を配置し、衛星から受信機に電波が届く関係を示す。横長、ブランド・ロゴ・文字・数字・人物なし。青緑と自然な土色を中心に、機器の構造が読み取れる構図。
+
+衛星数・軌道・距離・電波の線は模式表現。通常の三次元単独測位には受信機時計の誤差も含めて4衛星以上が必要であり、図の衛星数を測位条件として数えない（スライド72のノートにも記載）。
+
+### ts_observation.png
+
+同じ教科書挿絵の画風。広い農地で、手前の三脚にトータルステーション、離れた地点に鉛直なポール上のプリズムを配置。望遠鏡がプリズムを視準する関係を視覚的に示す。温かいアイボリー背景、穏やかな緑と土色。横長、機器・三脚・ポール全体が収まり、文字・数字・ロゴ・人物なし。
+
+機器とプリズムの配置は模式表現。角度・距離の数値を画像から読み取る用途には使わない。
+%USERPROFILE%\Documents\Workplace\MISC\Lecture\AGENTS.md
+# Lecture リポジトリ 作業ルール（Claude Code / Codex 共通）
+
+このリポジトリは講義関連のプロジェクトを管理します。作業対象はユーザーが指定したプロジェクトのディレクトリです。今回のプロジェクトは `MakePaddy/` です。
+Codex Cloud ではサブディレクトリ単位の環境が作れないため、この Lecture リポジトリ全体を環境にし、作業は対象プロジェクト以下で行います。対象内に `AGENTS.md` がある場合は、そちらも読んでください。
+
+## 必ず守ること
+
+1. 成果物・中間ファイルは **すべて対象プロジェクト以下に保存** し、`main` に commit / push する。ローカル専用の場所や一時ディレクトリに置いたままにしない。共通の作業ルールを更新する場合のみ、この `AGENTS.md` を編集してよい。
+2. このリポジトリは **公開（public）** です。個人名・メールアドレス・電話番号・学生情報・外部企業担当者の連絡先は書かない。必要なら役割名（協力企業A、担当者 等）で表す。
+3. 1ファイル 50MB を超えるファイル（写真の原本、動画、点群など）は commit しない。縮小版か、対象プロジェクトの `notes/` に所在のメモだけを置く。
+4. 作業を終えるときは今回の変更を commit し、push する。作業前から存在する他の変更は含めず保持する。別エージェント（Claude または Codex）が続きを読む前提で、対象プロジェクトの `notes/worklog.md` に日付付きで何をしたかを 2〜5 行追記する。
+5. 日本語で記述する（講義資料が日本語のため）。
+
+## ディレクトリ構成
+
+- `MakePaddy/` — 今回のプロジェクト。目的・進め方は `MakePaddy/README.md`、作業ルールは `MakePaddy/AGENTS.md` を参照
+- `Surveying/README.md` — 目的・構成・進め方
+- `Surveying/notes/` — 背景メモ、作業ログ、決定事項
+- `Surveying/materials/` — 講義スライド・配布資料・課題（Markdown / pptx / pdf）
+- `Surveying/data/` — 実習データ（座標、観測簿、サンプル）。個人が特定できるものは入れない
+- `Surveying/scripts/` — 計算・作図スクリプト（Python / R）
+
+exec
+"C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -NoProfile -Command "New-Item -ItemType Directory -Force -Path 'materials/slides/第05回_トラバース測量I/illustrations','notes/session05_figures' | Out-Null" in %USERPROFILE%\Documents\Workplace\MISC\Lecture\Surveying
+ succeeded in 1201ms:
+codex
+表紙は、農地を囲む6辺の測線と時計回りの矢印を確認できました。折れ線の図は中央測点の角の弧が欠けていたため、器械と弧が重ならない配置に修正します。
+
+codex
+3枚とも文字・数字・ロゴの混入がないことを目視確認しました。TSの図も、格子の余分な短線と三脚の足元を修正済みです。これから1600 × 900 pxのRGB PNGにそろえて保存し、実際のプロンプトと修正回数を記録します。
+
+apply patch
+patch: completed
+%USERPROFILE%\Documents\Workplace\MISC\Lecture\Surveying\notes\session05_figures\verify_images.py
+diff --git a/Surveying/notes/session05_figures/verify_images.py b/Surveying/notes/session05_figures/verify_images.py
+new file mode 100644
+index 0000000000000000000000000000000000000000..13dc2bf7631317d35bac09111eb0ac9afaa89355
+--- /dev/null
++++ b/Surveying/notes/session05_figures/verify_images.py
+@@ -0,0 +1,26 @@
++from pathlib import Path
++from PIL import Image
++import json
++
++destination = Path("materials/slides/第05回_トラバース測量I/illustrations")
++sources = {
++  "title_hero": "%USERPROFILE%/.codex/generated_images/01a160c0-4891-7642-99e8-31feff38d2be/exec-804ebcee-4b19-498c-afe2-ec00fa70b52e.png",
++  "traverse_chain": "%USERPROFILE%/.codex/generated_images/01a160c0-4891-7642-99e8-31feff38d2be/exec-fa737c19-8daa-45b9-b06f-cbd80e36a75d.png",
++  "ts_coordinate": "%USERPROFILE%/.codex/generated_images/01a160c0-4891-7642-99e8-31feff38d2be/exec-81008ee8-1d9e-4c7c-b4e9-230413a15614.png"
++}
++results = []
++for name, source in sources.items():
++    with Image.open(source) as im:
++        im.load()
++        original = {"format": im.format, "mode": im.mode, "size": list(im.size)}
++        # 生成寸法の端数を整え、納品用の16:9・RGB PNGに統一する。
++        final = im.convert("RGB").resize((1600, 900), Image.Resampling.LANCZOS)
++        target = destination / (name + ".png")
++        final.save(target, format="PNG")
++    with Image.open(target) as check:
++        check.load()
++        assert check.format == "PNG" and check.mode == "RGB" and check.size == (1600, 900)
++        results.append({"file": target.as_posix(), "exists": target.is_file(), "format": check.format, "mode": check.mode, "size": list(check.size), "source": original, "regenerations": 0 if name == "title_hero" else 1})
++Path("notes/session05_figures/検証結果.json").write_text(json.dumps(results, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
++print(json.dumps(results, ensure_ascii=False, indent=2))
++
+
+exec
+"C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -NoProfile -Command "python 'notes/session05_figures/verify_images.py'" in %USERPROFILE%\Documents\Workplace\MISC\Lecture\Surveying
+ succeeded in 5347ms:
+[
+  {
+    "file": "materials/slides/��05��_�g���o�[�X����I/illustrations/title_hero.png",
+    "exists": true,
+    "format": "PNG",
+    "mode": "RGB",
+    "size": [
+      1600,
+      900
+    ],
+    "source": {
+      "format": "PNG",
+      "mode": "RGB",
+      "size": [
+        1672,
+        941
+      ]
+    },
+    "regenerations": 0
+  },
+  {
+    "file": "materials/slides/��05��_�g���o�[�X����I/illustrations/traverse_chain.png",
+    "exists": true,
+    "format": "PNG",
+    "mode": "RGB",
+    "size": [
+      1600,
+      900
+    ],
+    "source": {
+      "format": "PNG",
+      "mode": "RGB",
+      "size": [
+        1672,
+        941
+      ]
+    },
+    "regenerations": 1
+  },
+  {
+    "file": "materials/slides/��05��_�g���o�[�X����I/illustrations/ts_coordinate.png",
+    "exists": true,
+    "format": "PNG",
+    "mode": "RGB",
+    "size": [
+      1600,
+      900
+    ],
+    "source": {
+      "format": "PNG",
+      "mode": "RGB",
+      "size": [
+        1672,
+        941
+      ]
+    },
+    "regenerations": 1
+  }
+]
+
+diff --git a/Surveying/notes/session05_figures/verify_images.py b/Surveying/notes/session05_figures/verify_images.py
+new file mode 100644
+index 0000000000000000000000000000000000000000..13dc2bf7631317d35bac09111eb0ac9afaa89355
+--- /dev/null
++++ b/Surveying/notes/session05_figures/verify_images.py
+@@ -0,0 +1,26 @@
++from pathlib import Path
++from PIL import Image
++import json
++
++destination = Path("materials/slides/第05回_トラバース測量I/illustrations")
++sources = {
++  "title_hero": "%USERPROFILE%/.codex/generated_images/01a160c0-4891-7642-99e8-31feff38d2be/exec-804ebcee-4b19-498c-afe2-ec00fa70b52e.png",
++  "traverse_chain": "%USERPROFILE%/.codex/generated_images/01a160c0-4891-7642-99e8-31feff38d2be/exec-fa737c19-8daa-45b9-b06f-cbd80e36a75d.png",
++  "ts_coordinate": "%USERPROFILE%/.codex/generated_images/01a160c0-4891-7642-99e8-31feff38d2be/exec-81008ee8-1d9e-4c7c-b4e9-230413a15614.png"
++}
++results = []
++for name, source in sources.items():
++    with Image.open(source) as im:
++        im.load()
++        original = {"format": im.format, "mode": im.mode, "size": list(im.size)}
++        # 生成寸法の端数を整え、納品用の16:9・RGB PNGに統一する。
++        final = im.convert("RGB").resize((1600, 900), Image.Resampling.LANCZOS)
++        target = destination / (name + ".png")
++        final.save(target, format="PNG")
++    with Image.open(target) as check:
++        check.load()
++        assert check.format == "PNG" and check.mode == "RGB" and check.size == (1600, 900)
++        results.append({"file": target.as_posix(), "exists": target.is_file(), "format": check.format, "mode": check.mode, "size": list(check.size), "source": original, "regenerations": 0 if name == "title_hero" else 1})
++Path("notes/session05_figures/検証結果.json").write_text(json.dumps(results, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
++print(json.dumps(results, ensure_ascii=False, indent=2))
++
+
+diff --git a/Surveying/notes/session05_figures/verify_images.py b/Surveying/notes/session05_figures/verify_images.py
+new file mode 100644
+index 0000000000000000000000000000000000000000..13dc2bf7631317d35bac09111eb0ac9afaa89355
+--- /dev/null
++++ b/Surveying/notes/session05_figures/verify_images.py
+@@ -0,0 +1,26 @@
++from pathlib import Path
++from PIL import Image
++import json
++
++destination = Path("materials/slides/第05回_トラバース測量I/illustrations")
++sources = {
++  "title_hero": "%USERPROFILE%/.codex/generated_images/01a160c0-4891-7642-99e8-31feff38d2be/exec-804ebcee-4b19-498c-afe2-ec00fa70b52e.png",
++  "traverse_chain": "%USERPROFILE%/.codex/generated_images/01a160c0-4891-7642-99e8-31feff38d2be/exec-fa737c19-8daa-45b9-b06f-cbd80e36a75d.png",
++  "ts_coordinate": "%USERPROFILE%/.codex/generated_images/01a160c0-4891-7642-99e8-31feff38d2be/exec-81008ee8-1d9e-4c7c-b4e9-230413a15614.png"
++}
++results = []
++for name, source in sources.items():
++    with Image.open(source) as im:
++        im.load()
++        original = {"format": im.format, "mode": im.mode, "size": list(im.size)}
++        # 生成寸法の端数を整え、納品用の16:9・RGB PNGに統一する。
++        final = im.convert("RGB").resize((1600, 900), Image.Resampling.LANCZOS)
++        target = destination / (name + ".png")
++        final.save(target, format="PNG")
++    with Image.open(target) as check:
++        check.load()
++        assert check.format == "PNG" and check.mode == "RGB" and check.size == (1600, 900)
++        results.append({"file": target.as_posix(), "exists": target.is_file(), "format": check.format, "mode": check.mode, "size": list(check.size), "source": original, "regenerations": 0 if name == "title_hero" else 1})
++Path("notes/session05_figures/検証結果.json").write_text(json.dumps(results, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
++print(json.dumps(results, ensure_ascii=False, indent=2))
++
+
+apply patch
+patch: completed
+%USERPROFILE%\Documents\Workplace\MISC\Lecture\Surveying\materials\slides\第05回_トラバース測量I\illustrations\生成プロンプト.md
+%USERPROFILE%\Documents\Workplace\MISC\Lecture\Surveying\notes\session05_figures\verify_images.py
+diff --git a/Surveying/materials/slides/第05回_トラバース測量I/illustrations/生成プロンプト.md b/Surveying/materials/slides/第05回_トラバース測量I/illustrations/生成プロンプト.md
+new file mode 100644
+index 0000000000000000000000000000000000000000..f2e9c93015be97cbaabc435ac466133798b722fb
+--- /dev/null
++++ b/Surveying/materials/slides/第05回_トラバース測量I/illustrations/生成プロンプト.md
+@@ -0,0 +1,125 @@
++# 第5回 トラバース測量I：画像生成プロンプト
++
++- 使用ツール：組み込み画像生成ツール（image_gen）。
++- 出力先：`materials/slides/第05回_トラバース測量I/illustrations/`。
++- 共通指定：横長16:9、長辺約1600 px、RGB PNG。温かいアイボリー（#FAF9F5付近）の背景、紺（#1F4E79）の線、青緑（#13877B）と橙（#BD512B）の強調。平面的で落ち着いた教科書図版。
++- 文字・数字・ロゴ・透かし・記号列なし。測線・矢印・角の弧・測点・格子など、説明に必要な図形は使用する。実在の製品・企業・地名・人物は描かない。
++- 記録書式は第3回の `生成プロンプト.md` に合わせ、各画像の生成・確認結果と実際に使用したプロンプトを記載した。
++
++## title_hero.png
++
++- 用途：表紙：農地を囲む閉合トラバース。
++- 使用ツール：組み込み画像生成ツール（image_gen）。
++- 出力ファイル：`title_hero.png`。
++- 指定：横長16:9、約1600 × 900 px、RGB PNG。文字・数字・文字列・ロゴ・透かしなし。
++
++### 生成・確認結果
++
++- 2026-10-22：生成して指定フォルダに保存。
++- 生成原画像：PNG／RGB／1672 × 941 px。PillowでRGB変換とLANCZOS縮小を行い、納品寸法を厳密な16:9に統一した。図の内容の修正にはimage_genを使用。
++- 最終画像：PNG／RGB／1600 × 900 px。Pillowで再度開いて全画素を読み込み、形式・モード・寸法・ファイルの存在を確認。
++- やり直した回数：0回（初回生成を除くimage_genによる修正。寸法調整は含めない）。
++- 目視確認：文字・数字・ロゴ・透かし・記号列の混入なし。概念図としての輪郭、矢印、器械の構造を確認。
++- 農地を囲む6頂点・6辺の閉じた測線、各頂点の杭、時計回りに統一された矢印を確認。紺の測線が区画の淡い緑・黄土色より明瞭。
++
++### 使用したプロンプト
++
++```text
++Use case: scientific-educational.
++Create one calm, precise textbook plate for the cover of a surveying lecture on traverse surveying.
++Canvas: landscape 16:9, approximately 1600 x 900 pixels, opaque RGB PNG.
++Style: flat, tidy conceptual illustration, crisp navy outlines #1F4E79 on a uniform warm ivory background near #FAF9F5. Restrained teal #13877B and burnt orange #BD512B accents. No photorealism, no gradients, no dramatic shadows.
++Subject: an overhead view of a small group of agricultural parcels, rice paddies and fields, enclosed by one clear irregular closed polygonal survey traverse. Use subdued sage green and pale ochre for the parcels, with thin pale boundary lines. The navy traverse is the visually dominant element.
++Draw a single continuous closed polygon with six distinct vertices and six straight noncrossing edges. At each vertex place a tiny upright survey stake pictogram; each stake clearly marks the junction of its two adjoining edges. Each polygon edge carries one small navy arrowhead, all following the same clockwise direction, so the traverse reads as a single ordered walk returning to its starting point. Keep the farmland comfortably inside the polygon, and the whole diagram comfortably inside the canvas. Generous ivory margins.
++The only diagram marks allowed are the traverse lines, their arrowheads, and the stake pictograms. No legend, compass rose, scale, annotations, mathematical notation, or strings of symbols. No real places, companies, branded equipment, or people.
++Strict exclusions: no text, no numbers, no letters, no logos, no watermark.
++```
++
++## traverse_chain.png
++
++- 用途：5-1 トラバース測量とは。
++- 使用ツール：組み込み画像生成ツール（image_gen）。初稿生成後、同ツールで画像を編集。
++- 出力ファイル：`traverse_chain.png`。
++- 指定：横長16:9、約1600 × 900 px、RGB PNG。文字・数字・文字列・ロゴ・透かしなし。
++
++### 生成・確認結果
++
++- 2026-10-22：生成して指定フォルダに保存。
++- 生成原画像：PNG／RGB／1672 × 941 px。PillowでRGB変換とLANCZOS縮小を行い、納品寸法を厳密な16:9に統一した。図の内容の修正にはimage_genを使用。
++- 最終画像：PNG／RGB／1600 × 900 px。Pillowで再度開いて全画素を読み込み、形式・モード・寸法・ファイルの存在を確認。
++- やり直した回数：1回（初回生成を除くimage_genによる修正。寸法調整は含めない）。
++- 目視確認：文字・数字・ロゴ・透かし・記号列の混入なし。概念図としての輪郭、矢印、器械の構造を確認。
++- 初稿では中央測点の角の弧が欠けていたため、弧を追加し、器械を中央測点の下側へ移して重なりを解消。最終画像では5測点・4辺、3つの内側の角の弧、各辺の橙の両矢印、測量器械1台とプリズム2個を確認。器械は測点に付随する模式的な挿絵として配置。
++
++### 使用したプロンプト
++
++```text
++Use case: scientific-educational.
++Create one precise, restrained textbook plate explaining traverse surveying as successive measurements of angles and distances.
++Canvas: landscape 16:9, approximately 1600 x 900 pixels, opaque RGB PNG.
++Style: a flat tidy conceptual diagram on uniform warm ivory #FAF9F5, navy #1F4E79 for survey lines and instrument silhouettes, teal #13877B for angular arcs, burnt orange #BD512B for distance double arrows. Crisp consistent lines, restrained pale sector fills, generous margins, no realistic scenery.
++Composition: a continuous open navy zigzag survey chain across the canvas, with five well-separated small round station points and four straight segments. The stations alternate gently between lower and upper positions. No crossing or branching segments.
++At each of the three interior vertices, show a small teal circular arc and very pale teal fan-shaped sector strictly between the two incident survey legs, with its center exactly on that station. Keep the navy legs readable. These arcs represent measured included angles, not free-floating decorative curves.
++For each of the four segments, place a separate slim burnt-orange double-headed distance arrow exactly parallel to that segment, slightly offset outside the angular sectors. Each arrow clearly corresponds to one segment and has an arrowhead at both ends. No numeric labels.
++Add three small simplified surveying equipment silhouettes next to stations: one generic total station correctly mounted on a three-legged tripod near the middle station, and two generic reflector prisms on straight vertical poles near two other stations. The total station has a small telescope between supports on a leveling base. Equipment icons must not conceal station centers or angle arcs. All three tripod legs are separate and connected to a single top mount. Prism heads are simple diamond shapes in small frames.
++No people, brands, real products, decorative symbols, legend, compass rose, or strings of symbols.
++Strict exclusions: no text, no numbers, no letters, no logos, no watermark.
++```
++
++### 修正プロンプト
++
++直前に生成した当該画像1枚を編集対象として使用（`num_last_images_to_include: 1`）。
++
++```text
++Edit this traverse surveying textbook diagram. Preserve the ivory background, wide 16:9 canvas, five navy station points, four navy zigzag segments, all four orange double-headed distance arrows, and the teal angle sectors at the two upper vertices. Preserve the two prism pole silhouettes.
++Correct the missing angle sector at the central lower station: add a teal circular arc centered precisely on that station, between its two upward-sloping navy legs. The arc must be clearly visible above the station, with a very pale teal fan-shaped fill. It must have the same radius and line weight as the sectors at the upper vertices. There must be exactly three clearly visible teal sectors in total, one at each interior vertex.
++Move the total station and its entire tripod away from this angle sector into the empty ivory space immediately BELOW the central station, as a nearby small separate equipment pictogram. Leave a clear ivory gap between this pictogram and the station dot so the measurement geometry is unobscured. Tripod has exactly three connected legs, generic simplified instrument, no tiny button details. Keep everything comfortably inside the frame.
++Flat precise calm navy #1F4E79, teal #13877B, orange #BD512B, ivory #FAF9F5. no text, no numbers, no letters, no logos, no watermark. No strings of symbols, no labels, no people.
++```
++
++## ts_coordinate.png
++
++- 用途：5-6 TSの座標観測。
++- 使用ツール：組み込み画像生成ツール（image_gen）。初稿生成後、同ツールで画像を編集。
++- 出力ファイル：`ts_coordinate.png`。
++- 指定：横長16:9、約1600 × 900 px、RGB PNG。文字・数字・文字列・ロゴ・透かしなし。
++
++### 生成・確認結果
++
++- 2026-10-22：生成して指定フォルダに保存。
++- 生成原画像：PNG／RGB／1672 × 941 px。PillowでRGB変換とLANCZOS縮小を行い、納品寸法を厳密な16:9に統一した。図の内容の修正にはimage_genを使用。
++- 最終画像：PNG／RGB／1600 × 900 px。Pillowで再度開いて全画素を読み込み、形式・モード・寸法・ファイルの存在を確認。
++- やり直した回数：1回（初回生成を除くimage_genによる修正。寸法調整は含めない）。
++- 目視確認：文字・数字・ロゴ・透かし・記号列の混入なし。概念図としての輪郭、矢印、器械の構造を確認。
++- 初稿では標的付近に不完全な短い格子線があり、三脚の足元も切れていたため修正。最終画像では直交格子、標的の点、方向と距離を表す矢印、全体が収まった三脚、画面内の抽象的な3本のバーを確認。点と格子の位置関係は模式表現であり、画素位置から座標を読み取る図ではない。
++
++### 使用したプロンプト
++
++```text
++Use case: scientific-educational.
++Create one calm precise textbook plate illustrating how a total station's observed direction and distance determine a coordinate point.
++Canvas: landscape 16:9, approximately 1600 x 900 pixels, opaque RGB PNG.
++Style: flat tidy conceptual illustration with crisp navy #1F4E79 outlines, teal #13877B direction accents and burnt-orange #BD512B distance accents, uniform warm ivory #FAF9F5 background. Limited colors, generous margins. No photorealism or dramatic shadows.
++Composition: a simplified generic total station mounted correctly on a tripod occupies the left quarter. Three distinct legs join a single leveling base. A small telescope between two supports points toward the right; a visible small rectangular instrument screen contains ONLY three solid abstract horizontal bars of different lengths, with absolutely no numerals, letters, ticks or button symbols.
++On the right half draw a sparse flat orthogonal coordinate grid, shown face-on as evenly spaced horizontal and vertical thin pale navy lines, without axes labels or tick labels. Highlight one intersection in the upper-right part of this grid with a prominent filled teal circular point. The point must lie exactly on the crossing of one vertical and one horizontal grid line.
++A single straight navy sight line with a teal arrowhead runs diagonally upward from the telescope toward this exact highlighted grid intersection. Beside and parallel to the sight line draw a slim orange double-headed arrow denoting measured distance. Near the instrument, a short faint horizontal reference ray and one small teal angular arc between this ray and the sight line denote observed direction. Make the angle's vertex align with the telescope/sight-line origin. The direction line and the distance arrow visually converge on the same target point. No additional unrelated dots.
++This is a conceptual transition from instrument observations to a coordinate point, not a realistic scene. Keep geometric construction clean and uncluttered. No people, landscape, real branded products, equations, legends, decorative marks, or strings of symbols.
++Strict exclusions: no text, no numbers, no letters, no logos, no watermark.
++```
++
++### 修正プロンプト
++
++直前に生成した当該画像1枚を編集対象として使用（`num_last_images_to_include: 1`）。
++
++```text
++Revise this total-station coordinate textbook illustration, retaining the warm ivory background and limited navy, teal, orange palette, wide 16:9 composition, total station at left, observed direction and distance arrows, and orthogonal grid at right. no text, no numbers, no letters, no logos, no watermark.
++Correct two construction details:
++1. The coordinate grid must consist solely of complete evenly spaced straight horizontal and vertical grid lines. Remove the stray short horizontal line through the teal target. Relocate the teal target dot onto the existing complete grid intersection one row LOWER than the top horizontal grid line, on the same vertical grid line as before. Both the navy sight-line arrow and the parallel orange double-headed distance arrow must adjust naturally toward this revised target. No partial extra grid lines or off-grid points.
++2. Reduce the instrument and tripod silhouette slightly so that all three tripod feet are fully visible with clear ivory margin below, not cropped or cut off. Use an especially simple flat silhouette, no shadow or photorealistic detail. Keep the visible screen with only three solid horizontal bars.
++Preserve a clean small teal angular arc between the horizontal reference ray and the navy sight line, centered on their common origin at the telescope. No extra diagrams or labels.
++```
++
++## 講義での使用上の区別
++
++3枚とも概念を伝えるための挿絵であり、実測図・観測データ・数値計算用の作図ではない。角度や距離、座標値は画像から読み取らない。
++
+
+apply patch
+patch: completed
+%USERPROFILE%\Documents\Workplace\MISC\Lecture\Surveying\notes\session05_figures\worklog.md
+diff --git a/Surveying/materials/slides/第05回_トラバース測量I/illustrations/生成プロンプト.md b/Surveying/materials/slides/第05回_トラバース測量I/illustrations/生成プロンプト.md
+new file mode 100644
+index 0000000000000000000000000000000000000000..f2e9c93015be97cbaabc435ac466133798b722fb
+--- /dev/null
++++ b/Surveying/materials/slides/第05回_トラバース測量I/illustrations/生成プロンプト.md
+@@ -0,0 +1,125 @@
++# 第5回 トラバース測量I：画像生成プロンプト
++
++- 使用ツール：組み込み画像生成ツール（image_gen）。
++- 出力先：`materials/slides/第05回_トラバース測量I/illustrations/`。
++- 共通指定：横長16:9、長辺約1600 px、RGB PNG。温かいアイボリー（#FAF9F5付近）の背景、紺（#1F4E79）の線、青緑（#13877B）と橙（#BD512B）の強調。平面的で落ち着いた教科書図版。
++- 文字・数字・ロゴ・透かし・記号列なし。測線・矢印・角の弧・測点・格子など、説明に必要な図形は使用する。実在の製品・企業・地名・人物は描かない。
++- 記録書式は第3回の `生成プロンプト.md` に合わせ、各画像の生成・確認結果と実際に使用したプロンプトを記載した。
++
++## title_hero.png
++
++- 用途：表紙：農地を囲む閉合トラバース。
++- 使用ツール：組み込み画像生成ツール（image_gen）。
++- 出力ファイル：`title_hero.png`。
++- 指定：横長16:9、約1600 × 900 px、RGB PNG。文字・数字・文字列・ロゴ・透かしなし。
++
++### 生成・確認結果
++
++- 2026-10-22：生成して指定フォルダに保存。
++- 生成原画像：PNG／RGB／1672 × 941 px。PillowでRGB変換とLANCZOS縮小を行い、納品寸法を厳密な16:9に統一した。図の内容の修正にはimage_genを使用。
++- 最終画像：PNG／RGB／1600 × 900 px。Pillowで再度開いて全画素を読み込み、形式・モード・寸法・ファイルの存在を確認。
++- やり直した回数：0回（初回生成を除くimage_genによる修正。寸法調整は含めない）。
++- 目視確認：文字・数字・ロゴ・透かし・記号列の混入なし。概念図としての輪郭、矢印、器械の構造を確認。
++- 農地を囲む6頂点・6辺の閉じた測線、各頂点の杭、時計回りに統一された矢印を確認。紺の測線が区画の淡い緑・黄土色より明瞭。
++
++### 使用したプロンプト
++
++```text
++Use case: scientific-educational.
++Create one calm, precise textbook plate for the cover of a surveying lecture on traverse surveying.
++Canvas: landscape 16:9, approximately 1600 x 900 pixels, opaque RGB PNG.
++Style: flat, tidy conceptual illustration, crisp navy outlines #1F4E79 on a uniform warm ivory background near #FAF9F5. Restrained teal #13877B and burnt orange #BD512B accents. No photorealism, no gradients, no dramatic shadows.
++Subject: an overhead view of a small group of agricultural parcels, rice paddies and fields, enclosed by one clear irregular closed polygonal survey traverse. Use subdued sage green and pale ochre for the parcels, with thin pale boundary lines. The navy traverse is the visually dominant element.
++Draw a single continuous closed polygon with six distinct vertices and six straight noncrossing edges. At each vertex place a tiny upright survey stake pictogram; each stake clearly marks the junction of its two adjoining edges. Each polygon edge carries one small navy arrowhead, all following the same clockwise direction, so the traverse reads as a single ordered walk returning to its starting point. Keep the farmland comfortably inside the polygon, and the whole diagram comfortably inside the canvas. Generous ivory margins.
++The only diagram marks allowed are the traverse lines, their arrowheads, and the stake pictograms. No legend, compass rose, scale, annotations, mathematical notation, or strings of symbols. No real places, companies, branded equipment, or people.
++Strict exclusions: no text, no numbers, no letters, no logos, no watermark.
++```
++
++## traverse_chain.png
++
++- 用途：5-1 トラバース測量とは。
++- 使用ツール：組み込み画像生成ツール（image_gen）。初稿生成後、同ツールで画像を編集。
++- 出力ファイル：`traverse_chain.png`。
++- 指定：横長16:9、約1600 × 900 px、RGB PNG。文字・数字・文字列・ロゴ・透かしなし。
++
++### 生成・確認結果
++
++- 2026-10-22：生成して指定フォルダに保存。
++- 生成原画像：PNG／RGB／1672 × 941 px。PillowでRGB変換とLANCZOS縮小を行い、納品寸法を厳密な16:9に統一した。図の内容の修正にはimage_genを使用。
++- 最終画像：PNG／RGB／1600 × 900 px。Pillowで再度開いて全画素を読み込み、形式・モード・寸法・ファイルの存在を確認。
++- やり直した回数：1回（初回生成を除くimage_genによる修正。寸法調整は含めない）。
++- 目視確認：文字・数字・ロゴ・透かし・記号列の混入なし。概念図としての輪郭、矢印、器械の構造を確認。
++- 初稿では中央測点の角の弧が欠けていたため、弧を追加し、器械を中央測点の下側へ移して重なりを解消。最終画像では5測点・4辺、3つの内側の角の弧、各辺の橙の両矢印、測量器械1台とプリズム2個を確認。器械は測点に付随する模式的な挿絵として配置。
++
++### 使用したプロンプト
++
++```text
++Use case: scientific-educational.
++Create one precise, restrained textbook plate explaining traverse surveying as successive measurements of angles and distances.
++Canvas: landscape 16:9, approximately 1600 x 900 pixels, opaque RGB PNG.
++Style: a flat tidy conceptual diagram on uniform warm ivory #FAF9F5, navy #1F4E79 for survey lines and instrument silhouettes, teal #13877B for angular arcs, burnt orange #BD512B for distance double arrows. Crisp consistent lines, restrained pale sector fills, generous margins, no realistic scenery.
++Composition: a continuous open navy zigzag survey chain across the canvas, with five well-separated small round station points and four straight segments. The stations alternate gently between lower and upper positions. No crossing or branching segments.
++At each of the three interior vertices, show a small teal circular arc and very pale teal fan-shaped sector strictly between the two incident survey legs, with its center exactly on that station. Keep the navy legs readable. These arcs represent measured included angles, not free-floating decorative curves.
++For each of the four segments, place a separate slim burnt-orange double-headed distance arrow exactly parallel to that segment, slightly offset outside the angular sectors. Each arrow clearly corresponds to one segment and has an arrowhead at both ends. No numeric labels.
++Add three small simplified surveying equipment silhouettes next to stations: one generic total station correctly mounted on a three-legged tripod near the middle station, and two generic reflector prisms on straight vertical poles near two other stations. The total station has a small telescope between supports on a leveling base. Equipment icons must not conceal station centers or angle arcs. All three tripod legs are separate and connected to a single top mount. Prism heads are simple diamond shapes in small frames.
++No people, brands, real products, decorative symbols, legend, compass rose, or strings of symbols.
++Strict exclusions: no text, no numbers, no letters, no logos, no watermark.
++```
++
++### 修正プロンプト
++
++直前に生成した当該画像1枚を編集対象として使用（`num_last_images_to_include: 1`）。
++
++```text
++Edit this traverse surveying textbook diagram. Preserve the ivory background, wide 16:9 canvas, five navy station points, four navy zigzag segments, all four orange double-headed distance arrows, and the teal angle sectors at the two upper vertices. Preserve the two prism pole silhouettes.
++Correct the missing angle sector at the central lower station: add a teal circular arc centered precisely on that station, between its two upward-sloping navy legs. The arc must be clearly visible above the station, with a very pale teal fan-shaped fill. It must have the same radius and line weight as the sectors at the upper vertices. There must be exactly three clearly visible teal sectors in total, one at each interior vertex.
++Move the total station and its entire tripod away from this angle sector into the empty ivory space immediately BELOW the central station, as a nearby small separate equipment pictogram. Leave a clear ivory gap between this pictogram and the station dot so the measurement geometry is unobscured. Tripod has exactly three connected legs, generic simplified instrument, no tiny button details. Keep everything comfortably inside the frame.
++Flat precise calm navy #1F4E79, teal #13877B, orange #BD512B, ivory #FAF9F5. no text, no numbers, no letters, no logos, no watermark. No strings of symbols, no labels, no people.
++```
++
++## ts_coordinate.png
++
++- 用途：5-6 TSの座標観測。
++- 使用ツール：組み込み画像生成ツール（image_gen）。初稿生成後、同ツールで画像を編集。
++- 出力ファイル：`ts_coordinate.png`。
++- 指定：横長16:9、約1600 × 900 px、RGB PNG。文字・数字・文字列・ロゴ・透かしなし。
++
++### 生成・確認結果
++
++- 2026-10-22：生成して指定フォルダに保存。
++- 生成原画像：PNG／RGB／1672 × 941 px。PillowでRGB変換とLANCZOS縮小を行い、納品寸法を厳密な16:9に統一した。図の内容の修正にはimage_genを使用。
++- 最終画像：PNG／RGB／1600 × 900 px。Pillowで再度開いて全画素を読み込み、形式・モード・寸法・ファイルの存在を確認。
++- やり直した回数：1回（初回生成を除くimage_genによる修正。寸法調整は含めない）。
++- 目視確認：文字・数字・ロゴ・透かし・記号列の混入なし。概念図としての輪郭、矢印、器械の構造を確認。
++- 初稿では標的付近に不完全な短い格子線があり、三脚の足元も切れていたため修正。最終画像では直交格子、標的の点、方向と距離を表す矢印、全体が収まった三脚、画面内の抽象的な3本のバーを確認。点と格子の位置関係は模式表現であり、画素位置から座標を読み取る図ではない。
++
++### 使用したプロンプト
++
++```text
++Use case: scientific-educational.
++Create one calm precise textbook plate illustrating how a total station's observed direction and distance determine a coordinate point.
++Canvas: landscape 16:9, approximately 1600 x 900 pixels, opaque RGB PNG.
++Style: flat tidy conceptual illustration with crisp navy #1F4E79 outlines, teal #13877B direction accents and burnt-orange #BD512B distance accents, uniform warm ivory #FAF9F5 background. Limited colors, generous margins. No photorealism or dramatic shadows.
++Composition: a simplified generic total station mounted correctly on a tripod occupies the left quarter. Three distinct legs join a single leveling base. A small telescope between two supports points toward the right; a visible small rectangular instrument screen contains ONLY three solid abstract horizontal bars of different lengths, with absolutely no numerals, letters, ticks or button symbols.
++On the right half draw a sparse flat orthogonal coordinate grid, shown face-on as evenly spaced horizontal and vertical thin pale navy lines, without axes labels or tick labels. Highlight one intersection in the upper-right part of this grid with a prominent filled teal circular point. The point must lie exactly on the crossing of one vertical and one horizontal grid line.
++A single straight navy sight line with a teal arrowhead runs diagonally upward from the telescope toward this exact highlighted grid intersection. Beside and parallel to the sight line draw a slim orange double-headed arrow denoting measured distance. Near the instrument, a short faint horizontal reference ray and one small teal angular arc between this ray and the sight line denote observed direction. Make the angle's vertex align with the telescope/sight-line origin. The direction line and the distance arrow visually converge on the same target point. No additional unrelated dots.
++This is a conceptual transition from instrument observations to a coordinate point, not a realistic scene. Keep geometric construction clean and uncluttered. No people, landscape, real branded products, equations, legends, decorative marks, or strings of symbols.
++Strict exclusions: no text, no numbers, no letters, no logos, no watermark.
++```
++
++### 修正プロンプト
++
++直前に生成した当該画像1枚を編集対象として使用（`num_last_images_to_include: 1`）。
++
++```text
++Revise this total-station coordinate textbook illustration, retaining the warm ivory background and limited navy, teal, orange palette, wide 16:9 composition, total station at left, observed direction and distance arrows, and orthogonal grid at right. no text, no numbers, no letters, no logos, no watermark.
++Correct two construction details:
++1. The coordinate grid must consist solely of complete evenly spaced straight horizontal and vertical grid lines. Remove the stray short horizontal line through the teal target. Relocate the teal target dot onto the existing complete grid intersection one row LOWER than the top horizontal grid line, on the same vertical grid line as before. Both the navy sight-line arrow and the parallel orange double-headed distance arrow must adjust naturally toward this revised target. No partial extra grid lines or off-grid points.
++2. Reduce the instrument and tripod silhouette slightly so that all three tripod feet are fully visible with clear ivory margin below, not cropped or cut off. Use an especially simple flat silhouette, no shadow or photorealistic detail. Keep the visible screen with only three solid horizontal bars.
++Preserve a clean small teal angular arc between the horizontal reference ray and the navy sight line, centered on their common origin at the telescope. No extra diagrams or labels.
++```
++
++## 講義での使用上の区別
++
++3枚とも概念を伝えるための挿絵であり、実測図・観測データ・数値計算用の作図ではない。角度や距離、座標値は画像から読み取らない。
++
+diff --git a/Surveying/notes/session05_figures/worklog.md b/Surveying/notes/session05_figures/worklog.md
+new file mode 100644
+index 0000000000000000000000000000000000000000..f55d982f9529d5a6b3e8f2c081ae78c0b8b7901c
+--- /dev/null
++++ b/Surveying/notes/session05_figures/worklog.md
+@@ -0,0 +1,8 @@
++# 第5回 図版作業記録
++
++## 2026-10-22
++
++- 組み込みimage_genで表紙・トラバース測線・TS座標観測の概念イラスト3枚を生成。
++- トラバースの中央の角の弧、TSの格子線と三脚の足元を各1回修正。表紙のやり直しは0回。
++- 指定illustrationsフォルダに1600 × 900 px・RGB PNGで保存し、Pillowによる全画素読み込みと保存後の目視確認を実施。実際のプロンプトと確認結果を同フォルダに記録。
++- 今回の指示に従い、git操作および許可された2フォルダ以外のプロジェクトファイル変更は実施していない。
+
+exec
+"C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -NoProfile -Command "Get-ChildItem -LiteralPath 'materials/slides/第05回_トラバース測量I/illustrations','notes/session05_figures' | Select-Object Name,Length; Get-Content -Encoding UTF8 -LiteralPath 'materials/slides/第05回_トラバース測量I/illustrations/生成プロンプト.md' -TotalCount 26" in %USERPROFILE%\Documents\Workplace\MISC\Lecture\Surveying
+ succeeded in 2621ms:
+
+Name                            Length
+----                            ------
+title_hero.png                 1389284
+traverse_chain.png              910969
+ts_coordinate.png               956803
+生成プロンプト.md                       14076
+codex_prompt_diagrams.md          2636
+codex_prompt_illustrations.md     3086
+codex_report_diagrams.md          1840
+codex_stdout_diagrams.log       633806
+codex_stdout_illustrations.log   72915
+contact_sheet.png               534681
+validation.json                  10751
+visual_review.json                1660
+worklog.md                         648
+検証結果.json                         1104
+# 第5回 トラバース測量I：画像生成プロンプト
+
+- 使用ツール：組み込み画像生成ツール（image_gen）。
+- 出力先：`materials/slides/第05回_トラバース測量I/illustrations/`。
+- 共通指定：横長16:9、長辺約1600 px、RGB PNG。温かいアイボリー（#FAF9F5付近）の背景、紺（#1F4E79）の線、青緑（#13877B）と橙（#BD512B）の強調。平面的で落ち着いた教科書図版。
+- 文字・数字・ロゴ・透かし・記号列なし。測線・矢印・角の弧・測点・格子など、説明に必要な図形は使用する。実在の製品・企業・地名・人物は描かない。
+- 記録書式は第3回の `生成プロンプト.md` に合わせ、各画像の生成・確認結果と実際に使用したプロンプトを記載した。
+
+## title_hero.png
+
+- 用途：表紙：農地を囲む閉合トラバース。
+- 使用ツール：組み込み画像生成ツール（image_gen）。
+- 出力ファイル：`title_hero.png`。
+- 指定：横長16:9、約1600 × 900 px、RGB PNG。文字・数字・文字列・ロゴ・透かしなし。
+
+### 生成・確認結果
+
+- 2026-10-22：生成して指定フォルダに保存。
+- 生成原画像：PNG／RGB／1672 × 941 px。PillowでRGB変換とLANCZOS縮小を行い、納品寸法を厳密な16:9に統一した。図の内容の修正にはimage_genを使用。
+- 最終画像：PNG／RGB／1600 × 900 px。Pillowで再度開いて全画素を読み込み、形式・モード・寸法・ファイルの存在を確認。
+- やり直した回数：0回（初回生成を除くimage_genによる修正。寸法調整は含めない）。
+- 目視確認：文字・数字・ロゴ・透かし・記号列の混入なし。概念図としての輪郭、矢印、器械の構造を確認。
+- 農地を囲む6頂点・6辺の閉じた測線、各頂点の杭、時計回りに統一された矢印を確認。紺の測線が区画の淡い緑・黄土色より明瞭。
+
+### 使用したプロンプト
+
+
+
+
+diff --git a/Surveying/materials/slides/第05回_トラバース測量I/illustrations/生成プロンプト.md b/Surveying/materials/slides/第05回_トラバース測量I/illustrations/生成プロンプト.md
+new file mode 100644
+index 0000000000000000000000000000000000000000..f2e9c93015be97cbaabc435ac466133798b722fb
+--- /dev/null
++++ b/Surveying/materials/slides/第05回_トラバース測量I/illustrations/生成プロンプト.md
+@@ -0,0 +1,125 @@
++# 第5回 トラバース測量I：画像生成プロンプト
++
++- 使用ツール：組み込み画像生成ツール（image_gen）。
++- 出力先：`materials/slides/第05回_トラバース測量I/illustrations/`。
++- 共通指定：横長16:9、長辺約1600 px、RGB PNG。温かいアイボリー（#FAF9F5付近）の背景、紺（#1F4E79）の線、青緑（#13877B）と橙（#BD512B）の強調。平面的で落ち着いた教科書図版。
++- 文字・数字・ロゴ・透かし・記号列なし。測線・矢印・角の弧・測点・格子など、説明に必要な図形は使用する。実在の製品・企業・地名・人物は描かない。
++- 記録書式は第3回の `生成プロンプト.md` に合わせ、各画像の生成・確認結果と実際に使用したプロンプトを記載した。
++
++## title_hero.png
++
++- 用途：表紙：農地を囲む閉合トラバース。
++- 使用ツール：組み込み画像生成ツール（image_gen）。
++- 出力ファイル：`title_hero.png`。
++- 指定：横長16:9、約1600 × 900 px、RGB PNG。文字・数字・文字列・ロゴ・透かしなし。
++
++### 生成・確認結果
++
++- 2026-10-22：生成して指定フォルダに保存。
++- 生成原画像：PNG／RGB／1672 × 941 px。PillowでRGB変換とLANCZOS縮小を行い、納品寸法を厳密な16:9に統一した。図の内容の修正にはimage_genを使用。
++- 最終画像：PNG／RGB／1600 × 900 px。Pillowで再度開いて全画素を読み込み、形式・モード・寸法・ファイルの存在を確認。
++- やり直した回数：0回（初回生成を除くimage_genによる修正。寸法調整は含めない）。
++- 目視確認：文字・数字・ロゴ・透かし・記号列の混入なし。概念図としての輪郭、矢印、器械の構造を確認。
++- 農地を囲む6頂点・6辺の閉じた測線、各頂点の杭、時計回りに統一された矢印を確認。紺の測線が区画の淡い緑・黄土色より明瞭。
++
++### 使用したプロンプト
++
++```text
++Use case: scientific-educational.
++Create one calm, precise textbook plate for the cover of a surveying lecture on traverse surveying.
++Canvas: landscape 16:9, approximately 1600 x 900 pixels, opaque RGB PNG.
++Style: flat, tidy conceptual illustration, crisp navy outlines #1F4E79 on a uniform warm ivory background near #FAF9F5. Restrained teal #13877B and burnt orange #BD512B accents. No photorealism, no gradients, no dramatic shadows.
++Subject: an overhead view of a small group of agricultural parcels, rice paddies and fields, enclosed by one clear irregular closed polygonal survey traverse. Use subdued sage green and pale ochre for the parcels, with thin pale boundary lines. The navy traverse is the visually dominant element.
++Draw a single continuous closed polygon with six distinct vertices and six straight noncrossing edges. At each vertex place a tiny upright survey stake pictogram; each stake clearly marks the junction of its two adjoining edges. Each polygon edge carries one small navy arrowhead, all following the same clockwise direction, so the traverse reads as a single ordered walk returning to its starting point. Keep the farmland comfortably inside the polygon, and the whole diagram comfortably inside the canvas. Generous ivory margins.
++The only diagram marks allowed are the traverse lines, their arrowheads, and the stake pictograms. No legend, compass rose, scale, annotations, mathematical notation, or strings of symbols. No real places, companies, branded equipment, or people.
++Strict exclusions: no text, no numbers, no letters, no logos, no watermark.
++```
++
++## traverse_chain.png
++
++- 用途：5-1 トラバース測量とは。
++- 使用ツール：組み込み画像生成ツール（image_gen）。初稿生成後、同ツールで画像を編集。
++- 出力ファイル：`traverse_chain.png`。
++- 指定：横長16:9、約1600 × 900 px、RGB PNG。文字・数字・文字列・ロゴ・透かしなし。
++
++### 生成・確認結果
++
++- 2026-10-22：生成して指定フォルダに保存。
++- 生成原画像：PNG／RGB／1672 × 941 px。PillowでRGB変換とLANCZOS縮小を行い、納品寸法を厳密な16:9に統一した。図の内容の修正にはimage_genを使用。
++- 最終画像：PNG／RGB／1600 × 900 px。Pillowで再度開いて全画素を読み込み、形式・モード・寸法・ファイルの存在を確認。
++- やり直した回数：1回（初回生成を除くimage_genによる修正。寸法調整は含めない）。
++- 目視確認：文字・数字・ロゴ・透かし・記号列の混入なし。概念図としての輪郭、矢印、器械の構造を確認。
++- 初稿では中央測点の角の弧が欠けていたため、弧を追加し、器械を中央測点の下側へ移して重なりを解消。最終画像では5測点・4辺、3つの内側の角の弧、各辺の橙の両矢印、測量器械1台とプリズム2個を確認。器械は測点に付随する模式的な挿絵として配置。
++
++### 使用したプロンプト
++
++```text
++Use case: scientific-educational.
++Create one precise, restrained textbook plate explaining traverse surveying as successive measurements of angles and distances.
++Canvas: landscape 16:9, approximately 1600 x 900 pixels, opaque RGB PNG.
++Style: a flat tidy conceptual diagram on uniform warm ivory #FAF9F5, navy #1F4E79 for survey lines and instrument silhouettes, teal #13877B for angular arcs, burnt orange #BD512B for distance double arrows. Crisp consistent lines, restrained pale sector fills, generous margins, no realistic scenery.
++Composition: a continuous open navy zigzag survey chain across the canvas, with five well-separated small round station points and four straight segments. The stations alternate gently between lower and upper positions. No crossing or branching segments.
++At each of the three interior vertices, show a small teal circular arc and very pale teal fan-shaped sector strictly between the two incident survey legs, with its center exactly on that station. Keep the navy legs readable. These arcs represent measured included angles, not free-floating decorative curves.
++For each of the four segments, place a separate slim burnt-orange double-headed distance arrow exactly parallel to that segment, slightly offset outside the angular sectors. Each arrow clearly corresponds to one segment and has an arrowhead at both ends. No numeric labels.
++Add three small simplified surveying equipment silhouettes next to stations: one generic total station correctly mounted on a three-legged tripod near the middle station, and two generic reflector prisms on straight vertical poles near two other stations. The total station has a small telescope between supports on a leveling base. Equipment icons must not conceal station centers or angle arcs. All three tripod legs are separate and connected to a single top mount. Prism heads are simple diamond shapes in small frames.
++No people, brands, real products, decorative symbols, legend, compass rose, or strings of symbols.
++Strict exclusions: no text, no numbers, no letters, no logos, no watermark.
++```
++
++### 修正プロンプト
++
++直前に生成した当該画像1枚を編集対象として使用（`num_last_images_to_include: 1`）。
++
++```text
++Edit this traverse surveying textbook diagram. Preserve the ivory background, wide 16:9 canvas, five navy station points, four navy zigzag segments, all four orange double-headed distance arrows, and the teal angle sectors at the two upper vertices. Preserve the two prism pole silhouettes.
++Correct the missing angle sector at the central lower station: add a teal circular arc centered precisely on that station, between its two upward-sloping navy legs. The arc must be clearly visible above the station, with a very pale teal fan-shaped fill. It must have the same radius and line weight as the sectors at the upper vertices. There must be exactly three clearly visible teal sectors in total, one at each interior vertex.
++Move the total station and its entire tripod away from this angle sector into the empty ivory space immediately BELOW the central station, as a nearby small separate equipment pictogram. Leave a clear ivory gap between this pictogram and the station dot so the measurement geometry is unobscured. Tripod has exactly three connected legs, generic simplified instrument, no tiny button details. Keep everything comfortably inside the frame.
++Flat precise calm navy #1F4E79, teal #13877B, orange #BD512B, ivory #FAF9F5. no text, no numbers, no letters, no logos, no watermark. No strings of symbols, no labels, no people.
++```
++
++## ts_coordinate.png
++
++- 用途：5-6 TSの座標観測。
++- 使用ツール：組み込み画像生成ツール（image_gen）。初稿生成後、同ツールで画像を編集。
++- 出力ファイル：`ts_coordinate.png`。
++- 指定：横長16:9、約1600 × 900 px、RGB PNG。文字・数字・文字列・ロゴ・透かしなし。
++
++### 生成・確認結果
++
++- 2026-10-22：生成して指定フォルダに保存。
++- 生成原画像：PNG／RGB／1672 × 941 px。PillowでRGB変換とLANCZOS縮小を行い、納品寸法を厳密な16:9に統一した。図の内容の修正にはimage_genを使用。
++- 最終画像：PNG／RGB／1600 × 900 px。Pillowで再度開いて全画素を読み込み、形式・モード・寸法・ファイルの存在を確認。
++- やり直した回数：1回（初回生成を除くimage_genによる修正。寸法調整は含めない）。
++- 目視確認：文字・数字・ロゴ・透かし・記号列の混入なし。概念図としての輪郭、矢印、器械の構造を確認。
++- 初稿では標的付近に不完全な短い格子線があり、三脚の足元も切れていたため修正。最終画像では直交格子、標的の点、方向と距離を表す矢印、全体が収まった三脚、画面内の抽象的な3本のバーを確認。点と格子の位置関係は模式表現であり、画素位置から座標を読み取る図ではない。
++
++### 使用したプロンプト
++
++```text
++Use case: scientific-educational.
++Create one calm precise textbook plate illustrating how a total station's observed direction and distance determine a coordinate point.
++Canvas: landscape 16:9, approximately 1600 x 900 pixels, opaque RGB PNG.
++Style: flat tidy conceptual illustration with crisp navy #1F4E79 outlines, teal #13877B direction accents and burnt-orange #BD512B distance accents, uniform warm ivory #FAF9F5 background. Limited colors, generous margins. No photorealism or dramatic shadows.
++Composition: a simplified generic total station mounted correctly on a tripod occupies the left quarter. Three distinct legs join a single leveling base. A small telescope between two supports points toward the right; a visible small rectangular instrument screen contains ONLY three solid abstract horizontal bars of different lengths, with absolutely no numerals, letters, ticks or button symbols.
++On the right half draw a sparse flat orthogonal coordinate grid, shown face-on as evenly spaced horizontal and vertical thin pale navy lines, without axes labels or tick labels. Highlight one intersection in the upper-right part of this grid with a prominent filled teal circular point. The point must lie exactly on the crossing of one vertical and one horizontal grid line.
++A single straight navy sight line with a teal arrowhead runs diagonally upward from the telescope toward this exact highlighted grid intersection. Beside and parallel to the sight line draw a slim orange double-headed arrow denoting measured distance. Near the instrument, a short faint horizontal reference ray and one small teal angular arc between this ray and the sight line denote observed direction. Make the angle's vertex align with the telescope/sight-line origin. The direction line and the distance arrow visually converge on the same target point. No additional unrelated dots.
++This is a conceptual transition from instrument observations to a coordinate point, not a realistic scene. Keep geometric construction clean and uncluttered. No people, landscape, real branded products, equations, legends, decorative marks, or strings of symbols.
++Strict exclusions: no text, no numbers, no letters, no logos, no watermark.
++```
++
++### 修正プロンプト
++
++直前に生成した当該画像1枚を編集対象として使用（`num_last_images_to_include: 1`）。
++
++```text
++Revise this total-station coordinate textbook illustration, retaining the warm ivory background and limited navy, teal, orange palette, wide 16:9 composition, total station at left, observed direction and distance arrows, and orthogonal grid at right. no text, no numbers, no letters, no logos, no watermark.
++Correct two construction details:
++1. The coordinate grid must consist solely of complete evenly spaced straight horizontal and vertical grid lines. Remove the stray short horizontal line through the teal target. Relocate the teal target dot onto the existing complete grid intersection one row LOWER than the top horizontal grid line, on the same vertical grid line as before. Both the navy sight-line arrow and the parallel orange double-headed distance arrow must adjust naturally toward this revised target. No partial extra grid lines or off-grid points.
++2. Reduce the instrument and tripod silhouette slightly so that all three tripod feet are fully visible with clear ivory margin below, not cropped or cut off. Use an especially simple flat silhouette, no shadow or photorealistic detail. Keep the visible screen with only three solid horizontal bars.
++Preserve a clean small teal angular arc between the horizontal reference ray and the navy sight line, centered on their common origin at the telescope. No extra diagrams or labels.
++```
++
++## 講義での使用上の区別
++
++3枚とも概念を伝えるための挿絵であり、実測図・観測データ・数値計算用の作図ではない。角度や距離、座標値は画像から読み取らない。
++
+diff --git a/Surveying/notes/session05_figures/worklog.md b/Surveying/notes/session05_figures/worklog.md
+new file mode 100644
+index 0000000000000000000000000000000000000000..f55d982f9529d5a6b3e8f2c081ae78c0b8b7901c
+--- /dev/null
++++ b/Surveying/notes/session05_figures/worklog.md
+@@ -0,0 +1,8 @@
++# 第5回 図版作業記録
++
++## 2026-10-22
++
++- 組み込みimage_genで表紙・トラバース測線・TS座標観測の概念イラスト3枚を生成。
++- トラバースの中央の角の弧、TSの格子線と三脚の足元を各1回修正。表紙のやり直しは0回。
++- 指定illustrationsフォルダに1600 × 900 px・RGB PNGで保存し、Pillowによる全画素読み込みと保存後の目視確認を実施。実際のプロンプトと確認結果を同フォルダに記録。
++- 今回の指示に従い、git操作および許可された2フォルダ以外のプロジェクトファイル変更は実施していない。
+
+codex
+指定フォルダに3枚を保存しました。すべて **PNG／RGB／1600 × 900 px（16:9）** です。
+
+| ファイル | 保存 | やり直し |
+|---|---|---:|
+| title_hero.png | 済み | 0回 |
+| traverse_chain.png | 済み | 1回 |
+| ts_coordinate.png | 済み | 1回 |
+
+Pillowと目視で確認済み。文字・数字・ロゴの混入はありません。中央測点の角の弧、TS図の格子線と三脚の足元を修正しました。
+
+同フォルダの `生成プロンプト.md` に、実際のプロンプトと確認結果を記録しました。git操作は行っていません。
+diff --git a/Surveying/materials/slides/第05回_トラバース測量I/illustrations/生成プロンプト.md b/Surveying/materials/slides/第05回_トラバース測量I/illustrations/生成プロンプト.md
+new file mode 100644
+index 0000000000000000000000000000000000000000..f2e9c93015be97cbaabc435ac466133798b722fb
+--- /dev/null
++++ b/Surveying/materials/slides/第05回_トラバース測量I/illustrations/生成プロンプト.md
+@@ -0,0 +1,125 @@
++# 第5回 トラバース測量I：画像生成プロンプト
++
++- 使用ツール：組み込み画像生成ツール（image_gen）。
++- 出力先：`materials/slides/第05回_トラバース測量I/illustrations/`。
++- 共通指定：横長16:9、長辺約1600 px、RGB PNG。温かいアイボリー（#FAF9F5付近）の背景、紺（#1F4E79）の線、青緑（#13877B）と橙（#BD512B）の強調。平面的で落ち着いた教科書図版。
++- 文字・数字・ロゴ・透かし・記号列なし。測線・矢印・角の弧・測点・格子など、説明に必要な図形は使用する。実在の製品・企業・地名・人物は描かない。
++- 記録書式は第3回の `生成プロンプト.md` に合わせ、各画像の生成・確認結果と実際に使用したプロンプトを記載した。
++
++## title_hero.png
++
++- 用途：表紙：農地を囲む閉合トラバース。
++- 使用ツール：組み込み画像生成ツール（image_gen）。
++- 出力ファイル：`title_hero.png`。
++- 指定：横長16:9、約1600 × 900 px、RGB PNG。文字・数字・文字列・ロゴ・透かしなし。
++
++### 生成・確認結果
++
++- 2026-10-22：生成して指定フォルダに保存。
++- 生成原画像：PNG／RGB／1672 × 941 px。PillowでRGB変換とLANCZOS縮小を行い、納品寸法を厳密な16:9に統一した。図の内容の修正にはimage_genを使用。
++- 最終画像：PNG／RGB／1600 × 900 px。Pillowで再度開いて全画素を読み込み、形式・モード・寸法・ファイルの存在を確認。
++- やり直した回数：0回（初回生成を除くimage_genによる修正。寸法調整は含めない）。
++- 目視確認：文字・数字・ロゴ・透かし・記号列の混入なし。概念図としての輪郭、矢印、器械の構造を確認。
++- 農地を囲む6頂点・6辺の閉じた測線、各頂点の杭、時計回りに統一された矢印を確認。紺の測線が区画の淡い緑・黄土色より明瞭。
++
++### 使用したプロンプト
++
++```text
++Use case: scientific-educational.
++Create one calm, precise textbook plate for the cover of a surveying lecture on traverse surveying.
++Canvas: landscape 16:9, approximately 1600 x 900 pixels, opaque RGB PNG.
++Style: flat, tidy conceptual illustration, crisp navy outlines #1F4E79 on a uniform warm ivory background near #FAF9F5. Restrained teal #13877B and burnt orange #BD512B accents. No photorealism, no gradients, no dramatic shadows.
++Subject: an overhead view of a small group of agricultural parcels, rice paddies and fields, enclosed by one clear irregular closed polygonal survey traverse. Use subdued sage green and pale ochre for the parcels, with thin pale boundary lines. The navy traverse is the visually dominant element.
++Draw a single continuous closed polygon with six distinct vertices and six straight noncrossing edges. At each vertex place a tiny upright survey stake pictogram; each stake clearly marks the junction of its two adjoining edges. Each polygon edge carries one small navy arrowhead, all following the same clockwise direction, so the traverse reads as a single ordered walk returning to its starting point. Keep the farmland comfortably inside the polygon, and the whole diagram comfortably inside the canvas. Generous ivory margins.
++The only diagram marks allowed are the traverse lines, their arrowheads, and the stake pictograms. No legend, compass rose, scale, annotations, mathematical notation, or strings of symbols. No real places, companies, branded equipment, or people.
++Strict exclusions: no text, no numbers, no letters, no logos, no watermark.
++```
++
++## traverse_chain.png
++
++- 用途：5-1 トラバース測量とは。
++- 使用ツール：組み込み画像生成ツール（image_gen）。初稿生成後、同ツールで画像を編集。
++- 出力ファイル：`traverse_chain.png`。
++- 指定：横長16:9、約1600 × 900 px、RGB PNG。文字・数字・文字列・ロゴ・透かしなし。
++
++### 生成・確認結果
++
++- 2026-10-22：生成して指定フォルダに保存。
++- 生成原画像：PNG／RGB／1672 × 941 px。PillowでRGB変換とLANCZOS縮小を行い、納品寸法を厳密な16:9に統一した。図の内容の修正にはimage_genを使用。
++- 最終画像：PNG／RGB／1600 × 900 px。Pillowで再度開いて全画素を読み込み、形式・モード・寸法・ファイルの存在を確認。
++- やり直した回数：1回（初回生成を除くimage_genによる修正。寸法調整は含めない）。
++- 目視確認：文字・数字・ロゴ・透かし・記号列の混入なし。概念図としての輪郭、矢印、器械の構造を確認。
++- 初稿では中央測点の角の弧が欠けていたため、弧を追加し、器械を中央測点の下側へ移して重なりを解消。最終画像では5測点・4辺、3つの内側の角の弧、各辺の橙の両矢印、測量器械1台とプリズム2個を確認。器械は測点に付随する模式的な挿絵として配置。
++
++### 使用したプロンプト
++
++```text
++Use case: scientific-educational.
++Create one precise, restrained textbook plate explaining traverse surveying as successive measurements of angles and distances.
++Canvas: landscape 16:9, approximately 1600 x 900 pixels, opaque RGB PNG.
++Style: a flat tidy conceptual diagram on uniform warm ivory #FAF9F5, navy #1F4E79 for survey lines and instrument silhouettes, teal #13877B for angular arcs, burnt orange #BD512B for distance double arrows. Crisp consistent lines, restrained pale sector fills, generous margins, no realistic scenery.
++Composition: a continuous open navy zigzag survey chain across the canvas, with five well-separated small round station points and four straight segments. The stations alternate gently between lower and upper positions. No crossing or branching segments.
++At each of the three interior vertices, show a small teal circular arc and very pale teal fan-shaped sector strictly between the two incident survey legs, with its center exactly on that station. Keep the navy legs readable. These arcs represent measured included angles, not free-floating decorative curves.
++For each of the four segments, place a separate slim burnt-orange double-headed distance arrow exactly parallel to that segment, slightly offset outside the angular sectors. Each arrow clearly corresponds to one segment and has an arrowhead at both ends. No numeric labels.
++Add three small simplified surveying equipment silhouettes next to stations: one generic total station correctly mounted on a three-legged tripod near the middle station, and two generic reflector prisms on straight vertical poles near two other stations. The total station has a small telescope between supports on a leveling base. Equipment icons must not conceal station centers or angle arcs. All three tripod legs are separate and connected to a single top mount. Prism heads are simple diamond shapes in small frames.
++No people, brands, real products, decorative symbols, legend, compass rose, or strings of symbols.
++Strict exclusions: no text, no numbers, no letters, no logos, no watermark.
++```
++
++### 修正プロンプト
++
++直前に生成した当該画像1枚を編集対象として使用（`num_last_images_to_include: 1`）。
++
++```text
++Edit this traverse surveying textbook diagram. Preserve the ivory background, wide 16:9 canvas, five navy station points, four navy zigzag segments, all four orange double-headed distance arrows, and the teal angle sectors at the two upper vertices. Preserve the two prism pole silhouettes.
++Correct the missing angle sector at the central lower station: add a teal circular arc centered precisely on that station, between its two upward-sloping navy legs. The arc must be clearly visible above the station, with a very pale teal fan-shaped fill. It must have the same radius and line weight as the sectors at the upper vertices. There must be exactly three clearly visible teal sectors in total, one at each interior vertex.
++Move the total station and its entire tripod away from this angle sector into the empty ivory space immediately BELOW the central station, as a nearby small separate equipment pictogram. Leave a clear ivory gap between this pictogram and the station dot so the measurement geometry is unobscured. Tripod has exactly three connected legs, generic simplified instrument, no tiny button details. Keep everything comfortably inside the frame.
++Flat precise calm navy #1F4E79, teal #13877B, orange #BD512B, ivory #FAF9F5. no text, no numbers, no letters, no logos, no watermark. No strings of symbols, no labels, no people.
++```
++
++## ts_coordinate.png
++
++- 用途：5-6 TSの座標観測。
++- 使用ツール：組み込み画像生成ツール（image_gen）。初稿生成後、同ツールで画像を編集。
++- 出力ファイル：`ts_coordinate.png`。
++- 指定：横長16:9、約1600 × 900 px、RGB PNG。文字・数字・文字列・ロゴ・透かしなし。
++
++### 生成・確認結果
++
++- 2026-10-22：生成して指定フォルダに保存。
++- 生成原画像：PNG／RGB／1672 × 941 px。PillowでRGB変換とLANCZOS縮小を行い、納品寸法を厳密な16:9に統一した。図の内容の修正にはimage_genを使用。
++- 最終画像：PNG／RGB／1600 × 900 px。Pillowで再度開いて全画素を読み込み、形式・モード・寸法・ファイルの存在を確認。
++- やり直した回数：1回（初回生成を除くimage_genによる修正。寸法調整は含めない）。
++- 目視確認：文字・数字・ロゴ・透かし・記号列の混入なし。概念図としての輪郭、矢印、器械の構造を確認。
++- 初稿では標的付近に不完全な短い格子線があり、三脚の足元も切れていたため修正。最終画像では直交格子、標的の点、方向と距離を表す矢印、全体が収まった三脚、画面内の抽象的な3本のバーを確認。点と格子の位置関係は模式表現であり、画素位置から座標を読み取る図ではない。
++
++### 使用したプロンプト
++
++```text
++Use case: scientific-educational.
++Create one calm precise textbook plate illustrating how a total station's observed direction and distance determine a coordinate point.
++Canvas: landscape 16:9, approximately 1600 x 900 pixels, opaque RGB PNG.
++Style: flat tidy conceptual illustration with crisp navy #1F4E79 outlines, teal #13877B direction accents and burnt-orange #BD512B distance accents, uniform warm ivory #FAF9F5 background. Limited colors, generous margins. No photorealism or dramatic shadows.
++Composition: a simplified generic total station mounted correctly on a tripod occupies the left quarter. Three distinct legs join a single leveling base. A small telescope between two supports points toward the right; a visible small rectangular instrument screen contains ONLY three solid abstract horizontal bars of different lengths, with absolutely no numerals, letters, ticks or button symbols.
++On the right half draw a sparse flat orthogonal coordinate grid, shown face-on as evenly spaced horizontal and vertical thin pale navy lines, without axes labels or tick labels. Highlight one intersection in the upper-right part of this grid with a prominent filled teal circular point. The point must lie exactly on the crossing of one vertical and one horizontal grid line.
++A single straight navy sight line with a teal arrowhead runs diagonally upward from the telescope toward this exact highlighted grid intersection. Beside and parallel to the sight line draw a slim orange double-headed arrow denoting measured distance. Near the instrument, a short faint horizontal reference ray and one small teal angular arc between this ray and the sight line denote observed direction. Make the angle's vertex align with the telescope/sight-line origin. The direction line and the distance arrow visually converge on the same target point. No additional unrelated dots.
++This is a conceptual transition from instrument observations to a coordinate point, not a realistic scene. Keep geometric construction clean and uncluttered. No people, landscape, real branded products, equations, legends, decorative marks, or strings of symbols.
++Strict exclusions: no text, no numbers, no letters, no logos, no watermark.
++```
++
++### 修正プロンプト
++
++直前に生成した当該画像1枚を編集対象として使用（`num_last_images_to_include: 1`）。
++
++```text
++Revise this total-station coordinate textbook illustration, retaining the warm ivory background and limited navy, teal, orange palette, wide 16:9 composition, total station at left, observed direction and distance arrows, and orthogonal grid at right. no text, no numbers, no letters, no logos, no watermark.
++Correct two construction details:
++1. The coordinate grid must consist solely of complete evenly spaced straight horizontal and vertical grid lines. Remove the stray short horizontal line through the teal target. Relocate the teal target dot onto the existing complete grid intersection one row LOWER than the top horizontal grid line, on the same vertical grid line as before. Both the navy sight-line arrow and the parallel orange double-headed distance arrow must adjust naturally toward this revised target. No partial extra grid lines or off-grid points.
++2. Reduce the instrument and tripod silhouette slightly so that all three tripod feet are fully visible with clear ivory margin below, not cropped or cut off. Use an especially simple flat silhouette, no shadow or photorealistic detail. Keep the visible screen with only three solid horizontal bars.
++Preserve a clean small teal angular arc between the horizontal reference ray and the navy sight line, centered on their common origin at the telescope. No extra diagrams or labels.
++```
++
++## 講義での使用上の区別
++
++3枚とも概念を伝えるための挿絵であり、実測図・観測データ・数値計算用の作図ではない。角度や距離、座標値は画像から読み取らない。
++
+diff --git a/Surveying/notes/session05_figures/worklog.md b/Surveying/notes/session05_figures/worklog.md
+new file mode 100644
+index 0000000000000000000000000000000000000000..f55d982f9529d5a6b3e8f2c081ae78c0b8b7901c
+--- /dev/null
++++ b/Surveying/notes/session05_figures/worklog.md
+@@ -0,0 +1,8 @@
++# 第5回 図版作業記録
++
++## 2026-10-22
++
++- 組み込みimage_genで表紙・トラバース測線・TS座標観測の概念イラスト3枚を生成。
++- トラバースの中央の角の弧、TSの格子線と三脚の足元を各1回修正。表紙のやり直しは0回。
++- 指定illustrationsフォルダに1600 × 900 px・RGB PNGで保存し、Pillowによる全画素読み込みと保存後の目視確認を実施。実際のプロンプトと確認結果を同フォルダに記録。
++- 今回の指示に従い、git操作および許可された2フォルダ以外のプロジェクトファイル変更は実施していない。
+
+tokens used
+59,256
+指定フォルダに3枚を保存しました。すべて **PNG／RGB／1600 × 900 px（16:9）** です。
+
+| ファイル | 保存 | やり直し |
+|---|---|---:|
+| title_hero.png | 済み | 0回 |
+| traverse_chain.png | 済み | 1回 |
+| ts_coordinate.png | 済み | 1回 |
+
+Pillowと目視で確認済み。文字・数字・ロゴの混入はありません。中央測点の角の弧、TS図の格子線と三脚の足元を修正しました。
+
+同フォルダの `生成プロンプト.md` に、実際のプロンプトと確認結果を記録しました。git操作は行っていません。

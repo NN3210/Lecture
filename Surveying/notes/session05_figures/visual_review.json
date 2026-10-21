@@ -1,0 +1,27 @@
+{
+  "確認日": "2026-10-22",
+  "方法": "12点のPNGを各1枚ずつ画像として開いて目視確認。修正した図は再度開いて確認。",
+  "確認項目": [
+    "文字の重なり・はみ出し",
+    "矢印の向き",
+    "Xが上・Yが右の座標軸",
+    "方向角は北から右回り",
+    "内角の弧が隣接する2辺の間にあること",
+    "数値と仕様の対応"
+  ],
+  "結果": "全12点で確認済み。文字同士の交差候補は0件。",
+  "PNG_SHA256": {
+    "traverse_types": "d7445f15ec184883a662e5cfdb303f7acca9953f6408e727baac5baa1c0d6022",
+    "station_selection": "6df3e3769c1fb52b94f33790d409ca8ea28d0857e22a9e3c5915a96ea8984d2d",
+    "interior_angle_sum": "0e1294cb2a0780562ee58d3e66ba9aa839b4ef5d32e7b49b7b99e0609abc9779",
+    "direction_angle_propagation": "42a5c500ae9171247617ddaabf0ce867df60e4a3d4d429b7eb7b433ce07f57e9",
+    "deflection_angle": "eb395f819268a85f527379bd4477f6c48a9e0d35398239fefdd40b44e33dab61",
+    "traverse_example": "c69bbb3da9a4d778194424343794169a5f90ebb7c196885592f4d56b2a99433f",
+    "latitude_departure": "8fcb51b1773847353e17d28f9f3aebd9879daa7573e51aa06b13bddd98191298",
+    "closure_preview": "18b4b4781d288e7bf5a76d3fb77857318bade195f85acca1fffcb3e68493f584",
+    "inverse_quadrant4": "6d059a30f7c1ee05dedd78b89d735be6ce2aeed80757bf14c8c96fd5cad6d86b",
+    "ts_coordinate_mode": "9fa68f7d5b743e6d11d6d8849d83eab1a091605353c28dbd89c8a25be9593966",
+    "exercise_traverse": "7f2e74b03c8f0cc970cb8bab7b45320b74e0be61625c0242f8750b30105191f2",
+    "angle_error_flow": "e26231d35cb2c557b2ec2fe9bc48842b7fb419e2f797af11c9b130cb44b149ed"
+  }
+}
