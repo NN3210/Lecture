@@ -1,0 +1,87 @@
+{
+  "EQM00001": {
+    "tex": "\\Delta X=S\\cos T,\\qquad \\Delta Y=S\\sin T",
+    "display": true,
+    "mathml": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\"><semantics><mrow><mi mathvariant=\"normal\">Δ</mi><mi>X</mi><mo>=</mo><mi>S</mi><mi>cos</mi><mo>⁡</mo><mi>T</mi><mo separator=\"true\">,</mo><mspace width=\"2em\"/><mi mathvariant=\"normal\">Δ</mi><mi>Y</mi><mo>=</mo><mi>S</mi><mi>sin</mi><mo>⁡</mo><mi>T</mi></mrow><annotation encoding=\"application/x-tex\">\\Delta X=S\\cos T,\\qquad \\Delta Y=S\\sin T</annotation></semantics></math>"
+  },
+  "EQM00002": {
+    "tex": "\\sum \\beta_i = (n-2)\\times180^\\circ",
+    "display": true,
+    "mathml": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\"><semantics><mrow><mo>∑</mo><msub><mi>β</mi><mi>i</mi></msub><mo>=</mo><mo stretchy=\"false\">(</mo><mi>n</mi><mo>−</mo><mn>2</mn><mo stretchy=\"false\">)</mo><mo>×</mo><msup><mn>180</mn><mo>∘</mo></msup></mrow><annotation encoding=\"application/x-tex\">\\sum \\beta_i = (n-2)\\times180^\\circ</annotation></semantics></math>"
+  },
+  "EQM00003": {
+    "tex": "\\varepsilon=\\sum\\beta_i^{\\mathrm{obs}}-(n-2)\\times180^\\circ",
+    "display": true,
+    "mathml": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\"><semantics><mrow><mi>ε</mi><mo>=</mo><mo>∑</mo><msubsup><mi>β</mi><mi>i</mi><mrow><mi mathvariant=\"normal\">o</mi><mi mathvariant=\"normal\">b</mi><mi mathvariant=\"normal\">s</mi></mrow></msubsup><mo>−</mo><mo stretchy=\"false\">(</mo><mi>n</mi><mo>−</mo><mn>2</mn><mo stretchy=\"false\">)</mo><mo>×</mo><msup><mn>180</mn><mo>∘</mo></msup></mrow><annotation encoding=\"application/x-tex\">\\varepsilon=\\sum\\beta_i^{\\mathrm{obs}}-(n-2)\\times180^\\circ</annotation></semantics></math>"
+  },
+  "EQM00004": {
+    "tex": "\\sigma_{\\Sigma}=\\sigma\\sqrt{n}",
+    "display": true,
+    "mathml": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\"><semantics><mrow><msub><mi>σ</mi><mi mathvariant=\"normal\">Σ</mi></msub><mo>=</mo><mi>σ</mi><msqrt><mi>n</mi></msqrt></mrow><annotation encoding=\"application/x-tex\">\\sigma_{\\Sigma}=\\sigma\\sqrt{n}</annotation></semantics></math>"
+  },
+  "EQM00005": {
+    "tex": "\\beta_i^{\\mathrm{adj}}=\\beta_i^{\\mathrm{obs}}-\\frac{\\varepsilon}{n}",
+    "display": true,
+    "mathml": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\"><semantics><mrow><msubsup><mi>β</mi><mi>i</mi><mrow><mi mathvariant=\"normal\">a</mi><mi mathvariant=\"normal\">d</mi><mi mathvariant=\"normal\">j</mi></mrow></msubsup><mo>=</mo><msubsup><mi>β</mi><mi>i</mi><mrow><mi mathvariant=\"normal\">o</mi><mi mathvariant=\"normal\">b</mi><mi mathvariant=\"normal\">s</mi></mrow></msubsup><mo>−</mo><mfrac><mi>ε</mi><mi>n</mi></mfrac></mrow><annotation encoding=\"application/x-tex\">\\beta_i^{\\mathrm{adj}}=\\beta_i^{\\mathrm{obs}}-\\frac{\\varepsilon}{n}</annotation></semantics></math>"
+  },
+  "EQM00006": {
+    "tex": "T_{\\mathrm{end}}^{\\mathrm{calc}}=T_{\\mathrm{start}}+\\sum\\beta_i-n\\times180^\\circ\\quad(\\text{360° で整える}),\\qquad \\varepsilon=T_{\\mathrm{end}}^{\\mathrm{calc}}-T_{\\mathrm{end}}",
+    "display": true,
+    "mathml": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\"><semantics><mrow><msubsup><mi>T</mi><mrow><mi mathvariant=\"normal\">e</mi><mi mathvariant=\"normal\">n</mi><mi mathvariant=\"normal\">d</mi></mrow><mrow><mi mathvariant=\"normal\">c</mi><mi mathvariant=\"normal\">a</mi><mi mathvariant=\"normal\">l</mi><mi mathvariant=\"normal\">c</mi></mrow></msubsup><mo>=</mo><msub><mi>T</mi><mrow><mi mathvariant=\"normal\">s</mi><mi mathvariant=\"normal\">t</mi><mi mathvariant=\"normal\">a</mi><mi mathvariant=\"normal\">r</mi><mi mathvariant=\"normal\">t</mi></mrow></msub><mo>+</mo><mo>∑</mo><msub><mi>β</mi><mi>i</mi></msub><mo>−</mo><mi>n</mi><mo>×</mo><msup><mn>180</mn><mo>∘</mo></msup><mspace width=\"1em\"/><mo stretchy=\"false\">(</mo><mtext>360° で整える</mtext><mo stretchy=\"false\">)</mo><mo separator=\"true\">,</mo><mspace width=\"2em\"/><mi>ε</mi><mo>=</mo><msubsup><mi>T</mi><mrow><mi mathvariant=\"normal\">e</mi><mi mathvariant=\"normal\">n</mi><mi mathvariant=\"normal\">d</mi></mrow><mrow><mi mathvariant=\"normal\">c</mi><mi mathvariant=\"normal\">a</mi><mi mathvariant=\"normal\">l</mi><mi mathvariant=\"normal\">c</mi></mrow></msubsup><mo>−</mo><msub><mi>T</mi><mrow><mi mathvariant=\"normal\">e</mi><mi mathvariant=\"normal\">n</mi><mi mathvariant=\"normal\">d</mi></mrow></msub></mrow><annotation encoding=\"application/x-tex\">T_{\\mathrm{end}}^{\\mathrm{calc}}=T_{\\mathrm{start}}+\\sum\\beta_i-n\\times180^\\circ\\quad(\\text{360° で整える}),\\qquad \\varepsilon=T_{\\mathrm{end}}^{\\mathrm{calc}}-T_{\\mathrm{end}}</annotation></semantics></math>"
+  },
+  "EQM00007": {
+    "tex": "T_{BA}=T_{AB}\\pm180^\\circ\\qquad(T_{AB}\\ \\text{が 180° 未満なら} +180^\\circ,\\ \\text{180° 以上なら} -180^\\circ)",
+    "display": true,
+    "mathml": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\"><semantics><mrow><msub><mi>T</mi><mrow><mi>B</mi><mi>A</mi></mrow></msub><mo>=</mo><msub><mi>T</mi><mrow><mi>A</mi><mi>B</mi></mrow></msub><mo>±</mo><msup><mn>180</mn><mo>∘</mo></msup><mspace width=\"2em\"/><mo stretchy=\"false\">(</mo><msub><mi>T</mi><mrow><mi>A</mi><mi>B</mi></mrow></msub><mtext> が 180° 未満なら</mtext><mo>+</mo><msup><mn>180</mn><mo>∘</mo></msup><mo separator=\"true\">,</mo><mtext> 180° 以上なら</mtext><mo>−</mo><msup><mn>180</mn><mo>∘</mo></msup><mo stretchy=\"false\">)</mo></mrow><annotation encoding=\"application/x-tex\">T_{BA}=T_{AB}\\pm180^\\circ\\qquad(T_{AB}\\ \\text{が 180° 未満なら} +180^\\circ,\\ \\text{180° 以上なら} -180^\\circ)</annotation></semantics></math>"
+  },
+  "EQM00008": {
+    "tex": "T_{BC}=T_{AB}+\\beta_B\\pm180^\\circ",
+    "display": true,
+    "mathml": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\"><semantics><mrow><msub><mi>T</mi><mrow><mi>B</mi><mi>C</mi></mrow></msub><mo>=</mo><msub><mi>T</mi><mrow><mi>A</mi><mi>B</mi></mrow></msub><mo>+</mo><msub><mi>β</mi><mi>B</mi></msub><mo>±</mo><msup><mn>180</mn><mo>∘</mo></msup></mrow><annotation encoding=\"application/x-tex\">T_{BC}=T_{AB}+\\beta_B\\pm180^\\circ</annotation></semantics></math>"
+  },
+  "EQM00009": {
+    "tex": "\\delta=\\beta-180^\\circ\\qquad(\\text{右へ折れると }+,\\ \\text{左へ折れると }-)",
+    "display": true,
+    "mathml": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\"><semantics><mrow><mi>δ</mi><mo>=</mo><mi>β</mi><mo>−</mo><msup><mn>180</mn><mo>∘</mo></msup><mspace width=\"2em\"/><mo stretchy=\"false\">(</mo><mtext>右へ折れると </mtext><mo>+</mo><mo separator=\"true\">,</mo><mtext> 左へ折れると </mtext><mo>−</mo><mo stretchy=\"false\">)</mo></mrow><annotation encoding=\"application/x-tex\">\\delta=\\beta-180^\\circ\\qquad(\\text{右へ折れると }+,\\ \\text{左へ折れると }-)</annotation></semantics></math>"
+  },
+  "EQM00010": {
+    "tex": "T_{BC}=T_{AB}+\\delta_B",
+    "display": true,
+    "mathml": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\"><semantics><mrow><msub><mi>T</mi><mrow><mi>B</mi><mi>C</mi></mrow></msub><mo>=</mo><msub><mi>T</mi><mrow><mi>A</mi><mi>B</mi></mrow></msub><mo>+</mo><msub><mi>δ</mi><mi>B</mi></msub></mrow><annotation encoding=\"application/x-tex\">T_{BC}=T_{AB}+\\delta_B</annotation></semantics></math>"
+  },
+  "EQM00011": {
+    "tex": "\\begin{aligned} T_{BC}&=330^\\circ20'10''+95^\\circ30'40''-180^\\circ=245^\\circ50'50''\\\\ T_{CD}&=245^\\circ50'50''+210^\\circ15'20''-180^\\circ=276^\\circ06'10'' \\end{aligned}",
+    "display": true,
+    "mathml": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\"><semantics><mtable rowspacing=\"0.25em\" columnalign=\"right left\" columnspacing=\"0em\"><mtr><mtd><mstyle scriptlevel=\"0\" displaystyle=\"true\"><msub><mi>T</mi><mrow><mi>B</mi><mi>C</mi></mrow></msub></mstyle></mtd><mtd><mstyle scriptlevel=\"0\" displaystyle=\"true\"><mrow><mrow></mrow><mo>=</mo><msup><mn>330</mn><mo>∘</mo></msup><msup><mn>20</mn><mo mathvariant=\"normal\" lspace=\"0em\" rspace=\"0em\">′</mo></msup><msup><mn>10</mn><mrow><mo mathvariant=\"normal\">′</mo><mo mathvariant=\"normal\">′</mo></mrow></msup><mo>+</mo><msup><mn>95</mn><mo>∘</mo></msup><msup><mn>30</mn><mo mathvariant=\"normal\" lspace=\"0em\" rspace=\"0em\">′</mo></msup><msup><mn>40</mn><mrow><mo mathvariant=\"normal\">′</mo><mo mathvariant=\"normal\">′</mo></mrow></msup><mo>−</mo><msup><mn>180</mn><mo>∘</mo></msup><mo>=</mo><msup><mn>245</mn><mo>∘</mo></msup><msup><mn>50</mn><mo mathvariant=\"normal\" lspace=\"0em\" rspace=\"0em\">′</mo></msup><msup><mn>50</mn><mrow><mo mathvariant=\"normal\">′</mo><mo mathvariant=\"normal\">′</mo></mrow></msup></mrow></mstyle></mtd></mtr><mtr><mtd><mstyle scriptlevel=\"0\" displaystyle=\"true\"><msub><mi>T</mi><mrow><mi>C</mi><mi>D</mi></mrow></msub></mstyle></mtd><mtd><mstyle scriptlevel=\"0\" displaystyle=\"true\"><mrow><mrow></mrow><mo>=</mo><msup><mn>245</mn><mo>∘</mo></msup><msup><mn>50</mn><mo mathvariant=\"normal\" lspace=\"0em\" rspace=\"0em\">′</mo></msup><msup><mn>50</mn><mrow><mo mathvariant=\"normal\">′</mo><mo mathvariant=\"normal\">′</mo></mrow></msup><mo>+</mo><msup><mn>210</mn><mo>∘</mo></msup><msup><mn>15</mn><mo mathvariant=\"normal\" lspace=\"0em\" rspace=\"0em\">′</mo></msup><msup><mn>20</mn><mrow><mo mathvariant=\"normal\">′</mo><mo mathvariant=\"normal\">′</mo></mrow></msup><mo>−</mo><msup><mn>180</mn><mo>∘</mo></msup><mo>=</mo><msup><mn>276</mn><mo>∘</mo></msup><msup><mn>06</mn><mo mathvariant=\"normal\" lspace=\"0em\" rspace=\"0em\">′</mo></msup><msup><mn>10</mn><mrow><mo mathvariant=\"normal\">′</mo><mo mathvariant=\"normal\">′</mo></mrow></msup></mrow></mstyle></mtd></mtr></mtable><annotation encoding=\"application/x-tex\">\\begin{aligned} T_{BC}&amp;=330^\\circ20&#x27;10&#x27;&#x27;+95^\\circ30&#x27;40&#x27;&#x27;-180^\\circ=245^\\circ50&#x27;50&#x27;&#x27;\\\\ T_{CD}&amp;=245^\\circ50&#x27;50&#x27;&#x27;+210^\\circ15&#x27;20&#x27;&#x27;-180^\\circ=276^\\circ06&#x27;10&#x27;&#x27; \\end{aligned}</annotation></semantics></math>"
+  },
+  "EQM00012": {
+    "tex": "\\Delta X=S\\cos T\\ (\\text{緯距}),\\qquad \\Delta Y=S\\sin T\\ (\\text{経距})",
+    "display": true,
+    "mathml": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\"><semantics><mrow><mi mathvariant=\"normal\">Δ</mi><mi>X</mi><mo>=</mo><mi>S</mi><mi>cos</mi><mo>⁡</mo><mi>T</mi><mtext> </mtext><mo stretchy=\"false\">(</mo><mtext>緯距</mtext><mo stretchy=\"false\">)</mo><mo separator=\"true\">,</mo><mspace width=\"2em\"/><mi mathvariant=\"normal\">Δ</mi><mi>Y</mi><mo>=</mo><mi>S</mi><mi>sin</mi><mo>⁡</mo><mi>T</mi><mtext> </mtext><mo stretchy=\"false\">(</mo><mtext>経距</mtext><mo stretchy=\"false\">)</mo></mrow><annotation encoding=\"application/x-tex\">\\Delta X=S\\cos T\\ (\\text{緯距}),\\qquad \\Delta Y=S\\sin T\\ (\\text{経距})</annotation></semantics></math>"
+  },
+  "EQM00013": {
+    "tex": "\\Delta Y_{BC}=95.000\\sin328^\\circ10'20''=95.000\\times(-0.527368)=-50.100\\ \\mathrm{m}",
+    "display": true,
+    "mathml": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\"><semantics><mrow><mi mathvariant=\"normal\">Δ</mi><msub><mi>Y</mi><mrow><mi>B</mi><mi>C</mi></mrow></msub><mo>=</mo><mn>95.000</mn><mi>sin</mi><mo>⁡</mo><msup><mn>328</mn><mo>∘</mo></msup><msup><mn>10</mn><mo mathvariant=\"normal\" lspace=\"0em\" rspace=\"0em\">′</mo></msup><msup><mn>20</mn><mrow><mo mathvariant=\"normal\">′</mo><mo mathvariant=\"normal\">′</mo></mrow></msup><mo>=</mo><mn>95.000</mn><mo>×</mo><mo stretchy=\"false\">(</mo><mo>−</mo><mn>0.527368</mn><mo stretchy=\"false\">)</mo><mo>=</mo><mo>−</mo><mn>50.100</mn><mtext> </mtext><mi mathvariant=\"normal\">m</mi></mrow><annotation encoding=\"application/x-tex\">\\Delta Y_{BC}=95.000\\sin328^\\circ10&#x27;20&#x27;&#x27;=95.000\\times(-0.527368)=-50.100\\ \\mathrm{m}</annotation></semantics></math>"
+  },
+  "EQM00014": {
+    "tex": "\\begin{aligned} \\Delta X&=200.00\\cos150^\\circ=200.00\\times(-0.86603)=-173.21\\ \\mathrm{m}\\\\ \\Delta Y&=200.00\\sin150^\\circ=200.00\\times0.50000=+100.00\\ \\mathrm{m} \\end{aligned}",
+    "display": true,
+    "mathml": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\"><semantics><mtable rowspacing=\"0.25em\" columnalign=\"right left\" columnspacing=\"0em\"><mtr><mtd><mstyle scriptlevel=\"0\" displaystyle=\"true\"><mrow><mi mathvariant=\"normal\">Δ</mi><mi>X</mi></mrow></mstyle></mtd><mtd><mstyle scriptlevel=\"0\" displaystyle=\"true\"><mrow><mrow></mrow><mo>=</mo><mn>200.00</mn><mi>cos</mi><mo>⁡</mo><msup><mn>150</mn><mo>∘</mo></msup><mo>=</mo><mn>200.00</mn><mo>×</mo><mo stretchy=\"false\">(</mo><mo>−</mo><mn>0.86603</mn><mo stretchy=\"false\">)</mo><mo>=</mo><mo>−</mo><mn>173.21</mn><mtext> </mtext><mi mathvariant=\"normal\">m</mi></mrow></mstyle></mtd></mtr><mtr><mtd><mstyle scriptlevel=\"0\" displaystyle=\"true\"><mrow><mi mathvariant=\"normal\">Δ</mi><mi>Y</mi></mrow></mstyle></mtd><mtd><mstyle scriptlevel=\"0\" displaystyle=\"true\"><mrow><mrow></mrow><mo>=</mo><mn>200.00</mn><mi>sin</mi><mo>⁡</mo><msup><mn>150</mn><mo>∘</mo></msup><mo>=</mo><mn>200.00</mn><mo>×</mo><mn>0.50000</mn><mo>=</mo><mo>+</mo><mn>100.00</mn><mtext> </mtext><mi mathvariant=\"normal\">m</mi></mrow></mstyle></mtd></mtr></mtable><annotation encoding=\"application/x-tex\">\\begin{aligned} \\Delta X&amp;=200.00\\cos150^\\circ=200.00\\times(-0.86603)=-173.21\\ \\mathrm{m}\\\\ \\Delta Y&amp;=200.00\\sin150^\\circ=200.00\\times0.50000=+100.00\\ \\mathrm{m} \\end{aligned}</annotation></semantics></math>"
+  },
+  "EQM00015": {
+    "tex": "\\Delta X=X_B-X_A,\\qquad \\Delta Y=Y_B-Y_A",
+    "display": true,
+    "mathml": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\"><semantics><mrow><mi mathvariant=\"normal\">Δ</mi><mi>X</mi><mo>=</mo><msub><mi>X</mi><mi>B</mi></msub><mo>−</mo><msub><mi>X</mi><mi>A</mi></msub><mo separator=\"true\">,</mo><mspace width=\"2em\"/><mi mathvariant=\"normal\">Δ</mi><mi>Y</mi><mo>=</mo><msub><mi>Y</mi><mi>B</mi></msub><mo>−</mo><msub><mi>Y</mi><mi>A</mi></msub></mrow><annotation encoding=\"application/x-tex\">\\Delta X=X_B-X_A,\\qquad \\Delta Y=Y_B-Y_A</annotation></semantics></math>"
+  },
+  "EQM00016": {
+    "tex": "S=\\sqrt{\\Delta X^2+\\Delta Y^2},\\qquad \\tan T=\\frac{\\Delta Y}{\\Delta X}",
+    "display": true,
+    "mathml": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\"><semantics><mrow><mi>S</mi><mo>=</mo><msqrt><mrow><mi mathvariant=\"normal\">Δ</mi><msup><mi>X</mi><mn>2</mn></msup><mo>+</mo><mi mathvariant=\"normal\">Δ</mi><msup><mi>Y</mi><mn>2</mn></msup></mrow></msqrt><mo separator=\"true\">,</mo><mspace width=\"2em\"/><mi>tan</mi><mo>⁡</mo><mi>T</mi><mo>=</mo><mfrac><mrow><mi mathvariant=\"normal\">Δ</mi><mi>Y</mi></mrow><mrow><mi mathvariant=\"normal\">Δ</mi><mi>X</mi></mrow></mfrac></mrow><annotation encoding=\"application/x-tex\">S=\\sqrt{\\Delta X^2+\\Delta Y^2},\\qquad \\tan T=\\frac{\\Delta Y}{\\Delta X}</annotation></semantics></math>"
+  },
+  "EQM00017": {
+    "tex": "\\text{ずれ}\\approx S\\times\\delta\\ [\\mathrm{rad}]=100\\times\\frac{60''}{206265''}=0.029\\ \\mathrm{m}",
+    "display": true,
+    "mathml": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\"><semantics><mrow><mtext>ずれ</mtext><mo>≈</mo><mi>S</mi><mo>×</mo><mi>δ</mi><mtext> </mtext><mo stretchy=\"false\">[</mo><mrow><mi mathvariant=\"normal\">r</mi><mi mathvariant=\"normal\">a</mi><mi mathvariant=\"normal\">d</mi></mrow><mo stretchy=\"false\">]</mo><mo>=</mo><mn>100</mn><mo>×</mo><mfrac><msup><mn>60</mn><mrow><mo mathvariant=\"normal\">′</mo><mo mathvariant=\"normal\">′</mo></mrow></msup><msup><mn>206265</mn><mrow><mo mathvariant=\"normal\">′</mo><mo mathvariant=\"normal\">′</mo></mrow></msup></mfrac><mo>=</mo><mn>0.029</mn><mtext> </mtext><mi mathvariant=\"normal\">m</mi></mrow><annotation encoding=\"application/x-tex\">\\text{ずれ}\\approx S\\times\\delta\\ [\\mathrm{rad}]=100\\times\\frac{60&#x27;&#x27;}{206265&#x27;&#x27;}=0.029\\ \\mathrm{m}</annotation></semantics></math>"
+  }
+}

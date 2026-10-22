@@ -314,3 +314,10 @@
 - 再開は同じコマンド `powershell -ExecutionPolicy Bypass -File scripts/ondemand/build_xtts_full.ps1`（空きメモリ 2.5 GB 未満なら `-Force`）。manifest.json により 20 枚目から続き、残り 45 枚で約 2.4 時間。終わると `ondemand/work/lecture05_xtts.mp4` と srt・timings.json ができる。
 - 合成後の点検を 1 コマンドにした `scripts/ondemand/check_xtts_full.ps1`（`check_asr.py` → `voice_similarity.py` を別プロセスで順に実行、結果は `ondemand/work/check_xtts_asr.txt` / `check_xtts_sim.txt`、終わりは `check_xtts.done`）と、台本の各枚の題名と timings.json から概要欄用の章立てを作る `scripts/ondemand/make_chapters.py`（edge 版の時刻で 11 章を確認）を追加。指南書 6.1・6.4・7・8・10 章と README に反映。
 - 残り: 合成の再開 → `check_xtts_full.ps1` で点検（CER は 8% 超の枚だけ聞く、類似度は 0.6 以上）→ `make_chapters.py` で章立て → srt・timings をスライドの隣に commit → 公開。ElevenLabs は講師の判断待ち。音声・動画は commit しない。作業前からある第2回・第3回の未コミット変更は含めず保持。
+
+## 2026-10-22（第5回 改2：段階的に飲み込める構成に組み直し、Codex のイラスト 7 点を追加）
+
+- `materials/slides/第05回_トラバース測量I/slides_改2.md`（77 枚）と `slides_改2.pptx`・`.pdf`・`.html` を新規作成（改1 の `slides.md` 64 枚は残す）。冒頭に 5-0「今日の一本の筋」（角 → 整える → 向き → 成分 → 座標の 5 段）を置き、各節を「問い → 絵 → 数字 → 確認」の順にそろえ、発表者ノートを全枚で具体例・つまずき例入りの語りに書き直した。構成表と作り直し方は README の「改2」節。
+- 概念イラスト 7 点（5 段の階段、許容の門、振り返れば 180°、3 ステップの 3 コマ、斜めの 1 本を 2 本に、電卓は象限を知らない、後視を間違えると全部が回る）を Codex（gpt-6-astra）の組み込み画像生成で作った。指示・報告・検証は `notes/session05_kai2_figures/`、途中案 15 枚（`generation_sources/*_attempt*.png`、約 20 MB）はローカルのみで commit しない。数値の表は生成画像に文字を入れられないので Markdown の表のまま。
+- 点検は check_headers.py → 統括の目視 10 枚 → Sonnet の全枚 PNG 点検（`確認画像/sonnet_点検_改2.md`）。指摘 7 件のうち 4 件を直して組み直し（3 ステップの枚を絵と数字の 2 枚に分割、5-2 の題を短く、表の中の絶対値の縦棒が列区切りと衝突するので言葉に置換、4 象限の表を詰める）。32・39 枚目の図のラベル重なりは改1 の SVG 由来で今回は直さない。
+- `scripts/build_session05.py` に `--build-dir` を足し、改2 の数式ファイルを `build/改2/` に分けた。作業前からある第2回・第3回の未コミット変更と `hm_slides_actual/` は含めず保持。

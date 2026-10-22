@@ -46,3 +46,49 @@ npx @marp-team/marp-cli@4.1.2 "materials/slides/第05回_トラバース測量I/
 ```
 
 `build_session05.py` は `scripts/md2pptx.py` の Builder を継承し、画像つきのスライドの配置（残りの高さに図を収める、表の折り返しを見込んだ行高さ、全段落への ja-JP と句読点のぶら下げの指定で行頭の「。」を防ぐ）と、数式の仮文字列を `scripts/katex_mathml.mjs`（KaTeX → MathML）と `scripts/omml_equations.py`（MathML → OMML、`mc:AlternateContent` で TeX 原文の代替を添付）で Office 数式に置き換える処理を足したもの。`--no-omml` で数式を Unicode 文字列にした版も作れる。イラストは `notes/session05_figures/codex_prompt_illustrations.md` の指示で Codex に生成させた。
+
+## 改2（2026-10-22）：段階的に飲み込める構成への改訂
+
+`slides.md`（改1、64 枚）を学生が段階的に飲み込めるよう組み直した版が `slides_改2.md`（77 枚）で、`slides_改2.pptx`・`slides_改2.pdf`・`slides_改2.html` はそこから作る。改1 は残してあり、改2 と並存する。
+
+改2 で変えたこと：
+
+- 冒頭に 5-0「今日の一本の筋」（角を測る → 角を整える → 向きにする → 成分にする → 座標にする、の 5 段）を置き、各節の入口で「今どの段か」を示す橋渡しの枚を足した。
+- 各節を「問い → 絵で見る → 数字で追う → ここまでの確認」の順にそろえ、公式を出す前に体の動き（振り返る・右に回る・一周分を引く）や具体例で入るようにした。数値例は改1 と同じ 4 点閉合トラバースで統一。
+- 発表者ノート（HTML コメント）を全枚で書き直し、具体例・つまずき例・言い回しを含む語りにした。
+- 概念イラスト 7 点を Codex（gpt-6-astra）の組み込み画像生成で追加した（下表）。数値の表は、生成画像に文字を入れると崩れるため、Markdown の表のままにしてある。
+
+| 区分 | スライド番号 | 枚数 |
+| --- | --- | ---: |
+| 表紙、5-0 今日の一本の筋、復習、到達目標、今日の流れ | 1〜7 | 7 |
+| 5-1 トラバース測量とは | 8〜15 | 8 |
+| 5-2 内角の和と測角誤差の調整 | 16〜28 | 13 |
+| 5-3 方向角の計算（交角法を 3 ステップで、偏角法、筆算の型） | 29〜45 | 17 |
+| 5-4 緯距・経距 | 46〜54 | 9 |
+| 5-5 座標の逆計算と象限判定 | 55〜63 | 9 |
+| 5-6 TS の座標観測モード | 64〜68 | 5 |
+| 5-7 手計算テスト | 69〜73 | 5 |
+| 5-8 まとめ・次回予告 | 74〜76 | 3 |
+| 付録 出典 | 77 | 1 |
+
+改2 で追加したイラスト（`illustrations/*.png`、1600×900、文字なし。生成の記録は [生成プロンプト.md](illustrations/生成プロンプト.md) の「改2 追加分」、指示と点検は [notes/session05_kai2_figures/](../../../notes/session05_kai2_figures/)）：
+
+| ファイル | 使う枚 | 何を見せるか |
+| --- | --- | --- |
+| `five_steps_ladder.png` | 2（5-0） | 角から座標までの 5 段の階段。今日はその真ん中 3 段 |
+| `tolerance_gate.png` | 16（5-2） | 許容内なら等分、超えたら器械へ戻って再測 |
+| `turn_around_180.png` | 31（5-3） | 振り返れば方向角は 180° 違う |
+| `three_step_turn.png` | 33（5-3） | 振り返る → 右に回る → 北からの弧を読む、の 3 コマ |
+| `walk_decompose.png` | 46（5-4） | 斜めの 1 本を北向きと東向きの 2 本に分ける |
+| `calculator_quadrants.png` | 55（5-5） | 電卓は東側の 2 象限しか見ていない |
+| `backsight_rotation.png` | 66（5-6） | 後視を間違えると全部の点が回る |
+
+作り直し方（`Surveying/` で実行。`--build-dir` で改1 の `build/` と分ける）：
+
+```powershell
+python -I scripts/build_session05.py --markdown "materials/slides/第05回_トラバース測量I/slides_改2.md" -o "materials/slides/第05回_トラバース測量I/slides_改2.pptx" --build-dir "materials/slides/第05回_トラバース測量I/build/改2"
+powershell -ExecutionPolicy Bypass -File scripts/pptx_export.ps1 -Pptx "materials/slides/第05回_トラバース測量I/slides_改2.pptx" -PngDir "<空のフォルダー>"
+npx @marp-team/marp-cli@4.1.2 "materials/slides/第05回_トラバース測量I/slides_改2.md" -o "materials/slides/第05回_トラバース測量I/slides_改2.html"
+```
+
+点検は `check_headers.py`（ページ番号）、統括の目視（新規枚）、Sonnet による全枚の PNG 点検（[確認画像/sonnet_点検_改2.md](確認画像/sonnet_点検_改2.md)）の 3 段で行い、指摘のうち表と図の同居で図が小さくなった枚（3 ステップの枚を絵と数字の 2 枚に分割）、題が 2 行に折り返した枚、表の中の絶対値記号が列の区切りと衝突した枚、表が下端に迫った枚を直した。32 枚目（交角法の後視・前視の図）と 39 枚目（偏角法の図）のラベルの重なりは改1 の SVG 由来なので今回は直していない。`確認画像/` には新規枚の PNG を数枚だけ置く。生成の途中案（`notes/session05_kai2_figures/generation_sources/*_attempt*.png`、約 20 MB）はリポジトリに入れていない。

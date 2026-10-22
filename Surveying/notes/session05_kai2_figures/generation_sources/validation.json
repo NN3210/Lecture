@@ -1,0 +1,142 @@
+[
+  {
+    "file": "five_steps_ladder.png",
+    "exists": true,
+    "format": "PNG",
+    "mode": "RGB",
+    "size": [
+      1600,
+      900
+    ],
+    "bytes": 900955,
+    "retries": 1,
+    "original": {
+      "format": "PNG",
+      "mode": "RGB",
+      "size": [
+        1672,
+        941
+      ]
+    }
+  },
+  {
+    "file": "tolerance_gate.png",
+    "exists": true,
+    "format": "PNG",
+    "mode": "RGB",
+    "size": [
+      1600,
+      900
+    ],
+    "bytes": 881005,
+    "retries": 1,
+    "original": {
+      "format": "PNG",
+      "mode": "RGB",
+      "size": [
+        1672,
+        941
+      ]
+    }
+  },
+  {
+    "file": "turn_around_180.png",
+    "exists": true,
+    "format": "PNG",
+    "mode": "RGB",
+    "size": [
+      1600,
+      900
+    ],
+    "bytes": 845936,
+    "retries": 0,
+    "original": {
+      "format": "PNG",
+      "mode": "RGB",
+      "size": [
+        1672,
+        941
+      ]
+    }
+  },
+  {
+    "file": "three_step_turn.png",
+    "exists": true,
+    "format": "PNG",
+    "mode": "RGB",
+    "size": [
+      1600,
+      900
+    ],
+    "bytes": 887987,
+    "retries": 0,
+    "original": {
+      "format": "PNG",
+      "mode": "RGB",
+      "size": [
+        1672,
+        941
+      ]
+    }
+  },
+  {
+    "file": "walk_decompose.png",
+    "exists": true,
+    "format": "PNG",
+    "mode": "RGB",
+    "size": [
+      1600,
+      900
+    ],
+    "bytes": 892026,
+    "retries": 2,
+    "original": {
+      "format": "PNG",
+      "mode": "RGB",
+      "size": [
+        1672,
+        941
+      ]
+    }
+  },
+  {
+    "file": "calculator_quadrants.png",
+    "exists": true,
+    "format": "PNG",
+    "mode": "RGB",
+    "size": [
+      1600,
+      900
+    ],
+    "bytes": 1227984,
+    "retries": 2,
+    "original": {
+      "format": "PNG",
+      "mode": "RGB",
+      "size": [
+        1672,
+        941
+      ]
+    }
+  },
+  {
+    "file": "backsight_rotation.png",
+    "exists": true,
+    "format": "PNG",
+    "mode": "RGB",
+    "size": [
+      1600,
+      900
+    ],
+    "bytes": 1052279,
+    "retries": 2,
+    "original": {
+      "format": "PNG",
+      "mode": "RGB",
+      "size": [
+        1672,
+        941
+      ]
+    }
+  }
+]

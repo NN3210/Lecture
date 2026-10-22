@@ -344,7 +344,7 @@ class Session05Builder(m.Builder):
         return y + h + Inches(0.05)
 
 
-def build(md_path: Path, out_path: Path, font: str, use_omml: bool):
+def build(md_path: Path, out_path: Path, font: str, use_omml: bool, build_dir: Path | None = None):
     text = md_path.read_text(encoding="utf-8")
     meta, body = m.split_frontmatter(text)
     slides_md = m.split_slides(body)
@@ -362,8 +362,8 @@ def build(md_path: Path, out_path: Path, font: str, use_omml: bool):
             continue
         builder.add_slide(blocks, notes, directives, paginate)
 
-    build_dir = md_path.parent / "build"
-    build_dir.mkdir(exist_ok=True)
+    build_dir = build_dir or (md_path.parent / "build")
+    build_dir.mkdir(parents=True, exist_ok=True)
     if use_omml and builder.maths:
         candidate = build_dir / "candidate.pptx"
         builder.save(candidate)
@@ -398,10 +398,11 @@ def main():
     ap.add_argument("-o", "--output", default=None)
     ap.add_argument("--font", default="Meiryo")
     ap.add_argument("--no-omml", action="store_true", help="数式を Office 数式にせず Unicode 文字で置く")
+    ap.add_argument("--build-dir", default=None, help="中間ファイル（maths.json 等）の置き場。既定は Markdown と同じ階層の build/")
     a = ap.parse_args()
     md_path = Path(a.markdown)
     out = Path(a.output) if a.output else md_path.with_suffix(".pptx")
-    build(md_path, out, a.font, not a.no_omml)
+    build(md_path, out, a.font, not a.no_omml, Path(a.build_dir) if a.build_dir else None)
 
 
 if __name__ == "__main__":
