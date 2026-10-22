@@ -11,3 +11,5 @@
 - `scripts/build_agrtechno.py`（`Surveying/scripts/md2pptx.py` を継承、数式は KaTeX→OMML）で pptx を組み立て、`pptx_export.ps1` で PDF と PNG を書き出し、Sonnet に全 60 枚を点検させて直した：2 段組（図＋文章）、章扉、題の自動縮小、表の列幅、本文サイズの自動選択、プランク式の表記、図中の注記位置、孤立行の言い換え。
 - 公開リポジトリのため、個人名は役割名（担当教員・前任教員）に置き換え、Codex のログ中の Windows ユーザー名は `<home>` に置換してから commit した。
 - 最終点検（Sonnet 26 枚＋統括 10 枚）で残った孤立行 5 枚（3・39・45・53・54）を言い換え、短い列（8 文字以下）は最長セルが 1 行に収まる幅を先に確保するよう `build_agrtechno.py` の列幅計算を直した。成果物は `slides.pptx`（7.7 MB、60 枚、Office 数式 6 式）と `slides.pdf`（4.1 MB）。
+- スキル `lecture-storyline-guide` で講師用解説 `materials/slides/2026_農業とテクノロジ_RS/講師用解説_思想と教え方.html`（約 80 KB、1 ファイル、JavaScript なし）を作成。要旨（写真ではなく数値／葉の反射／NDVI／衛星＋実測）、7 つの対比、7 段の梯子と 9 か所の橋渡し、節ごとの台詞とつまずき、誤文 18 行の表、想定質問 8 件、削る順位 7 段と背骨 23 枚、弱点 7 点と改訂案 3 点を収めた。
+- 枚番号は `build/outline.txt` の通し番号（1〜60）で引用し、図は `figures/charts/chart_09_ndvi_bars.png` を相対パスで 1 点だけ埋め込んだ。タグの対応・画像の実在・目次アンカーを点検し、ブラウザで表示を確認。スライド本体（`slides.md`・pptx）は変更していない。`README.md` の構成に 1 行追加。

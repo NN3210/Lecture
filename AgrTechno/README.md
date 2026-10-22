@@ -14,6 +14,7 @@
 - `AGENTS.md` — このプロジェクトでの作業ルール
 - `notes/` — 作業ログ（`worklog.md`）、旧デッキの抽出と診断（`改0_*.md`）、調査メモ（`research_YYYYMMDD/`）、Codex への指示と報告
 - `materials/slides/` — 講義スライド。回ごとのフォルダに Marp の `slides.md`、図版 `figures/`、生成した `pptx` / `pdf` / `png` を置く
+- `materials/slides/2026_農業とテクノロジ_RS/講師用解説_思想と教え方.html` — 講師が読む文書（一本の筋、橋渡しの言葉、つまずき、削り方、構成の弱点）。学生には配布しない
 - `scripts/` — `slides.md` から pptx を組み立てるスクリプト（`Surveying/scripts/md2pptx.py` を利用）、図版を描くスクリプト
 
 ## 進め方（2026 年度）
