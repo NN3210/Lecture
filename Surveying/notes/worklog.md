@@ -305,4 +305,5 @@
 - 第5回の台本 `materials/slides/第05回_トラバース測量I/narration.md`（64 枚、約 13,700 字）を `台本の書き方.md` の規則で書き、cutlet のローマ字で誤読を機械的に洗い出して約 30 語を直した（コサイン → こさいん、符号の正 → せい、度分秒 → ど・ふん・びょう、後視 → こうし、夾角 → きょうかく、イキョの直後に句読点を置かない 等）。規則は指南書 3 章と `台本の書き方.md` 2.1 節に表で追記。
 - edge-tts で 64 枚の仮動画（45.1 分、ローカルのみ）を作り、`check_asr.py` を認識側の数字・英字を台本の表記にそろえてから比べる版に直して全枚を点検（CER 0〜7.6%、平均 2.4%）。字幕と時刻は `narration_edge.srt` / `narration_edge.timings.json` としてスライドの隣に commit。
 - 書き直した台本の 1・27・37 枚目を XTTS（本人の参照音声 3 本）で合成：参照音声との類似度 0.64〜0.66、CER 0.9〜6.7%、直した表記は意図どおり読まれた。空きメモリ 1.9 GB でも優先度 低の別プロセスなら動いた。全 64 枚用の起動スクリプト `scripts/ondemand/build_xtts_full.ps1` を追加（CPU で 8〜10 時間、空きメモリ 2.5 GB 以上のときに夜間に流す。途中停止は再実行で続きから）。
-- 残り: 全 64 枚の XTTS 合成（上のスクリプト）→ 指南書 6.4 の点検 → 章立て・公開。ElevenLabs は講師の判断待ち。音声・動画（`ondemand/work/`、`ondemand/voice/`）は commit しない。作業前からある第2回・第3回の未コミット変更は含めず保持。
+- 全 64 枚の XTTS 合成を 12:00 に上のスクリプトで起動した（優先度 低、ログ `ondemand/work/build_xtts.log`、出力 `ondemand/work/lecture05_xtts.mp4`、約 4〜10 時間）。止まっていたら同じコマンドで続きから。日本語を含む .ps1 は UTF-8 BOM が無いと Windows PowerShell 5.1 が読めないので BOM 付きにした。
+- 残り: 合成が終わったら指南書 6.4 の点検（`check_asr.py --work ondemand/work/work_lecture05_xtts`、`voice_similarity.py`）→ 章立て・公開。ElevenLabs は講師の判断待ち。音声・動画（`ondemand/work/`、`ondemand/voice/`）は commit しない。作業前からある第2回・第3回の未コミット変更は含めず保持。
