@@ -262,7 +262,7 @@ $env:PYTHONUTF8 = "1"
 - 本人の実録音を参照にした実測（2026-10-22、`xtts_ref_01〜03.wav` の 3 本、空きメモリ 3.1 GB）: 第5回 表紙の台本 133 字 → 音声 24.3 秒を 248 秒（読込込み、RTF 10）。`auto_enroll.wav`（本人の実声）との話者類似度 0.69（参照音声そのものは 0.91〜0.93 なので、XTTS の出力は実声より一段似ていない。目安の 0.6 は超えた）。`check_asr.py` の CER 4.3%（読みで比較）。ただし算用数字が読まれず（第5回 → だいかい、2つ → き）、緯距は誤読された。台本は 3 章の規則（数字と専門用語を仮名・漢数字で書く）で書くこと。
 - 台本を 3 章の規則で書き直したあとの実測（2026-10-22、第5回の 1・27・37 枚目、`ondemand/work/xtts_demo/`、空きメモリ 1.7〜1.9 GB でも落ちずに動いた）: 1 枚目 179 字 → 32.2 秒、27 枚目 195 字 → 37.8 秒、37 枚目 133 字 → 23.0 秒。1・37 枚目の作り直し（音声 55 秒分）がモデル読込込みで 264 秒（RTF 4.8）。参照音声（xtts_ref_01）との類似度 0.639 / 0.661 / 0.649（目安 0.6 以上）、`check_asr.py` の CER 2.0% / 0.9% / 6.7%（平均 3.2%。37 枚目の差は「北向き→キャムキ」など認識側の揺れで、こさいん・さいん・せい・イキョ・ケイキョは意図どおり読まれた）。
 - 表記の候補（イキョの片仮名／平仮名／長音、英語つづりに戻る外来語 14 語、せい・ど ふん びょう）は 1 文ずつ XTTS で合成して faster-whisper で聞き取り、読めた表記だけを 3 章の規則にした（記録は `ondemand/work/xtts_demo/spelling_test*.txt`、ローカルのみ）。
-- 90 分の講義（音声約 60 分）は約 10 時間。夜間に `--work` を固定して流し、途中で止まっても再実行すれば続きから（manifest.json）。第5回の全 64 枚（13,700 字、edge-tts で 45 分）なら RTF 10〜13 で 8〜10 時間。
+- 全体合成の実測（2026-10-22、`build_xtts_full.ps1`、優先度 低、空きメモリ 0.5〜0.9 GB）: 第5回の 1〜19 枚目 3,891 字 → 音声 11.7 分を 60 分で合成（1 枚約 3.2 分、RTF 約 5）。講師の指示で 19 枚で中断し、`ondemand/work/work_lecture05_xtts/`（枚ごとの wav と manifest.json）に残してある。残り 45 枚は同じコマンドで続きから約 2.4 時間。全 64 枚（13,700 字、音声約 45 分）を最初から流すなら約 3.5 時間。夜間に流し、途中で止まっても再実行すれば続きから。
 - 似方が足りないときは、参照を変える（息継ぎのない 10〜15 秒、感情の平坦な区間）、本数を 2〜3 本にする、`--denoise` を外す／付ける、の順で試す。
 - ライセンスは非商用（CPML）。学内配信の授業用途を超える公開には使わない。
 
@@ -296,7 +296,7 @@ python scripts/ondemand/build_video.py --narration <narration.md> --png-dir <pre
 
 | 観点 | やり方 | 合格の目安 |
 | --- | --- | --- |
-| 誤読・途切れ（機械で） | `& $PY scripts/ondemand/check_asr.py --narration <narration.md> --work ondemand/work/work_<名前>` で音声認識（faster-whisper）に戻し、認識側の算用数字・ラテン文字を台本と同じ漢数字・片仮名にそろえ、漢字を読みに直して台本と比較。認識結果は `work_*/asr/` に残り、wav が変わらなければ使い回す | 2026-10-22 の第5回（edge-tts、64 枚）で 1 枚 0〜7.6%、平均 2.4%。8% を超える枚、他の枚より目立って高い枚、長い delete（途切れ）がある枚だけ人が聞く。15% 以上は「要確認」と差分が表示される |
+| 誤読・途切れ（機械で） | `& $PY scripts/ondemand/check_asr.py --narration <narration.md> --work ondemand/work/work_<名前>` で音声認識（faster-whisper）に戻し、認識側の算用数字・ラテン文字を台本と同じ漢数字・片仮名にそろえ、漢字を読みに直して台本と比較。認識結果は `work_*/asr/` に残り、wav が変わらなければ使い回す。64 枚（音声 45 分）は 15〜30 分かかるので、`powershell -ExecutionPolicy Bypass -File scripts/ondemand/check_xtts_full.ps1` で別プロセス（優先度 低）にして `ondemand/work/check_xtts_asr.txt` に残す（同じスクリプトが続けて `voice_similarity.py` を全枚に掛け `check_xtts_sim.txt` に残す。終わりは `check_xtts.done`） | 2026-10-22 の第5回（edge-tts、64 枚）で 1 枚 0〜7.6%、平均 2.4%。8% を超える枚、他の枚より目立って高い枚、長い delete（途切れ）がある枚だけ人が聞く。15% 以上は「要確認」と差分が表示される |
 | 誤読（人で） | 動画を通しで聞く、または字幕 srt と照合 | 専門用語の誤読ゼロ（台本側で仮名にして直す） |
 | 似方 | `voice_similarity.py --ref enroll.wav <合成 wav>` | 0.6 以上 |
 | 間・速度 | 1 分あたり 280〜330 字が講義の速さ。`timings.json` の speech 秒 ÷ 文字数で確認 | 速ければ台本に読点を足す（edge は `--rate`） |
@@ -306,7 +306,7 @@ python scripts/ondemand/build_video.py --narration <narration.md> --png-dir <pre
 ## 7. 動画の仕上げと公開
 
 - `build_video.py` の既定: 1280x720、10 fps（静止画なので十分）、H.264 crf 20、AAC 128 kbps、各スライドの前後に 0.3 / 0.8 秒の無音。90 分で約 90 MB。
-- 章立て: `<out>.timings.json` のスライド開始秒から、動画の概要欄用に「00:00 表紙 / 01:20 到達目標 …」を作る。
+- 章立て: `& $PY scripts/ondemand/make_chapters.py --narration <narration.md> --timings <out>.timings.json > <スライドの隣>/chapters.md` で、台本の各枚の `<!-- 題名 -->` と `<out>.timings.json` のスライド開始秒から、概要欄用の「00:00 表紙 / 00:35 復習① 方向角と順計算 / …」を作る。既定は題名の節番号（5-0、5-1 …）が変わる枚だけ（第5回は 11 章）、`--per-slide` で全枚。
 - 字幕: `<out>.srt` は文字数比の近似。長い文を分ければ精度が上がる。LMS によっては srt を別途アップロードする。
 - 演習パート: 「ここで一時停止して解いてください」の指示を台本に入れ、解答スライドは別の章にする（講義計画の演習 25 分）。
 - 公開先（LMS、学内の動画配信、限定公開の動画サイト等）に上げたら、場所と日付を `notes/worklog.md` に記す。mp4 は commit しない。
@@ -321,9 +321,9 @@ python scripts/ondemand/build_video.py --narration <narration.md> --png-dir <pre
 - [x] PLAUD 4 本 → Circleback JSON → `extract_speaker.py --enroll ondemand/voice/self_search/auto_enroll.wav --wav16 ... --min-sim 0.5`（690 本 73 分）→ 音声認識で確認 → `prepare_reference.py --min-sim 0.6 --target xtts` と `--target ivc`（2026-10-22 済。`ondemand/voice/reference/`、ローカルのみ。耳での確認は講師に依頼）。
 - [x] XTTS で表紙 1 枚を試作し、似方 0.69（目安 0.6 以上）と誤読（算用数字が読まれない → 3 章の規則）を確認（2026-10-22 済。`ondemand/work/xtts_self_sample.wav`）。
 - [x] 書き直した台本で 1・27・37 枚目を XTTS で合成し、本人との類似度と CER を確認（2026-10-22 済。`ondemand/work/xtts_demo/`、6.1 の実測）。
-- [ ] 全 64 枚を XTTS で合成する: `powershell -ExecutionPolicy Bypass -File scripts/ondemand/build_xtts_full.ps1`（6.1 のコマンドを優先度 低の別プロセスで動かし `ondemand/work/build_xtts.log` に記録。CPU で 8〜10 時間。空きメモリ 2.5 GB 未満なら起動を断るので、他のアプリを閉じて夜間に流す。途中で止まったら同じコマンドで続きから。進み具合は log の `[tts] slide` 行の数）。終わったら `check_asr.py --work ondemand/work/work_lecture05_xtts` と `voice_similarity.py` で 6.4 の点検。
+- [ ] 全 64 枚を XTTS で合成する: `powershell -ExecutionPolicy Bypass -File scripts/ondemand/build_xtts_full.ps1`（6.1 のコマンドを優先度 低の別プロセスで動かし `ondemand/work/build_xtts.log` に記録。CPU で 8〜10 時間。空きメモリ 2.5 GB 未満なら起動を断るので、他のアプリを閉じて夜間に流す。途中で止まったら同じコマンドで続きから。進み具合は log の `[tts] slide` 行の数）。**2026-10-22 の状態: 12:00 に起動し、講師の指示で 13:01 に 19/64 枚（音声 11.7 分）で中断。** 同じコマンドを打てば 20 枚目から続き（残り 45 枚、約 2.4 時間）。終わったら `powershell -ExecutionPolicy Bypass -File scripts/ondemand/check_xtts_full.ps1` で 6.4 の点検（`check_asr.py` と `voice_similarity.py` を別プロセスで順に実行、結果は `ondemand/work/check_xtts_asr.txt` / `check_xtts_sim.txt`）。
 - [ ] 講師が ElevenLabs のプランと voice_id を用意したら、`--engine elevenlabs` で全体を合成。
-- [ ] 6.4 の点検 → 章立て・字幕 → 公開先へ。`notes/worklog.md` に記録、`narration.md` と `timings.json` を commit（音声・動画は除く）。
+- [ ] 6.4 の点検 → 章立て（`make_chapters.py --narration narration.md --timings ondemand/work/lecture05_xtts.timings.json`）・字幕 → 公開先へ。`notes/worklog.md` に記録、`lecture05_xtts.srt` / `.timings.json` を `narration_xtts.srt` / `narration_xtts.timings.json` としてスライドの隣に commit（音声・動画は除く）。
 
 ## 9. 困ったとき
 
@@ -359,6 +359,9 @@ python scripts/ondemand/build_video.py --narration <narration.md> --png-dir <pre
 | `scripts/ondemand/prepare_reference.py` | 参照音声の整音・連結 | system |
 | `scripts/ondemand/voice_similarity.py` | 話者類似度の確認 | venv |
 | `scripts/ondemand/check_asr.py` | 合成音声を音声認識に戻して台本と比較（誤読・途切れの検出）。認識側の数字・英字を台本の表記にそろえ、結果は `work_*/asr/` に残す | venv |
+| `scripts/ondemand/build_xtts_full.ps1` | 全枚の XTTS 合成（`build_video.py --engine xtts`）を優先度 低の別プロセスで起動し `ondemand/work/build_xtts.log` に記録。空きメモリ 2.5 GB 未満なら断る。途中で止まっても再実行で続きから（8 章） | PowerShell（中で venv の python） |
+| `scripts/ondemand/check_xtts_full.ps1` | 合成結果の点検（`check_asr.py` → `voice_similarity.py`）を別プロセスで順に動かし、`ondemand/work/check_xtts_asr.txt` / `check_xtts_sim.txt` に残す（6.4） | PowerShell（中で venv の python） |
+| `scripts/ondemand/make_chapters.py` | 台本の各枚の題名 + `timings.json` → 概要欄用の章立て（7 章） | system |
 | `scripts/ondemand/audio_io.py` | torchaudio.load の差し替え | venv（自動で使われる） |
 | `scripts/pptx_export.ps1` | pptx → PDF/PNG | PowerShell + PowerPoint |
 | `ondemand/台本の書き方.md` | 台本の規則 | — |

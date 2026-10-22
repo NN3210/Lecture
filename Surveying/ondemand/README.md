@@ -52,6 +52,9 @@ Surveying/
 │   ├─ prepare_reference.py      ← 切り出した区間 → 各エンジン用の参照音声（整音・連結）
 │   ├─ voice_similarity.py       ← 音声どうしの話者類似度（合成音声が本人に似ているかの数値確認）
 │   ├─ check_asr.py              ← 合成音声を音声認識（faster-whisper）に戻して台本と比較（誤読・途切れの検出）
+│   ├─ build_xtts_full.ps1       ← 全枚の XTTS 合成を優先度 低の別プロセスで起動（ログ ondemand/work/build_xtts.log、途中で止まっても再実行で続きから）
+│   ├─ check_xtts_full.ps1       ← 合成結果の点検（check_asr.py → voice_similarity.py）を別プロセスで起動し、結果を ondemand/work/check_xtts_*.txt に残す
+│   ├─ make_chapters.py          ← 台本の各枚の題名 + timings.json → 概要欄用の章立て（00:00 表紙 / 00:35 復習 …）
 │   └─ audio_io.py               ← torchaudio.load を soundfile に差し替える補助（Windows の torchcodec 対策）
 └─ materials/slides/第05回_トラバース測量I/   ← 第5回の slides.md（Marp、発表者ノート付き。2026-10-22 に別セッションが作成中）・pptx・narration.md・preview/（PNG）
 ```
@@ -100,4 +103,4 @@ python scripts/ondemand/build_video.py --narration "materials/slides/第05回_�
 | 本人の実録音からの抽出（enroll 録音なし） | 確認済み（2026-10-22）。PLAUD の録音 5 本のうち文字起こしが雑音だった 1 本を除く 4 本で、`find_self.py --anchor` が本人のクラスターを 4/4 本で見つけ（anchor との類似度 0.74〜0.79、他人は 0.35 以下）、`verify_enroll.py` で 7/7 区間が文字起こしと一致。`extract_speaker.py` で本人の発話 690 本 73 分を切り出し、`prepare_reference.py` で XTTS 用 3 本と IVC 用 2.5 分を作成（本人との類似度 0.91〜0.98）。音声はローカルのみ |
 | XTTS v2 を本人の実声で合成 | 確認済み（2026-10-22）。表紙の台本 133 字 → 24.3 秒、本人との類似度 0.69、CER 4.3%。算用数字が読まれないので台本は漢数字・仮名で書く（指南書 3 章） |
 | XTTS v2 で書き直した台本の 3 枚（1・27・37）を本人の声で合成 | 確認済み（2026-10-22）。507 字 → 音声 93 秒。本人（参照音声）との類似度 0.64〜0.66、CER 0.9〜6.7%（平均 3.2%）。こさいん・せい・イキョ等の表記が意図どおりに読まれた。1・37 枚目の合成 55 秒分が 264 秒（モデル読込込み、RTF 4.8、空きメモリ 1.9 GB） |
-| XTTS v2 で第5回 64 枚の全体を合成 | 未実施（CPU で 8〜10 時間、空きメモリ 2.5 GB 以上が必要。指南書 8 章のコマンド） |
+| XTTS v2 で第5回 64 枚の全体を合成 | 途中（2026-10-22 に `build_xtts_full.ps1` で起動し、19/64 枚 3,891 字 → 音声 11.7 分を 60 分で合成したところで講師の指示により中断。1 枚約 3.2 分、空きメモリ 0.5〜0.9 GB でも優先度 低なら動いた）。`ondemand/work/work_lecture05_xtts/` に枚ごとの wav と manifest.json が残っているので、同じコマンドで続きから（残り 45 枚、約 2.4 時間）。終わったら `check_xtts_full.ps1` で点検、`make_chapters.py` で章立て |

@@ -307,3 +307,10 @@
 - 書き直した台本の 1・27・37 枚目を XTTS（本人の参照音声 3 本）で合成：参照音声との類似度 0.64〜0.66、CER 0.9〜6.7%、直した表記は意図どおり読まれた。空きメモリ 1.9 GB でも優先度 低の別プロセスなら動いた。全 64 枚用の起動スクリプト `scripts/ondemand/build_xtts_full.ps1` を追加（CPU で 8〜10 時間、空きメモリ 2.5 GB 以上のときに夜間に流す。途中停止は再実行で続きから）。
 - 全 64 枚の XTTS 合成を 12:00 に上のスクリプトで起動した（優先度 低、ログ `ondemand/work/build_xtts.log`、出力 `ondemand/work/lecture05_xtts.mp4`、約 4〜10 時間）。止まっていたら同じコマンドで続きから。日本語を含む .ps1 は UTF-8 BOM が無いと Windows PowerShell 5.1 が読めないので BOM 付きにした。
 - 残り: 合成が終わったら指南書 6.4 の点検（`check_asr.py --work ondemand/work/work_lecture05_xtts`、`voice_similarity.py`）→ 章立て・公開。ElevenLabs は講師の判断待ち。音声・動画（`ondemand/work/`、`ondemand/voice/`）は commit しない。作業前からある第2回・第3回の未コミット変更は含めず保持。
+
+## 2026-10-22（第5回 XTTS 全体合成を 19/64 枚で中断、点検・章立てのスクリプトを追加）
+
+- 12:00 に起動した全 64 枚の XTTS 合成（本人の参照音声 3 本、優先度 低の別プロセス）を、講師の指示で 13:01 に止めた。1〜19 枚目（3,891 字 → 音声 11.7 分）が完成し、`ondemand/work/work_lecture05_xtts/`（ローカルのみ）に枚ごとの wav と manifest.json が残っている。1 枚約 3.2 分（RTF 約 5、空きメモリ 0.5〜0.9 GB）。
+- 再開は同じコマンド `powershell -ExecutionPolicy Bypass -File scripts/ondemand/build_xtts_full.ps1`（空きメモリ 2.5 GB 未満なら `-Force`）。manifest.json により 20 枚目から続き、残り 45 枚で約 2.4 時間。終わると `ondemand/work/lecture05_xtts.mp4` と srt・timings.json ができる。
+- 合成後の点検を 1 コマンドにした `scripts/ondemand/check_xtts_full.ps1`（`check_asr.py` → `voice_similarity.py` を別プロセスで順に実行、結果は `ondemand/work/check_xtts_asr.txt` / `check_xtts_sim.txt`、終わりは `check_xtts.done`）と、台本の各枚の題名と timings.json から概要欄用の章立てを作る `scripts/ondemand/make_chapters.py`（edge 版の時刻で 11 章を確認）を追加。指南書 6.1・6.4・7・8・10 章と README に反映。
+- 残り: 合成の再開 → `check_xtts_full.ps1` で点検（CER は 8% 超の枚だけ聞く、類似度は 0.6 以上）→ `make_chapters.py` で章立て → srt・timings をスライドの隣に commit → 公開。ElevenLabs は講師の判断待ち。音声・動画は commit しない。作業前からある第2回・第3回の未コミット変更は含めず保持。
