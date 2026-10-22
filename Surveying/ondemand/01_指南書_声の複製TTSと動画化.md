@@ -88,7 +88,7 @@ powershell -ExecutionPolicy Bypass -File scripts/pptx_export.ps1 -Pptx "material
 python scripts/ondemand/extract_notes.py "materials/slides/第05回_トラバース測量I/slides.md" -o "materials/slides/第05回_トラバース測量I/narration.md"
 ```
 
-3. `ondemand/台本の書き方.md` に従って書き直す。要点: `## N` がスライド番号、1 文 60 字以内、記号・式・単位・略語は仮名で書き下す（緯距 → いきょ、(n−2)×180° → n 引く 2 かける 180 度）、各スライド 150〜350 字。
+3. `ondemand/台本の書き方.md` に従って書き直す。要点: `## N` がスライド番号、1 文 60 字以内、記号・式・単位・略語は仮名で書き下す（緯距 → いきょ、(n−2)×180° → n 引く 2 かける 180 度）、各スライド 150〜350 字。**算用数字も漢数字か仮名にする**（第5回 → 第五回、2つ → ふたつ、180 度 → ひゃくはちじゅう度）。XTTS の日本語前処理は cutlet のローマ字変換だけで算用数字を読みに展開しないため、2026-10-22 の試作で「第5回」が「だいかい」、「2つ」が「き」と読まれた（edge-tts と ElevenLabs は算用数字を読めるが、台本は 1 本にしたいので最初から書き下す）。専門用語も cutlet が誤読する（緯距 → nuki kyo）ので仮名にする。
 4. `TODO` が残っていないことを確認する（残ると無音 2 秒になる）。
 
 ```powershell
@@ -174,10 +174,13 @@ cd <Surveying に戻る>
 # まず話者ごとの発話量を見る
 & $PY scripts/ondemand/extract_speaker.py --audio ondemand/voice/raw/<録音>.ogg --segments C:\MyProjects\auto-tools\audio2md\data\transcripts\<日付>_<linkId>.json --out ondemand/voice/segments/<日付> --stats-only
 # enroll で本人を判定して切り出す（speechbrain ECAPA。初回はモデル 80 MB を取得）
-& $PY scripts/ondemand/extract_speaker.py --audio ondemand/voice/raw/<録音>.ogg --segments <同上>.json --out ondemand/voice/segments/<日付> --enroll ondemand/voice/enroll/enroll.wav --min-dur 3 --max-dur 20 --max-total 2400
+& $PY scripts/ondemand/extract_speaker.py --audio ondemand/voice/raw/<録音>.ogg --segments <同上>.json --out ondemand/voice/segments/<日付> --enroll ondemand/voice/enroll/enroll.wav --min-dur 3 --max-dur 15 --max-total 1800 --min-sim 0.5
 ```
 
 出力: `seg_0001.wav …`、`index.csv`（file, start, end, dur, sim, text）、`meta.json`（判定した Participant と各話者の類似度）。
+Circleback の話者区間は粗く無音を多く含むので、切り出しは Silero VAD で **発話だけの区間（min-dur〜max-dur 秒）** に割ってから行う（`vad_util.py`。5.7 の `cache/<id>.16k.wav` を `--wav16` で渡せば VAD の結果 `<id>.vad.json` も再利用する）。`--min-sim 0.5` で enroll に似ない区間（他人の声、重なり）を捨てる。
+
+2026-10-22 の実行記録（enroll は 5.7 の `auto_enroll.wav`、`--min-dur 3 --max-dur 15 --max-total 1800 --min-sim 0.5`）: 録音 4 本で本人の判定は中央値 0.86 / 0.86 / 0.51 / 0.75、2 位の話者は 0.41 / 0.32 / 0.33 / 0.25 で、どれも find_self.py の self_map.json と同じ話者だった。切り出しは 306 本 30.0 分、265 本 30.1 分、17 本 2.2 分、102 本 11.2 分（合計 690 本 73 分、1 本 10〜12 分の処理）。無作為に選んだ区間を音声認識で読み直すと、前 2 本は 8/8 が文字起こしと一致、3 本目（本人がエージェントに口頭で指示している録音、録音機から遠い）は 6 本中 2 本が類似度 0.55 前後で不一致だったので、参照音声には `--min-sim 0.6` 以上を使う（下の 5.6）。
 
 判定の読み方:
 
@@ -200,25 +203,37 @@ python scripts/ondemand/prepare_reference.py --in ondemand/voice/segments/* --ou
 - 整音は控えめ（ハイパス 80 Hz + loudnorm）。雑音が気になる録音だけ `--denoise`（afftdn）を付ける。かけ過ぎると声が変わる。
 - enroll 録音が良質なら、それ自体を XTTS の参照（10〜20 秒を切り出して 22.05 kHz）や IVC の参照（1〜3 分）に使ってよい。会議録音より似ることが多い。
 - 参照の品質確認: `& $PY scripts/ondemand/voice_similarity.py --ref ondemand/voice/enroll/enroll.wav ondemand/voice/reference/xtts_ref_01.wav ...` で 0.6 以上を目安にする。
+- 2026-10-22 の実行記録: 5.5 の 4 日分（690 本）に `--min-sim 0.6` で 592 本 66 分が残り、`xtts_ref_01〜03.wav`（15 秒 ×3、`auto_enroll.wav` との類似度 0.91〜0.93）と `ivc_reference.mp3`（12 本 2.5 分、類似度 0.98）ができた。enroll が `auto_enroll.wav`（会議録音から集めたもの）のときは類似度が全体に高めに出るので、閾値は 0.5 でなく 0.6 にする。
 
 ### 5.7 enroll 録音が無いとき: 会議録音だけから本人を見つける（find_self.py）
 
-Circleback の話者ラベル（Participant N）は会議ごとに振り直されるので、会議をまたいで同じ人を追えない。しかし録音機の装着者（本人）は全部の録音に出ている。`find_self.py` は録音ごと・話者ごとに声の埋め込み（speechbrain ECAPA）の代表ベクトルを作り、会議をまたいでクラスタリングして、**最も多くの録音に現れたクラスター**を本人とみなす。補助の手掛かり: 装着者はマイクに近いので発話量が多い。本人の姓を三人称（「〇〇先生」）で呼ぶ話者は本人でない（`--not-self-regex`。姓は**コマンドラインにだけ**書き、ファイルには残さない）。
+Circleback の話者ラベル（Participant N）は会議ごとに振り直されるので、会議をまたいで同じ人を追えない。しかし録音機の装着者（本人）は全部の録音に出ている。`find_self.py` は録音ごと・話者ごとに声の埋め込み（speechbrain ECAPA）の代表ベクトルを作り、会議をまたいでクラスタリングして、本人のクラスターを決める。
 
-準備: 5.3 で録音 3〜5 本を `ondemand/voice/raw/` に、5.4 でその文字起こし JSON を `ondemand/voice/raw/transcripts/` に置く。録音と JSON は長さ（±1%）で自動で組にし、組を最初に表示する。
+**2026-10-22 に分かった落とし穴（スクリプトは対処済み）:**
+
+1. **Circleback の話者区間は粗い。** 1 区間が数分に及び、その大半が無音のことがある（本人がエージェントに口頭で指示している録音では、1 区間 409 秒のうち発話は 30 秒ほど）。区間の先頭 15 秒をそのまま埋め込むと無音を埋め込み、録音機の暗騒音どうしが「全部の録音に共通する声」として選ばれた（最初の `auto_enroll.wav` は音声認識にかけても言葉にならなかった）。→ 今は Silero VAD（`vad_util.py`、faster-whisper 同梱）で **発話区間だけに割ってから** 埋め込む。
+2. **雑音を英語の無意味な文に起こした録音がある**（10/12 の録音は全話者がそれだった）。→ 文字起こしの日本語文字がラテン文字より少ない区間は使わず、その割合が 5 割を切る話者は除く（`--min-ja-ratio`）。
+3. **「最も多くの録音に出た声」は本人とは限らない。** 本人が黙って聞いている会議では同僚のほうが多く話し、同じ同僚が 3 本に出ていた。三人称の姓の言及（`--not-self-regex`）も、同僚が本人に向かって「〇〇先生は…」と話す・本人が同姓の別人の話をする、で当てにならなかった。→ 録音を 1 本選び、**内容から本人と確定できる話者**（例: エージェントへの口頭指示、講義）を `--anchor "<録音 id の先頭 8 桁>:Participant N"` で渡す。そのクラスターを本人とし、全話者の anchor との類似度の表を出す。
+
+準備: 5.3 で録音 3〜5 本を `ondemand/voice/raw/` に、5.4 でその文字起こし JSON を `ondemand/voice/raw/transcripts/` に置く。録音と JSON は長さ（±1%）で自動で組にし、組を最初に表示する。anchor にする話者は、文字起こし JSON を読んで決める（本人しかいない状況の録音が最良。2026-10-22 は 10/16 の「エージェントに指示している録音」の Participant 2 を使い、音声認識で読み直して文字起こしと一致することを確かめた）。
 
 ```powershell
 # 空きメモリを確認（3 GB 未満ならブラウザー等を閉じる。話者モデルで約 1 GB 使う。録音全体はメモリに載せない）
 Get-CimInstance Win32_OperatingSystem | % { "{0:N1} GB free" -f ($_.FreePhysicalMemory/1MB) }
 $env:PYTHONUTF8 = "1"
+# 1 回目: anchor なしで表を見る（本人が決まらなくてもよい）
 & $PY -u scripts/ondemand/find_self.py --audio-dir ondemand/voice/raw --transcripts ondemand/voice/raw/transcripts --out ondemand/voice/self_search --per-spk 30 --not-self-regex "<姓>(先生|さん)"
+# 2 回目: 内容から本人と分かった話者を anchor にする（埋め込みは cache/ にあるので数十秒で終わる）
+& $PY -u scripts/ondemand/find_self.py --audio-dir ondemand/voice/raw --transcripts ondemand/voice/raw/transcripts --out ondemand/voice/self_search --per-spk 30 --not-self-regex "<姓>(先生|さん)" --anchor "<id 先頭 8 桁>:Participant N"
+# 検証: enroll に使った区間を音声認識で読み直し、文字起こしと一致するか（7 区間中 5 以上で合格）
+& $PY -u scripts/ondemand/verify_enroll.py --self-search ondemand/voice/self_search --whole
 ```
 
-- 出力 `ondemand/voice/self_search/`: `report.md`（クラスターの表）、`self_map.json`（録音ごとの本人ラベルと類似度）、`auto_enroll.wav`（本人クラスターの代表に近い区間を会議をまたいで集めた約 90 秒、16 kHz）、`cache/`（録音ごとの 16 kHz WAV と埋め込み。**途中で止まっても再実行すれば済んだ録音は飛ばす**。やり直すときは消す）。
-- 採用の目安: 本人クラスターが **録音の 8 割以上に出現**し、各録音での代表との類似度（表の内訳の数値）が **0.5 以上**、三人称言及が 0。満たさないときは `report.md` を見て、録音ごとに `extract_speaker.py --participant` で手で決める。
-- `auto_enroll.wav` を **必ず再生して本人の声だけか確認**してから、5.5 の `--enroll ondemand/voice/self_search/auto_enroll.wav` として使う。`--wav16 ondemand/voice/self_search/cache/<id>.16k.wav` を付けると 16 kHz への変換を省ける。
-- 所要時間の目安: 録音 1 本（2〜3 時間）につき変換 1〜2 分 + 埋め込み 2〜5 分（CPU）。
-- 2026-10-22 の実行記録: 録音 5 本（10/12〜10/17、合計約 10 時間）と文字起こし 5 件を取得して開始したが、PC の空きメモリが 2 GB まで落ちて Claude Code に止められた（当時は録音全体をメモリに載せる実装だった。今は区間ごとに読む）。再実行は上のコマンドそのまま。
+- 出力 `ondemand/voice/self_search/`: `report.md`（クラスターの表、anchor との類似度の表）、`self_map.json`（録音ごとの本人ラベルと類似度）、`auto_enroll.wav`（本人クラスターの代表に近い発話区間を会議をまたいで集めた約 90〜100 秒、16 kHz）、`enroll_segments.json`（その区間の一覧）、`enroll_check.md`（verify_enroll.py の結果）、`cache/`（録音ごとの 16 kHz WAV `<id>.16k.wav`、VAD の発話区間 `<id>.vad.json`、埋め込み `<id>.units.json`。**途中で止まっても再実行すれば済んだ録音は飛ばす**。やり直すときは units.json だけ消す）。
+- 採用の目安: anchor との類似度が **本人のラベルで 0.7 以上、他の話者で 0.4 以下**に分かれていること（2026-10-22: 本人 0.74〜0.79、他 0.06〜0.35、境界 0.60 が 1 つ）。本人クラスターに入った録音で本人が発話量 1 位になっているか（装着者はマイクに近い）。`verify_enroll.py` が合格で、認識結果を読んで本人の話（講義、研究指導、エージェントへの指示など）になっていること。
+- `auto_enroll.wav` を **必ず再生して本人の声だけか確認**（人が聞けないときは `verify_enroll.py --whole` の認識結果で代用）してから、5.5 の `--enroll ondemand/voice/self_search/auto_enroll.wav` として使う。`--wav16 ondemand/voice/self_search/cache/<id>.16k.wav` を付けると 16 kHz への変換と VAD を省ける。
+- 所要時間の目安: 録音 1 本（2〜3 時間）につき変換 1〜2 分 + VAD 15〜30 秒 + 埋め込み 1〜3 分（CPU）。5 本で 20 分ほど。
+- 2026-10-22 の実行記録: 録音 5 本（10/12〜10/17、合計約 10 時間）。10/12 は文字起こしが雑音の誤認識で全話者除外。残り 4 本で anchor（10/16 の Participant 2）のクラスターが 4/4 本に出現、各録音で発話量 1 位の話者（45〜56%）が本人だった。`verify_enroll.py` は 7/7 区間で一致率 0.83〜0.98。
 
 ## 6. 声を複製して合成する
 
@@ -233,6 +248,7 @@ $env:PYTHONUTF8 = "1"
 
 - 実測（この PC、2026-10-22、合成音声を参照にした検証）: 日本語 80 字 → 音声 12.1 秒を 129 秒（モデル読込を含む、RTF 約 10.7）。モデル読込後だけを測ると 61 字 → 11.8 秒を 84 秒（RTF 7.1）、78 字 → 13.3 秒を 50 秒（RTF 3.8）。つまり読込を除けば RTF 4〜7 で、音声 60 分の講義なら 4〜7 時間。参照音声との話者類似度 0.81（同一話者の実音声どうしの 0.84 とほぼ同じ）。
 - 聞き取りやすさ（`check_asr.py`、faster-whisper small で文字に戻した CER）: 上の XTTS 音声は 9.7%（読みで比較。文字のままなら 21.9%）、edge-tts で作った試作動画の 2 枚は 15.4% と 8.6%。音声認識側も同音の専門用語を取り違える（測角→即格、内角の和→内閣の輪）ので、`check_asr.py` は漢字を読みに直してから比べる。それでも「閉合→平均」のような取り違えは残るので、CER は絶対値でなく edge-tts との比較と、他の枚より目立って高いかで見る。
+- 本人の実録音を参照にした実測（2026-10-22、`xtts_ref_01〜03.wav` の 3 本、空きメモリ 3.1 GB）: 第5回 表紙の台本 133 字 → 音声 24.3 秒を 248 秒（読込込み、RTF 10）。`auto_enroll.wav`（本人の実声）との話者類似度 0.69（参照音声そのものは 0.91〜0.93 なので、XTTS の出力は実声より一段似ていない。目安の 0.6 は超えた）。`check_asr.py` の CER 4.3%（読みで比較）。ただし算用数字が読まれず（第5回 → だいかい、2つ → き）、緯距は誤読された。台本は 3 章の規則（数字と専門用語を仮名・漢数字で書く）で書くこと。
 - 90 分の講義（音声約 60 分）は約 10 時間。夜間に `--work` を固定して流し、途中で止まっても再実行すれば続きから（manifest.json）。
 - 似方が足りないときは、参照を変える（息継ぎのない 10〜15 秒、感情の平坦な区間）、本数を 2〜3 本にする、`--denoise` を外す／付ける、の順で試す。
 - ライセンスは非商用（CPML）。学内配信の授業用途を超える公開には使わない。
@@ -288,9 +304,9 @@ python scripts/ondemand/build_video.py --narration <narration.md> --png-dir <pre
 - [ ] 第5回のスライドを作る（`materials/slides/第05回_トラバース測量I/`。講義計画: 到達目標・講義・演習 25 分・最新技術・試験の型は `materials/lecture_plan_13.md` の「第 5 回」）。
 - [ ] `extract_notes.py slides.md` → `narration.md`（2026-10-22 時点の下書きは 62 枚、ノートは 1 枚 30〜250 字で読み上げには短い）。`台本の書き方.md` の用語の読み（いきょ・けいきょ、ほうこうかく、こうさ 等）と分量（1 枚 150〜350 字）で書き直す。演習は一時停止の指示にする。
 - [ ] `pptx_export.ps1` で PNG、`build_video.py --engine edge` で仮動画。通しで聞いて台本を直す。
-- [ ] enroll 録音（5.2）を講師に依頼。無いうちは最多発話者で仮判定しない（他人の声の混入を避ける）。代わりに 5.7 の `find_self.py` で `auto_enroll.wav` を作ってもよい（2026-10-22: 録音 5 本と JSON 5 件は `ondemand/voice/raw/` に取得済み。実行は空きメモリ 3 GB 以上で再開）。
-- [ ] PLAUD 3〜5 本 → Circleback JSON → `extract_speaker.py --enroll` → 耳で確認 → `prepare_reference.py --target xtts` と `--target ivc`。
-- [ ] XTTS で数枚だけ試作し、似方（0.6 以上）と誤読を確認。
+- [x] enroll 録音（5.2）の代わりに 5.7 の `find_self.py --anchor` で `auto_enroll.wav` を作り、`verify_enroll.py` で本人の発話と確認（2026-10-22 済。`ondemand/voice/self_search/`、ローカルのみ）。講師が静かな enroll 録音をくれたらそちらに置き換える。
+- [x] PLAUD 4 本 → Circleback JSON → `extract_speaker.py --enroll ondemand/voice/self_search/auto_enroll.wav --wav16 ... --min-sim 0.5`（690 本 73 分）→ 音声認識で確認 → `prepare_reference.py --min-sim 0.6 --target xtts` と `--target ivc`（2026-10-22 済。`ondemand/voice/reference/`、ローカルのみ。耳での確認は講師に依頼）。
+- [x] XTTS で表紙 1 枚を試作し、似方 0.69（目安 0.6 以上）と誤読（算用数字が読まれない → 3 章の規則）を確認（2026-10-22 済。`ondemand/work/xtts_self_sample.wav`）。残りは台本を書き直してから 6.1 の `build_video.py --engine xtts --only 1,2` で数枚、次に全体。
 - [ ] 講師が ElevenLabs のプランと voice_id を用意したら、`--engine elevenlabs` で全体を合成。
 - [ ] 6.4 の点検 → 章立て・字幕 → 公開先へ。`notes/worklog.md` に記録、`narration.md` と `timings.json` を commit（音声・動画は除く）。
 
@@ -299,6 +315,9 @@ python scripts/ondemand/build_video.py --narration <narration.md> --png-dir <pre
 | 状況 | 対処 |
 | --- | --- |
 | 話者判定で本人が決まらない | enroll を 3 分以上の静かな録音にする。`--probe 40` で判定に使う区間を増やす。それでも駄目なら `--participant` で指定し、耳で確認 |
+| `auto_enroll.wav` が言葉になっていない（verify_enroll.py が不合格） | 無音や雑音を埋め込んでいる。`cache/*.units.json` を消して再実行（VAD 版で作り直す）。文字起こしが英語の無意味な文の録音は除外されているか `report.md` で確認 |
+| XTTS が数字を飛ばす（第5回 → だいかい） | XTTS の日本語前処理（cutlet）は算用数字を展開しない。台本の数字を漢数字・仮名に書き直す（3 章）。専門用語の誤読も同じく仮名で書く |
+| find_self.py が同僚を本人にする | 本人が黙っている会議が多い。本人しか話していない録音（エージェントへの指示、講義）を 1 本入れ、その話者を `--anchor` で指定 |
 | 切り出した区間に他人の声が混ざる | `--min-dur 4` で短い相づちを除く。`--min-sim` を上げる。会議の種類を変える（一人で話す録音を優先） |
 | XTTS がメモリ不足で落ちる | 他のアプリを閉じる（モデルで約 3 GB）。`--only` で数枚ずつ。台本の 1 文を短くする |
 | XTTS の日本語が途切れる | 1 文 71 字の上限。`。` を増やす |
@@ -316,6 +335,8 @@ python scripts/ondemand/build_video.py --narration <narration.md> --png-dir <pre
 | `scripts/ondemand/plaud_download.py` | PLAUD 一覧・取得 | system |
 | `scripts/ondemand/extract_speaker.py` | 本人の区間の切り出し | venv |
 | `scripts/ondemand/find_self.py` | enroll なしで会議録音をまたいで本人を見つける（5.7） | venv |
+| `scripts/ondemand/verify_enroll.py` | auto_enroll.wav に使った区間を音声認識で読み直し、文字起こしと一致するか検証（5.7） | venv |
+| `scripts/ondemand/vad_util.py` | Silero VAD で発話区間を出す補助（find_self / extract_speaker が使う） | venv（自動で使われる） |
 | `scripts/ondemand/prepare_reference.py` | 参照音声の整音・連結 | system |
 | `scripts/ondemand/voice_similarity.py` | 話者類似度の確認 | venv |
 | `scripts/ondemand/check_asr.py` | 合成音声を音声認識に戻して台本と比較（誤読・途切れの検出） | venv |

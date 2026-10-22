@@ -34,7 +34,7 @@ Surveying/
 │   ├─ .gitignore                ← voice/ work/ と音声・動画ファイルを commit から除外
 │   ├─ voice/                    ← 【commit しない】本人の声の素材
 │   │   ├─ raw/                  ← PLAUD からダウンロードした録音（会議全体、他の人の声を含む）。raw/transcripts/ に Circleback の JSON
-│   │   ├─ self_search/          ← find_self.py の出力（report.md, self_map.json, auto_enroll.wav, cache/）
+│   │   ├─ self_search/          ← find_self.py の出力（report.md, self_map.json, auto_enroll.wav, enroll_segments.json, enroll_check.md, cache/ に 16 kHz WAV・VAD・埋め込み）
 │   │   ├─ enroll/               ← 本人だけの短い録音（話者判定用。30 秒〜3 分）
 │   │   ├─ segments/<日付>/      ← extract_speaker.py が切り出した本人の発話区間 + index.csv
 │   │   └─ reference/            ← prepare_reference.py の出力（xtts_ref_NN.wav, ivc_reference.mp3, pvc_part_NN.mp3）
@@ -47,6 +47,8 @@ Surveying/
 │   ├─ plaud_download.py         ← PLAUD クラウドの録音一覧・ダウンロード
 │   ├─ extract_speaker.py        ← 会議録音 + Circleback の話者分離 → 本人の区間だけ切り出し
 │   ├─ find_self.py              ← enroll 録音なしで、複数の会議録音をまたいで本人（装着者）を見つけ auto_enroll.wav を作る
+│   ├─ verify_enroll.py          ← auto_enroll.wav の区間を音声認識で読み直し、文字起こしと一致するか検証
+│   ├─ vad_util.py               ← Silero VAD で発話区間を出す補助（Circleback の粗い話者区間を発話だけに割る）
 │   ├─ prepare_reference.py      ← 切り出した区間 → 各エンジン用の参照音声（整音・連結）
 │   ├─ voice_similarity.py       ← 音声どうしの話者類似度（合成音声が本人に似ているかの数値確認）
 │   ├─ check_asr.py              ← 合成音声を音声認識（faster-whisper）に戻して台本と比較（誤読・途切れの検出）
@@ -94,4 +96,5 @@ python scripts/ondemand/build_video.py --narration "materials/slides/第05回_�
 | XTTS v2 日本語を CPU で合成 | 確認済み（モデル読込後の RTF 4〜7。指南書 6.1 節） |
 | 合成音声の聞き取り検査（check_asr.py、faster-whisper small） | 確認済み（XTTS 音声 1 本と edge-tts の作業フォルダーで動作） |
 | ElevenLabs IVC / PVC | API 呼び出しの実装のみ。アカウント・課金は講師の判断で未実施 |
-| 本人の実録音からの抽出 | 途中。PLAUD の録音 5 本と Circleback の文字起こし 5 件を `ondemand/voice/raw/` に取得済み（ローカルのみ）。`find_self.py` の実行が PC のメモリ不足で止まったので、指南書 5.7 の手順で再実行する（スクリプトは区間ごと読みに直してある） |
+| 本人の実録音からの抽出（enroll 録音なし） | 確認済み（2026-10-22）。PLAUD の録音 5 本のうち文字起こしが雑音だった 1 本を除く 4 本で、`find_self.py --anchor` が本人のクラスターを 4/4 本で見つけ（anchor との類似度 0.74〜0.79、他人は 0.35 以下）、`verify_enroll.py` で 7/7 区間が文字起こしと一致。`extract_speaker.py` で本人の発話 690 本 73 分を切り出し、`prepare_reference.py` で XTTS 用 3 本と IVC 用 2.5 分を作成（本人との類似度 0.91〜0.98）。音声はローカルのみ |
+| XTTS v2 を本人の実声で合成 | 確認済み（2026-10-22）。表紙の台本 133 字 → 24.3 秒、本人との類似度 0.69、CER 4.3%。算用数字が読まれないので台本は漢数字・仮名で書く（指南書 3 章） |

@@ -7,6 +7,10 @@
   しかし装着者は全部の録音に出ている。そこで会議ごと・話者ごとに声の埋め込み（speechbrain ECAPA）の
   代表ベクトルを作り、会議をまたいでクラスタリングし、最も多くの会議に現れたクラスターを本人とみなす。
   補助の手掛かり: 装着者はマイクに近いので発話量が多い。三人称で本人の名前を呼ぶ話者は本人でない（--not-self-regex）。
+  Circleback の話者区間は粗く（1 区間が数分で大半が無音のこともある）、区間の先頭をそのまま埋め込むと録音機の
+  暗騒音どうしが「共通の声」になってしまう（2026-10-22 に実際に起きた）。そこで Silero VAD（vad_util.py）で
+  発話区間だけに割ってから埋め込む。文字起こしが日本語として成立しない話者（雑音を英語の無意味な文に起こしたもの）
+  は --min-ja-ratio で除く。
 
 材料
   --audio-dir     plaud_download.py で落とした録音（ファイル名の先頭が日付、どこかに PLAUD の id 32 桁）
@@ -19,8 +23,10 @@
   report.md       クラスターの表（人が見る用）
   auto_enroll.wav 本人クラスターの中で代表ベクトルに最も近い区間を会議をまたいで集めた約 --enroll-sec 秒の WAV。
                   これを extract_speaker.py --enroll に渡せば、以後は録音 1 本ずつ自動判定できる
-  cache/          録音ごとの 16 kHz WAV と話者ごとの埋め込み（<id>.units.json）。途中で止まっても再実行すれば
-                  済んだ録音は飛ばす。全部やり直すときはこのフォルダーを消す
+  cache/          録音ごとの 16 kHz WAV（<id>.16k.wav）、VAD の発話区間（<id>.vad.json）、話者ごとの埋め込み
+                  （<id>.units.json）。途中で止まっても再実行すれば済んだ録音は飛ばす。全部やり直すときは
+                  units.json を消す（16k.wav と vad.json は残してよい）
+  enroll_segments.json  auto_enroll.wav に使った区間の一覧。verify_enroll.py が音声認識で読み直して検証する
 
 メモリ
   録音全体はメモリに載せず、区間ごとにディスクから読む。使うのは話者モデル（約 1 GB）だけ。
@@ -45,8 +51,30 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 from extract_speaker import Embedder, load_segments, to_wav16k  # noqa: E402
+from vad_util import pieces_in, speech_regions  # noqa: E402
+
+CACHE_VERSION = 2  # 2: VAD で発話区間だけを埋め込む（1 は Circleback 区間の先頭 15 秒。無音を埋め込むので使わない）
 
 HEX32 = re.compile(r"[0-9a-f]{32}")
+JA_CHAR = re.compile(r"[぀-ヿ㐀-䶿一-鿿]")
+
+
+def ja_chars(text: str) -> int:
+    return len(JA_CHAR.findall(text or ""))
+
+
+LATIN_CHAR = re.compile(r"[A-Za-z]")
+
+
+def speech_like(seg: dict, _unused: float = 0.0, min_chars: int = 3) -> bool:
+    """文字起こしが日本語の発話として成立している区間か。
+    Circleback は雑音・遠くの会話を英語の無意味な文に起こすことがある（2026-10-12 の録音で確認）ので、
+    日本語の文字が min_chars 以上あり、かつラテン文字より多い区間だけを使う。
+    （区間長あたりの文字数では判定しない。Circleback の区間は数分に及び大半が無音のことがあり、
+    発話が疎なだけの本人の区間まで落としてしまったため。）"""
+    text = seg.get("text", "")
+    n = ja_chars(text)
+    return n >= min_chars and n >= len(LATIN_CHAR.findall(text))
 
 
 def plaud_id(name: str) -> str | None:
@@ -112,6 +140,12 @@ def main() -> None:
     ap.add_argument("--not-self-regex", default=None, help="この正規表現を発話に含む話者は本人でない（例: 本人の姓+先生）")
     ap.add_argument("--enroll-sec", type=float, default=90.0)
     ap.add_argument("--cache-dir", default=None, help="16 kHz WAV と埋め込みの保存先（既定: <out>/cache）。再実行時は済んだ録音を飛ばす")
+    ap.add_argument("--ja-rate", type=float, default=0.0, help=argparse.SUPPRESS)  # 旧版の互換のため残す（使わない）
+    ap.add_argument("--enroll-min-dur", type=float, default=3.0, help="enroll に使う発話区間の最短秒（VAD で切った区間のうち長いものだけ）")
+    ap.add_argument("--min-ja-ratio", type=float, default=0.5, help="話者の候補区間のうち日本語として成立する割合がこれ未満なら、その話者（録音）は雑音とみなして除く")
+    ap.add_argument("--anchor", default=None,
+                    help='内容から本人と確認できた話者（例 23488cbe:"Participant 2"）。これを含むクラスターを本人とする。'
+                         "本人が黙って聞いている会議が多いと「最も多くの録音に出た声」が同僚になるので、録音を 1 本聞いて（または文字起こしを読んで）本人の区間を確かめたら指定する")
     args = ap.parse_args()
 
     import numpy as np
@@ -131,14 +165,30 @@ def main() -> None:
 
     # 会議ごと・話者ごとの代表ベクトル
     units = []  # dict(pid, audio, json, speaker, centroid, share, n, within, mentions, segs=[(start,end,sim,text)])
+    excluded = []  # 文字起こしが日本語として成立しない（雑音の誤認識）として除いた話者
     for pid, audio, j in pairs:
         uj = cache / f"{pid}.units.json"
+        cached = None
         if uj.exists():
-            cached = json.loads(uj.read_text(encoding="utf-8"))
+            d = json.loads(uj.read_text(encoding="utf-8"))
+            if isinstance(d, dict) and d.get("version") == CACHE_VERSION:
+                cached = d["units"]
+            else:
+                print(f"  {pid[:8]} 古い形式のキャッシュ（VAD なし）は使わず作り直す", flush=True)
+        if cached is not None:
+            kept = 0
             for u in cached:
                 u["centroid"] = np.asarray(u["centroid"], dtype=np.float32)
+                # 文字起こしが日本語として成立している区間の割合（キャッシュには候補区間の text が入っている）
+                segs_u = [{"start": a, "end": b, "text": t} for a, b, _si, t in u["segs"]]
+                u["ja_ratio"] = sum(speech_like(s, args.ja_rate, 3) for s in segs_u) / max(1, len(segs_u))
+                if u["ja_ratio"] < args.min_ja_ratio:
+                    print(f"  {pid[:8]} {u['speaker']:14s} 除外: 日本語として成立する区間 {u['ja_ratio']:.0%}（雑音の誤認識とみなす）", flush=True)
+                    excluded.append(f"{pid[:8]} : {u['speaker']}, 発話割合 {u['share']:.0%}, 日本語率 {u['ja_ratio']:.0%}")
+                    continue
                 units.append(u)
-            print(f"  {pid[:8]} キャッシュから {len(cached)} 話者", flush=True)
+                kept += 1
+            print(f"  {pid[:8]} キャッシュから {kept}/{len(cached)} 話者", flush=True)
             continue
         segs = load_segments(j)
         total = sum(s["end"] - s["start"] for s in segs) or 1.0
@@ -151,20 +201,34 @@ def main() -> None:
         if emb is None:
             emb = Embedder()
         meeting_units = []
+        regions = None  # VAD の発話区間（日本語として成立する話者が 1 つでもあるときだけ計算）
         for spk, ss in by_spk.items():
             share = sum(s["end"] - s["start"] for s in ss) / total
             if share < args.min_share:
                 continue
             mentions = sum(1 for s in ss if not_self and not_self.search(s.get("text", "")))
-            cand = sorted((s for s in ss if s["end"] - s["start"] >= args.min_dur),
-                          key=lambda x: -(x["end"] - x["start"]))[: args.per_spk]
+            long_ss = [s for s in ss if s["end"] - s["start"] >= args.min_dur]
+            ja_ratio = sum(speech_like(s, args.ja_rate, 3) for s in long_ss) / max(1, len(long_ss))
+            if ja_ratio < args.min_ja_ratio:
+                print(f"  {pid[:8]} {spk:14s} share {share:5.1%}  除外: 日本語として成立する区間 {ja_ratio:.0%}（雑音の誤認識とみなす）", flush=True)
+                excluded.append(f"{pid[:8]} : {spk}, 発話割合 {share:.0%}, 日本語率 {ja_ratio:.0%}")
+                continue
+            if regions is None:
+                print(f"  {pid[:8]} 発話区間検出（VAD）...", flush=True)
+                regions = speech_regions(w16, cache / f"{pid}.vad.json")
+            # Circleback の話者区間の中にある発話（VAD）だけを埋め込みの単位にする（区間の先頭は無音のことが多い）
+            pieces = []
+            for s in (s for s in long_ss if speech_like(s, args.ja_rate, 3)):
+                for a, b in pieces_in(s["start"], s["end"], regions, args.min_dur, args.max_dur):
+                    pieces.append((a, b, s.get("text", "")))
+            pieces.sort(key=lambda x: -(x[1] - x[0]))
+            cand = pieces[: args.per_spk]
             embs, spans = [], []
-            for s in cand:
-                end = min(s["end"], s["start"] + args.max_dur)
-                e = emb.embed_span_file(w16, s["start"], end)  # 区間だけ読む（録音全体は載せない）
+            for a, b, t in cand:
+                e = emb.embed_span_file(w16, a, b)  # 区間だけ読む（録音全体は載せない）
                 if e is not None:
                     embs.append(e.numpy())
-                    spans.append((s["start"], end, s.get("text", "")))
+                    spans.append((a, b, t))
             if len(embs) < 3:
                 continue
             E = np.stack(embs)
@@ -173,13 +237,14 @@ def main() -> None:
             sims = E @ c
             u = {"pid": pid, "audio": str(audio), "json": str(j), "speaker": spk, "centroid": c,
                  "share": share, "n": len(embs), "within": float(np.median(sims)),
-                 "mentions": mentions,
+                 "mentions": mentions, "ja_ratio": ja_ratio,
                  "segs": [(a, b, float(si), t) for (a, b, t), si in zip(spans, sims)]}
             meeting_units.append(u)
             units.append(u)
             print(f"  {pid[:8]} {spk:14s} share {share:5.1%}  n {len(embs):3d}  within-sim {float(np.median(sims)):.2f}"
                   + (f"  三人称言及 {mentions}" if mentions else ""), flush=True)
-        uj.write_text(json.dumps([{**u, "centroid": [float(x) for x in u["centroid"]]} for u in meeting_units],
+        uj.write_text(json.dumps({"version": CACHE_VERSION,
+                                  "units": [{**u, "centroid": [float(x) for x in u["centroid"]]} for u in meeting_units]},
                                  ensure_ascii=False), encoding="utf-8")
     if not units:
         raise SystemExit("埋め込める話者が無い（--min-share や --min-dur を下げる）")
@@ -203,9 +268,12 @@ def main() -> None:
         return (len(meets), -mentions, share)
 
     ranked = sorted(clusters.items(), key=lambda kv: score(kv[1]), reverse=True)
-    lines = ["# 本人の声の探索結果", "", f"録音 {n_meet} 本、話者単位 {len(units)}、しきい値 {args.threshold}", "",
-             "| クラスター | 出現した録音数 | 平均発話割合 | 三人称言及 | 内訳（録音 : 話者, 発話割合, 代表との類似度） |",
-             "| --- | --- | --- | --- | --- |"]
+    lines = ["# 本人の声の探索結果", "", f"録音 {n_meet} 本、話者単位 {len(units)}、しきい値 {args.threshold}", ""]
+    if excluded:
+        lines += [f"文字起こしが日本語として成立しない話者（雑音の誤認識とみなして除外、日本語率 < {args.min_ja_ratio:.0%}）:", ""]
+        lines += [f"- {e}" for e in excluded] + [""]
+    lines += ["| クラスター | 出現した録音数 | 平均発話割合 | 三人称言及 | 内訳（録音 : 話者, 発話割合, 代表との類似度, 日本語率） |",
+              "| --- | --- | --- | --- | --- |"]
     for lb, idx in ranked:
         meets = {units[i]["pid"] for i in idx}
         cc = np.stack([units[i]["centroid"] for i in idx]).mean(0)
@@ -213,12 +281,31 @@ def main() -> None:
         parts = []
         for i in idx:
             u = units[i]
-            parts.append(f"{u['pid'][:8]} : {u['speaker']}, {u['share']:.0%}, {float(u['centroid'] @ cc):.2f}")
+            parts.append(f"{u['pid'][:8]} : {u['speaker']}, {u['share']:.0%}, {float(u['centroid'] @ cc):.2f}, {u.get('ja_ratio', 1.0):.0%}")
         lines.append(f"| {lb} | {len(meets)}/{n_meet} | {sum(units[i]['share'] for i in idx) / len(meets):.0%} | "
                      f"{sum(units[i]['mentions'] for i in idx)} | {'; '.join(parts)} |")
     best_lb, best_idx = ranked[0]
+    if args.anchor:
+        # 内容（本人がエージェントに指示している等）から本人と確認できた話者を含むクラスターを本人とする。
+        # 「最も多くの録音に出た声」は、本人が黙って聞いている会議が多いと同僚になってしまう（2026-10-22 に実際に起きた）
+        apid, aspk = args.anchor.split(":", 1)
+        ai = [i for i, u in enumerate(units) if u["pid"].startswith(apid) and u["speaker"] == aspk.strip()]
+        if not ai:
+            raise SystemExit(f"--anchor {args.anchor} に当たる話者単位が無い（除外されたか、ラベルが違う）")
+        best_lb = int(labels[ai[0]])
+        best_idx = clusters[best_lb]
+        ac = units[ai[0]]["centroid"]
+        lines += ["", f"--anchor {apid[:8]} : {aspk}（内容から本人と確認済み）を含むクラスター {best_lb} を本人とする", "",
+                  "| 録音 : 話者 | 発話割合 | anchor との類似度 | 同じクラスター |", "| --- | --- | --- | --- |"]
+        for i in sorted(range(len(units)), key=lambda i: -float(units[i]["centroid"] @ ac)):
+            u = units[i]
+            lines.append(f"| {u['pid'][:8]} : {u['speaker']} | {u['share']:.0%} | {float(u['centroid'] @ ac):.2f} | "
+                         f"{'○' if int(labels[i]) == best_lb else ''} |")
     best_meets = {units[i]["pid"] for i in best_idx}
-    verdict = "採用可" if len(best_meets) >= max(2, round(0.8 * n_meet)) else "要確認（出現した録音が少ない）"
+    if args.anchor:
+        verdict = f"採用可（anchor 指定、{len(best_meets)}/{n_meet} 本に出現）"
+    else:
+        verdict = "採用可" if len(best_meets) >= max(2, round(0.8 * n_meet)) else "要確認（出現した録音が少ない）"
     lines += ["", f"本人とみなすクラスター: {best_lb}（{len(best_meets)}/{n_meet} 本に出現）→ {verdict}", ""]
     print("\n".join(lines))
 
@@ -237,21 +324,27 @@ def main() -> None:
                                   "share": round(u["share"], 3), "sim_to_cluster": round(sim_c, 3),
                                   "within_sim": round(u["within"], 3), "mentions_not_self": u["mentions"]}
         for a, b, si, t in u["segs"]:
-            picks.append((si, u["audio"], a, b, u["pid"]))
+            # enroll には VAD で発話と判定された区間のうち enroll-min-dur 秒以上のものだけ
+            if b - a >= args.enroll_min_dur:
+                picks.append((si, u["audio"], a, b, u["pid"], t))
     picks.sort(key=lambda x: -x[0])
     # 録音ごとに偏らないように、上位から順に各録音最大 1/3 まで
     cap = max(1, int(args.enroll_sec / max(1, len(self_map)) / 3.0)) * 3
     per_meet: dict[str, float] = {}
     chosen = []
     tot = 0.0
-    for si, audio, a, b, pid in picks:
+    chosen_info = []
+    for si, audio, a, b, pid, t in picks:
         if tot >= args.enroll_sec:
             break
         if per_meet.get(pid, 0.0) >= args.enroll_sec / max(1, len(self_map)) * 1.5:
             continue
         chosen.append((audio, a, b))
+        chosen_info.append({"audio": audio, "start": round(a, 2), "end": round(b, 2), "sim": round(si, 3), "text": t})
         per_meet[pid] = per_meet.get(pid, 0.0) + (b - a)
         tot += b - a
+    # 検証用: どの区間を使ったか（音声認識で読み直して text と合うか確かめる）
+    (out / "enroll_segments.json").write_text(json.dumps(chosen_info, ensure_ascii=False, indent=1), encoding="utf-8")
     with tempfile.TemporaryDirectory() as td:
         parts = []
         for k, (audio, a, b) in enumerate(chosen):

@@ -12,8 +12,9 @@
 手順
   1. 話者ごとの発話量を表にする（装着者はマイクに最も近いので通常は最多）
   2. --enroll があれば speechbrain の ECAPA 埋め込みで各話者との類似度を出し、最も近い話者を選ぶ
-  3. 選んだ話者の区間を元の mp3 から切り出し（min-dur 秒以上、前後 0.1 秒の余白）、
-     区間ごとの類似度（他人の声の混入・重なりの検出用）を index.csv に書く
+  3. 選んだ話者の区間を Silero VAD（vad_util.py）で発話だけの区間（min-dur〜max-dur 秒）に割り、元の mp3 から
+     切り出す（前後 0.1 秒の余白）。区間ごとの enroll との類似度を index.csv に書き、--min-sim 未満は捨てる
+     （Circleback の区間は粗く、無音や他人の声を含むことがあるため）
 
 使い方（仮想環境の python で）:
   python scripts/ondemand/extract_speaker.py --audio ondemand/voice/raw/2026-10-01_0900_xxx.mp3 \
@@ -30,6 +31,9 @@ import subprocess
 import sys
 import tempfile
 from pathlib import Path
+
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+from vad_util import pieces_in, speech_regions  # noqa: E402
 
 FFMPEG = "ffmpeg"
 
@@ -124,7 +128,8 @@ def main() -> None:
     ap.add_argument("--enroll", help="本人の声だけの WAV")
     ap.add_argument("--participant", help="話者ラベルを直接指定")
     ap.add_argument("--min-dur", type=float, default=2.0, help="切り出す区間の最短秒")
-    ap.add_argument("--max-dur", type=float, default=20.0, help="これより長い区間は先頭 max-dur 秒だけ使う")
+    ap.add_argument("--max-dur", type=float, default=20.0, help="これより長い発話区間は max-dur 秒ずつに割る")
+    ap.add_argument("--min-sim", type=float, default=0.0, help="--enroll があるとき、本人との類似度がこれ未満の発話区間は切り出さない（0.5 が目安）")
     ap.add_argument("--max-total", type=float, default=3600.0, help="切り出す合計秒の上限")
     ap.add_argument("--probe", type=int, default=20, help="話者判定に使う区間数（長い順）")
     ap.add_argument("--offset", type=float, default=0.0,
@@ -158,21 +163,34 @@ def main() -> None:
     emb = None
     wav16 = None
     td = None
+    # 16 kHz WAV はディスクに置き、区間ごとに読む（録音全体をメモリに載せない）
+    if args.wav16 and Path(args.wav16).exists():
+        wav16 = Path(args.wav16)
+        vad_json = Path(str(wav16)[: -len(".16k.wav")] + ".vad.json") if str(wav16).endswith(".16k.wav") else None
+    else:
+        td = tempfile.TemporaryDirectory()
+        wav16 = Path(td.name) / "a16.wav"
+        to_wav16k(audio, wav16)
+        vad_json = None
+    # Circleback の話者区間は粗く大半が無音のことがあるので、VAD で発話区間（piece）に割ってから使う
+    print("発話区間検出（VAD）...", flush=True)
+    regions = speech_regions(wav16, vad_json)
+
+    def pieces_of(ss: list[dict]) -> list[tuple[float, float, dict]]:
+        out_p = []
+        for s in ss:
+            for a, b in pieces_in(s["start"], s["end"], regions, args.min_dur, args.max_dur):
+                out_p.append((a, b, s))
+        return out_p
+
     if args.enroll:
         emb = Embedder()
         ref = emb.embed_file(Path(args.enroll))
-        # 16 kHz WAV はディスクに置き、区間ごとに読む（録音全体をメモリに載せない）
-        if args.wav16 and Path(args.wav16).exists():
-            wav16 = Path(args.wav16)
-        else:
-            td = tempfile.TemporaryDirectory()
-            wav16 = Path(td.name) / "a16.wav"
-            to_wav16k(audio, wav16)
         for spk, ss in by_spk.items():
-            cand = sorted(ss, key=lambda x: -(x["end"] - x["start"]))[: args.probe]
+            cand = sorted(pieces_of(ss), key=lambda x: -(x[1] - x[0]))[: args.probe]
             sims = []
-            for s in cand:
-                e = emb.embed_span_file(wav16, s["start"], min(s["end"], s["start"] + args.max_dur))
+            for a, b, _s in cand:
+                e = emb.embed_span_file(wav16, a, b)
                 if e is not None:
                     sims.append(float((e * ref).sum()))
             if sims:
@@ -197,24 +215,28 @@ def main() -> None:
     total = 0.0
     k = 0
     ref = emb.embed_file(Path(args.enroll)) if emb else None
-    for s in sorted(by_spk.get(chosen, []), key=lambda x: x["start"]):
-        dur = s["end"] - s["start"]
-        if dur < args.min_dur:
-            continue
-        end = min(s["end"], s["start"] + args.max_dur)
+    skipped = 0
+    for a, b, s in sorted(pieces_of(by_spk.get(chosen, [])), key=lambda x: x[0]):
+        sim = ""
+        if emb is not None:
+            e = emb.embed_span_file(wav16, a, b)
+            if e is None:
+                continue
+            sv = float((e * ref).sum())
+            if sv < args.min_sim:
+                skipped += 1
+                continue
+            sim = f"{sv:.3f}"
         k += 1
         dst = out / f"seg_{k:04d}.wav"
-        cut(audio, dst, s["start"], end)
-        sim = ""
-        if emb is not None and wav16 is not None:
-            e = emb.embed_span_file(wav16, s["start"], end)
-            if e is not None:
-                sim = f"{float((e * ref).sum()):.3f}"
-        rows.append({"file": dst.name, "start": f"{s['start']:.2f}", "end": f"{end:.2f}",
-                     "dur": f"{end - s['start']:.2f}", "sim": sim, "text": s["text"].replace("\n", " ")})
-        total += end - s["start"]
+        cut(audio, dst, a, b)
+        rows.append({"file": dst.name, "start": f"{a:.2f}", "end": f"{b:.2f}",
+                     "dur": f"{b - a:.2f}", "sim": sim, "text": s["text"].replace("\n", " ")[:200]})
+        total += b - a
         if total >= args.max_total:
             break
+    if skipped:
+        print(f"enroll との類似度が {args.min_sim} 未満で捨てた発話区間: {skipped}")
     with (out / "index.csv").open("w", encoding="utf-8", newline="") as f:
         wtr = csv.DictWriter(f, fieldnames=["file", "start", "end", "dur", "sim", "text"])
         wtr.writeheader()
