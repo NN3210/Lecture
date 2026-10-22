@@ -11,6 +11,7 @@ build_video.py の作業フォルダー（work_<名前>/audio/slideNN.wav）と 
   python scripts/ondemand/check_asr.py --wav out.wav --text "読ませた文"          # 1 本だけ
 
 比較は漢字を読み（ローマ字）に直してから行うので、音声認識が同音の別の漢字を当てても（測角→即格）誤りに数えない。
+認識側の算用数字（360）・ラテン文字（TS）・記号（°）は、台本と同じ漢数字・片仮名（三百六十、ティーエス、度）に直してから比べる。
 目安: CER 15% 未満なら正常。他のスライドより目立って高い枚、長い delete（途切れ）がある枚を聞き直す。
 初回は Whisper のモデル（small で約 470 MB）をダウンロードする。
 """
@@ -26,9 +27,74 @@ sys.path.insert(0, str(Path(__file__).resolve().parent))
 
 STRIP_RE = re.compile(r"[\s、。，．,.!?！？「」『』（）()\[\]【】・:：;；\-—–~〜…]+")
 
+# 音声認識は「三百六十度」を「360度」、「ティーエス」を「TS」と書くことが多い。台本（3 章の規則で漢数字・片仮名）と
+# 同じ表記にそろえてから比べないと、表記の違いが誤読として数えられる（2026-10-22 の edge-tts 検査で CER 20〜48%）。
+_KANJI_DIGITS = "零一二三四五六七八九"
+_LETTER_READING = {"a": "エー", "b": "ビー", "c": "シー", "d": "ディー", "e": "イー", "f": "エフ", "g": "ジー",
+                   "h": "エイチ", "i": "アイ", "j": "ジェー", "k": "ケー", "l": "エル", "m": "エム", "n": "エヌ",
+                   "o": "オー", "p": "ピー", "q": "キュー", "r": "アール", "s": "エス", "t": "ティー", "u": "ユー",
+                   "v": "ブイ", "w": "ダブリュー", "x": "エックス", "y": "ワイ", "z": "ゼット"}
+_SYMBOL_READING = {"°": "度", "′": "分", "″": "秒", "'": "分", '"': "秒", "√": "ルート", "Δ": "デルタ", "δ": "デルタ",
+                   "ε": "イプシロン", "β": "ベータ", "σ": "シグマ", "Σ": "シグマ", "%": "パーセント", "％": "パーセント",
+                   "±": "プラスマイナス", "×": "かける", "÷": "割る", "=": "イコール", "＝": "イコール"}
+_NUMBER_RE = re.compile(r"([-−＋+])?(\d+)(?:[.．](\d+))?")
+
+
+def _int_to_kanji(n: int) -> str:
+    """360 → 三百六十、1500 → 千五百、206265 → 二十万六千二百六十五（台本の書き方に合わせる）。"""
+    if n == 0:
+        return "ゼロ"
+
+    def under_10000(m: int) -> str:
+        out = ""
+        for unit, name in ((1000, "千"), (100, "百"), (10, "十")):
+            d, m = divmod(m, unit)
+            if d:
+                out += ("" if d == 1 else _KANJI_DIGITS[d]) + name
+        if m:
+            out += _KANJI_DIGITS[m]
+        return out
+
+    parts = []
+    for name in ("", "万", "億"):
+        n, r = divmod(n, 10000)
+        if r:
+            s = under_10000(r)
+            if name and r < 10:
+                s = _KANJI_DIGITS[r]  # 一万、二万
+            parts.append(s + name)
+        if n == 0:
+            break
+    return "".join(reversed(parts))
+
+
+def _number_to_spoken(m: re.Match) -> str:
+    sign, ip, fp = m.group(1), m.group(2), m.group(3)
+    out = ""
+    if sign in ("-", "−"):
+        out += "マイナス"
+    elif sign in ("+", "＋"):
+        out += "プラス"
+    if fp is not None:
+        out += ("零" if int(ip) == 0 else _int_to_kanji(int(ip))) + "点" + "".join(_KANJI_DIGITS[int(c)] for c in fp)
+    else:
+        out += _int_to_kanji(int(ip))
+    return out
+
+
+def spoken_form(s: str) -> str:
+    """算用数字・ラテン文字・記号を、台本と同じ漢数字・片仮名の読みに直す（比較用。音声合成には使わない）。"""
+    s = s.translate(str.maketrans("０１２３４５６７８９", "0123456789"))
+    s = re.sub(r"(\d),(\d{3})", r"\1\2", s)  # 1,500 → 1500
+    s = _NUMBER_RE.sub(_number_to_spoken, s)
+    s = "".join(_SYMBOL_READING.get(c, c) for c in s)
+    s = s.translate(str.maketrans({chr(0xFF21 + i): chr(0x41 + i) for i in range(26)}))  # 全角 A → A
+    s = s.translate(str.maketrans({chr(0xFF41 + i): chr(0x61 + i) for i in range(26)}))
+    return re.sub(r"[A-Za-z]", lambda mm: _LETTER_READING[mm.group(0).lower()], s)
+
 
 def normalize(s: str) -> str:
-    s = STRIP_RE.sub("", s)
+    s = STRIP_RE.sub("", spoken_form(s))
     return s.lower()
 
 
@@ -50,7 +116,7 @@ def normalize_romaji(s: str) -> str:
             _ROMAJI = False
     if not _ROMAJI:
         return normalize(s)
-    r = _ROMAJI.romaji(STRIP_RE.sub("", s))
+    r = _ROMAJI.romaji(STRIP_RE.sub("", spoken_form(s)))
     return re.sub(r"[\s\-'’]+", "", r).lower()
 
 
@@ -135,7 +201,14 @@ def main() -> None:
         text = narration[n].strip()
         if not wav.exists() or not text or "TODO" in text:
             continue
-        hyp = asr(wav)
+        # 認識結果は asr/slideNN.<model>.txt に残し、wav が変わっていなければ使い回す（認識は 1 枚 10〜20 秒かかる）
+        cache = Path(args.work) / "asr" / f"slide{n:02d}.{args.model}.txt"
+        if cache.exists() and cache.stat().st_mtime >= wav.stat().st_mtime:
+            hyp = cache.read_text(encoding="utf-8")
+        else:
+            hyp = asr(wav)
+            cache.parent.mkdir(parents=True, exist_ok=True)
+            cache.write_text(hyp, encoding="utf-8")
         c = cer(text, hyp)
         rows.append((n, c, text, hyp))
         flag = "要確認" if c >= args.threshold else ""

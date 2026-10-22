@@ -88,8 +88,19 @@ powershell -ExecutionPolicy Bypass -File scripts/pptx_export.ps1 -Pptx "material
 python scripts/ondemand/extract_notes.py "materials/slides/第05回_トラバース測量I/slides.md" -o "materials/slides/第05回_トラバース測量I/narration.md"
 ```
 
-3. `ondemand/台本の書き方.md` に従って書き直す。要点: `## N` がスライド番号、1 文 60 字以内、記号・式・単位・略語は仮名で書き下す（緯距 → いきょ、(n−2)×180° → n 引く 2 かける 180 度）、各スライド 150〜350 字。**算用数字も漢数字か仮名にする**（第5回 → 第五回、2つ → ふたつ、180 度 → ひゃくはちじゅう度）。XTTS の日本語前処理は cutlet のローマ字変換だけで算用数字を読みに展開しないため、2026-10-22 の試作で「第5回」が「だいかい」、「2つ」が「き」と読まれた（edge-tts と ElevenLabs は算用数字を読めるが、台本は 1 本にしたいので最初から書き下す）。専門用語も cutlet が誤読する（緯距 → nuki kyo）ので仮名にする。
-4. `TODO` が残っていないことを確認する（残ると無音 2 秒になる）。
+3. `ondemand/台本の書き方.md` に従って書き直す。要点: `## N` がスライド番号、1 文 60 字以内、記号・式・単位・略語は仮名で書き下す（(n−2)×180° → エヌ引く二、かける百八十度）、各スライド 150〜350 字。**算用数字は漢数字か仮名にする**（第5回 → 第五回、2つ → ふたつ、180 度 → 百八十度）。XTTS の日本語前処理は cutlet のローマ字変換だけで算用数字を読みに展開しないため、2026-10-22 の試作で「第5回」が「だいかい」、「2つ」が「き」と読まれた（edge-tts と ElevenLabs は算用数字を読めるが、台本は 1 本にしたいので最初から書き下す）。
+   XTTS 向けの表記の規則（2026-10-22 に第5回 64 枚で確かめたもの。表は `台本の書き方.md` の 2 章）:
+   - 専門用語は cutlet が誤読するので仮名で書く: 緯距・経距 → イキョ・ケイキョ、後視 → こうし、野帳 → やちょう、夾角 → きょうかく、真北 → しんぽく、極座標 → きょく座標、十進 → じっしん、一周 → いっしゅう、一筆書き → ひとふでがき、左偏・右偏 → さへん・うへん、水平角 → すいへいかく、n 角形 → エヌかくけい、一行 → いちぎょう、一本 → いっぽん。
+   - 符号の「正」は「せい」と書く（単独の「正」は Tadashi と読まれる。正反観測・補正・訂正はそのまま）。度分秒を単独で並べるときは「ど、ふん、びょう」（「度、分、秒」は tabi・bun になる）。
+   - 片仮名の外来語は cutlet が英語つづりに戻す。XTTS が読めるもの（タンジェント、アークタンジェント、モード、スライド、プログラム、ルート、センチメートル、シグマ、イプシロン、プラスマイナス）はそのまま、読めないものは平仮名にする（コサイン → こさいん、サイン → さいん）か別の語にする（ミス → 誤り、イラスト → 絵・概念図、本スライド → このスライド）。
+   - 「イキョ」「ケイキョ」の直後に句読点を置かない（ョ が落ちて Iki・cake になる）。「イキョとケイキョの計算、」のように助詞や語を続ける。片仮名の読みを連結すると別の語に切られる（デルタビー → Deru Tabii、エックスエー → sway）ので「デルタ ビー」「エックス エー」と空白で区切る。
+4. cutlet で機械的に確かめる。台本全体をローマ字にして、`?`（読めない漢字）と上の誤読（Tadashi、Iki、cake、cosine、Goshi …）が無いことを見る。疑わしい語は XTTS で 1 文だけ合成し、faster-whisper で聞き取って比べる（6.4 の `check_asr.py --wav --text`）。2026-10-22 の第5回はこの手順で 30 語ほど直し、ローマ字の NG が 0 になってから合成した。
+
+```powershell
+& $PY -c "import cutlet,re,sys;t=open(sys.argv[1],encoding='utf-8').read();t=re.sub(r'<!--.*?-->','',t,flags=re.S);print(cutlet.Cutlet().romaji(t))" "materials/slides/第05回_トラバース測量I/narration.md" > ondemand/work/narration_romaji.txt
+```
+
+5. `TODO` が残っていないことを確認する（残ると無音 2 秒になる）。
 
 ```powershell
 python scripts/ondemand/build_video.py --narration "materials/slides/第05回_トラバース測量I/narration.md" --png-dir "materials/slides/第05回_トラバース測量I/preview" --out ondemand/work/lecture05_edge.mp4 --dry-run
@@ -249,7 +260,9 @@ $env:PYTHONUTF8 = "1"
 - 実測（この PC、2026-10-22、合成音声を参照にした検証）: 日本語 80 字 → 音声 12.1 秒を 129 秒（モデル読込を含む、RTF 約 10.7）。モデル読込後だけを測ると 61 字 → 11.8 秒を 84 秒（RTF 7.1）、78 字 → 13.3 秒を 50 秒（RTF 3.8）。つまり読込を除けば RTF 4〜7 で、音声 60 分の講義なら 4〜7 時間。参照音声との話者類似度 0.81（同一話者の実音声どうしの 0.84 とほぼ同じ）。
 - 聞き取りやすさ（`check_asr.py`、faster-whisper small で文字に戻した CER）: 上の XTTS 音声は 9.7%（読みで比較。文字のままなら 21.9%）、edge-tts で作った試作動画の 2 枚は 15.4% と 8.6%。音声認識側も同音の専門用語を取り違える（測角→即格、内角の和→内閣の輪）ので、`check_asr.py` は漢字を読みに直してから比べる。それでも「閉合→平均」のような取り違えは残るので、CER は絶対値でなく edge-tts との比較と、他の枚より目立って高いかで見る。
 - 本人の実録音を参照にした実測（2026-10-22、`xtts_ref_01〜03.wav` の 3 本、空きメモリ 3.1 GB）: 第5回 表紙の台本 133 字 → 音声 24.3 秒を 248 秒（読込込み、RTF 10）。`auto_enroll.wav`（本人の実声）との話者類似度 0.69（参照音声そのものは 0.91〜0.93 なので、XTTS の出力は実声より一段似ていない。目安の 0.6 は超えた）。`check_asr.py` の CER 4.3%（読みで比較）。ただし算用数字が読まれず（第5回 → だいかい、2つ → き）、緯距は誤読された。台本は 3 章の規則（数字と専門用語を仮名・漢数字で書く）で書くこと。
-- 90 分の講義（音声約 60 分）は約 10 時間。夜間に `--work` を固定して流し、途中で止まっても再実行すれば続きから（manifest.json）。
+- 台本を 3 章の規則で書き直したあとの実測（2026-10-22、第5回の 1・27・37 枚目、`ondemand/work/xtts_demo/`、空きメモリ 1.7〜1.9 GB でも落ちずに動いた）: 1 枚目 179 字 → 32.2 秒、27 枚目 195 字 → 37.8 秒、37 枚目 133 字 → 23.0 秒。1・37 枚目の作り直し（音声 55 秒分）がモデル読込込みで 264 秒（RTF 4.8）。参照音声（xtts_ref_01）との類似度 0.639 / 0.661 / 0.649（目安 0.6 以上）、`check_asr.py` の CER 2.0% / 0.9% / 6.7%（平均 3.2%。37 枚目の差は「北向き→キャムキ」など認識側の揺れで、こさいん・さいん・せい・イキョ・ケイキョは意図どおり読まれた）。
+- 表記の候補（イキョの片仮名／平仮名／長音、英語つづりに戻る外来語 14 語、せい・ど ふん びょう）は 1 文ずつ XTTS で合成して faster-whisper で聞き取り、読めた表記だけを 3 章の規則にした（記録は `ondemand/work/xtts_demo/spelling_test*.txt`、ローカルのみ）。
+- 90 分の講義（音声約 60 分）は約 10 時間。夜間に `--work` を固定して流し、途中で止まっても再実行すれば続きから（manifest.json）。第5回の全 64 枚（13,700 字、edge-tts で 45 分）なら RTF 10〜13 で 8〜10 時間。
 - 似方が足りないときは、参照を変える（息継ぎのない 10〜15 秒、感情の平坦な区間）、本数を 2〜3 本にする、`--denoise` を外す／付ける、の順で試す。
 - ライセンスは非商用（CPML）。学内配信の授業用途を超える公開には使わない。
 
@@ -283,7 +296,7 @@ python scripts/ondemand/build_video.py --narration <narration.md> --png-dir <pre
 
 | 観点 | やり方 | 合格の目安 |
 | --- | --- | --- |
-| 誤読・途切れ（機械で） | `& $PY scripts/ondemand/check_asr.py --narration <narration.md> --work ondemand/work/work_<名前>` で音声認識（faster-whisper）に戻し、漢字を読みに直して台本と比較 | スライドごとの CER 15% 未満（edge-tts の素の音声でも 9〜15% 出る）。他の枚より目立って高い枚、長い delete（途切れ）がある枚だけ人が聞く |
+| 誤読・途切れ（機械で） | `& $PY scripts/ondemand/check_asr.py --narration <narration.md> --work ondemand/work/work_<名前>` で音声認識（faster-whisper）に戻し、認識側の算用数字・ラテン文字を台本と同じ漢数字・片仮名にそろえ、漢字を読みに直して台本と比較。認識結果は `work_*/asr/` に残り、wav が変わらなければ使い回す | 2026-10-22 の第5回（edge-tts、64 枚）で 1 枚 0〜7.6%、平均 2.4%。8% を超える枚、他の枚より目立って高い枚、長い delete（途切れ）がある枚だけ人が聞く。15% 以上は「要確認」と差分が表示される |
 | 誤読（人で） | 動画を通しで聞く、または字幕 srt と照合 | 専門用語の誤読ゼロ（台本側で仮名にして直す） |
 | 似方 | `voice_similarity.py --ref enroll.wav <合成 wav>` | 0.6 以上 |
 | 間・速度 | 1 分あたり 280〜330 字が講義の速さ。`timings.json` の speech 秒 ÷ 文字数で確認 | 速ければ台本に読点を足す（edge は `--rate`） |
@@ -301,12 +314,14 @@ python scripts/ondemand/build_video.py --narration <narration.md> --png-dir <pre
 
 ## 8. 第5回 トラバース測量 I への適用手順（エージェント向けチェックリスト）
 
-- [ ] 第5回のスライドを作る（`materials/slides/第05回_トラバース測量I/`。講義計画: 到達目標・講義・演習 25 分・最新技術・試験の型は `materials/lecture_plan_13.md` の「第 5 回」）。
-- [ ] `extract_notes.py slides.md` → `narration.md`（2026-10-22 時点の下書きは 62 枚、ノートは 1 枚 30〜250 字で読み上げには短い）。`台本の書き方.md` の用語の読み（いきょ・けいきょ、ほうこうかく、こうさ 等）と分量（1 枚 150〜350 字）で書き直す。演習は一時停止の指示にする。
-- [ ] `pptx_export.ps1` で PNG、`build_video.py --engine edge` で仮動画。通しで聞いて台本を直す。
+- [x] 第5回のスライドを作る（`materials/slides/第05回_トラバース測量I/`、64 枚、2026-10-22 済。講義計画: 到達目標・講義・演習 25 分・最新技術・試験の型は `materials/lecture_plan_13.md` の「第 5 回」）。
+- [x] `extract_notes.py slides.md` → `narration.md` を `台本の書き方.md` の規則で書き直す（2026-10-22 済。64 枚、約 13,700 字、1 枚 130〜300 字。演習は一時停止の指示。数字は漢数字、専門用語と外来語は 3 章の表記、cutlet のローマ字で NG 0）。
+- [x] `pptx_export.ps1` で PNG、`build_video.py --engine edge` で仮動画（2026-10-22 済。`ondemand/work/lecture05_edge.mp4`、45.1 分。`check_asr.py` で 64 枚とも CER 7.6% 以下、平均 2.4%。字幕と時刻は `narration_edge.srt` / `narration_edge.timings.json` としてスライドの隣に commit）。
 - [x] enroll 録音（5.2）の代わりに 5.7 の `find_self.py --anchor` で `auto_enroll.wav` を作り、`verify_enroll.py` で本人の発話と確認（2026-10-22 済。`ondemand/voice/self_search/`、ローカルのみ）。講師が静かな enroll 録音をくれたらそちらに置き換える。
 - [x] PLAUD 4 本 → Circleback JSON → `extract_speaker.py --enroll ondemand/voice/self_search/auto_enroll.wav --wav16 ... --min-sim 0.5`（690 本 73 分）→ 音声認識で確認 → `prepare_reference.py --min-sim 0.6 --target xtts` と `--target ivc`（2026-10-22 済。`ondemand/voice/reference/`、ローカルのみ。耳での確認は講師に依頼）。
-- [x] XTTS で表紙 1 枚を試作し、似方 0.69（目安 0.6 以上）と誤読（算用数字が読まれない → 3 章の規則）を確認（2026-10-22 済。`ondemand/work/xtts_self_sample.wav`）。残りは台本を書き直してから 6.1 の `build_video.py --engine xtts --only 1,2` で数枚、次に全体。
+- [x] XTTS で表紙 1 枚を試作し、似方 0.69（目安 0.6 以上）と誤読（算用数字が読まれない → 3 章の規則）を確認（2026-10-22 済。`ondemand/work/xtts_self_sample.wav`）。
+- [x] 書き直した台本で 1・27・37 枚目を XTTS で合成し、本人との類似度と CER を確認（2026-10-22 済。`ondemand/work/xtts_demo/`、6.1 の実測）。
+- [ ] 全 64 枚を XTTS で合成する: `powershell -ExecutionPolicy Bypass -File scripts/ondemand/build_xtts_full.ps1`（6.1 のコマンドを優先度 低の別プロセスで動かし `ondemand/work/build_xtts.log` に記録。CPU で 8〜10 時間。空きメモリ 2.5 GB 未満なら起動を断るので、他のアプリを閉じて夜間に流す。途中で止まったら同じコマンドで続きから。進み具合は log の `[tts] slide` 行の数）。終わったら `check_asr.py --work ondemand/work/work_lecture05_xtts` と `voice_similarity.py` で 6.4 の点検。
 - [ ] 講師が ElevenLabs のプランと voice_id を用意したら、`--engine elevenlabs` で全体を合成。
 - [ ] 6.4 の点検 → 章立て・字幕 → 公開先へ。`notes/worklog.md` に記録、`narration.md` と `timings.json` を commit（音声・動画は除く）。
 
@@ -317,6 +332,10 @@ python scripts/ondemand/build_video.py --narration <narration.md> --png-dir <pre
 | 話者判定で本人が決まらない | enroll を 3 分以上の静かな録音にする。`--probe 40` で判定に使う区間を増やす。それでも駄目なら `--participant` で指定し、耳で確認 |
 | `auto_enroll.wav` が言葉になっていない（verify_enroll.py が不合格） | 無音や雑音を埋め込んでいる。`cache/*.units.json` を消して再実行（VAD 版で作り直す）。文字起こしが英語の無意味な文の録音は除外されているか `report.md` で確認 |
 | XTTS が数字を飛ばす（第5回 → だいかい） | XTTS の日本語前処理（cutlet）は算用数字を展開しない。台本の数字を漢数字・仮名に書き直す（3 章）。専門用語の誤読も同じく仮名で書く |
+| XTTS が「正」を「ただし」、「度、分、秒」を「たび、ぶん」と読む | 符号の正は「せい」、単独で並べる度分秒は「ど、ふん、びょう」と書く（3 章）。台本全体を cutlet でローマ字にして Tadashi・tabi が無いか見る |
+| XTTS が片仮名の外来語を英語風に読む（コサイン → コシン、ミス → ミステー） | cutlet が英語つづり（cosine、mistake）に戻している。平仮名（こさいん）か別の語（誤り）にする。読める語の一覧は 3 章 |
+| XTTS が「イキョ、」を「イキ」と読む | 句読点の直前で ョ が落ちる。「イキョの計算、」のように語を続ける |
+| check_asr.py の CER が 20% 以上なのに聞くと正しい | 認識側が算用数字・ラテン文字（360、TS）で書く表記差。2026-10-22 以降の check_asr.py は漢数字・片仮名にそろえてから比べる（edge-tts で平均 2〜3% になる） |
 | find_self.py が同僚を本人にする | 本人が黙っている会議が多い。本人しか話していない録音（エージェントへの指示、講義）を 1 本入れ、その話者を `--anchor` で指定 |
 | 切り出した区間に他人の声が混ざる | `--min-dur 4` で短い相づちを除く。`--min-sim` を上げる。会議の種類を変える（一人で話す録音を優先） |
 | XTTS がメモリ不足で落ちる | 他のアプリを閉じる（モデルで約 3 GB）。`--only` で数枚ずつ。台本の 1 文を短くする |
@@ -339,7 +358,7 @@ python scripts/ondemand/build_video.py --narration <narration.md> --png-dir <pre
 | `scripts/ondemand/vad_util.py` | Silero VAD で発話区間を出す補助（find_self / extract_speaker が使う） | venv（自動で使われる） |
 | `scripts/ondemand/prepare_reference.py` | 参照音声の整音・連結 | system |
 | `scripts/ondemand/voice_similarity.py` | 話者類似度の確認 | venv |
-| `scripts/ondemand/check_asr.py` | 合成音声を音声認識に戻して台本と比較（誤読・途切れの検出） | venv |
+| `scripts/ondemand/check_asr.py` | 合成音声を音声認識に戻して台本と比較（誤読・途切れの検出）。認識側の数字・英字を台本の表記にそろえ、結果は `work_*/asr/` に残す | venv |
 | `scripts/ondemand/audio_io.py` | torchaudio.load の差し替え | venv（自動で使われる） |
 | `scripts/pptx_export.ps1` | pptx → PDF/PNG | PowerShell + PowerPoint |
 | `ondemand/台本の書き方.md` | 台本の規則 | — |
