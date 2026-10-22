@@ -1,0 +1,548 @@
+[
+  {
+    "name": "title_hero",
+    "aim": "表紙で、太陽光が畑を経て衛星に届く流れを静かに示す。",
+    "initialPrompt": "Use case: scientific-educational. Create one text-free conceptual illustration for a Japanese undergraduate agricultural remote sensing lecture. Wide landscape 16:9 composition, ideally 1600x900. Flat textbook vector-like drawing, clean bold uniform outlines, simple geometric silhouettes, no photorealism, no 3D rendering, no shadows, no texture, no background gradient. Solid ivory #FAF9F5 background. Restrained palette: navy #1F4E79 outlines and principal objects, teal #13877B and rust orange #BD512B accents, gray #8A8A8A secondary elements, plus ivory; pale flat tints only when required for translucent overlays. Keep every subject fully inside an approximately 7% safe margin on all sides. Absolutely no text, letters, numbers, mathematical symbols, labels, logos, watermarks, signatures, legends or decorative marks. Direction arrows explicitly requested below are allowed. Generic unbranded objects only. One clear central concept, generous negative space. A VERY SIMPLE flat vector cover icon scene entirely enclosed inside an ivory blank margin 120 pixels wide on ALL four edges. One isolated trapezoid field patch in lower half, bounded on every edge, containing only 12 thick teal straight crop-row strokes converging toward far edge, NOT many detailed leaves. No hills, trees, landscape or textures. ONE small navy satellite at upper right, ONE small orange sun at upper left. Exactly two fine orange straight light-path arrows sun -> field patch -> satellite. The field is a contained illustration, NOT a full-bleed landscape. Broad calm whitespace. Use exact solid ivory #FAF9F5 backdrop and only solid navy, teal, orange; zero gradients, no shading at all.",
+    "prompt": "Edit this supplied illustration only. Preserve its conceptual content, object count, geometry, directions of arrows, and layout. Make the image a truly flat textbook vector-like raster illustration. Remove ALL paper texture, grain, mottling, lighting, gradients, highlights, and shading, including very subtle ones. Replace all blank background with one absolutely uniform solid color RGB (250,249,245), hex #FAF9F5, identical in every background pixel. Use solid navy #1F4E79 for principal strokes, solid teal #13877B and rust orange #BD512B for accents, solid gray #8A8A8A for secondary strokes, and ivory. Only retain flat pale tints for explicitly translucent distance spheres/layer sheets/viewing fans and the pixel or crop-map tonal steps. Night-sky rectangles must be one solid navy, no texture. Do not add new text or any lettering, numbers, symbols, labels, logo, signature, watermark or people. Existing arrows remain. Preserve aspect ratio 16:9. Reduce the whole composition slightly if necessary so all objects lie inside 5% blank ivory margins. This is color cleanup, NOT a redesign.",
+    "attempts": 3,
+    "adoptedAttempt": 3,
+    "input": "_source/input_title_hero.png",
+    "source": "_source/title_hero.png",
+    "size": [
+      1600,
+      900
+    ],
+    "mode": "RGB",
+    "bytes": 1046931,
+    "corners": [
+      [
+        248,
+        247,
+        242
+      ],
+      [
+        248,
+        248,
+        242
+      ],
+      [
+        248,
+        246,
+        242
+      ],
+      [
+        248,
+        246,
+        241
+      ]
+    ],
+    "background_exact_at_corners": false,
+    "text_visual_check": "文字混入なし（目視）",
+    "clipping_visual_check": "主体の見切れなし（目視）",
+    "status": "要再生成：背景の完全単色条件が未達"
+  },
+  {
+    "name": "four_pillars",
+    "aim": "左の位置情報・衛星観測の2本を強調し、講義の4本柱を示す。",
+    "initialPrompt": "Use case: scientific-educational. Create one text-free conceptual illustration for a Japanese undergraduate agricultural remote sensing lecture. Wide landscape 16:9 composition, ideally 1600x900. Flat textbook vector-like drawing, clean bold uniform outlines, simple geometric silhouettes, no photorealism, no 3D rendering, no shadows, no texture, no background gradient. Solid ivory #FAF9F5 background. Restrained palette: navy #1F4E79 outlines and principal objects, teal #13877B and rust orange #BD512B accents, gray #8A8A8A secondary elements, plus ivory; pale flat tints only when required for translucent overlays. Keep every subject fully inside an approximately 7% safe margin on all sides. Absolutely no text, letters, numbers, mathematical symbols, labels, logos, watermarks, signatures, legends or decorative marks. Direction arrows explicitly requested below are allowed. Generic unbranded objects only. One clear central concept, generous negative space. Exactly four equal tall rectangular pillars/cards arranged horizontally with generous equal gaps. Each has one compact pictorial group near its center. First: globe and small satellite for positioning. Second: satellite receiving a light beam reflected from a small ground patch for remote observation. Third: connected network of round nodes for intelligence. Fourth: a leaf, a water droplet and a tiny simple aquatic organism together for living environment. First two pillars strongly navy with ivory pictograms and very small teal accents; last two pillars pale gray with medium gray pictograms, visibly subdued. No numbering, no headings, no text, no additional icons. All four cards same size.",
+    "prompt": "Edit this supplied illustration only. Preserve its conceptual content, object count, geometry, directions of arrows, and layout. Make the image a truly flat textbook vector-like raster illustration. Remove ALL paper texture, grain, mottling, lighting, gradients, highlights, and shading, including very subtle ones. Replace all blank background with one absolutely uniform solid color RGB (250,249,245), hex #FAF9F5, identical in every background pixel. Use solid navy #1F4E79 for principal strokes, solid teal #13877B and rust orange #BD512B for accents, solid gray #8A8A8A for secondary strokes, and ivory. Only retain flat pale tints for explicitly translucent distance spheres/layer sheets/viewing fans and the pixel or crop-map tonal steps. Night-sky rectangles must be one solid navy, no texture. Do not add new text or any lettering, numbers, symbols, labels, logo, signature, watermark or people. Existing arrows remain. Preserve aspect ratio 16:9. Reduce the whole composition slightly if necessary so all objects lie inside 5% blank ivory margins. This is color cleanup, NOT a redesign. CRITICAL: the entire third and fourth cards, including every icon on them, must stay pale gray and medium gray ONLY. Do not color the fourth leaf or droplet. Only the left two cards are emphasized.",
+    "attempts": 3,
+    "adoptedAttempt": 3,
+    "input": "_source/input_four_pillars.png",
+    "source": "_source/four_pillars.png",
+    "size": [
+      1600,
+      900
+    ],
+    "mode": "RGB",
+    "bytes": 1135499,
+    "corners": [
+      [
+        249,
+        248,
+        243
+      ],
+      [
+        250,
+        249,
+        244
+      ],
+      [
+        250,
+        247,
+        243
+      ],
+      [
+        249,
+        248,
+        242
+      ]
+    ],
+    "background_exact_at_corners": false,
+    "text_visual_check": "文字混入なし（目視）",
+    "clipping_visual_check": "主体の見切れなし（目視）",
+    "status": "要再生成：背景の完全単色条件が未達"
+  },
+  {
+    "name": "gnss_trilateration",
+    "aim": "衛星からの距離の球面が地上の受信点で交わることを示す。",
+    "initialPrompt": "Use case: scientific-educational. Create one text-free conceptual illustration for a Japanese undergraduate agricultural remote sensing lecture. Wide landscape 16:9 composition, ideally 1600x900. Flat textbook vector-like drawing, clean bold uniform outlines, simple geometric silhouettes, no photorealism, no 3D rendering, no shadows, no texture, no background gradient. Solid ivory #FAF9F5 background. Restrained palette: navy #1F4E79 outlines and principal objects, teal #13877B and rust orange #BD512B accents, gray #8A8A8A secondary elements, plus ivory; pale flat tints only when required for translucent overlays. Keep every subject fully inside an approximately 7% safe margin on all sides. Absolutely no text, letters, numbers, mathematical symbols, labels, logos, watermarks, signatures, legends or decorative marks. Direction arrows explicitly requested below are allowed. Generic unbranded objects only. One clear central concept, generous negative space. Distance-sphere intersection for GNSS, not angle triangulation. Exactly four generic small satellites spread across the upper half, three navy and one rust orange. A single small receiver with antenna is on a short horizontal ground line at lower center. For EACH satellite show a large very pale translucent circular/spherical range surface CENTERED ON THAT SATELLITE, with a clear thin curved circumference arc passing through the SAME receiver location. Spheres may be represented as partial circular arcs and faint elliptical meridians for a flat educational schematic; visually each satellite is at the center of its own sphere, never on its circumference. Four curved range boundaries intersect at the one highlighted receiver point. Focus on curved range boundaries, no triangles, no straight satellite-to-receiver rays, no orbit paths. Keep spherical arcs contained by illustrating only useful lower portions, not clipped at canvas boundary.",
+    "prompt": "Edit this supplied illustration only. Preserve its conceptual content, object count, geometry, directions of arrows, and layout. Make the image a truly flat textbook vector-like raster illustration. Remove ALL paper texture, grain, mottling, lighting, gradients, highlights, and shading, including very subtle ones. Replace all blank background with one absolutely uniform solid color RGB (250,249,245), hex #FAF9F5, identical in every background pixel. Use solid navy #1F4E79 for principal strokes, solid teal #13877B and rust orange #BD512B for accents, solid gray #8A8A8A for secondary strokes, and ivory. Only retain flat pale tints for explicitly translucent distance spheres/layer sheets/viewing fans and the pixel or crop-map tonal steps. Night-sky rectangles must be one solid navy, no texture. Do not add new text or any lettering, numbers, symbols, labels, logo, signature, watermark or people. Existing arrows remain. Preserve aspect ratio 16:9. Reduce the whole composition slightly if necessary so all objects lie inside 5% blank ivory margins. This is color cleanup, NOT a redesign. Keep four satellites centered on their four distance spheres, preserve receiver intersection and all sphere boundaries.",
+    "attempts": 3,
+    "adoptedAttempt": 3,
+    "input": "_source/input_gnss_trilateration.png",
+    "source": "_source/gnss_trilateration.png",
+    "size": [
+      1600,
+      900
+    ],
+    "mode": "RGB",
+    "bytes": 1235892,
+    "corners": [
+      [
+        248,
+        247,
+        242
+      ],
+      [
+        250,
+        249,
+        244
+      ],
+      [
+        249,
+        247,
+        244
+      ],
+      [
+        248,
+        246,
+        242
+      ]
+    ],
+    "background_exact_at_corners": false,
+    "text_visual_check": "文字混入なし（目視）",
+    "clipping_visual_check": "主体の見切れなし（目視）",
+    "status": "要再生成：背景の完全単色条件が未達"
+  },
+  {
+    "name": "auto_steer",
+    "aim": "GNSSを使う農機の等間隔の直進作業を示す。",
+    "initialPrompt": "Use case: scientific-educational. Create one text-free conceptual illustration for a Japanese undergraduate agricultural remote sensing lecture. Wide landscape 16:9 composition, ideally 1600x900. Flat textbook vector-like drawing, clean bold uniform outlines, simple geometric silhouettes, no photorealism, no 3D rendering, no shadows, no texture, no background gradient. Solid ivory #FAF9F5 background. Restrained palette: navy #1F4E79 outlines and principal objects, teal #13877B and rust orange #BD512B accents, gray #8A8A8A secondary elements, plus ivory; pale flat tints only when required for translucent overlays. Keep every subject fully inside an approximately 7% safe margin on all sides. Absolutely no text, letters, numbers, mathematical symbols, labels, logos, watermarks, signatures, legends or decorative marks. Direction arrows explicitly requested below are allowed. Generic unbranded objects only. One clear central concept, generous negative space. Strict ORTHOGRAPHIC TOP-DOWN flat plan, no perspective. Keep entire illustration in central 80% of canvas. A rectangular field bounded on all four sides, with exactly seven equally spaced perfectly parallel vertical straight navy tracks. Small simple teal crop markings between tracks, no trees, hills, grass borders, soil textures or other decoration. A simple small navy unmanned tractor seen directly from above is centered ON the eighth straight track, with small gray receiver antenna on roof. A single gray reference station antenna outside the right field edge. One small navy satellite icon in blank area above the field. Two thin orange dotted links from satellite to tractor and reference antenna. Solid flat exact ivory #FAF9F5 background, no gradient, no shadows, solid navy/teal/gray/orange only.",
+    "prompt": "Edit this supplied illustration only. Preserve its conceptual content, object count, geometry, directions of arrows, and layout. Make the image a truly flat textbook vector-like raster illustration. Remove ALL paper texture, grain, mottling, lighting, gradients, highlights, and shading, including very subtle ones. Replace all blank background with one absolutely uniform solid color RGB (250,249,245), hex #FAF9F5, identical in every background pixel. Use solid navy #1F4E79 for principal strokes, solid teal #13877B and rust orange #BD512B for accents, solid gray #8A8A8A for secondary strokes, and ivory. Only retain flat pale tints for explicitly translucent distance spheres/layer sheets/viewing fans and the pixel or crop-map tonal steps. Night-sky rectangles must be one solid navy, no texture. Do not add new text or any lettering, numbers, symbols, labels, logo, signature, watermark or people. Existing arrows remain. Preserve aspect ratio 16:9. Reduce the whole composition slightly if necessary so all objects lie inside 5% blank ivory margins. This is color cleanup, NOT a redesign.",
+    "attempts": 3,
+    "adoptedAttempt": 3,
+    "input": "_source/input_auto_steer.png",
+    "source": "_source/auto_steer.png",
+    "size": [
+      1600,
+      900
+    ],
+    "mode": "RGB",
+    "bytes": 1207487,
+    "corners": [
+      [
+        249,
+        248,
+        243
+      ],
+      [
+        250,
+        249,
+        243
+      ],
+      [
+        248,
+        247,
+        242
+      ],
+      [
+        248,
+        247,
+        241
+      ]
+    ],
+    "background_exact_at_corners": false,
+    "text_visual_check": "文字混入なし（目視）",
+    "clipping_visual_check": "主体の見切れなし（目視）",
+    "status": "要再生成：背景の完全単色条件が未達"
+  },
+  {
+    "name": "gis_layers",
+    "aim": "位置を揃えた主題図を層として重ねるGISの考え方を示す。",
+    "initialPrompt": "Use case: scientific-educational. Create one text-free conceptual illustration for a Japanese undergraduate agricultural remote sensing lecture. Wide landscape 16:9 composition, ideally 1600x900. Flat textbook vector-like drawing, clean bold uniform outlines, simple geometric silhouettes, no photorealism, no 3D rendering, no shadows, no texture, no background gradient. Solid ivory #FAF9F5 background. Restrained palette: navy #1F4E79 outlines and principal objects, teal #13877B and rust orange #BD512B accents, gray #8A8A8A secondary elements, plus ivory; pale flat tints only when required for translucent overlays. Keep every subject fully inside an approximately 7% safe margin on all sides. Absolutely no text, letters, numbers, mathematical symbols, labels, logos, watermarks, signatures, legends or decorative marks. Direction arrows explicitly requested below are allowed. Generic unbranded objects only. One clear central concept, generous negative space. Exploded oblique stack of FIVE transparent flat rectangular map sheets plus a very simple base map below. Equal shape and size, vertically aligned corners, wide visible gaps. From top to bottom each sheet contains exactly ONE geographic theme: curved terrain contour lines; a river with thin branching irrigation channels; closed agricultural parcel polygons; scattered round point observations; a few road lines. Bottom base is a simple pale map footprint. Fine gray vertical guide lines align corresponding corners. Flat axonometric diagram with no volumetric depth or shadows; each theme remains readable, no labels, no real geography. STRICT: reduce entire stack so its bounding box occupies only middle 75% of canvas height. Keep generous blank ivory space above and below. Simplify every theme to 3-7 strokes or polygons, avoid dense cartographic detail. Use ONLY navy outlines, gray contour/road lines, teal river/points, rust orange parcel outlines, ivory or pale teal sheet fills. No green terrain, no blue rivers, no brown, no gradients, no shadows. Bottom base sheet is plain ivory with a simple navy boundary, not a landscape.",
+    "prompt": "Edit this supplied illustration only. Preserve its conceptual content, object count, geometry, directions of arrows, and layout. Make the image a truly flat textbook vector-like raster illustration. Remove ALL paper texture, grain, mottling, lighting, gradients, highlights, and shading, including very subtle ones. Replace all blank background with one absolutely uniform solid color RGB (250,249,245), hex #FAF9F5, identical in every background pixel. Use solid navy #1F4E79 for principal strokes, solid teal #13877B and rust orange #BD512B for accents, solid gray #8A8A8A for secondary strokes, and ivory. Only retain flat pale tints for explicitly translucent distance spheres/layer sheets/viewing fans and the pixel or crop-map tonal steps. Night-sky rectangles must be one solid navy, no texture. Do not add new text or any lettering, numbers, symbols, labels, logo, signature, watermark or people. Existing arrows remain. Preserve aspect ratio 16:9. Reduce the whole composition slightly if necessary so all objects lie inside 5% blank ivory margins. This is color cleanup, NOT a redesign.",
+    "attempts": 3,
+    "adoptedAttempt": 3,
+    "input": "_source/input_gis_layers.png",
+    "source": "_source/gis_layers.png",
+    "size": [
+      1600,
+      900
+    ],
+    "mode": "RGB",
+    "bytes": 1191677,
+    "corners": [
+      [
+        249,
+        248,
+        243
+      ],
+      [
+        250,
+        250,
+        244
+      ],
+      [
+        249,
+        248,
+        243
+      ],
+      [
+        249,
+        248,
+        241
+      ]
+    ],
+    "background_exact_at_corners": false,
+    "text_visual_check": "文字混入なし（目視）",
+    "clipping_visual_check": "主体の見切れなし（目視）",
+    "status": "要再生成：背景の完全単色条件が未達"
+  },
+  {
+    "name": "rs_principle",
+    "aim": "太陽→畑→衛星センサという受動観測の経路を示す。",
+    "initialPrompt": "Use case: scientific-educational. Create one text-free conceptual illustration for a Japanese undergraduate agricultural remote sensing lecture. Wide landscape 16:9 composition, ideally 1600x900. Flat textbook vector-like drawing, clean bold uniform outlines, simple geometric silhouettes, no photorealism, no 3D rendering, no shadows, no texture, no background gradient. Solid ivory #FAF9F5 background. Restrained palette: navy #1F4E79 outlines and principal objects, teal #13877B and rust orange #BD512B accents, gray #8A8A8A secondary elements, plus ivory; pale flat tints only when required for translucent overlays. Keep every subject fully inside an approximately 7% safe margin on all sides. Absolutely no text, letters, numbers, mathematical symbols, labels, logos, watermarks, signatures, legends or decorative marks. Direction arrows explicitly requested below are allowed. Generic unbranded objects only. One clear central concept, generous negative space. Simple passive remote sensing path: sun at upper left, a small patch of crop rows at bottom center, generic satellite at upper right with a clearly visible small concave receiving sensor attached underneath. One orange arrow runs sun down to the crop patch, one teal arrow runs from that same patch up into the receiving sensor. A single wide thin pale gray horizontal atmosphere band crosses the middle between the field and satellite; both light paths pass through it. Arrow directions must be sun-to-field and field-to-satellite only. Do not emit a beam from the satellite. Lots of ivory empty space.",
+    "prompt": "Edit this supplied illustration only. Preserve its conceptual content, object count, geometry, directions of arrows, and layout. Make the image a truly flat textbook vector-like raster illustration. Remove ALL paper texture, grain, mottling, lighting, gradients, highlights, and shading, including very subtle ones. Replace all blank background with one absolutely uniform solid color RGB (250,249,245), hex #FAF9F5, identical in every background pixel. Use solid navy #1F4E79 for principal strokes, solid teal #13877B and rust orange #BD512B for accents, solid gray #8A8A8A for secondary strokes, and ivory. Only retain flat pale tints for explicitly translucent distance spheres/layer sheets/viewing fans and the pixel or crop-map tonal steps. Night-sky rectangles must be one solid navy, no texture. Do not add new text or any lettering, numbers, symbols, labels, logo, signature, watermark or people. Existing arrows remain. Preserve aspect ratio 16:9. Reduce the whole composition slightly if necessary so all objects lie inside 5% blank ivory margins. This is color cleanup, NOT a redesign. ABSOLUTE PRIORITY: solid flat #FAF9F5 blank canvas with no tonal variations whatsoever. Clean digital vector export appearance, no painted or scanned surface.",
+    "attempts": 3,
+    "adoptedAttempt": 3,
+    "input": "_source/input_rs_principle.png",
+    "source": "_source/rs_principle.png",
+    "size": [
+      1600,
+      900
+    ],
+    "mode": "RGB",
+    "bytes": 1130348,
+    "corners": [
+      [
+        248,
+        247,
+        242
+      ],
+      [
+        248,
+        248,
+        242
+      ],
+      [
+        248,
+        246,
+        242
+      ],
+      [
+        248,
+        247,
+        241
+      ]
+    ],
+    "background_exact_at_corners": false,
+    "text_visual_check": "文字混入なし（目視）",
+    "clipping_visual_check": "主体の見切れなし（目視）",
+    "status": "要再生成：背景の完全単色条件が未達"
+  },
+  {
+    "name": "eye_pixels",
+    "aim": "葉から届く光を目と衛星が受け、画素の測定値として表す流れを示す。",
+    "initialPrompt": "Use case: scientific-educational. Create one text-free conceptual illustration for a Japanese undergraduate agricultural remote sensing lecture. Wide landscape 16:9 composition, ideally 1600x900. Flat textbook vector-like drawing, clean bold uniform outlines, simple geometric silhouettes, no photorealism, no 3D rendering, no shadows, no texture, no background gradient. Solid ivory #FAF9F5 background. Restrained palette: navy #1F4E79 outlines and principal objects, teal #13877B and rust orange #BD512B accents, gray #8A8A8A secondary elements, plus ivory; pale flat tints only when required for translucent overlays. Keep every subject fully inside an approximately 7% safe margin on all sides. Absolutely no text, letters, numbers, mathematical symbols, labels, logos, watermarks, signatures, legends or decorative marks. Direction arrows explicitly requested below are allowed. Generic unbranded objects only. One clear central concept, generous negative space. Two aligned observation paths with a shared source. Four columns left to right: small sun, ONE teal leaf, eye icon, square pixel mosaic. Top row: sun at x15%, leaf x36%, simple isolated eye at x60%, 4x4 grid of square pixels at x83%. Connect sun -> leaf -> eye -> mosaic with thin right-pointing arrows. Directly below the eye at x60% is a small generic satellite with receiving sensor; directly below the upper mosaic at x83% is an identical 4x4 pixel mosaic. A second arrow branches from the SAME leaf diagonally down and right to the satellite sensor, then a horizontal right arrow from sensor to the lower mosaic. All arrowheads point left-to-right. Pixel squares use only varied flat navy/teal/ivory tonal values. No second leaf, no numbers in squares, no human face, no extra cameras. Clearly show both measurement routes without crossed lines.",
+    "prompt": "Edit this supplied illustration only. Preserve its conceptual content, object count, geometry, directions of arrows, and layout. Make the image a truly flat textbook vector-like raster illustration. Remove ALL paper texture, grain, mottling, lighting, gradients, highlights, and shading, including very subtle ones. Replace all blank background with one absolutely uniform solid color RGB (250,249,245), hex #FAF9F5, identical in every background pixel. Use solid navy #1F4E79 for principal strokes, solid teal #13877B and rust orange #BD512B for accents, solid gray #8A8A8A for secondary strokes, and ivory. Only retain flat pale tints for explicitly translucent distance spheres/layer sheets/viewing fans and the pixel or crop-map tonal steps. Night-sky rectangles must be one solid navy, no texture. Do not add new text or any lettering, numbers, symbols, labels, logo, signature, watermark or people. Existing arrows remain. Preserve aspect ratio 16:9. Reduce the whole composition slightly if necessary so all objects lie inside 5% blank ivory margins. This is color cleanup, NOT a redesign. ABSOLUTE PRIORITY: solid flat #FAF9F5 blank canvas with no tonal variations whatsoever. Clean digital vector export appearance, no painted or scanned surface.",
+    "attempts": 3,
+    "adoptedAttempt": 3,
+    "input": "_source/input_eye_pixels.png",
+    "source": "_source/eye_pixels.png",
+    "size": [
+      1600,
+      900
+    ],
+    "mode": "RGB",
+    "bytes": 1011437,
+    "corners": [
+      [
+        248,
+        247,
+        242
+      ],
+      [
+        248,
+        247,
+        242
+      ],
+      [
+        248,
+        246,
+        242
+      ],
+      [
+        247,
+        245,
+        240
+      ]
+    ],
+    "background_exact_at_corners": false,
+    "text_visual_check": "文字混入なし（目視）",
+    "clipping_visual_check": "主体の見切れなし（目視）",
+    "status": "要再生成：背景の完全単色条件が未達"
+  },
+  {
+    "name": "reflect_vs_emit",
+    "aim": "昼の反射光と、夜でも常温の地表が出す熱放射を対比する。",
+    "initialPrompt": "Use case: scientific-educational. Create one text-free conceptual illustration for a Japanese undergraduate agricultural remote sensing lecture. Wide landscape 16:9 composition, ideally 1600x900. Flat textbook vector-like drawing, clean bold uniform outlines, simple geometric silhouettes, no photorealism, no 3D rendering, no shadows, no texture, no background gradient. Solid ivory #FAF9F5 background. Restrained palette: navy #1F4E79 outlines and principal objects, teal #13877B and rust orange #BD512B accents, gray #8A8A8A secondary elements, plus ivory; pale flat tints only when required for translucent overlays. Keep every subject fully inside an approximately 7% safe margin on all sides. Absolutely no text, letters, numbers, mathematical symbols, labels, logos, watermarks, signatures, legends or decorative marks. Direction arrows explicitly requested below are allowed. Generic unbranded objects only. One clear central concept, generous negative space. Two equal side-by-side panels separated by a generous ivory gutter. LEFT daylight on ivory: small sun in upper left, one ordinary teal leaf on a short ground strip below, a small satellite receiving sensor at upper right. Exactly two orange straight arrows form sun -> leaf -> receiving sensor. RIGHT nighttime: a flat navy rectangular sky inset fully within safe margins, one ordinary teal leaf on an ivory ground strip below and a small ivory/gray receiving sensor above. NO sun, NO moon, NO stars, NO fire or hot glow. Two teal wavy upward arrows originate at the ordinary leaf and soil and terminate at the receiving sensor: self-emitted thermal radiation. No incoming arrows on right. This is a conceptual contrast, not visible nighttime glow. Outer background ivory, minimal geometry.",
+    "prompt": "Edit this supplied illustration only. Preserve its conceptual content, object count, geometry, directions of arrows, and layout. Make the image a truly flat textbook vector-like raster illustration. Remove ALL paper texture, grain, mottling, lighting, gradients, highlights, and shading, including very subtle ones. Replace all blank background with one absolutely uniform solid color RGB (250,249,245), hex #FAF9F5, identical in every background pixel. Use solid navy #1F4E79 for principal strokes, solid teal #13877B and rust orange #BD512B for accents, solid gray #8A8A8A for secondary strokes, and ivory. Only retain flat pale tints for explicitly translucent distance spheres/layer sheets/viewing fans and the pixel or crop-map tonal steps. Night-sky rectangles must be one solid navy, no texture. Do not add new text or any lettering, numbers, symbols, labels, logo, signature, watermark or people. Existing arrows remain. Preserve aspect ratio 16:9. Reduce the whole composition slightly if necessary so all objects lie inside 5% blank ivory margins. This is color cleanup, NOT a redesign. ABSOLUTE PRIORITY: solid flat #FAF9F5 blank canvas, no grain or tonal variations. Keep branch counts and all arrow directions exactly as in the source. Gray absorption arrow ends inside the leaf if present.",
+    "attempts": 3,
+    "adoptedAttempt": 3,
+    "input": "_source/input_reflect_vs_emit.png",
+    "source": "_source/reflect_vs_emit.png",
+    "size": [
+      1600,
+      900
+    ],
+    "mode": "RGB",
+    "bytes": 1113052,
+    "corners": [
+      [
+        249,
+        248,
+        243
+      ],
+      [
+        250,
+        249,
+        243
+      ],
+      [
+        249,
+        247,
+        242
+      ],
+      [
+        249,
+        247,
+        242
+      ]
+    ],
+    "background_exact_at_corners": false,
+    "text_visual_check": "文字混入なし（目視）",
+    "clipping_visual_check": "主体の見切れなし（目視）",
+    "status": "要再生成：背景の完全単色条件が未達"
+  },
+  {
+    "name": "reflect_absorb_transmit",
+    "aim": "同じ入射光が反射・吸収・透過に分かれることを示す。",
+    "initialPrompt": "Use case: scientific-educational. Create one text-free conceptual illustration for a Japanese undergraduate agricultural remote sensing lecture. Wide landscape 16:9 composition, ideally 1600x900. Flat textbook vector-like drawing, clean bold uniform outlines, simple geometric silhouettes, no photorealism, no 3D rendering, no shadows, no texture, no background gradient. Solid ivory #FAF9F5 background. Restrained palette: navy #1F4E79 outlines and principal objects, teal #13877B and rust orange #BD512B accents, gray #8A8A8A secondary elements, plus ivory; pale flat tints only when required for translucent overlays. Keep every subject fully inside an approximately 7% safe margin on all sides. Absolutely no text, letters, numbers, mathematical symbols, labels, logos, watermarks, signatures, legends or decorative marks. Direction arrows explicitly requested below are allowed. Generic unbranded objects only. One clear central concept, generous negative space. One horizontal leaf cross-section as a thick pale teal band with navy outline across the middle, simple tapered leaf ends, no cells or veins needed. Exactly one navy incident arrow diagonally downward from upper left ends at one point on the top surface. From that SAME point exactly THREE equal-stroke-width branches: ONE rust-orange reflected arrow goes diagonally upward right away from surface; ONE gray absorbed path travels down-right a short distance and terminates/fades wholly INSIDE the thick leaf band, visibly not crossing the bottom surface; ONE teal transmitted arrow continues down through the band and emerges below it ending with an arrowhead well below. Separate branches clearly. All branch line widths identical, not a quantitative Sankey diagram. No additional arrows, no light emitted by leaf, no labels, no percentages.",
+    "prompt": "Edit this supplied illustration only. Preserve its conceptual content, object count, geometry, directions of arrows, and layout. Make the image a truly flat textbook vector-like raster illustration. Remove ALL paper texture, grain, mottling, lighting, gradients, highlights, and shading, including very subtle ones. Replace all blank background with one absolutely uniform solid color RGB (250,249,245), hex #FAF9F5, identical in every background pixel. Use solid navy #1F4E79 for principal strokes, solid teal #13877B and rust orange #BD512B for accents, solid gray #8A8A8A for secondary strokes, and ivory. Only retain flat pale tints for explicitly translucent distance spheres/layer sheets/viewing fans and the pixel or crop-map tonal steps. Night-sky rectangles must be one solid navy, no texture. Do not add new text or any lettering, numbers, symbols, labels, logo, signature, watermark or people. Existing arrows remain. Preserve aspect ratio 16:9. Reduce the whole composition slightly if necessary so all objects lie inside 5% blank ivory margins. This is color cleanup, NOT a redesign. ABSOLUTE PRIORITY: solid flat #FAF9F5 blank canvas, no grain or tonal variations. Keep branch counts and all arrow directions exactly as in the source. Gray absorption arrow ends inside the leaf if present.",
+    "attempts": 3,
+    "adoptedAttempt": 3,
+    "input": "_source/input_reflect_absorb_transmit.png",
+    "source": "_source/reflect_absorb_transmit.png",
+    "size": [
+      1600,
+      900
+    ],
+    "mode": "RGB",
+    "bytes": 896676,
+    "corners": [
+      [
+        248,
+        247,
+        242
+      ],
+      [
+        249,
+        249,
+        243
+      ],
+      [
+        249,
+        248,
+        244
+      ],
+      [
+        248,
+        246,
+        241
+      ]
+    ],
+    "background_exact_at_corners": false,
+    "text_visual_check": "文字混入なし（目視）",
+    "clipping_visual_check": "主体の見切れなし（目視）",
+    "status": "要再生成：背景の完全単色条件が未達"
+  },
+  {
+    "name": "sar_cloud_night",
+    "aim": "雲で遮られる光学の経路と、雲を通って往復するSAR電波を対比する。",
+    "initialPrompt": "Use case: scientific-educational. Create one text-free conceptual illustration for a Japanese undergraduate agricultural remote sensing lecture. Wide landscape 16:9 composition, ideally 1600x900. Flat textbook vector-like drawing, clean bold uniform outlines, simple geometric silhouettes, no photorealism, no 3D rendering, no shadows, no texture, no background gradient. Solid ivory #FAF9F5 background. Restrained palette: navy #1F4E79 outlines and principal objects, teal #13877B and rust orange #BD512B accents, gray #8A8A8A secondary elements, plus ivory; pale flat tints only when required for translucent overlays. Keep every subject fully inside an approximately 7% safe margin on all sides. Absolutely no text, letters, numbers, mathematical symbols, labels, logos, watermarks, signatures, legends or decorative marks. Direction arrows explicitly requested below are allowed. Generic unbranded objects only. One clear central concept, generous negative space. STRICT sparse 2-panel flat vector schematic with all objects inside 10% blank ivory safe margin, no frame outlines. Left panel: one small navy optical satellite at top, one simple gray cloud centered below it, one short teal ground line below cloud. A single orange line WITHOUT arrowheads connects satellite to cloud top and STOPS there, not to ground. Right panel: a single solid navy night rectangle (no gradient), small ivory radar satellite at its upper center, simple gray cloud centered midway, short teal ground line below cloud. Exactly TWO WAVY LINES: orange outward line starts at satellite, goes diagonally down-left THROUGH cloud to a ground point, with ONE arrowhead ONLY at ground pointing DOWN; teal return line starts at SAME ground point and goes diagonally up-right THROUGH cloud to satellite, with ONE arrowhead ONLY at satellite pointing UP. These form a narrow V round trip with separated paths. No arrowhead at outgoing line's satellite end and none at returning line's ground end. No trees, fields, hills, stars, sun, moon, gradients, shading or text. Use only #FAF9F5 #1F4E79 #13877B #BD512B #8A8A8A solid colors.",
+    "prompt": "Edit this supplied illustration only. Preserve its conceptual content, object count, geometry, directions of arrows, and layout. Make the image a truly flat textbook vector-like raster illustration. Remove ALL paper texture, grain, mottling, lighting, gradients, highlights, and shading, including very subtle ones. Replace all blank background with one absolutely uniform solid color RGB (250,249,245), hex #FAF9F5, identical in every background pixel. Use solid navy #1F4E79 for principal strokes, solid teal #13877B and rust orange #BD512B for accents, solid gray #8A8A8A for secondary strokes, and ivory. Only retain flat pale tints for explicitly translucent distance spheres/layer sheets/viewing fans and the pixel or crop-map tonal steps. Night-sky rectangles must be one solid navy, no texture. Do not add new text or any lettering, numbers, symbols, labels, logo, signature, watermark or people. Existing arrows remain. Preserve aspect ratio 16:9. Reduce the whole composition slightly if necessary so all objects lie inside 5% blank ivory margins. This is color cleanup, NOT a redesign.",
+    "attempts": 3,
+    "adoptedAttempt": 3,
+    "input": "_source/input_sar_cloud_night.png",
+    "source": "_source/sar_cloud_night.png",
+    "size": [
+      1600,
+      900
+    ],
+    "mode": "RGB",
+    "bytes": 995882,
+    "corners": [
+      [
+        249,
+        248,
+        243
+      ],
+      [
+        251,
+        250,
+        245
+      ],
+      [
+        249,
+        247,
+        243
+      ],
+      [
+        249,
+        248,
+        243
+      ]
+    ],
+    "background_exact_at_corners": false,
+    "text_visual_check": "文字混入なし（目視）",
+    "clipping_visual_check": "主体の見切れなし（目視）",
+    "status": "要再生成：背景の完全単色条件が未達"
+  },
+  {
+    "name": "platforms_ladder",
+    "aim": "観測機器の高さと一度に見渡す範囲が段階的に小さくなる関係を示す。",
+    "initialPrompt": "Use case: scientific-educational. Create one text-free conceptual illustration for a Japanese undergraduate agricultural remote sensing lecture. Wide landscape 16:9 composition, ideally 1600x900. Flat textbook vector-like drawing, clean bold uniform outlines, simple geometric silhouettes, no photorealism, no 3D rendering, no shadows, no texture, no background gradient. Solid ivory #FAF9F5 background. Restrained palette: navy #1F4E79 outlines and principal objects, teal #13877B and rust orange #BD512B accents, gray #8A8A8A secondary elements, plus ivory; pale flat tints only when required for translucent overlays. Keep every subject fully inside an approximately 7% safe margin on all sides. Absolutely no text, letters, numbers, mathematical symbols, labels, logos, watermarks, signatures, legends or decorative marks. Direction arrows explicitly requested below are allowed. Generic unbranded objects only. One clear central concept, generous negative space. Extremely simple flat schematic. Whole composition bounded inside a 10% ivory blank margin. Four SMALL navy silhouettes left to right at successively lower heights: satellite at top, fixed-wing AIRPLANE (not helicopter, no rotor above it), quadcopter drone, unoccupied tractor near ground. One short thin gray ground baseline well inside margins, no landscape, fields, plants, trees or mountains. Four separate pale teal triangular viewing fans from the platforms to baseline. Widths strictly decreasing: wide under satellite, medium airplane, small drone, tiny tractor. Fans do not overlap. Add a teal short flat footprint band at each triangle base. Airplane must clearly have a straight wing and fixed tail, and no helicopter rotor. Solid exact #FAF9F5 background, navy icons, teal outlines, pale flat teal fill; NO shading, gradients, reflections or decoration.",
+    "prompt": "Edit this supplied illustration only. Preserve its conceptual content, object count, geometry, directions of arrows, and layout. Make the image a truly flat textbook vector-like raster illustration. Remove ALL paper texture, grain, mottling, lighting, gradients, highlights, and shading, including very subtle ones. Replace all blank background with one absolutely uniform solid color RGB (250,249,245), hex #FAF9F5, identical in every background pixel. Use solid navy #1F4E79 for principal strokes, solid teal #13877B and rust orange #BD512B for accents, solid gray #8A8A8A for secondary strokes, and ivory. Only retain flat pale tints for explicitly translucent distance spheres/layer sheets/viewing fans and the pixel or crop-map tonal steps. Night-sky rectangles must be one solid navy, no texture. Do not add new text or any lettering, numbers, symbols, labels, logo, signature, watermark or people. Existing arrows remain. Preserve aspect ratio 16:9. Reduce the whole composition slightly if necessary so all objects lie inside 5% blank ivory margins. This is color cleanup, NOT a redesign.",
+    "attempts": 3,
+    "adoptedAttempt": 3,
+    "input": "_source/input_platforms_ladder.png",
+    "source": "_source/platforms_ladder.png",
+    "size": [
+      1600,
+      900
+    ],
+    "mode": "RGB",
+    "bytes": 977485,
+    "corners": [
+      [
+        249,
+        247,
+        243
+      ],
+      [
+        250,
+        249,
+        243
+      ],
+      [
+        249,
+        247,
+        242
+      ],
+      [
+        249,
+        246,
+        241
+      ]
+    ],
+    "background_exact_at_corners": false,
+    "text_visual_check": "文字混入なし（目視）",
+    "clipping_visual_check": "主体の見切れなし（目視）",
+    "status": "要再生成：背景の完全単色条件が未達"
+  },
+  {
+    "name": "field_to_decision",
+    "aim": "生育の濃淡地図が施肥判断の地図を経て散布作業につながる流れを示す。",
+    "initialPrompt": "Use case: scientific-educational. Create one text-free conceptual illustration for a Japanese undergraduate agricultural remote sensing lecture. Wide landscape 16:9 composition, ideally 1600x900. Flat textbook vector-like drawing, clean bold uniform outlines, simple geometric silhouettes, no photorealism, no 3D rendering, no shadows, no texture, no background gradient. Solid ivory #FAF9F5 background. Restrained palette: navy #1F4E79 outlines and principal objects, teal #13877B and rust orange #BD512B accents, gray #8A8A8A secondary elements, plus ivory; pale flat tints only when required for translucent overlays. Keep every subject fully inside an approximately 7% safe margin on all sides. Absolutely no text, letters, numbers, mathematical symbols, labels, logos, watermarks, signatures, legends or decorative marks. Direction arrows explicitly requested below are allowed. Generic unbranded objects only. One clear central concept, generous negative space. Three large horizontally aligned stages joined by two simple navy right-pointing arrows. LEFT: a rectangular farm parcel map with six irregular but simple adjacent closed polygons, filled with exactly three shades of muted teal-green. MIDDLE: EXACT SAME outline and six parcel boundaries, filled with exactly two colors teal and rust orange to indicate two treatment decisions, preserving corresponding parcel geometry. RIGHT: a generic unoccupied navy tractor towing a fertilizer broadcast spreader working on a small crop field, a modest fan of tiny rust-orange granules behind the spreader. Stages clearly separated, no frames needed, no legend, no letters or numbers, no extra analytical charts. Keep simple flat linework.",
+    "prompt": "Edit this supplied illustration only. Preserve its conceptual content, object count, geometry, directions of arrows, and layout. Make the image a truly flat textbook vector-like raster illustration. Remove ALL paper texture, grain, mottling, lighting, gradients, highlights, and shading, including very subtle ones. Replace all blank background with one absolutely uniform solid color RGB (250,249,245), hex #FAF9F5, identical in every background pixel. Use solid navy #1F4E79 for principal strokes, solid teal #13877B and rust orange #BD512B for accents, solid gray #8A8A8A for secondary strokes, and ivory. Only retain flat pale tints for explicitly translucent distance spheres/layer sheets/viewing fans and the pixel or crop-map tonal steps. Night-sky rectangles must be one solid navy, no texture. Do not add new text or any lettering, numbers, symbols, labels, logo, signature, watermark or people. Existing arrows remain. Preserve aspect ratio 16:9. Reduce the whole composition slightly if necessary so all objects lie inside 5% blank ivory margins. This is color cleanup, NOT a redesign. Use a perfectly uniform #FAF9F5 background. Keep identical parcel boundaries between the two maps if present; preserve five crop stages and one smooth curve if present.",
+    "attempts": 3,
+    "adoptedAttempt": 3,
+    "input": "_source/input_field_to_decision.png",
+    "source": "_source/field_to_decision.png",
+    "size": [
+      1600,
+      900
+    ],
+    "mode": "RGB",
+    "bytes": 1139147,
+    "corners": [
+      [
+        249,
+        247,
+        243
+      ],
+      [
+        249,
+        249,
+        243
+      ],
+      [
+        249,
+        247,
+        243
+      ],
+      [
+        249,
+        246,
+        242
+      ]
+    ],
+    "background_exact_at_corners": false,
+    "text_visual_check": "文字混入なし（目視）",
+    "clipping_visual_check": "主体の見切れなし（目視）",
+    "status": "要再生成：背景の完全単色条件が未達"
+  },
+  {
+    "name": "ndvi_timeseries",
+    "aim": "播種から生育・登熟・収穫へ進む、概念的な植生指数の山を示す。",
+    "initialPrompt": "Use case: scientific-educational. Create one text-free conceptual illustration for a Japanese undergraduate agricultural remote sensing lecture. Wide landscape 16:9 composition, ideally 1600x900. Flat textbook vector-like drawing, clean bold uniform outlines, simple geometric silhouettes, no photorealism, no 3D rendering, no shadows, no texture, no background gradient. Solid ivory #FAF9F5 background. Restrained palette: navy #1F4E79 outlines and principal objects, teal #13877B and rust orange #BD512B accents, gray #8A8A8A secondary elements, plus ivory; pale flat tints only when required for translucent overlays. Keep every subject fully inside an approximately 7% safe margin on all sides. Absolutely no text, letters, numbers, mathematical symbols, labels, logos, watermarks, signatures, legends or decorative marks. Direction arrows explicitly requested below are allowed. Generic unbranded objects only. One clear central concept, generous negative space. A single smooth navy seasonal curve spans left to right in the upper two-thirds. Starts low at left, rises smoothly, forms a broad gently flat high plateau at center, slopes downward and ends low at right. No axes, no ticks, no grid, no numbers, no arrow on curve, no fill under curve. Below the curve, exactly FIVE small crop-stage icons equally spaced horizontally on a common lower row, matching stages: tiny emerging sprout; young leafy crop; dense mature green cereal plant; ripe golden-orange cereal plant with bent grain ears; harvested short stubble. Teal for growing stages, use muted rust/golden orange for ripe grain within restrained palette, gray/navy stubble. No extra plant icons. This is a conceptual seasonal profile, not a real-data graph. All five icons separate, fully visible and comfortably inside margins.",
+    "prompt": "Edit this supplied illustration only. Preserve its conceptual content, object count, geometry, directions of arrows, and layout. Make the image a truly flat textbook vector-like raster illustration. Remove ALL paper texture, grain, mottling, lighting, gradients, highlights, and shading, including very subtle ones. Replace all blank background with one absolutely uniform solid color RGB (250,249,245), hex #FAF9F5, identical in every background pixel. Use solid navy #1F4E79 for principal strokes, solid teal #13877B and rust orange #BD512B for accents, solid gray #8A8A8A for secondary strokes, and ivory. Only retain flat pale tints for explicitly translucent distance spheres/layer sheets/viewing fans and the pixel or crop-map tonal steps. Night-sky rectangles must be one solid navy, no texture. Do not add new text or any lettering, numbers, symbols, labels, logo, signature, watermark or people. Existing arrows remain. Preserve aspect ratio 16:9. Reduce the whole composition slightly if necessary so all objects lie inside 5% blank ivory margins. This is color cleanup, NOT a redesign. CRITICAL: one smooth low-rise-flat-top-fall-low seasonal curve above exactly five small crop stages. The entire background is perfectly uniform solid ivory #FAF9F5, not textured paper. All objects comfortably within margins. Preserve original conceptual curve and five plants.",
+    "attempts": 3,
+    "adoptedAttempt": 3,
+    "input": "_source/input_ndvi_timeseries.png",
+    "source": "_source/ndvi_timeseries.png",
+    "size": [
+      1600,
+      900
+    ],
+    "mode": "RGB",
+    "bytes": 1066685,
+    "corners": [
+      [
+        249,
+        247,
+        243
+      ],
+      [
+        250,
+        249,
+        243
+      ],
+      [
+        249,
+        247,
+        242
+      ],
+      [
+        248,
+        246,
+        241
+      ]
+    ],
+    "background_exact_at_corners": false,
+    "text_visual_check": "文字混入なし（目視）",
+    "clipping_visual_check": "主体の見切れなし（目視）",
+    "status": "要再生成：背景の完全単色条件が未達"
+  }
+]

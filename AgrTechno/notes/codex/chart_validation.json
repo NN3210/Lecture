@@ -1,0 +1,177 @@
+{
+  "python": "3.11.3",
+  "matplotlib": "3.10.8",
+  "numpy": "2.4.4",
+  "physics_checks": "passed",
+  "figures": [
+    {
+      "file": "chart_01_em_spectrum.png",
+      "pixels": [
+        1600,
+        900
+      ],
+      "fonts": [
+        "Yu Gothic"
+      ],
+      "missing_glyphs": [],
+      "text_outside_canvas": [],
+      "bytes": 132786
+    },
+    {
+      "file": "chart_02_wavelength_frequency.png",
+      "pixels": [
+        1600,
+        900
+      ],
+      "fonts": [
+        "Yu Gothic"
+      ],
+      "missing_glyphs": [],
+      "text_outside_canvas": [],
+      "bytes": 135195
+    },
+    {
+      "file": "chart_03_planck_temperature.png",
+      "pixels": [
+        1600,
+        900
+      ],
+      "fonts": [
+        "Yu Gothic"
+      ],
+      "missing_glyphs": [],
+      "text_outside_canvas": [],
+      "bytes": 139824
+    },
+    {
+      "file": "chart_04_sun_earth_two_peaks.png",
+      "pixels": [
+        1600,
+        900
+      ],
+      "fonts": [
+        "Yu Gothic"
+      ],
+      "missing_glyphs": [],
+      "text_outside_canvas": [],
+      "bytes": 184518
+    },
+    {
+      "file": "chart_05_atmosphere_windows.png",
+      "pixels": [
+        1600,
+        900
+      ],
+      "fonts": [
+        "Yu Gothic"
+      ],
+      "missing_glyphs": [],
+      "text_outside_canvas": [],
+      "bytes": 174787
+    },
+    {
+      "file": "chart_06_solar_spectrum_toa_surface.png",
+      "pixels": [
+        1600,
+        900
+      ],
+      "fonts": [
+        "Yu Gothic"
+      ],
+      "missing_glyphs": [],
+      "text_outside_canvas": [],
+      "bytes": 169446
+    },
+    {
+      "file": "chart_07_reflectance_curves.png",
+      "pixels": [
+        1600,
+        900
+      ],
+      "fonts": [
+        "Yu Gothic"
+      ],
+      "missing_glyphs": [],
+      "text_outside_canvas": [],
+      "bytes": 140985
+    },
+    {
+      "file": "chart_08_reflectance_with_bands.png",
+      "pixels": [
+        1600,
+        900
+      ],
+      "fonts": [
+        "Yu Gothic"
+      ],
+      "missing_glyphs": [],
+      "text_outside_canvas": [],
+      "bytes": 156172
+    },
+    {
+      "file": "chart_09_ndvi_bars.png",
+      "pixels": [
+        1600,
+        900
+      ],
+      "fonts": [
+        "Yu Gothic"
+      ],
+      "missing_glyphs": [],
+      "text_outside_canvas": [],
+      "bytes": 175880
+    },
+    {
+      "file": "chart_10_ndvi_saturation.png",
+      "pixels": [
+        1600,
+        900
+      ],
+      "fonts": [
+        "Yu Gothic"
+      ],
+      "missing_glyphs": [],
+      "text_outside_canvas": [],
+      "bytes": 120855
+    },
+    {
+      "file": "chart_11_resolution_tradeoff.png",
+      "pixels": [
+        1600,
+        900
+      ],
+      "fonts": [
+        "Yu Gothic"
+      ],
+      "missing_glyphs": [],
+      "text_outside_canvas": [],
+      "bytes": 181803
+    },
+    {
+      "file": "chart_12_satellite_timeline.png",
+      "pixels": [
+        1600,
+        900
+      ],
+      "fonts": [
+        "Yu Gothic"
+      ],
+      "missing_glyphs": [],
+      "text_outside_canvas": [],
+      "bytes": 145764
+    },
+    {
+      "file": "chart_13_leaf_cross_section.png",
+      "pixels": [
+        1600,
+        900
+      ],
+      "fonts": [
+        "Yu Gothic"
+      ],
+      "missing_glyphs": [],
+      "text_outside_canvas": [],
+      "bytes": 184217
+    }
+  ]
+}

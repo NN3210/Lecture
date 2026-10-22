@@ -1,0 +1,6 @@
+# 昨年度の原本と大きな中間ファイルは入れない
+*.pptm
+materials/slides/*/png/
+materials/slides/*/figures/_raw/
+materials/slides/*/build/
+materials/slides/*/figures/illustrations/_source/

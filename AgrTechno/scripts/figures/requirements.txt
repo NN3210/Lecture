@@ -1,0 +1,5 @@
+matplotlib==3.10.8
+numpy==2.4.4
+Pillow==12.1.1
+packaging==25.0
+six==1.17.0
