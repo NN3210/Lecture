@@ -1,0 +1,122 @@
+{
+  "target": "materials/slides/第04回_角測量/explanation.html",
+  "checks": [
+    {
+      "name": "320pxでページ全体の横あふれなし",
+      "pass": true,
+      "observed": "{'client': 320, 'scroll': 320, 'offenders': ['TABLE', 'CAPTION', 'THEAD', 'TR', 'TH', 'TH', 'TH', 'TBODY', 'TR', 'TD']}"
+    },
+    {
+      "name": "正40.001667・反220の平均を小数6桁で40.000834",
+      "pass": true,
+      "observed": "反を40.000000°へ換算 → 平均40.000834°（約40°00′03″）"
+    },
+    {
+      "name": "平均の度分秒は40°00′03″",
+      "pass": true,
+      "observed": "反を40.000000°へ換算 → 平均40.000834°（約40°00′03″）"
+    },
+    {
+      "name": "正反平均が空欄を拒否",
+      "pass": true,
+      "observed": "二つの読定を0以上360未満で入力してください。"
+    },
+    {
+      "name": "正反平均が同値を拒否",
+      "pass": true,
+      "observed": "二つの読定を確認してください。反は正＋180°付近（この操作では±1°以内）です。"
+    },
+    {
+      "name": "正反平均が負数を拒否",
+      "pass": true,
+      "observed": "二つの読定を0以上360未満で入力してください。"
+    },
+    {
+      "name": "正反平均が360を拒否",
+      "pass": true,
+      "observed": "二つの読定を0以上360未満で入力してください。"
+    },
+    {
+      "name": "操作1をEnterで実行",
+      "pass": true,
+      "observed": "20＋360－350＝30°"
+    },
+    {
+      "name": "操作2をEnterで実行",
+      "pass": true,
+      "observed": "反を40.000000°へ換算 → 平均40.000834°（約40°00′03″）"
+    },
+    {
+      "name": "偏心スライダーの数値表示が7.0 mへ更新",
+      "pass": true,
+      "observed": "{'x': '355', 'ray': '355', 'value': '7.0 m', 'text': 'Eでの角 94.004173° → Oの角90°へ戻す補正 −4.004173°'}"
+    },
+    {
+      "name": "偏心スライダーでSVGが連動",
+      "pass": true,
+      "observed": "{'before': {'x': '175', 'value': '1.0 m'}, 'after': {'x': '355', 'ray': '355', 'value': '7.0 m', 'text': 'Eでの角 94.004173° → Oの角90°へ戻す補正 −4.004173°'}}"
+    },
+    {
+      "name": "偏心7 mの補正値を更新",
+      "pass": true,
+      "observed": "Eでの角 94.004173° → Oの角90°へ戻す補正 −4.004173°"
+    },
+    {
+      "name": "操作1 reset",
+      "pass": true,
+      "observed": ""
+    },
+    {
+      "name": "操作2 reset",
+      "pass": true,
+      "observed": "反を40.000000°へ換算 → 平均40.000834°（約40°00′03″）"
+    },
+    {
+      "name": "操作3 reset",
+      "pass": true,
+      "observed": "1.0 m"
+    },
+    {
+      "name": "解答detailsは3件・初期状態で閉",
+      "pass": true,
+      "observed": "3"
+    },
+    {
+      "name": "beforeprintで全解答を開く",
+      "pass": true,
+      "observed": "[True, True, True]"
+    },
+    {
+      "name": "印刷時summaryを非表示",
+      "pass": true,
+      "observed": "['none', 'none', 'none']"
+    },
+    {
+      "name": "afterprintで解答の開閉状態を復元",
+      "pass": true,
+      "observed": "[False, False, False]"
+    },
+    {
+      "name": "Tabキーで計算ボタンへ移動",
+      "pass": true,
+      "observed": "wrap-go"
+    },
+    {
+      "name": "キーボードフォーカスが視認可能",
+      "pass": true,
+      "observed": "solid"
+    },
+    {
+      "name": "JavaScript例外なし",
+      "pass": true,
+      "observed": "[]"
+    },
+    {
+      "name": "console errorなし",
+      "pass": true,
+      "observed": "[]"
+    }
+  ],
+  "console_errors": [],
+  "page_errors": []
+}

@@ -1,0 +1,536 @@
+[
+  {
+    "id": 21,
+    "section": "方向法",
+    "title": "正はA→B→Cの順に見る",
+    "kind": "diagram",
+    "diagram": "horizontal",
+    "diagramOptions": {
+      "angle": 73.42,
+      "thirdAngle": 142.3,
+      "path": "A-B-C"
+    },
+    "lead": "基準Aから、目標B・Cへ時計回りに進む",
+    "lines": [
+      "正L：A→B→C",
+      "反R：C→B→A"
+    ],
+    "notes": "まず上から見た配置で、どの順に望遠鏡を向けるか確かめます。正LはAからB、Cへ進み、反RはCからB、Aへ戻ります。点名と順番を野帳に先に書くと、目標の取り違えを防ぎやすくなります。",
+    "ref": "direction",
+    "sources": [
+      "https://www.gsi.go.jp/gijyutukanri/gijyutukanri41018"
+    ]
+  },
+  {
+    "id": 22,
+    "section": "方向法",
+    "title": "零方向Aが角の出発点",
+    "kind": "diagram",
+    "diagram": "horizontal",
+    "diagramOptions": {
+      "angle": 73.42,
+      "zeroLabel": "A＝0°"
+    },
+    "lead": "円周目盛の0°ではなく、Aを0°とみなす",
+    "lines": [
+      "零方向＝基準に選ぶ方向",
+      "各姿勢でAを別々に差し引く"
+    ],
+    "notes": "方向法では、基準に選んだAを零方向と呼びます。器械の円周目盛が実際に0°を示している必要はありません。正Lと反RのそれぞれでAの読定値を引きます。",
+    "ref": "direction",
+    "sources": [
+      "https://www.kinomise.com/sokuryo/shiho/jyuuyou/kijyun/kijyun08-houkou.pdf"
+    ]
+  },
+  {
+    "id": 23,
+    "section": "方向法",
+    "title": "往路と復路で1対回",
+    "kind": "diagram",
+    "diagram": "circle",
+    "diagramOptions": {
+      "outbound": "A-B-C",
+      "return": "C-B-A"
+    },
+    "lead": "正の一巡と反の一巡を一組として扱う",
+    "lines": [
+      "正Lで往路を観測",
+      "反Rで復路を観測",
+      "この一組＝1対回"
+    ],
+    "notes": "正Lだけ、または反Rだけでは1対回になりません。同じ目標群を別の器械姿勢で往復して、符号が反対になる誤差を見つけやすくします。2対回目は初期目盛を変えて同じ角を確かめます。",
+    "ref": "direction",
+    "sources": [
+      "https://www.gsi.go.jp/gijyutukanri/gijyutukanri41018"
+    ]
+  },
+  {
+    "id": 24,
+    "section": "方向法",
+    "title": "反Rは同じ周回にそろえる",
+    "kind": "calculation",
+    "lead": "±180°してから正Lと比べる",
+    "steps": [
+      "反R＝265°40′37″",
+      "R′＝265°40′37″−180°",
+      "R′＝85°40′37″"
+    ],
+    "result": "正L 85°40′35″と同じ枝になった",
+    "lines": [
+      "360°境界では連続する枝を選ぶ"
+    ],
+    "notes": "生の反読定は、正読定と約180°違います。そこで180°を加減し、同じ向きの値として並べられる周回へ移します。境界をまたぐときは、数値が連続するように360°も加減します。",
+    "ref": "direction",
+    "sources": [
+      "https://www.kinomise.com/sokuryo/shiho/jyuuyou/kijyun/kijyun08-houkou.pdf"
+    ]
+  },
+  {
+    "id": 25,
+    "section": "方向法",
+    "title": "正反平均で一つの方向を得る",
+    "kind": "calculation",
+    "lead": "正Lと換算後の反R′を平均する",
+    "steps": [
+      "L＝85°40′35″",
+      "R′＝85°40′37″",
+      "(L＋R′)÷2"
+    ],
+    "result": "Bの正反平均＝85°40′36″",
+    "lines": [
+      "平均前に半周をそろえる"
+    ],
+    "notes": "正Lと反Rをそのまま平均してはいけません。反Rを同じ周回へ換算したR′と正Lを平均します。この平均は反転で符号が変わる誤差を小さくしますが、すべての誤差を消すわけではありません。",
+    "ref": "direction",
+    "sources": [
+      "https://eprints.nottingham.ac.uk/14491/1/246414.pdf"
+    ]
+  },
+  {
+    "id": 26,
+    "section": "方向法",
+    "title": "帰零はAを0°に置き直す",
+    "kind": "calculation",
+    "lead": "同じ対回のA始を各方向から引く",
+    "steps": [
+      "B平均＝85°40′36″",
+      "A始平均＝12°15′23″",
+      "B平均−A始平均"
+    ],
+    "result": "Bの帰零値＝73°25′13″",
+    "lines": [
+      "帰零差はA閉−A始で別に点検"
+    ],
+    "notes": "帰零は、平均した方向値から同じ対回のA始平均を引く操作です。これで器械の初期目盛にかかわらず、AからBまでの角として読めます。最後にAへ戻ったずれは帰零差として別に点検します。",
+    "ref": "direction",
+    "sources": [
+      "https://www.kinomise.com/sokuryo/shiho/jyuuyou/kijyun/kijyun08-houkou.pdf"
+    ]
+  },
+  {
+    "id": 27,
+    "section": "方向法",
+    "title": "Bの原表：第1対回",
+    "kind": "table",
+    "lead": "正L・反Rは加工前の生読定",
+    "headers": [
+      "方向",
+      "正L",
+      "反R"
+    ],
+    "rows": [
+      [
+        "A始",
+        "12°15′20″",
+        "192°15′26″"
+      ],
+      [
+        "B",
+        "85°40′35″",
+        "265°40′37″"
+      ],
+      [
+        "A閉",
+        "12°15′25″",
+        "192°15′29″"
+      ]
+    ],
+    "widths": [
+      18,
+      41,
+      41
+    ],
+    "lines": [
+      "教材用の架空データ",
+      "帰零差：正＋5″、反＋3″"
+    ],
+    "notes": "これは第1対回の原表から、Bの計算に必要な行を抜き出した架空データです。正Lと反Rは円周目盛の生読定で、まだ結果p・qではありません。A閉とA始の差から帰零差は＋4″です。",
+    "ref": "direction",
+    "sources": [
+      "https://www.gsi.go.jp/gijyutukanri/gijyutukanri41018"
+    ]
+  },
+  {
+    "id": 28,
+    "section": "方向法",
+    "title": "Bの原表：第2対回",
+    "kind": "table",
+    "lead": "初期目盛を変えて同じ角をもう一度測る",
+    "headers": [
+      "方向",
+      "正L",
+      "反R"
+    ],
+    "rows": [
+      [
+        "A始",
+        "102°07′40″",
+        "282°07′36″"
+      ],
+      [
+        "B",
+        "175°32′49″",
+        "355°32′47″"
+      ],
+      [
+        "A閉",
+        "102°07′35″",
+        "282°07′39″"
+      ]
+    ],
+    "widths": [
+      18,
+      41,
+      41
+    ],
+    "lines": [
+      "教材用の架空データ",
+      "帰零差：正−5″、反＋3″"
+    ],
+    "notes": "第2対回では初期目盛を変えていますが、測っているAからBの角は同じです。初期値そのものではなく、零方向を引いた結果を比べます。A閉とA始の差による帰零差は−1″です。",
+    "ref": "direction",
+    "sources": [
+      "https://www.gsi.go.jp/gijyutukanri/gijyutukanri41018"
+    ]
+  },
+  {
+    "id": 29,
+    "section": "方向法",
+    "title": "結果p・qは零方向を引いた値",
+    "kind": "table",
+    "lead": "pは正の結果、qは反の結果",
+    "headers": [
+      "対回",
+      "p（正）",
+      "q（反）"
+    ],
+    "rows": [
+      [
+        "第1",
+        "73°25′15″",
+        "73°25′11″"
+      ],
+      [
+        "第2",
+        "73°25′09″",
+        "73°25′11″"
+      ]
+    ],
+    "widths": [
+      18,
+      41,
+      41
+    ],
+    "lines": [
+      "p＝Bの正L−Aの正L",
+      "q＝Bの反R−Aの反R"
+    ],
+    "notes": "ここからは生読定ではなく、各姿勢で零方向Aを引いた結果を使います。正の結果をp、反の結果をqと統一します。pとqが同じ角の枝にあることも確認してください。",
+    "ref": "direction",
+    "sources": [
+      "https://www.kinomise.com/sokuryo/shiho/ho-mtoa/r02ho/r02ho-5m.pdf"
+    ]
+  },
+  {
+    "id": 30,
+    "section": "方向法",
+    "title": "較差Cはp−q",
+    "kind": "calculation",
+    "lead": "同じ対回の正と反の結果を比べる",
+    "steps": [
+      "第1：15″−11″＝＋4″",
+      "第2：9″−11″＝−2″"
+    ],
+    "result": "C₁＝＋4″、C₂＝−2″",
+    "lines": [
+      "生読定のR′−Lではない"
+    ],
+    "notes": "較差Cは、零方向差引後の結果についてp−qで求めます。符号は観測順に関係なく正の結果から反の結果を引きます。生読定を半周換算した差とは別物です。",
+    "ref": "direction",
+    "sources": [
+      "https://www.kinomise.com/sokuryo/shiho/jyuuyou/kijyun/kijyun08-houkou.pdf"
+    ]
+  },
+  {
+    "id": 31,
+    "section": "方向法",
+    "title": "倍角Dはp＋q",
+    "kind": "calculation",
+    "lead": "同じ対回の正と反の結果を足す",
+    "steps": [
+      "第1：73°25′15″＋73°25′11″",
+      "第2：73°25′09″＋73°25′11″"
+    ],
+    "result": "D₁＝146°50′26″、D₂＝146°50′20″",
+    "lines": [
+      "度・分・秒の桁をそろえて加える"
+    ],
+    "notes": "倍角Dは同じ対回のpとqの和です。野帳では共通する度・分を省き、秒だけを書くこともあります。ここでは意味が見えるように度分秒をすべて示します。",
+    "ref": "direction",
+    "sources": [
+      "https://www.kinomise.com/sokuryo/shiho/jyuuyou/kijyun/kijyun08-houkou.pdf"
+    ]
+  },
+  {
+    "id": 32,
+    "section": "方向法",
+    "title": "Bの二つの点検値はどちらも6″",
+    "kind": "compare",
+    "lead": "Dの幅とCの幅は別々に求める",
+    "leftTitle": "倍角差",
+    "rightTitle": "観測差",
+    "left": [
+      "最大D−最小D",
+      "26″−20″＝6″"
+    ],
+    "right": [
+      "最大C−最小C",
+      "+4″−(−2″)＝6″"
+    ],
+    "lines": [
+      "同一目標Bを対回間で比較"
+    ],
+    "notes": "倍角差はDの対回間の幅、観測差はCの対回間の幅です。どちらもBについては6″ですが、計算に使う列は違います。帰零差や平均角の差を代わりに入れてはいけません。",
+    "ref": "direction",
+    "sources": [
+      "https://www.kinomise.com/sokuryo/shiho/ho-mtoa/r02ho/r02ho-5m.pdf",
+      "https://www.kinomise.com/sokuryo/shiho/jyuuyou/kijyun/kijyun08-houkou.pdf"
+    ]
+  },
+  {
+    "id": 33,
+    "section": "方向法",
+    "title": "超過を見つけたら、原因確認と再測",
+    "kind": "table",
+    "lead": "授業用の仮基準で三つを別々に判定",
+    "headers": [
+      "点検量",
+      "値",
+      "仮基準",
+      "判定"
+    ],
+    "rows": [
+      [
+        "倍角差",
+        "6″",
+        "8″以内",
+        "可"
+      ],
+      [
+        "観測差",
+        "6″",
+        "5″以内",
+        "超過"
+      ],
+      [
+        "帰零差",
+        "最大5″",
+        "6″以内",
+        "可"
+      ]
+    ],
+    "widths": [
+      28,
+      18,
+      30,
+      24
+    ],
+    "lines": [
+      "教材用の架空値",
+      "公共測量の規程値ではない"
+    ],
+    "notes": "この授業だけの仮基準では、Bの観測差6″が5″を超えています。一つでも超えたので、値を都合よく直さずB方向を再測します。この8″・5″・6″を公共測量の許容値として使ってはいけません。",
+    "ref": "direction",
+    "sources": [
+      "https://www.gsi.go.jp/gijyutukanri/gijyutukanri41018"
+    ]
+  },
+  {
+    "id": 34,
+    "section": "方向法",
+    "title": "方向法と倍角法は、観測の仕方が違う",
+    "kind": "compare",
+    "lead": "複数の方向を読む方法と、一つの角を積み重ねる方法",
+    "leftTitle": "方向法",
+    "rightTitle": "倍角法",
+    "left": [
+      "Aから複数方向を見る",
+      "対回ごとにp・qを求める",
+      "DとCの再現性を点検"
+    ],
+    "right": [
+      "A–Bの一角を反復する",
+      "目盛上へθを重ねる",
+      "読定差を反復数で割る"
+    ],
+    "lines": [
+      "倍角法の計算は宿題。読定差120°を3回の反復で得たら？"
+    ],
+    "notes": "観測差の超過なら、まず求心、整準、視準、点名、転記、360°処理を順に確認します。原因を直してから同じ条件で再測し、元の値も記録に残します。方向法の2対回は、角を2回重ねる倍角法とは別です。 宿題の答は120°÷3=40°です。角の累積読定では、一周をまたぐ回数も含めた連続値を使います。",
+    "ref": "direction",
+    "sources": [
+      "https://www.gsi.go.jp/gijyutukanri/gijyutukanri41018"
+    ]
+  },
+  {
+    "id": 35,
+    "section": "角の基準",
+    "title": "北には三つの基準がある",
+    "kind": "diagram",
+    "diagram": "north",
+    "diagramOptions": {
+      "show": [
+        "true",
+        "grid",
+        "magnetic"
+      ]
+    },
+    "lead": "真北・座標北・磁北は一致するとは限らない",
+    "lines": [
+      "真北：地理的な北",
+      "座標北：X軸の正方向",
+      "磁北：磁針が示す北"
+    ],
+    "notes": "地図や測量でいう北は一種類ではありません。真北、座標北、磁北は少しずれることがあります。角度を書くときは、どの北を基準にしたかも一緒に記録します。",
+    "ref": "vertical",
+    "sources": [
+      "https://www.gsi.go.jp/gijyutukanri/gijyutukanri41018"
+    ]
+  },
+  {
+    "id": 36,
+    "section": "角の基準",
+    "title": "水平角と方向角は基準が違う",
+    "kind": "compare",
+    "lead": "どこから時計回りに測るかを言葉にする",
+    "leftTitle": "水平角",
+    "rightTitle": "方向角",
+    "left": [
+      "指定した視準線から",
+      "例：OAからOBへ",
+      "時計回りの開き"
+    ],
+    "right": [
+      "座標北から",
+      "この授業はX正方向",
+      "時計回りの向き"
+    ],
+    "lines": [
+      "同じ線でも基準で数値が変わる"
+    ],
+    "notes": "水平角は、OAのような指定した線から別の線までの開きです。方向角は、座標北からその線までを時計回りに測ります。数値だけでなく、基準線と回転方向を必ず添えましょう。",
+    "ref": "vertical",
+    "sources": [
+      "https://www.gsi.go.jp/gijyutukanri/gijyutukanri41018"
+    ]
+  },
+  {
+    "id": 37,
+    "section": "鉛直角",
+    "title": "天頂角90°が水平",
+    "kind": "diagram",
+    "diagram": "vertical",
+    "diagramOptions": {
+      "zenith": 78.208333,
+      "elevation": 11.791667
+    },
+    "lead": "天頂角Zは真上から、高低角αは水平から測る",
+    "lines": [
+      "Z＝0°：真上",
+      "Z＝90°：水平",
+      "α＝90°−Z"
+    ],
+    "notes": "天頂角Zは真上を0°として測ります。水平より上を正とする高低角αは、水平線からの傾きです。補正済みのZからα＝90°−Zで換算できます。",
+    "ref": "vertical",
+    "sources": [
+      "https://www.gsi.go.jp/common/000268569.pdf"
+    ]
+  },
+  {
+    "id": 38,
+    "section": "鉛直角",
+    "title": "高度定数Kは正反和の全ずれ",
+    "kind": "calculation",
+    "lead": "理想の正反和360°から何秒ずれたか",
+    "steps": [
+      "ZL＝78°12′42″",
+      "ZR＝281°47′42″",
+      "K＝ZL＋ZR−360°"
+    ],
+    "result": "高度定数 K＝＋24″",
+    "lines": [
+      "Kは全差であり半分ではない"
+    ],
+    "notes": "天頂角表示では、理想なら正反の読定の和は360°です。この架空例では24″大きいので、高度定数Kは＋24″です。公共測量で点検する高度定数の較差にも、半分ではなくKを使います。",
+    "ref": "vertical",
+    "sources": [
+      "https://www.jsurvey.jp/20220705P59-2.pdf",
+      "https://www.gsi.go.jp/common/000268569.pdf"
+    ]
+  },
+  {
+    "id": 39,
+    "section": "鉛直角",
+    "title": "片面の指標誤差はi＝K÷2",
+    "kind": "calculation",
+    "lead": "この教材の符号定義では両面に同じiが入る",
+    "steps": [
+      "ZL＝Z＋i",
+      "ZR＝360°−Z＋i",
+      "i＝K÷2＝24″÷2"
+    ],
+    "result": "指標誤差 i＝＋12″",
+    "lines": [
+      "正読定に加える補正は−12″",
+      "高度定数の較差にはKを用いる"
+    ],
+    "notes": "この教材では、両面読定へ同じ符号で入る誤差をiと定義します。そのためi＝K/2＝＋12″です。資料によっては補正量を−K/2と呼ぶので、記号だけを暗記せず定義式を確認します。",
+    "ref": "vertical",
+    "sources": [
+      "https://www.jsurvey.jp/20220705P59-2.pdf"
+    ]
+  },
+  {
+    "id": 40,
+    "section": "鉛直角",
+    "title": "正反補正でZとαを決める",
+    "kind": "calculation",
+    "lead": "Kの半分を正読定から引く",
+    "steps": [
+      "Z＝ZL−K÷2",
+      "Z＝78°12′42″−12″",
+      "α＝90°−Z"
+    ],
+    "result": "Z＝78°12′30″、α＝＋11°47′30″",
+    "lines": [
+      "Zは真上基準",
+      "αは水平より上を正"
+    ],
+    "notes": "正反から求めたKの半分を使い、補正済み天頂角Zを出します。次に90°からZを引くと、高低角αは＋11°47′30″です。正反を測る理由が、最後の補正値までつながりました。",
+    "ref": "vertical",
+    "sources": [
+      "https://www.jsurvey.jp/20220705P59-2.pdf",
+      "https://www.gsi.go.jp/common/000268569.pdf"
+    ]
+  }
+]

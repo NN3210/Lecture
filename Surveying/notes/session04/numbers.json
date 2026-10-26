@@ -1,0 +1,96 @@
+{
+  "meta": {
+    "title": "測量学第4回 数値例",
+    "created": "2026-10-27",
+    "unit_horizontal": "arcsecond",
+    "fictional_teaching_data": true,
+    "note": "公開教材用の架空値。規程上の許容値は含めない。"
+  },
+  "direction_method": {
+    "convention": {
+      "raw_reading_range_sec": [0, 1295999],
+      "reverse_conversion": "反読定に±180°を加減し、正読定と同じ連続周回へ合わせる",
+      "face_residual_definition": "reverse_converted_sec - face_left_sec（R'−Lを符号付きで記録）",
+      "mean_definition": "(face_left_sec + reverse_converted_sec) / 2",
+      "reduction_definition": "各方向の正反平均 − 同じ対回のA始平均",
+      "provisional_comparison_note": "倍角差・観測差・較差という名称は野帳様式の典拠確認後に割り当てる。ここでは計算対象を明記した中立的な差だけを保存する。"
+    },
+    "rounds": [
+      {
+        "round": 1,
+        "initial_setting_dms": "12°15′20″",
+        "observations": [
+          {"sight": "A_start", "L_sec": 44120, "R_sec": 692126, "R_converted_sec": 44126, "mean_sec": 44123, "reduced_sec": 0, "Rprime_minus_L_sec": 6},
+          {"sight": "B",       "L_sec": 308435, "R_sec": 956437, "R_converted_sec": 308437, "mean_sec": 308436, "reduced_sec": 264313, "Rprime_minus_L_sec": 2},
+          {"sight": "C",       "L_sec": 556394, "R_sec": 1204400, "R_converted_sec": 556400, "mean_sec": 556397, "reduced_sec": 512274, "Rprime_minus_L_sec": 6},
+          {"sight": "A_close", "L_sec": 44125, "R_sec": 692129, "R_converted_sec": 44129, "mean_sec": 44127, "reduced_sec": 4, "Rprime_minus_L_sec": 4}
+        ],
+        "closure_Aclose_minus_Astart_sec": 4
+      },
+      {
+        "round": 2,
+        "initial_setting_dms": "102°07′40″",
+        "observations": [
+          {"sight": "A_start", "L_sec": 367660, "R_sec": 1015656, "R_converted_sec": 367656, "mean_sec": 367658, "reduced_sec": 0, "Rprime_minus_L_sec": -4},
+          {"sight": "B",       "L_sec": 631969, "R_sec": 1279967, "R_converted_sec": 631967, "mean_sec": 631968, "reduced_sec": 264310, "Rprime_minus_L_sec": -2},
+          {"sight": "C",       "L_sec": 879929, "R_sec": 231925, "R_converted_sec": 879925, "mean_sec": 879927, "reduced_sec": 512269, "Rprime_minus_L_sec": -4},
+          {"sight": "A_close", "L_sec": 367655, "R_sec": 1015659, "R_converted_sec": 367659, "mean_sec": 367657, "reduced_sec": -1, "Rprime_minus_L_sec": 4}
+        ],
+        "closure_Aclose_minus_Astart_sec": -1
+      }
+    ],
+    "between_round_comparisons": {
+      "B_reduced_round1_minus_round2_sec": 3,
+      "C_reduced_round1_minus_round2_sec": 5,
+      "range_by_target_sec": {"B": 3, "C": 5},
+      "mean_reduced_sec": {"B": 264311.5, "C": 512271.5}
+    }
+  },
+  "eccentric_observation": {
+    "coordinate_convention": "測量座標：Xが北、Yが東。方向角はX正方向から時計回り。",
+    "points_m": {"O": [0, 0], "E": [0, 1], "A": [100, 0], "B": [0, 100]},
+    "from_E": {
+      "azimuth_A_deg": 359.4270613023165,
+      "azimuth_B_deg": 90.0,
+      "clockwise_angle_A_to_B_deg": 90.5729386976835,
+      "distance_A_m": 100.00499987500625,
+      "distance_B_m": 99.0
+    },
+    "from_O": {
+      "azimuth_A_deg": 0.0,
+      "azimuth_B_deg": 90.0,
+      "clockwise_angle_A_to_B_deg": 90.0,
+      "distance_A_m": 100.0,
+      "distance_B_m": 100.0
+    },
+    "corrections_center_minus_eccentric": {
+      "angle_deg": -0.5729386976835,
+      "distance_A_m": -0.00499987500625,
+      "distance_B_m": 1.0,
+      "sign_note": "補正量＝Oでの値−Eでの値。したがって観測値に加える角補正は負、A距離補正は負、B距離補正は正。"
+    }
+  },
+  "zenith_angle": {
+    "model": "ZL=Z+i, ZR=360°−Z+i",
+    "Z_true_sec": 281550,
+    "index_error_i_sec": 12,
+    "ZL_sec": 281562,
+    "ZR_sec": 1014462,
+    "recovered_Z_sec": 281550,
+    "recovered_i_sec": 12,
+    "elevation_angle_sec": 42450
+  },
+  "wraparound": {
+    "start_sec": 1260000,
+    "end_sec": 72000,
+    "clockwise_difference_sec": 108000,
+    "display": "350°→20°（時計回り）は30°"
+  },
+  "one_arcsecond_at_100m": {
+    "distance_m": 100.0,
+    "exact_lateral_offset_m": 0.000484813681113,
+    "exact_lateral_offset_mm": 0.484813681113,
+    "small_angle_approx_m": 0.0004848136811095,
+    "formula_exact": "100*tan(pi/(180*3600))"
+  }
+}

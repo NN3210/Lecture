@@ -1,0 +1,223 @@
+{
+    "url":  "materials/slides/第04回_角測量/explanation.html",
+    "viewports":  {
+                      "320":  {
+                                  "viewport":  320,
+                                  "documentWidth":  320,
+                                  "bodyWidth":  320,
+                                  "overflowElements":  [
+                                                           "table",
+                                                           "caption",
+                                                           "thead",
+                                                           "tr",
+                                                           "th",
+                                                           "th",
+                                                           "th",
+                                                           "tbody",
+                                                           "tr",
+                                                           "td",
+                                                           "td",
+                                                           "td"
+                                                       ]
+                              },
+                      "768":  {
+                                  "viewport":  768,
+                                  "documentWidth":  768,
+                                  "bodyWidth":  768,
+                                  "overflowElements":  [
+
+                                                       ]
+                              },
+                      "1440":  {
+                                   "viewport":  1440,
+                                   "documentWidth":  1440,
+                                   "bodyWidth":  1440,
+                                   "overflowElements":  [
+
+                                                        ]
+                               }
+                  },
+    "checks":  [
+                   {
+                       "name":  "幅320pxでページ全体の横あふれなし",
+                       "pass":  true,
+                       "observed":  "{\u0027viewport\u0027: 320, \u0027documentWidth\u0027: 320, \u0027bodyWidth\u0027: 320, \u0027overflowElements\u0027: [\u0027table\u0027, \u0027caption\u0027, \u0027thead\u0027, \u0027tr\u0027, \u0027th\u0027, \u0027th\u0027, \u0027th\u0027, \u0027tbody\u0027, \u0027tr\u0027, \u0027td\u0027, \u0027td\u0027, \u0027td\u0027]}"
+                   },
+                   {
+                       "name":  "幅768pxでページ全体の横あふれなし",
+                       "pass":  true,
+                       "observed":  "{\u0027viewport\u0027: 768, \u0027documentWidth\u0027: 768, \u0027bodyWidth\u0027: 768, \u0027overflowElements\u0027: []}"
+                   },
+                   {
+                       "name":  "幅1440pxでページ全体の横あふれなし",
+                       "pass":  true,
+                       "observed":  "{\u0027viewport\u0027: 1440, \u0027documentWidth\u0027: 1440, \u0027bodyWidth\u0027: 1440, \u0027overflowElements\u0027: []}"
+                   },
+                   {
+                       "name":  "wrap-start に明示ラベルあり",
+                       "pass":  true,
+                       "observed":  "基準の読定（度）"
+                   },
+                   {
+                       "name":  "wrap-end に明示ラベルあり",
+                       "pass":  true,
+                       "observed":  "目標の読定（度）"
+                   },
+                   {
+                       "name":  "face-l に明示ラベルあり",
+                       "pass":  true,
+                       "observed":  "正読定（度）"
+                   },
+                   {
+                       "name":  "face-r に明示ラベルあり",
+                       "pass":  true,
+                       "observed":  "反読定（度）"
+                   },
+                   {
+                       "name":  "ecc に明示ラベルあり",
+                       "pass":  true,
+                       "observed":  "偏心 OE（m、0〜10）"
+                   },
+                   {
+                       "name":  "3操作の結果領域がstatus/live region",
+                       "pass":  true,
+                       "observed":  "3"
+                   },
+                   {
+                       "name":  "操作1 350→20",
+                       "pass":  true,
+                       "observed":  "20＋360－350＝30°"
+                   },
+                   {
+                       "name":  "操作1 0→359.999",
+                       "pass":  true,
+                       "observed":  "359.999－0＝359.999°"
+                   },
+                   {
+                       "name":  "操作1 359.999→0",
+                       "pass":  true,
+                       "observed":  "0＋360－359.999＝0.001°"
+                   },
+                   {
+                       "name":  "操作1 20→20",
+                       "pass":  true,
+                       "observed":  "20－20＝0°"
+                   },
+                   {
+                       "name":  "操作1 上限外360を拒否",
+                       "pass":  true,
+                       "observed":  "0以上360未満の値を入力してください。"
+                   },
+                   {
+                       "name":  "操作1 空欄を拒否",
+                       "pass":  false,
+                       "observed":  "20－0＝20°"
+                   },
+                   {
+                       "name":  "操作2 正40.001667/反220",
+                       "pass":  false,
+                       "observed":  "反を40.000000°へ換算 → 平均40.000833°（約40°00′03″）"
+                   },
+                   {
+                       "name":  "操作2 正0/反180",
+                       "pass":  true,
+                       "observed":  "反を0.000000°へ換算 → 平均0.000000°（約0°00′00″）"
+                   },
+                   {
+                       "name":  "操作2 正359.999/反179.999",
+                       "pass":  true,
+                       "observed":  "反を359.999000°へ換算 → 平均359.999000°（約359°59′56″）"
+                   },
+                   {
+                       "name":  "操作2 空欄を拒否",
+                       "pass":  false,
+                       "observed":  "反を40.000000°へ換算 → 平均20.000000°（約20°00′00″）"
+                   },
+                   {
+                       "name":  "操作2 正反同値を拒否",
+                       "pass":  false,
+                       "observed":  "反を10.000000°へ換算 → 平均10.000000°（約10°00′00″）"
+                   },
+                   {
+                       "name":  "操作2 負数を拒否",
+                       "pass":  false,
+                       "observed":  "反を-1.000000°へ換算 → 平均-1.000000°（約−1°00′00″）"
+                   },
+                   {
+                       "name":  "操作2 360度を拒否",
+                       "pass":  false,
+                       "observed":  "反を360.000000°へ換算 → 平均360.000000°（約360°00′00″）"
+                   },
+                   {
+                       "name":  "操作3 偏心0mの表示",
+                       "pass":  false,
+                       "observed":  "1.0 m / Eでの角 90.572939° → Oの角90°へ戻す補正 −0.572939°"
+                   },
+                   {
+                       "name":  "操作3 偏心1mの表示",
+                       "pass":  true,
+                       "observed":  "1.0 m / Eでの角 90.572939° → Oの角90°へ戻す補正 −0.572939°"
+                   },
+                   {
+                       "name":  "操作3 偏心10mの表示",
+                       "pass":  false,
+                       "observed":  "1.0 m / Eでの角 90.572939° → Oの角90°へ戻す補正 −0.572939°"
+                   },
+                   {
+                       "name":  "操作3で偏心図も追従する",
+                       "pass":  false,
+                       "observed":  "図のDOMは操作前後で同一"
+                   },
+                   {
+                       "name":  "専用resetボタンの有無",
+                       "pass":  false,
+                       "observed":  "0"
+                   },
+                   {
+                       "name":  "再読込で3操作が初期値へ戻る",
+                       "pass":  true,
+                       "observed":  "{\u0027start\u0027: \u0027350\u0027, \u0027end\u0027: \u002720\u0027, \u0027left\u0027: \u002740.001667\u0027, \u0027right\u0027: \u0027220\u0027, \u0027ecc\u0027: \u00271\u0027}"
+                   },
+                   {
+                       "name":  "解答detailsが3件ある",
+                       "pass":  true,
+                       "observed":  "3"
+                   },
+                   {
+                       "name":  "解答は初期状態で閉じている",
+                       "pass":  true,
+                       "observed":  "[False, False, False]"
+                   },
+                   {
+                       "name":  "解答summaryで開ける",
+                       "pass":  true,
+                       "observed":  "True"
+                   },
+                   {
+                       "name":  "beforeprintで解答を全展開",
+                       "pass":  true,
+                       "observed":  "[True, True, True]"
+                   },
+                   {
+                       "name":  "印刷CSSでsummaryを非表示",
+                       "pass":  false,
+                       "observed":  "[\u0027block\u0027, \u0027block\u0027, \u0027block\u0027]"
+                   },
+                   {
+                       "name":  "JavaScript実行時エラーなし",
+                       "pass":  true,
+                       "observed":  "[]"
+                   },
+                   {
+                       "name":  "console errorなし",
+                       "pass":  true,
+                       "observed":  "[]"
+                   }
+               ],
+    "console_errors":  [
+
+                       ],
+    "page_errors":  [
+
+                    ]
+}

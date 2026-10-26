@@ -1,0 +1,74 @@
+{
+  "definitions": {
+    "p": "正読定から正の零方向を差引き",
+    "q": "反読定から反の零方向を差引き",
+    "C": "較差=p-q",
+    "D": "倍角=p+q",
+    "double_angle_range": "同一目標の対回間最大D-最小D",
+    "observation_range": "同一目標の対回間最大C-最小C"
+  },
+  "rounds": [
+    {
+      "round": 1,
+      "targets": [
+        {
+          "target": "B",
+          "p_sec": 264315,
+          "q_sec": 264311,
+          "C_sec": 4,
+          "D_sec": 528626,
+          "mean_sec": 264313.0
+        },
+        {
+          "target": "C",
+          "p_sec": 512274,
+          "q_sec": 512274,
+          "C_sec": 0,
+          "D_sec": 1024548,
+          "mean_sec": 512274.0
+        }
+      ]
+    },
+    {
+      "round": 2,
+      "targets": [
+        {
+          "target": "B",
+          "p_sec": 264309,
+          "q_sec": 264311,
+          "C_sec": -2,
+          "D_sec": 528620,
+          "mean_sec": 264310.0
+        },
+        {
+          "target": "C",
+          "p_sec": 512269,
+          "q_sec": 512269,
+          "C_sec": 0,
+          "D_sec": 1024538,
+          "mean_sec": 512269.0
+        }
+      ]
+    }
+  ],
+  "checks": [
+    {
+      "target": "B",
+      "double_angle_range_sec": 6,
+      "observation_range_sec": 6,
+      "final_angle_sec": 264311.5
+    },
+    {
+      "target": "C",
+      "double_angle_range_sec": 10,
+      "observation_range_sec": 0,
+      "final_angle_sec": 512271.5
+    }
+  ],
+  "zenith": {
+    "K_sec": 24,
+    "i_sec": 12,
+    "Z_sec": 281550,
+    "elevation_sec": 42450
+  }
+}

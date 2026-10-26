@@ -1,0 +1,437 @@
+[
+  {
+    "id": 1,
+    "section": "導入",
+    "title": "角測量",
+    "kind": "cover",
+    "lead": "距離に「向き」を足して、杭の位置を決める",
+    "lines": [
+      "測量学 第4回",
+      "図で理解し、野帳で確かめる"
+    ],
+    "notes": "校庭の観測点Oから杭A・Bを見る場面を示し、「2本の杭の開きは何度か」と問いかける。器械の置き方や向きが少し違っても、信頼できる角度をどう出すかを本時の中心課題にする。",
+    "ref": "angle",
+    "sources": []
+  },
+  {
+    "id": 2,
+    "section": "導入",
+    "title": "今日、答えられるようになる問い",
+    "kind": "question",
+    "question": "信頼できる角度は、どう測り、どう確かめる？",
+    "lines": [
+      "角の読み方と、測り方を説明できる？",
+      "方向法の野帳を点検できる？",
+      "偏心した観測を中心へ戻せる？"
+    ],
+    "notes": "到達目標を項目名ではなく、授業中に答えを探す三つの問いとして提示する。最後の問いは「正反を測れば全部の誤差が消える」という誤解を防ぐための予告でもある。方向法の計算と偏心補正は後半で扱う。",
+    "ref": "angle",
+    "sources": []
+  },
+  {
+    "id": 3,
+    "section": "角の意味",
+    "title": "100 mだけでは、杭Aの場所は決まらない",
+    "kind": "diagram",
+    "diagram": "radius",
+    "diagramOptions": {
+      "radiusLabel": "100 m",
+      "center": "O",
+      "target": "A"
+    },
+    "lead": "AはOを中心とする円周上のどこにでも置ける",
+    "lines": [
+      "必要なのは 距離＋向き"
+    ],
+    "notes": "OからAまで100 mという条件だけなら、Aの候補は円周上に無数にあることを図で読む。前回までの距離に、本時は「基準からどれだけ回ったか」を加える。次回は角と距離を座標へつなぐ。",
+    "ref": "angle",
+    "sources": []
+  },
+  {
+    "id": 4,
+    "section": "角の意味",
+    "title": "水平角は、上から見た開き",
+    "kind": "diagram",
+    "diagram": "horizontal",
+    "diagramOptions": {
+      "origin": "O",
+      "from": "A",
+      "to": "B",
+      "clockwise": true
+    },
+    "lead": "OAを基準に、時計回りでOBまで回る",
+    "lines": [
+      "水平角 ∠AOB",
+      "基準線と回転方向をセットで記録"
+    ],
+    "notes": "平面図で、OからAへの線を基準、OからBへの線を目標として読む。この教材では基準から時計回りを正の向きとする。数値だけでなく「どの線から、どちら回りか」が角の意味を決める。",
+    "ref": "angle",
+    "sources": []
+  },
+  {
+    "id": 5,
+    "section": "角の意味",
+    "title": "高低角と天頂角は、ゼロの向きが違う",
+    "kind": "diagram",
+    "diagram": "vertical",
+    "leftTitle": "高低角 α",
+    "rightTitle": "天頂角 Z",
+    "left": [
+      "水平線から測る",
+      "上向きを正とする"
+    ],
+    "right": [
+      "真上から測る",
+      "水平は Z＝90°"
+    ],
+    "notes": "同じ視準線でも、高低角は水平線から、天頂角は天頂方向から測る。側面図のゼロ方向を指でたどらせると混同しにくい。後半では補正済みの天頂角から α＝90°−Z と換算する。",
+    "ref": "angle",
+    "sources": [],
+    "lead": "同じ視準線を、水平と真上から測り分ける",
+    "lines": [
+      "高低角α：水平から、上を正",
+      "天頂角Z：真上から測る",
+      "α＋Z＝90°"
+    ]
+  },
+  {
+    "id": 6,
+    "section": "角の読み方",
+    "title": "角度は60進法",
+    "kind": "number",
+    "value": "1°＝60′",
+    "unit": "1′＝60″",
+    "lines": [
+      "100では繰り上がらない",
+      "秒 → 分 → 度の順に整理"
+    ],
+    "notes": "度・分・秒は小数ではなく60進法である。秒が60になれば1分、分が60になれば1度へ繰り上げる。記号 °・′・″ の形もここで確認する。",
+    "ref": "angle",
+    "sources": []
+  },
+  {
+    "id": 7,
+    "section": "角の読み方",
+    "title": "95°01′10″を声に出して読む",
+    "kind": "number",
+    "value": "95°01′10″",
+    "unit": "95度1分10秒",
+    "lines": [
+      "01′を飛ばさない",
+      "°・′・″は別の位"
+    ],
+    "notes": "表示は「95度1分10秒」と読む。01分を省略すると95度10秒という別の値になるため、ゼロを含む位も確認する。器械の表示を野帳へ写す場面を想像させる。",
+    "ref": "angle",
+    "sources": []
+  },
+  {
+    "id": 8,
+    "section": "角の読み方",
+    "title": "360°をまたぐ差には、一周を足す",
+    "kind": "calculation",
+    "diagram": "circle",
+    "diagramOptions": {
+      "start": 350,
+      "end": 20,
+      "clockwise": true
+    },
+    "steps": [
+      "20° − 350° では負になる",
+      "20° ＋ 360° − 350°"
+    ],
+    "result": "30°",
+    "notes": "円形目盛で350°から時計回りに0°を越え、20°まで進む短い弧を読む。時計回りの差が負になったときは、目標側へ360°を足して同じ連続周回にそろえる。後の正反換算でも同じ考え方を使う。",
+    "ref": "angle",
+    "sources": []
+  },
+  {
+    "id": 9,
+    "section": "角の意味",
+    "title": "1秒のずれも、先では横に広がる",
+    "kind": "calculation",
+    "diagram": "radius",
+    "diagramOptions": {
+      "distance": 100,
+      "angleSeconds": 1
+    },
+    "steps": [
+      "1″＝1°÷3600",
+      "100 m × tan(1″)",
+      "＝0.000485 m"
+    ],
+    "result": "約0.485 mm",
+    "notes": "角度差は器械の場所では小さく見えても、距離が長いほど横ずれが大きくなる。100 m先で1秒は約0.485 mmで、ここでは厳密式100×tan(1°/3600)を使った。小角近似を暗黙に混ぜない。",
+    "ref": "angle",
+    "sources": []
+  },
+  {
+    "id": 10,
+    "section": "器械の準備",
+    "title": "TSは、距離と角度を同じ場所で測る",
+    "kind": "diagram",
+    "diagram": "axes",
+    "lead": "望遠鏡を上下・左右へ回し、目標を捉える",
+    "lines": [
+      "TS＝トータルステーション",
+      "距離＋水平角＋鉛直角"
+    ],
+    "notes": "TSは望遠鏡で目標を視準し、距離と角度を測る器械である。外観写真の部品名を覚えるより、どの回転がどの角に対応するかを見る。次のスライドで三つの軸を分ける。",
+    "ref": "setup",
+    "sources": [
+      "https://www.gsi.go.jp/common/000268569.pdf"
+    ]
+  },
+  {
+    "id": 11,
+    "section": "器械の準備",
+    "title": "TSを支える三つの軸",
+    "kind": "diagram",
+    "diagram": "axes",
+    "diagramOptions": {
+      "labels": [
+        "視準軸",
+        "水平軸",
+        "鉛直軸"
+      ],
+      "rightAngles": true
+    },
+    "lead": "視準軸と水平軸、水平軸と鉛直軸は直交する",
+    "lines": [
+      "視準軸 ⟂ 水平軸",
+      "水平軸 ⟂ 鉛直軸"
+    ],
+    "notes": "視準軸は十字線中心と対物レンズの光学中心を通る線、水平軸は望遠鏡を上下に回す軸、鉛直軸は本体を左右に回す軸である。図中の各軸を直接ラベルで示す。鉛直軸は整準によって重力方向へ合わせる。",
+    "ref": "setup",
+    "sources": [
+      "https://www.gsi.go.jp/common/000268569.pdf"
+    ]
+  },
+  {
+    "id": 12,
+    "section": "器械の準備",
+    "title": "求心は、器械の中心を測点の真上へ置く",
+    "kind": "diagram",
+    "diagram": "setup",
+    "leftTitle": "求心できた",
+    "rightTitle": "求心ずれ",
+    "left": [
+      "鉛直軸の延長がOを通る",
+      "器械中心と測点が一致"
+    ],
+    "right": [
+      "中心がOから横へずれる",
+      "気泡が中央でも起こる"
+    ],
+    "notes": "平面位置の中心合わせが求心であり、傾き直しではない。図の測点Oと鉛直軸の延長が重なるかを比べる。三脚や整準ねじを動かすと状態が変わるため、整準後にも再確認する。",
+    "ref": "setup",
+    "sources": [
+      "https://www.gsi.go.jp/common/000268569.pdf",
+      "https://www.iso.org/standard/30043.html"
+    ],
+    "diagramOptions": {
+      "mode": "centering"
+    },
+    "lead": "求心は「どこに置くか」。中心を測点に合わせる",
+    "lines": [
+      "鉛直軸の延長がOを通る",
+      "傾きがなくても、中心はずれる"
+    ]
+  },
+  {
+    "id": 13,
+    "section": "器械の準備",
+    "title": "整準は、鉛直軸を鉛直にする",
+    "kind": "diagram",
+    "diagram": "setup",
+    "leftTitle": "整準できた",
+    "rightTitle": "軸が傾いた",
+    "left": [
+      "鉛直軸が重力方向",
+      "回しても基準が保たれる"
+    ],
+    "right": [
+      "水平角にも影響",
+      "正反平均だけでは消えない"
+    ],
+    "notes": "整準の本質は「目盛盤を水平にする」ことより、器械の鉛直軸を鉛直にすることにある。求心が合っていても軸が傾く例を並べる。小さな残差を補償する機能があっても、粗い整準の代わりにはならない。",
+    "ref": "setup",
+    "sources": [
+      "https://www.gsi.go.jp/common/000268569.pdf",
+      "https://help.fieldsystems.trimble.com/siteworks/en/measuring-total-station-leveling.htm"
+    ],
+    "diagramOptions": {
+      "mode": "leveling"
+    },
+    "lead": "整準は「どちらを向くか」。軸の傾きを直す",
+    "lines": [
+      "重力方向と鉛直軸をそろえる",
+      "正反平均では傾きは消えない"
+    ]
+  },
+  {
+    "id": 14,
+    "section": "器械の準備",
+    "title": "視差は、目を動かして見つける",
+    "kind": "diagram",
+    "diagram": "setup",
+    "diagramOptions": {
+      "mode": "parallax",
+      "showReticle": true
+    },
+    "lead": "像と十字線が動いて見えたら、焦点面が不一致",
+    "lines": [
+      "①十字線を鮮明にする",
+      "②目標へ合焦する",
+      "③目を少し動かして確認"
+    ],
+    "notes": "まず接眼部で十字線を鮮明にし、次に目標像へピントを合わせる。目の位置を少し動かしたとき、像と十字線が相対的にずれれば視差が残っている。単なる「よく見える」ではなく、動かないことまで確認する。",
+    "ref": "setup",
+    "sources": [
+      "https://www.gsi.go.jp/common/000268569.pdf"
+    ]
+  },
+  {
+    "id": 15,
+    "section": "正反観測",
+    "title": "正位と反位で、同じ目標を二度見る",
+    "kind": "diagram",
+    "diagram": "faces",
+    "diagramOptions": {
+      "faceLeft": "正 L",
+      "faceRight": "反 R",
+      "telescopeFlip": true,
+      "bodyRotation": 180
+    },
+    "lead": "望遠鏡を反転し、本体を180°回す",
+    "lines": [
+      "生読定は 正L・反R",
+      "同じ目標・同じ器械設置で観測"
+    ],
+    "notes": "正位で目標を見たあと、望遠鏡を水平軸まわりに反転し、本体を鉛直軸まわりに半回転して反位で同じ目標を見る。ここでL・Rは生読定の表記とする。帰零後の方向値は後半でp（正）・q（反）と表し、生読定と混同しない。",
+    "ref": "faces",
+    "sources": [
+      "https://www.iso.org/standard/30043.html",
+      "https://www.gsi.go.jp/common/000268569.pdf"
+    ]
+  },
+  {
+    "id": 16,
+    "section": "正反観測",
+    "title": "反Rを180°換算して、同じ半周へそろえる",
+    "kind": "calculation",
+    "diagram": "faces",
+    "steps": [
+      "正 L＝40°00′06″",
+      "反 R＝220°00′00″",
+      "R′＝R−180°＝40°00′00″"
+    ],
+    "result": "LとR′を比較できる",
+    "notes": "正反の生読定は約180°離れているため、そのまま平均しない。反Rへ±180°して正Lと同じ半周へ移した値をR′とする。360°境界をまたぐ場合も、同じ角の連続した枝へそろえてから計算する。",
+    "ref": "faces",
+    "sources": [
+      "https://www.iso.org/standard/30043.html"
+    ]
+  },
+  {
+    "id": 17,
+    "section": "正反観測",
+    "title": "符号が反転するずれは、平均で小さくなる",
+    "kind": "calculation",
+    "diagram": "cancellation",
+    "diagramOptions": {
+      "true": "40°00′03″",
+      "leftError": "+3″",
+      "rightError": "−3″"
+    },
+    "steps": [
+      "L＝40°00′06″",
+      "R′＝40°00′00″",
+      "(L＋R′)÷2"
+    ],
+    "result": "40°00′03″",
+    "notes": "換算後の正反値が真値を挟むようにずれる様子を左右対称で描く。姿勢変更で符号が反転する誤差は、平均により一次近似で小さくできる。例の読定値は教材用の架空値である。",
+    "ref": "faces",
+    "sources": [
+      "https://www.iso.org/standard/30043.html"
+    ]
+  },
+  {
+    "id": 18,
+    "section": "正反観測",
+    "title": "正反平均で、すべての誤差は消えない",
+    "kind": "compare",
+    "leftTitle": "小さくできる",
+    "rightTitle": "残る・別に対処",
+    "left": [
+      "視準軸誤差",
+      "水平軸誤差",
+      "鉛直目盛の指標誤差"
+    ],
+    "right": [
+      "鉛直軸の傾き",
+      "求心・目標の偏心",
+      "視準のばらつき・環境変化"
+    ],
+    "notes": "左は器械姿勢の反転で符号が変わる主な成分、右は同じ器械設置に残る成分である。特に鉛直軸の傾きは正反平均では消えず、観測前の整準が必要になる。誤差の消去は各機種の補正機能や観測条件にも依存する。",
+    "ref": "faces",
+    "sources": [
+      "https://www.gsi.go.jp/common/000268569.pdf",
+      "https://help.fieldsystems.trimble.com/rts-series-total-station/adjustments-menu.htm"
+    ]
+  },
+  {
+    "id": 19,
+    "section": "器械誤差",
+    "title": "目盛盤偏心は、二つの中心のずれ",
+    "kind": "diagram",
+    "diagram": "eccentric",
+    "diagramOptions": {
+      "circleCenter": "目盛円中心",
+      "rotationCenter": "回転中心",
+      "opposedReadings": true
+    },
+    "lead": "目盛円の中心と回転中心が一致しない",
+    "lines": [
+      "古典器械：対向読取りを平均",
+      "電子TS：複数箇所を機内処理"
+    ],
+    "notes": "二つの中心がずれると、円周上の位置に応じて読定が周期的にずれる。古典的な対向読取りでは180°離れた読定の平均で相殺するが、電子TSでは複数箇所を機内処理する方式がある。「正反を取れば必ず偏心が消える」とは説明せず、使用機種の取扱説明書を優先する。",
+    "ref": "faces",
+    "sources": [
+      "https://www.iso.org/standard/30043.html",
+      "https://www.gsi.go.jp/common/000268569.pdf"
+    ]
+  },
+  {
+    "id": 20,
+    "section": "器械誤差",
+    "title": "円の別の部分を使い、分画誤差を分散する",
+    "kind": "diagram",
+    "diagram": "circle",
+    "diagramOptions": {
+      "set1": 0,
+      "set2": 60,
+      "showUnequalDivisions": true
+    },
+    "leftTitle": "同じ初期目盛",
+    "rightTitle": "初期目盛を変更",
+    "left": [
+      "円の同じ部分を使う",
+      "目盛間隔の癖が重なる"
+    ],
+    "right": [
+      "円の別の部分を使う",
+      "複数対回で影響を分散"
+    ],
+    "notes": "分画誤差は、刻まれた各目盛間隔が一様でない誤差であり、目盛盤偏心とは別に扱う。ISOの精密試験はセット間で目盛盤位置を60°変え、物理的に変えられない電子機では器械下部を整準台上で約120°回す手順を示す。したがって初期目盛変更を、電子表示のゼロを変える操作だけとは限らない点に注意する。",
+    "ref": "faces",
+    "sources": [
+      "https://www.iso.org/standard/30043.html"
+    ],
+    "lead": "目標は同じ。円の異なる部分を使って測る",
+    "lines": [
+      "目盛間隔の不ぞろいを平均する",
+      "表示を0°にするだけとは限らない"
+    ]
+  }
+]
