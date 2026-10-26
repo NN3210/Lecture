@@ -1,0 +1,381 @@
+{
+  "status": "回2合意版。Claudeとの相互批評と数値検算を反映。",
+  "units": "角度の内部計算は角秒、距離はm。演習値は架空。",
+  "direction_exercise": {
+    "raw_dms": [
+      {
+        "round": 1,
+        "r": {
+          "A": [
+            5,
+            0,
+            10
+          ],
+          "B": [
+            67,
+            14,
+            28
+          ],
+          "C": [
+            133,
+            32,
+            30
+          ]
+        },
+        "l": {
+          "A": [
+            185,
+            0,
+            14
+          ],
+          "B": [
+            247,
+            14,
+            28
+          ],
+          "C": [
+            313,
+            32,
+            30
+          ]
+        }
+      },
+      {
+        "round": 2,
+        "r": {
+          "A": [
+            95,
+            0,
+            20
+          ],
+          "B": [
+            157,
+            14,
+            36
+          ],
+          "C": [
+            223,
+            32,
+            44
+          ]
+        },
+        "l": {
+          "A": [
+            275,
+            0,
+            16
+          ],
+          "B": [
+            337,
+            14,
+            30
+          ],
+          "C": [
+            43,
+            32,
+            44
+          ]
+        }
+      }
+    ],
+    "results": [
+      {
+        "round": 1,
+        "target": "B",
+        "p_sec": 224058,
+        "q_sec": 224054,
+        "D_sec": 448112,
+        "C_sec": 4,
+        "mean_sec": 224056.0,
+        "p": "62°14′18.0″",
+        "q": "62°14′14.0″",
+        "D": "124°28′32.0″",
+        "mean": "62°14′16.0″"
+      },
+      {
+        "round": 1,
+        "target": "C",
+        "p_sec": 462740,
+        "q_sec": 462736,
+        "D_sec": 925476,
+        "C_sec": 4,
+        "mean_sec": 462738.0,
+        "p": "128°32′20.0″",
+        "q": "128°32′16.0″",
+        "D": "257°04′36.0″",
+        "mean": "128°32′18.0″"
+      },
+      {
+        "round": 2,
+        "target": "B",
+        "p_sec": 224056,
+        "q_sec": 224054,
+        "D_sec": 448110,
+        "C_sec": 2,
+        "mean_sec": 224055.0,
+        "p": "62°14′16.0″",
+        "q": "62°14′14.0″",
+        "D": "124°28′30.0″",
+        "mean": "62°14′15.0″"
+      },
+      {
+        "round": 2,
+        "target": "C",
+        "p_sec": 462744,
+        "q_sec": 462748,
+        "D_sec": 925492,
+        "C_sec": -4,
+        "mean_sec": 462746.0,
+        "p": "128°32′24.0″",
+        "q": "128°32′28.0″",
+        "D": "257°04′52.0″",
+        "mean": "128°32′26.0″"
+      }
+    ],
+    "tolerance": {
+      "double_angle_range_sec": 10,
+      "observation_range_sec": 8,
+      "status": "授業だけの仮基準。公共測量の規程値ではない。境界値は範囲内。"
+    },
+    "targets": {
+      "B": {
+        "double_angle_range_sec": 2,
+        "observation_range_sec": 2,
+        "accept": true,
+        "adopted_sec": 224055.5
+      },
+      "C": {
+        "double_angle_range_sec": 16,
+        "observation_range_sec": 8,
+        "accept": false,
+        "adopted_sec": null
+      }
+    }
+  },
+  "eccentric_exercise": {
+    "conditions": "O→E→Bの順に一直線。OE=1m、EA=100m。AはEの北。A→B時計回り90度。",
+    "delta_deg": 0.5729386976834859,
+    "central_angle_deg": 89.42706130231652,
+    "central_angle_dms": "89°25′37.4″",
+    "OA_m": 100.00499987500625,
+    "angle_correction_deg": -0.5729386976834859,
+    "distance_correction_m": 0.004999875006248544
+  },
+  "supplement": {
+    "rho_exact_arcsec_per_rad": 206264.80624709636,
+    "approximation_minus_exact_at_ratio_0_01_arcsec": 0.06875081041437724,
+    "homework_correction_with_rho206265_arcsec": -928.1925000000008
+  },
+  "checks": [
+    {
+      "name": "読定差",
+      "value": 264300,
+      "expected": 264300,
+      "tolerance": 1e-09
+    },
+    {
+      "name": "360度境界",
+      "value": 108000,
+      "expected": 108000,
+      "tolerance": 1e-09
+    },
+    {
+      "name": "確認1読定差",
+      "value": 264300,
+      "expected": 264300,
+      "tolerance": 1e-09
+    },
+    {
+      "name": "同じ器械点の方向角",
+      "value": 408300,
+      "expected": 408300,
+      "tolerance": 1e-09
+    },
+    {
+      "name": "一方向の正反平均モデル",
+      "value": 144003.0,
+      "expected": 144003,
+      "tolerance": 1e-09
+    },
+    {
+      "name": "較差の対回間範囲",
+      "value": 4,
+      "expected": 4,
+      "tolerance": 1e-09
+    },
+    {
+      "name": "方向法説明 第1対回正の結果",
+      "value": 264315,
+      "expected": 264315,
+      "tolerance": 1e-09
+    },
+    {
+      "name": "方向法説明 第1対回反の結果",
+      "value": 264311,
+      "expected": 264311,
+      "tolerance": 1e-09
+    },
+    {
+      "name": "方向法説明 第2対回正の結果",
+      "value": 264309,
+      "expected": 264309,
+      "tolerance": 1e-09
+    },
+    {
+      "name": "方向法説明 第2対回反の結果",
+      "value": 264311,
+      "expected": 264311,
+      "tolerance": 1e-09
+    },
+    {
+      "name": "方向法説明 倍角差",
+      "value": 6,
+      "expected": 6,
+      "tolerance": 1e-09
+    },
+    {
+      "name": "方向法説明 観測差",
+      "value": 6,
+      "expected": 6,
+      "tolerance": 1e-09
+    },
+    {
+      "name": "方向法説明 平均水平角",
+      "value": 264311.5,
+      "expected": 264311.5,
+      "tolerance": 1e-09
+    },
+    {
+      "name": "鉛直例K",
+      "value": 24,
+      "expected": 24,
+      "tolerance": 1e-09
+    },
+    {
+      "name": "鉛直例Z",
+      "value": 281550.0,
+      "expected": 281550,
+      "tolerance": 1e-09
+    },
+    {
+      "name": "鉛直例高低角",
+      "value": 42450,
+      "expected": 42450,
+      "tolerance": 1e-09
+    },
+    {
+      "name": "高度定数の較差",
+      "value": 6,
+      "expected": 6,
+      "tolerance": 1e-09
+    },
+    {
+      "name": "鉛直確認K",
+      "value": 10,
+      "expected": 10,
+      "tolerance": 1e-09
+    },
+    {
+      "name": "鉛直確認Z",
+      "value": 306615.0,
+      "expected": 306615,
+      "tolerance": 1e-09
+    },
+    {
+      "name": "鉛直確認高低角",
+      "value": 17385,
+      "expected": 17385,
+      "tolerance": 1e-09
+    },
+    {
+      "name": "100m先の1秒の横ずれmm",
+      "value": 0.4848136811133344,
+      "expected": 0.484813681113,
+      "tolerance": 1e-10
+    },
+    {
+      "name": "100m先の1分の横ずれmmの表示",
+      "value": 29.1,
+      "expected": 29.1,
+      "tolerance": 1e-09
+    },
+    {
+      "name": "偏心演習の中心角 座標経路",
+      "value": 89.42706130231652,
+      "expected": 89.42706130231652,
+      "tolerance": 1e-09
+    },
+    {
+      "name": "偏心演習の中心角 余弦経路",
+      "value": 89.42706130231652,
+      "expected": 89.42706130231652,
+      "tolerance": 1e-09
+    },
+    {
+      "name": "偏心演習OA",
+      "value": 100.00499987500625,
+      "expected": 100.00499987500625,
+      "tolerance": 1e-09
+    },
+    {
+      "name": "偏心説明 Eでの角",
+      "value": 90.57293869768348,
+      "expected": 90.57293869768348,
+      "tolerance": 1e-09
+    },
+    {
+      "name": "偏心説明 中心へ戻す角補正",
+      "value": -0.5729386976834832,
+      "expected": -0.5729386976834859,
+      "tolerance": 1e-09
+    },
+    {
+      "name": "偏心説明 距離補正は負",
+      "value": -0.004999875006248544,
+      "expected": -0.004999875006248544,
+      "tolerance": 1e-09
+    },
+    {
+      "name": "偏心演習DMS表示",
+      "value": 321937.4,
+      "expected": 321937.4,
+      "tolerance": 1e-09
+    },
+    {
+      "name": "後視方向へ反転して交角を足す",
+      "value": 320,
+      "expected": 320,
+      "tolerance": 1e-09
+    },
+    {
+      "name": "宿題 指定されたrho=200000の場合",
+      "value": 299130.0,
+      "expected": 299130,
+      "tolerance": 1e-08
+    },
+    {
+      "name": "反例 正の結果",
+      "value": 216000,
+      "expected": 216000,
+      "tolerance": 1e-09
+    },
+    {
+      "name": "反例 反の結果",
+      "value": 216000,
+      "expected": 216000,
+      "tolerance": 1e-09
+    },
+    {
+      "name": "反例 較差",
+      "value": 0,
+      "expected": 0,
+      "tolerance": 1e-09
+    },
+    {
+      "name": "反例 生読定の正反差は10秒",
+      "value": 10,
+      "expected": 10,
+      "tolerance": 1e-09
+    }
+  ]
+}

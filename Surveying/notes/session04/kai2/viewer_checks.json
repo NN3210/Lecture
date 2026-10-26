@@ -1,0 +1,50 @@
+[
+  {
+    "name": "初期は本編50枚",
+    "pass": true
+  },
+  {
+    "name": "1枚目画像が読み込める",
+    "pass": true
+  },
+  {
+    "name": "右キーで2枚目",
+    "pass": true
+  },
+  {
+    "name": "本編末尾で次へを停止",
+    "pass": true
+  },
+  {
+    "name": "明示操作でのみ付録を加える",
+    "pass": true
+  },
+  {
+    "name": "51枚目は問1解答",
+    "pass": true
+  },
+  {
+    "name": "付録末尾で次へを停止",
+    "pass": true
+  },
+  {
+    "name": "付録を外すと本編末尾に戻る",
+    "pass": true
+  },
+  {
+    "name": "発表者ノートを読める",
+    "pass": true
+  },
+  {
+    "name": "全63画像が存在",
+    "pass": true
+  },
+  {
+    "name": "JavaScriptエラーなし",
+    "pass": true
+  },
+  {
+    "name": "320pxでページ横あふれなし",
+    "pass": true
+  }
+]

@@ -1,0 +1,16 @@
+[
+  {
+    "reply_file": "notes/session04/Claude_追加対話_返信.md",
+    "session_id": "02a436db-6412-4d7b-8180-9e347a0adca9",
+    "is_error": false,
+    "sha256": "51f91326be68892b1fe94cefcc8e88635832e4120f878f8ef085cf3e93a56ca6",
+    "mode": "Claude Code CLI / 元の会話履歴から分岐 / Read,Glob,Grepのみ"
+  },
+  {
+    "reply_file": "notes/session04/Claude_教材化後_返信.md",
+    "session_id": "e947b87e-eed0-430f-9ead-a5a27d7e0cbe",
+    "is_error": false,
+    "sha256": "acd0145588668a319f2f6a2fb4705cf7da39bb6cbb9806c445907d09af9a1a8b",
+    "mode": "Claude Code CLI / 元の会話履歴から分岐 / Read,Glob,Grepのみ"
+  }
+]

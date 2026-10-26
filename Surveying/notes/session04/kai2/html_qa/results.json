@@ -1,0 +1,152 @@
+[
+  {
+    "name": "初期350→20は30°",
+    "pass_": true,
+    "detail": ""
+  },
+  {
+    "name": "逆向き20→350は330°",
+    "pass_": true,
+    "detail": ""
+  },
+  {
+    "name": "同じ読定は0°",
+    "pass_": true,
+    "detail": ""
+  },
+  {
+    "name": "読定不正入力 ''",
+    "pass_": true,
+    "detail": ""
+  },
+  {
+    "name": "読定不正入力 '-1'",
+    "pass_": true,
+    "detail": ""
+  },
+  {
+    "name": "読定不正入力 '360'",
+    "pass_": true,
+    "detail": ""
+  },
+  {
+    "name": "読みのreset",
+    "pass_": true,
+    "detail": ""
+  },
+  {
+    "name": "共通5秒が平均に残る",
+    "pass_": true,
+    "detail": ""
+  },
+  {
+    "name": "反転誤差の符号を変えても共通成分不変",
+    "pass_": true,
+    "detail": ""
+  },
+  {
+    "name": "空欄を0として黙って計算しない",
+    "pass_": true,
+    "detail": ""
+  },
+  {
+    "name": "平均reset",
+    "pass_": true,
+    "detail": ""
+  },
+  {
+    "name": "偏心デモの角・距離補正",
+    "pass_": true,
+    "detail": "δ＝0.572939°。Eの角＝90.572939°。角補正＝−0°34′22.6″、距離補正＝-0.0050m。"
+  },
+  {
+    "name": "偏心2mの逆正接",
+    "pass_": true,
+    "detail": "δ＝1.145763°。Eの角＝91.145763°。角補正＝−1°08′44.7″、距離補正＝-0.0200m。"
+  },
+  {
+    "name": "偏心図と値が同期",
+    "pass_": true,
+    "detail": ""
+  },
+  {
+    "name": "距離も2倍なら同じ角",
+    "pass_": true,
+    "detail": ""
+  },
+  {
+    "name": "偏心0なら補正0",
+    "pass_": true,
+    "detail": ""
+  },
+  {
+    "name": "入力上限でも図が領域内",
+    "pass_": true,
+    "detail": ""
+  },
+  {
+    "name": "距離0を拒否",
+    "pass_": true,
+    "detail": ""
+  },
+  {
+    "name": "偏心reset",
+    "pass_": true,
+    "detail": ""
+  },
+  {
+    "name": "教材内のファイルリンクが存在",
+    "pass_": true,
+    "detail": [
+      "lesson_plan_回2.md",
+      "../../exercises/第04回_角測量/exercise_回2.html",
+      "../../exercises/第04回_角測量/exercise_回2.html",
+      "../../exercises/第04回_角測量/exercise_answers_回2.html"
+    ]
+  },
+  {
+    "name": "外部通信なし",
+    "pass_": true,
+    "detail": ""
+  },
+  {
+    "name": "JavaScriptエラーなし",
+    "pass_": true,
+    "detail": []
+  },
+  {
+    "name": "320pxでページ横あふれなし",
+    "pass_": true,
+    "detail": ""
+  },
+  {
+    "name": "キーボードで解答を開く",
+    "pass_": true,
+    "detail": ""
+  },
+  {
+    "name": "印刷で解答を表示",
+    "pass_": true,
+    "detail": ""
+  },
+  {
+    "name": "印刷でも確認問題の問いを表示",
+    "pass_": true,
+    "detail": ""
+  },
+  {
+    "name": "印刷後に開閉状態を戻す",
+    "pass_": true,
+    "detail": ""
+  },
+  {
+    "name": "exercise_回2：A4・2ページ",
+    "pass_": true,
+    "detail": 2
+  },
+  {
+    "name": "exercise_answers_回2：A4・2ページ",
+    "pass_": true,
+    "detail": 2
+  }
+]
