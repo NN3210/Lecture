@@ -1,0 +1,101 @@
+\documentclass[a4paper,10pt]{article}
+\usepackage[margin=17mm]{geometry}
+\usepackage{fontspec,amsmath,array,tabularx,xcolor}
+\setmainfont{Noto Sans CJK JP}
+\setsansfont{Noto Sans CJK JP}
+\XeTeXlinebreaklocale "ja"
+\XeTeXlinebreakskip=0pt plus 1pt
+\definecolor{navy}{HTML}{183248}
+\definecolor{blue}{HTML}{276698}
+\definecolor{green}{HTML}{24734A}
+\definecolor{orange}{HTML}{B45B21}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{5pt}
+\renewcommand{\arraystretch}{1.34}
+\newcommand{\ttl}[2]{{\color{navy}\Large\bfseries #1}\par{\small #2}\par\vspace{2pt}\hrule\vspace{7pt}}
+\newcommand{\sub}[1]{\par{\color{navy}\large\bfseries #1}\par}
+\newcommand{\boxwork}[1]{\par\noindent\fbox{\parbox[t][#1][t]{0.965\linewidth}{\vspace{1pt}\hspace{2mm}{\color{gray}\small 途中式・検算}}}\par}
+\newcommand{\note}[1]{{\small\color{blue}#1}\par}
+\begin{document}
+\ttl{第05回 トラバース測量 I｜演習（改3）}{25分・10点満点　関数電卓可　問1 15分／問2 7分／検算 3分}
+授業内指定の提出番号：\underline{\hspace{38mm}}　確認：\underline{\hspace{30mm}}
+
+{\small 角は度分秒（1″）、距離・座標はm（0.001 m）まで。途中で三角関数や成分を丸めない。方向角は0°以上360°未満。電卓はDEG。}
+\sub{問1　5点の閉合トラバース（6点）}
+{\small Xは北、Yは東。反時計回りにA→B→C→D→E→Aと進む。βは各点の後視から前視へ時計回りに測る内角。既知方向角は $T_{AB}=$115°20′30″。距離は平面計算用距離で、水平距離との差は無視できると仮定する。}
+\begin{center}\small\begin{tabular}{|l|l|l|l|}
+\hline
+\textbf{測点} & \textbf{観測内角β} & \textbf{測線} & \textbf{S (m)} \\ \hline
+A & 100°12′12″ & AB & 85.000 \\ \hline
+B & 118°35′52″ & BC & 110.000 \\ \hline
+C & 95°48′32″ & CD & 96.000 \\ \hline
+D & 128°10′42″ & DE & 84.894 \\ \hline
+E & 97°13′42″ & EA & 127.412 \\ \hline
+\end{tabular}\end{center}
+\note{授業用仮定：角閉合差の許容は±80″、各角は等精度。規程値ではない。}
+{\small (1) 観測角和・角閉合差 εβ（観測−理論）・1角の補正を求め、表①を完成する。許容内かも判定する。（2点）}
+
+{\small 観測和：\underline{\hspace{28mm}}　理論和：\underline{\hspace{20mm}}　εβ：\underline{\hspace{14mm}}″
+　判定：\underline{\hspace{15mm}}　補正/角：\underline{\hspace{15mm}}″}
+\begin{center}\small\begin{tabular}{|p{22mm}|p{32mm}|p{70mm}|}
+\hline
+\textbf{表① 測点} & \textbf{補正 (″)} & \textbf{調整角} \\ \hline
+A &  &  \\ \hline
+B &  &  \\ \hline
+C &  &  \\ \hline
+D &  &  \\ \hline
+E &  &  \\ \hline
+和 &  &  \\ \hline
+\end{tabular}\end{center}{\small (2) 調整角を使ってBC、CD、DE、EAの方向角を求め、Aの角を使いABに戻ることを確認する。（2.5点）}
+\begin{center}\small\begin{tabular}{|p{22mm}|p{87mm}|p{37mm}|}
+\hline
+\textbf{表② 測線} & \textbf{前のT＋180°＋次の点の調整角} & \textbf{mod 360°後のT} \\ \hline
+AB & 既知 & 115°20′30″ \\ \hline
+BC &  &  \\ \hline
+CD &  &  \\ \hline
+DE &  &  \\ \hline
+EA &  &  \\ \hline
+AB 検算 &  &  \\ \hline
+\end{tabular}\end{center}{\small (3) BC、CD、EAのΔX・ΔYを計算する。AB・DEも元のS・Tで再計算して合計し、最後に0.001 mへ丸める。（1.5点）}
+\begin{center}\small\begin{tabular}{|p{22mm}|p{26mm}|p{43mm}|p{43mm}|}
+\hline
+\textbf{表③ 測線} & \textbf{S (m)} & \textbf{ΔX＝S cos T (m)} & \textbf{ΔY＝S sin T (m)} \\ \hline
+AB & 85.000 & −36.381 & +76.821 \\ \hline
+BC & 110.000 &  &  \\ \hline
+CD & 96.000 &  &  \\ \hline
+DE & 84.894 & +11.693 & −84.085 \\ \hline
+EA & 127.412 &  &  \\ \hline
+内部総和 & 503.306 &  &  \\ \hline
+\end{tabular}\end{center}\newpage
+\ttl{問2　座標の逆計算（4点）}{X＝座標北、Y＝東／方向角は座標北から時計回り}
+出発点Pから既知点Qを後視し、方向を与えたい。次の座標から計算する。
+\begin{center}\small\begin{tabular}{|l|l|l|}
+\hline
+\textbf{点} & \textbf{X (m)} & \textbf{Y (m)} \\ \hline
+P & 1500.000 & 2300.000 \\ \hline
+Q & 1580.000 & 2150.000 \\ \hline
+\end{tabular}\end{center}
+\textbf{(1)} PからQへの座標差を符号付きで求め、象限と向きを書く。（1点）
+
+ΔX＝\underline{\hspace{30mm}} m　ΔY＝\underline{\hspace{30mm}} m
+
+象限：\underline{\hspace{25mm}}　向き：\underline{\hspace{25mm}}
+\boxwork{24mm}
+\textbf{(2)} 距離 $S_{PQ}$ を求める。（1点）
+\boxwork{28mm}
+答：$S_{PQ}=$\underline{\hspace{40mm}} m
+
+\textbf{(3)} 方向角 $T_{PQ}$ を求める。arctan(ΔY/ΔX)の値と加える角を書く。（1.5点）
+\boxwork{34mm}
+arctanの値：\underline{\hspace{34mm}}　加える角：\underline{\hspace{24mm}}
+
+答：$T_{PQ}=$\underline{\hspace{40mm}}
+
+\textbf{(4)} 反方向角 $T_{QP}$ を求める。（0.5点）
+
+答：$T_{QP}=$\underline{\hspace{40mm}}
+
+\vfill
+\note{検算：順計算でPからQへ戻るか確認する。同一点なら距離0、方向角は未定義。}
+{\small 発展（加点なし）：問1を観測角のままで一周するとABの方向角は既知値より何秒ずれるか。答：\underline{\hspace{20mm}}″}
+\end{document}

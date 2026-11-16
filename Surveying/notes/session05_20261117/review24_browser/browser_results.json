@@ -1,0 +1,1874 @@
+{
+  "target": "/workspace/Lecture/Surveying/materials/slides/第05回_トラバース測量I/改3/slides.html",
+  "checkedAt": "2026-11-16T11:46:47.010Z",
+  "viewports": [
+    {
+      "viewport": {
+        "width": 1280,
+        "height": 720
+      },
+      "steps": [
+        {
+          "op": "initial",
+          "hash": "#1",
+          "active": [
+            "slide-1"
+          ],
+          "count": "1 / 44",
+          "page": "01 / 44"
+        },
+        {
+          "op": "ArrowRight",
+          "hash": "#2",
+          "active": [
+            "slide-2"
+          ],
+          "count": "2 / 44",
+          "page": "02 / 44"
+        },
+        {
+          "op": "ArrowLeft",
+          "hash": "#1",
+          "active": [
+            "slide-1"
+          ],
+          "count": "1 / 44",
+          "page": "01 / 44"
+        },
+        {
+          "op": "Home",
+          "hash": "#1",
+          "active": [
+            "slide-1"
+          ],
+          "count": "1 / 44",
+          "page": "01 / 44"
+        },
+        {
+          "op": "ArrowLeft",
+          "hash": "#1",
+          "active": [
+            "slide-1"
+          ],
+          "count": "1 / 44",
+          "page": "01 / 44"
+        },
+        {
+          "op": "End",
+          "hash": "#44",
+          "active": [
+            "slide-44"
+          ],
+          "count": "44 / 44",
+          "page": "44 / 44"
+        },
+        {
+          "op": "ArrowRight",
+          "hash": "#44",
+          "active": [
+            "slide-44"
+          ],
+          "count": "44 / 44",
+          "page": "44 / 44"
+        },
+        {
+          "op": "Home",
+          "hash": "#1",
+          "active": [
+            "slide-1"
+          ],
+          "count": "1 / 44",
+          "page": "01 / 44"
+        },
+        {
+          "op": "PageDown",
+          "hash": "#2",
+          "active": [
+            "slide-2"
+          ],
+          "count": "2 / 44",
+          "page": "02 / 44"
+        },
+        {
+          "op": "PageUp",
+          "hash": "#1",
+          "active": [
+            "slide-1"
+          ],
+          "count": "1 / 44",
+          "page": "01 / 44"
+        },
+        {
+          "op": "Space",
+          "hash": "#2",
+          "active": [
+            "slide-2"
+          ],
+          "count": "2 / 44",
+          "page": "02 / 44"
+        },
+        {
+          "op": "next button",
+          "hash": "#3",
+          "active": [
+            "slide-3"
+          ],
+          "count": "3 / 44",
+          "page": "03 / 44"
+        },
+        {
+          "op": "prev button",
+          "hash": "#2",
+          "active": [
+            "slide-2"
+          ],
+          "count": "2 / 44",
+          "page": "02 / 44"
+        },
+        {
+          "op": "count button",
+          "before": {
+            "hash": "#2",
+            "active": [
+              "slide-2"
+            ],
+            "count": "2 / 44",
+            "page": "02 / 44"
+          },
+          "after": {
+            "hash": "#2",
+            "active": [
+              "slide-2"
+            ],
+            "count": "2 / 44",
+            "page": "02 / 44"
+          }
+        },
+        {
+          "op": "speaker notes",
+          "note": "到達目標は三つです。第一に、角の和が理論値とどれほど違うかを調べ、使ってよい観測かを判断してから角を整えること。第二に、その角を北からの向きに変え、北へ何m・東へ何mに分けること。第三に、二点の座標が分かるときは、反対に向きと距離を求めることです。25分の演習では5点の角の調整と方向角、成分の一部、および座標の逆計算に取り組みます。点数だけでなく、図の向きと計算の符号が一致しているかを確かめましょう。",
+          "expected": "到達目標は三つです。第一に、角の和が理論値とどれほど違うかを調べ、使ってよい観測かを判断してから角を整えること。第二に、その角を北からの向きに変え、北へ何m・東へ何mに分けること。第三に、二点の座標が分かるときは、反対に向きと距離を求めることです。25分の演習では5点の角の調整と方向角、成分の一部、および座標の逆計算に取り組みます。点数だけでなく、図の向きと計算の符号が一致しているかを確かめましょう。"
+        }
+      ],
+      "pageNumbers": [
+        {
+          "id": "slide-1",
+          "number": "01 / 44",
+          "expected": "01 / 44"
+        },
+        {
+          "id": "slide-2",
+          "number": "02 / 44",
+          "expected": "02 / 44"
+        },
+        {
+          "id": "slide-3",
+          "number": "03 / 44",
+          "expected": "03 / 44"
+        },
+        {
+          "id": "slide-4",
+          "number": "04 / 44",
+          "expected": "04 / 44"
+        },
+        {
+          "id": "slide-5",
+          "number": "05 / 44",
+          "expected": "05 / 44"
+        },
+        {
+          "id": "slide-6",
+          "number": "06 / 44",
+          "expected": "06 / 44"
+        },
+        {
+          "id": "slide-7",
+          "number": "07 / 44",
+          "expected": "07 / 44"
+        },
+        {
+          "id": "slide-8",
+          "number": "08 / 44",
+          "expected": "08 / 44"
+        },
+        {
+          "id": "slide-9",
+          "number": "09 / 44",
+          "expected": "09 / 44"
+        },
+        {
+          "id": "slide-10",
+          "number": "10 / 44",
+          "expected": "10 / 44"
+        },
+        {
+          "id": "slide-11",
+          "number": "11 / 44",
+          "expected": "11 / 44"
+        },
+        {
+          "id": "slide-12",
+          "number": "12 / 44",
+          "expected": "12 / 44"
+        },
+        {
+          "id": "slide-13",
+          "number": "13 / 44",
+          "expected": "13 / 44"
+        },
+        {
+          "id": "slide-14",
+          "number": "14 / 44",
+          "expected": "14 / 44"
+        },
+        {
+          "id": "slide-15",
+          "number": "15 / 44",
+          "expected": "15 / 44"
+        },
+        {
+          "id": "slide-16",
+          "number": "16 / 44",
+          "expected": "16 / 44"
+        },
+        {
+          "id": "slide-17",
+          "number": "17 / 44",
+          "expected": "17 / 44"
+        },
+        {
+          "id": "slide-18",
+          "number": "18 / 44",
+          "expected": "18 / 44"
+        },
+        {
+          "id": "slide-19",
+          "number": "19 / 44",
+          "expected": "19 / 44"
+        },
+        {
+          "id": "slide-20",
+          "number": "20 / 44",
+          "expected": "20 / 44"
+        },
+        {
+          "id": "slide-21",
+          "number": "21 / 44",
+          "expected": "21 / 44"
+        },
+        {
+          "id": "slide-22",
+          "number": "22 / 44",
+          "expected": "22 / 44"
+        },
+        {
+          "id": "slide-23",
+          "number": "23 / 44",
+          "expected": "23 / 44"
+        },
+        {
+          "id": "slide-24",
+          "number": "24 / 44",
+          "expected": "24 / 44"
+        },
+        {
+          "id": "slide-25",
+          "number": "25 / 44",
+          "expected": "25 / 44"
+        },
+        {
+          "id": "slide-26",
+          "number": "26 / 44",
+          "expected": "26 / 44"
+        },
+        {
+          "id": "slide-27",
+          "number": "27 / 44",
+          "expected": "27 / 44"
+        },
+        {
+          "id": "slide-28",
+          "number": "28 / 44",
+          "expected": "28 / 44"
+        },
+        {
+          "id": "slide-29",
+          "number": "29 / 44",
+          "expected": "29 / 44"
+        },
+        {
+          "id": "slide-30",
+          "number": "30 / 44",
+          "expected": "30 / 44"
+        },
+        {
+          "id": "slide-31",
+          "number": "31 / 44",
+          "expected": "31 / 44"
+        },
+        {
+          "id": "slide-32",
+          "number": "32 / 44",
+          "expected": "32 / 44"
+        },
+        {
+          "id": "slide-33",
+          "number": "33 / 44",
+          "expected": "33 / 44"
+        },
+        {
+          "id": "slide-34",
+          "number": "34 / 44",
+          "expected": "34 / 44"
+        },
+        {
+          "id": "slide-35",
+          "number": "35 / 44",
+          "expected": "35 / 44"
+        },
+        {
+          "id": "slide-36",
+          "number": "36 / 44",
+          "expected": "36 / 44"
+        },
+        {
+          "id": "slide-37",
+          "number": "37 / 44",
+          "expected": "37 / 44"
+        },
+        {
+          "id": "slide-38",
+          "number": "38 / 44",
+          "expected": "38 / 44"
+        },
+        {
+          "id": "slide-39",
+          "number": "39 / 44",
+          "expected": "39 / 44"
+        },
+        {
+          "id": "slide-40",
+          "number": "40 / 44",
+          "expected": "40 / 44"
+        },
+        {
+          "id": "slide-41",
+          "number": "41 / 44",
+          "expected": "41 / 44"
+        },
+        {
+          "id": "slide-42",
+          "number": "42 / 44",
+          "expected": "42 / 44"
+        },
+        {
+          "id": "slide-43",
+          "number": "43 / 44",
+          "expected": "43 / 44"
+        },
+        {
+          "id": "slide-44",
+          "number": "44 / 44",
+          "expected": "44 / 44"
+        }
+      ],
+      "scrollAfterWheel": {
+        "x": 0,
+        "y": 180
+      },
+      "scrollAfterArrow": {
+        "x": 0,
+        "y": 180
+      },
+      "scrollAfterHome": {
+        "x": 0,
+        "y": 0
+      },
+      "assets": {
+        "images": [
+          {
+            "src": "assets/cover_ai.png",
+            "ok": true
+          },
+          {
+            "src": "assets/workflow.png",
+            "ok": true
+          },
+          {
+            "src": "assets/backsight.png",
+            "ok": true
+          },
+          {
+            "src": "assets/site.png",
+            "ok": true
+          },
+          {
+            "src": "assets/cover.png",
+            "ok": true
+          },
+          {
+            "src": "assets/types.png",
+            "ok": true
+          },
+          {
+            "src": "assets/site.png",
+            "ok": true
+          },
+          {
+            "src": "assets/workflow.png",
+            "ok": true
+          },
+          {
+            "src": "assets/axes.png",
+            "ok": true
+          },
+          {
+            "src": "assets/formulas/b45a9eb70a0f90b0.png",
+            "ok": true
+          },
+          {
+            "src": "assets/formulas/984a44f1a34205f4.png",
+            "ok": true
+          },
+          {
+            "src": "assets/reverse.png",
+            "ok": true
+          },
+          {
+            "src": "assets/formulas/63117e61a5b18638.png",
+            "ok": true
+          },
+          {
+            "src": "assets/formulas/41b7fec0a824b134.png",
+            "ok": true
+          },
+          {
+            "src": "assets/turning.png",
+            "ok": true
+          },
+          {
+            "src": "assets/interior.png",
+            "ok": true
+          },
+          {
+            "src": "assets/direction_loop.png",
+            "ok": true
+          },
+          {
+            "src": "assets/formulas/887e1f2e48144c4e.png",
+            "ok": true
+          },
+          {
+            "src": "assets/triangulation.png",
+            "ok": true
+          },
+          {
+            "src": "assets/formulas/ae6e1086ed38f111.png",
+            "ok": true
+          },
+          {
+            "src": "assets/formulas/7f45a845649a44fd.png",
+            "ok": true
+          },
+          {
+            "src": "assets/angle_adjust.png",
+            "ok": true
+          },
+          {
+            "src": "assets/formulas/d170b4f5685e2ec5.png",
+            "ok": true
+          },
+          {
+            "src": "assets/formulas/d4a022bbf86013c2.png",
+            "ok": true
+          },
+          {
+            "src": "assets/angle_adjust.png",
+            "ok": true
+          },
+          {
+            "src": "assets/formulas/336abb232314759f.png",
+            "ok": true
+          },
+          {
+            "src": "assets/turning.png",
+            "ok": true
+          },
+          {
+            "src": "assets/formulas/59b9cfb216b94991.png",
+            "ok": true
+          },
+          {
+            "src": "assets/turning.png",
+            "ok": true
+          },
+          {
+            "src": "assets/formulas/ff7d3bad636135f2.png",
+            "ok": true
+          },
+          {
+            "src": "assets/formulas/16fabebd7bb78245.png",
+            "ok": true
+          },
+          {
+            "src": "assets/direction_loop.png",
+            "ok": true
+          },
+          {
+            "src": "assets/deflection.png",
+            "ok": true
+          },
+          {
+            "src": "assets/formulas/b6294ec39cfb16ea.png",
+            "ok": true
+          },
+          {
+            "src": "assets/formulas/45815047f56e8431.png",
+            "ok": true
+          },
+          {
+            "src": "assets/components.png",
+            "ok": true
+          },
+          {
+            "src": "assets/formulas/1c28f1e4183fd27c.png",
+            "ok": true
+          },
+          {
+            "src": "assets/quadrants.png",
+            "ok": true
+          },
+          {
+            "src": "assets/components.png",
+            "ok": true
+          },
+          {
+            "src": "assets/formulas/df35cc36a4e856d6.png",
+            "ok": true
+          },
+          {
+            "src": "assets/formulas/feb4e203307e4e30.png",
+            "ok": true
+          },
+          {
+            "src": "assets/forward.png",
+            "ok": true
+          },
+          {
+            "src": "assets/formulas/08d3acceb7e35774.png",
+            "ok": true
+          },
+          {
+            "src": "assets/inverse.png",
+            "ok": true
+          },
+          {
+            "src": "assets/formulas/5ac4dc8b259279cb.png",
+            "ok": true
+          },
+          {
+            "src": "assets/formulas/89b2bd588ebd906f.png",
+            "ok": true
+          },
+          {
+            "src": "assets/formulas/407c1c90ee5d6f82.png",
+            "ok": true
+          },
+          {
+            "src": "assets/backsight.png",
+            "ok": true
+          },
+          {
+            "src": "assets/formulas/752b1399eca7288d.png",
+            "ok": true
+          },
+          {
+            "src": "assets/workflow.png",
+            "ok": true
+          },
+          {
+            "src": "assets/exercise_traverse.png",
+            "ok": true
+          },
+          {
+            "src": "assets/exercise_inverse.png",
+            "ok": true
+          },
+          {
+            "src": "assets/workflow.png",
+            "ok": true
+          },
+          {
+            "src": "assets/closure.png",
+            "ok": true
+          },
+          {
+            "src": "assets/inverse.png",
+            "ok": true
+          },
+          {
+            "src": "assets/formulas/d9bd85eb6b2376d7.png",
+            "ok": true
+          },
+          {
+            "src": "assets/formulas/440e2434314106bc.png",
+            "ok": true
+          },
+          {
+            "src": "assets/formulas/826ee472eb04bcd1.png",
+            "ok": true
+          },
+          {
+            "src": "assets/closure.png",
+            "ok": true
+          },
+          {
+            "src": "assets/formulas/586c00d09abc2c3c.png",
+            "ok": true
+          },
+          {
+            "src": "assets/formulas/76ad5ce3a04306e7.png",
+            "ok": true
+          },
+          {
+            "src": "assets/workflow.png",
+            "ok": true
+          },
+          {
+            "src": "assets/bowditch.png",
+            "ok": true
+          },
+          {
+            "src": "assets/formulas/325a010565a5f6ba.png",
+            "ok": true
+          },
+          {
+            "src": "assets/formulas/17c0e00ad64534ae.png",
+            "ok": true
+          },
+          {
+            "src": "assets/formulas/45ac0734d3b991fd.png",
+            "ok": true
+          }
+        ],
+        "fonts": [
+          {
+            "family": "DeckJP",
+            "status": "loaded",
+            "weight": "normal"
+          },
+          {
+            "family": "DeckJP",
+            "status": "loaded",
+            "weight": "700"
+          }
+        ],
+        "external": [
+          "http://127.0.0.1:36111/assets/cover_ai.png",
+          "http://127.0.0.1:36111/assets/workflow.png",
+          "http://127.0.0.1:36111/assets/backsight.png",
+          "http://127.0.0.1:36111/assets/site.png",
+          "http://127.0.0.1:36111/assets/cover.png",
+          "http://127.0.0.1:36111/assets/types.png",
+          "http://127.0.0.1:36111/assets/site.png",
+          "http://127.0.0.1:36111/assets/workflow.png",
+          "http://127.0.0.1:36111/assets/axes.png",
+          "http://127.0.0.1:36111/assets/formulas/b45a9eb70a0f90b0.png",
+          "http://127.0.0.1:36111/assets/formulas/984a44f1a34205f4.png",
+          "http://127.0.0.1:36111/assets/reverse.png",
+          "http://127.0.0.1:36111/assets/formulas/63117e61a5b18638.png",
+          "http://127.0.0.1:36111/assets/formulas/41b7fec0a824b134.png",
+          "http://127.0.0.1:36111/assets/turning.png",
+          "http://127.0.0.1:36111/assets/interior.png",
+          "http://127.0.0.1:36111/assets/direction_loop.png",
+          "http://127.0.0.1:36111/assets/formulas/887e1f2e48144c4e.png",
+          "http://127.0.0.1:36111/assets/triangulation.png",
+          "http://127.0.0.1:36111/assets/formulas/ae6e1086ed38f111.png",
+          "http://127.0.0.1:36111/assets/formulas/7f45a845649a44fd.png",
+          "http://127.0.0.1:36111/assets/angle_adjust.png",
+          "http://127.0.0.1:36111/assets/formulas/d170b4f5685e2ec5.png",
+          "http://127.0.0.1:36111/assets/formulas/d4a022bbf86013c2.png",
+          "http://127.0.0.1:36111/assets/angle_adjust.png",
+          "http://127.0.0.1:36111/assets/formulas/336abb232314759f.png",
+          "http://127.0.0.1:36111/assets/turning.png",
+          "http://127.0.0.1:36111/assets/formulas/59b9cfb216b94991.png",
+          "http://127.0.0.1:36111/assets/turning.png",
+          "http://127.0.0.1:36111/assets/formulas/ff7d3bad636135f2.png",
+          "http://127.0.0.1:36111/assets/formulas/16fabebd7bb78245.png",
+          "http://127.0.0.1:36111/assets/direction_loop.png",
+          "http://127.0.0.1:36111/assets/deflection.png",
+          "http://127.0.0.1:36111/assets/formulas/b6294ec39cfb16ea.png",
+          "http://127.0.0.1:36111/assets/formulas/45815047f56e8431.png",
+          "http://127.0.0.1:36111/assets/components.png",
+          "http://127.0.0.1:36111/assets/formulas/1c28f1e4183fd27c.png",
+          "http://127.0.0.1:36111/assets/quadrants.png",
+          "http://127.0.0.1:36111/assets/components.png",
+          "http://127.0.0.1:36111/assets/formulas/df35cc36a4e856d6.png",
+          "http://127.0.0.1:36111/assets/formulas/feb4e203307e4e30.png",
+          "http://127.0.0.1:36111/assets/forward.png",
+          "http://127.0.0.1:36111/assets/formulas/08d3acceb7e35774.png",
+          "http://127.0.0.1:36111/assets/inverse.png",
+          "http://127.0.0.1:36111/assets/formulas/5ac4dc8b259279cb.png",
+          "http://127.0.0.1:36111/assets/formulas/89b2bd588ebd906f.png",
+          "http://127.0.0.1:36111/assets/formulas/407c1c90ee5d6f82.png",
+          "http://127.0.0.1:36111/assets/backsight.png",
+          "http://127.0.0.1:36111/assets/formulas/752b1399eca7288d.png",
+          "http://127.0.0.1:36111/assets/workflow.png",
+          "http://127.0.0.1:36111/assets/exercise_traverse.png",
+          "http://127.0.0.1:36111/assets/exercise_inverse.png",
+          "http://127.0.0.1:36111/assets/workflow.png",
+          "http://127.0.0.1:36111/assets/closure.png",
+          "http://127.0.0.1:36111/assets/inverse.png",
+          "http://127.0.0.1:36111/assets/formulas/d9bd85eb6b2376d7.png",
+          "http://127.0.0.1:36111/assets/formulas/440e2434314106bc.png",
+          "http://127.0.0.1:36111/assets/formulas/826ee472eb04bcd1.png",
+          "http://127.0.0.1:36111/assets/closure.png",
+          "http://127.0.0.1:36111/assets/formulas/586c00d09abc2c3c.png",
+          "http://127.0.0.1:36111/assets/formulas/76ad5ce3a04306e7.png",
+          "http://127.0.0.1:36111/assets/workflow.png",
+          "http://127.0.0.1:36111/assets/bowditch.png",
+          "http://127.0.0.1:36111/assets/formulas/325a010565a5f6ba.png",
+          "http://127.0.0.1:36111/assets/formulas/17c0e00ad64534ae.png",
+          "http://127.0.0.1:36111/assets/formulas/45ac0734d3b991fd.png"
+        ]
+      },
+      "frames": [
+        {
+          "slide": "slide-1",
+          "slideBox": {
+            "x": 0,
+            "y": 0,
+            "width": 1280,
+            "height": 720,
+            "right": 1280,
+            "bottom": 720
+          },
+          "pageBox": {
+            "x": 1096,
+            "y": 694.4000244140625,
+            "width": 116.800048828125,
+            "height": 22.39996337890625,
+            "right": 1212.800048828125,
+            "bottom": 716.7999877929688
+          },
+          "navBox": {
+            "x": 1006.921875,
+            "y": 676,
+            "width": 261.078125,
+            "height": 36,
+            "right": 1268,
+            "bottom": 712
+          },
+          "doc": {
+            "width": 1280,
+            "height": 900
+          },
+          "viewport": {
+            "width": 1280,
+            "height": 720
+          }
+        },
+        {
+          "slide": "slide-20",
+          "slideBox": {
+            "x": 0,
+            "y": 0,
+            "width": 1280,
+            "height": 720,
+            "right": 1280,
+            "bottom": 720
+          },
+          "pageBox": {
+            "x": 1096,
+            "y": 694.4000244140625,
+            "width": 116.800048828125,
+            "height": 22.39996337890625,
+            "right": 1212.800048828125,
+            "bottom": 716.7999877929688
+          },
+          "navBox": {
+            "x": 999.15625,
+            "y": 676,
+            "width": 268.84375,
+            "height": 36,
+            "right": 1268,
+            "bottom": 712
+          },
+          "doc": {
+            "width": 1280,
+            "height": 900
+          },
+          "viewport": {
+            "width": 1280,
+            "height": 720
+          }
+        },
+        {
+          "slide": "slide-33",
+          "slideBox": {
+            "x": 0,
+            "y": 0,
+            "width": 1280,
+            "height": 720,
+            "right": 1280,
+            "bottom": 720
+          },
+          "pageBox": {
+            "x": 1096,
+            "y": 694.4000244140625,
+            "width": 116.800048828125,
+            "height": 22.39996337890625,
+            "right": 1212.800048828125,
+            "bottom": 716.7999877929688
+          },
+          "navBox": {
+            "x": 999.15625,
+            "y": 676,
+            "width": 268.84375,
+            "height": 36,
+            "right": 1268,
+            "bottom": 712
+          },
+          "doc": {
+            "width": 1280,
+            "height": 900
+          },
+          "viewport": {
+            "width": 1280,
+            "height": 720
+          }
+        },
+        {
+          "slide": "slide-44",
+          "slideBox": {
+            "x": 0,
+            "y": 0,
+            "width": 1280,
+            "height": 720,
+            "right": 1280,
+            "bottom": 720
+          },
+          "pageBox": {
+            "x": 1096,
+            "y": 694.4000244140625,
+            "width": 116.800048828125,
+            "height": 22.39996337890625,
+            "right": 1212.800048828125,
+            "bottom": 716.7999877929688
+          },
+          "navBox": {
+            "x": 999.15625,
+            "y": 676,
+            "width": 268.84375,
+            "height": 36,
+            "right": 1268,
+            "bottom": 712
+          },
+          "doc": {
+            "width": 1280,
+            "height": 900
+          },
+          "viewport": {
+            "width": 1280,
+            "height": 720
+          }
+        }
+      ],
+      "errors": [],
+      "failed": [],
+      "requestCount": 56,
+      "networkRequests": [
+        "http://127.0.0.1:36111/slides.html",
+        "http://127.0.0.1:36111/assets/cover_ai.png",
+        "http://127.0.0.1:36111/assets/workflow.png",
+        "http://127.0.0.1:36111/assets/backsight.png",
+        "http://127.0.0.1:36111/assets/site.png",
+        "http://127.0.0.1:36111/assets/cover.png",
+        "http://127.0.0.1:36111/assets/types.png",
+        "http://127.0.0.1:36111/assets/axes.png",
+        "http://127.0.0.1:36111/assets/formulas/b45a9eb70a0f90b0.png",
+        "http://127.0.0.1:36111/assets/formulas/984a44f1a34205f4.png",
+        "http://127.0.0.1:36111/assets/reverse.png",
+        "http://127.0.0.1:36111/assets/formulas/63117e61a5b18638.png",
+        "http://127.0.0.1:36111/assets/formulas/41b7fec0a824b134.png",
+        "http://127.0.0.1:36111/assets/turning.png",
+        "http://127.0.0.1:36111/assets/interior.png",
+        "http://127.0.0.1:36111/assets/direction_loop.png",
+        "http://127.0.0.1:36111/assets/formulas/887e1f2e48144c4e.png",
+        "http://127.0.0.1:36111/assets/triangulation.png",
+        "http://127.0.0.1:36111/assets/formulas/ae6e1086ed38f111.png",
+        "http://127.0.0.1:36111/assets/formulas/7f45a845649a44fd.png",
+        "http://127.0.0.1:36111/assets/angle_adjust.png",
+        "http://127.0.0.1:36111/assets/formulas/d170b4f5685e2ec5.png",
+        "http://127.0.0.1:36111/assets/formulas/d4a022bbf86013c2.png",
+        "http://127.0.0.1:36111/assets/formulas/336abb232314759f.png",
+        "http://127.0.0.1:36111/assets/formulas/59b9cfb216b94991.png",
+        "http://127.0.0.1:36111/assets/formulas/ff7d3bad636135f2.png",
+        "http://127.0.0.1:36111/assets/formulas/16fabebd7bb78245.png",
+        "http://127.0.0.1:36111/assets/deflection.png",
+        "http://127.0.0.1:36111/assets/formulas/b6294ec39cfb16ea.png",
+        "http://127.0.0.1:36111/assets/formulas/45815047f56e8431.png",
+        "http://127.0.0.1:36111/assets/components.png",
+        "http://127.0.0.1:36111/assets/formulas/1c28f1e4183fd27c.png",
+        "http://127.0.0.1:36111/assets/quadrants.png",
+        "http://127.0.0.1:36111/assets/formulas/df35cc36a4e856d6.png",
+        "http://127.0.0.1:36111/assets/formulas/feb4e203307e4e30.png",
+        "http://127.0.0.1:36111/assets/forward.png",
+        "http://127.0.0.1:36111/assets/formulas/08d3acceb7e35774.png",
+        "http://127.0.0.1:36111/assets/inverse.png",
+        "http://127.0.0.1:36111/assets/formulas/5ac4dc8b259279cb.png",
+        "http://127.0.0.1:36111/assets/formulas/89b2bd588ebd906f.png",
+        "http://127.0.0.1:36111/assets/formulas/407c1c90ee5d6f82.png",
+        "http://127.0.0.1:36111/assets/formulas/752b1399eca7288d.png",
+        "http://127.0.0.1:36111/assets/exercise_traverse.png",
+        "http://127.0.0.1:36111/assets/exercise_inverse.png",
+        "http://127.0.0.1:36111/assets/closure.png",
+        "http://127.0.0.1:36111/assets/formulas/d9bd85eb6b2376d7.png",
+        "http://127.0.0.1:36111/assets/formulas/440e2434314106bc.png",
+        "http://127.0.0.1:36111/assets/formulas/826ee472eb04bcd1.png",
+        "http://127.0.0.1:36111/assets/formulas/586c00d09abc2c3c.png",
+        "http://127.0.0.1:36111/assets/formulas/76ad5ce3a04306e7.png",
+        "http://127.0.0.1:36111/assets/bowditch.png",
+        "http://127.0.0.1:36111/assets/formulas/325a010565a5f6ba.png",
+        "http://127.0.0.1:36111/assets/formulas/17c0e00ad64534ae.png",
+        "http://127.0.0.1:36111/assets/formulas/45ac0734d3b991fd.png",
+        "http://127.0.0.1:36111/assets/NotoSansJP-regular.woff",
+        "http://127.0.0.1:36111/assets/NotoSansJP-bold.woff"
+      ]
+    },
+    {
+      "viewport": {
+        "width": 1920,
+        "height": 1080
+      },
+      "steps": [
+        {
+          "op": "initial",
+          "hash": "#1",
+          "active": [
+            "slide-1"
+          ],
+          "count": "1 / 44",
+          "page": "01 / 44"
+        },
+        {
+          "op": "ArrowRight",
+          "hash": "#2",
+          "active": [
+            "slide-2"
+          ],
+          "count": "2 / 44",
+          "page": "02 / 44"
+        },
+        {
+          "op": "ArrowLeft",
+          "hash": "#1",
+          "active": [
+            "slide-1"
+          ],
+          "count": "1 / 44",
+          "page": "01 / 44"
+        },
+        {
+          "op": "Home",
+          "hash": "#1",
+          "active": [
+            "slide-1"
+          ],
+          "count": "1 / 44",
+          "page": "01 / 44"
+        },
+        {
+          "op": "ArrowLeft",
+          "hash": "#1",
+          "active": [
+            "slide-1"
+          ],
+          "count": "1 / 44",
+          "page": "01 / 44"
+        },
+        {
+          "op": "End",
+          "hash": "#44",
+          "active": [
+            "slide-44"
+          ],
+          "count": "44 / 44",
+          "page": "44 / 44"
+        },
+        {
+          "op": "ArrowRight",
+          "hash": "#44",
+          "active": [
+            "slide-44"
+          ],
+          "count": "44 / 44",
+          "page": "44 / 44"
+        },
+        {
+          "op": "Home",
+          "hash": "#1",
+          "active": [
+            "slide-1"
+          ],
+          "count": "1 / 44",
+          "page": "01 / 44"
+        },
+        {
+          "op": "PageDown",
+          "hash": "#2",
+          "active": [
+            "slide-2"
+          ],
+          "count": "2 / 44",
+          "page": "02 / 44"
+        },
+        {
+          "op": "PageUp",
+          "hash": "#1",
+          "active": [
+            "slide-1"
+          ],
+          "count": "1 / 44",
+          "page": "01 / 44"
+        },
+        {
+          "op": "Space",
+          "hash": "#2",
+          "active": [
+            "slide-2"
+          ],
+          "count": "2 / 44",
+          "page": "02 / 44"
+        },
+        {
+          "op": "next button",
+          "hash": "#3",
+          "active": [
+            "slide-3"
+          ],
+          "count": "3 / 44",
+          "page": "03 / 44"
+        },
+        {
+          "op": "prev button",
+          "hash": "#2",
+          "active": [
+            "slide-2"
+          ],
+          "count": "2 / 44",
+          "page": "02 / 44"
+        },
+        {
+          "op": "count button",
+          "before": {
+            "hash": "#2",
+            "active": [
+              "slide-2"
+            ],
+            "count": "2 / 44",
+            "page": "02 / 44"
+          },
+          "after": {
+            "hash": "#2",
+            "active": [
+              "slide-2"
+            ],
+            "count": "2 / 44",
+            "page": "02 / 44"
+          }
+        },
+        {
+          "op": "speaker notes",
+          "note": "到達目標は三つです。第一に、角の和が理論値とどれほど違うかを調べ、使ってよい観測かを判断してから角を整えること。第二に、その角を北からの向きに変え、北へ何m・東へ何mに分けること。第三に、二点の座標が分かるときは、反対に向きと距離を求めることです。25分の演習では5点の角の調整と方向角、成分の一部、および座標の逆計算に取り組みます。点数だけでなく、図の向きと計算の符号が一致しているかを確かめましょう。",
+          "expected": "到達目標は三つです。第一に、角の和が理論値とどれほど違うかを調べ、使ってよい観測かを判断してから角を整えること。第二に、その角を北からの向きに変え、北へ何m・東へ何mに分けること。第三に、二点の座標が分かるときは、反対に向きと距離を求めることです。25分の演習では5点の角の調整と方向角、成分の一部、および座標の逆計算に取り組みます。点数だけでなく、図の向きと計算の符号が一致しているかを確かめましょう。"
+        }
+      ],
+      "pageNumbers": [
+        {
+          "id": "slide-1",
+          "number": "01 / 44",
+          "expected": "01 / 44"
+        },
+        {
+          "id": "slide-2",
+          "number": "02 / 44",
+          "expected": "02 / 44"
+        },
+        {
+          "id": "slide-3",
+          "number": "03 / 44",
+          "expected": "03 / 44"
+        },
+        {
+          "id": "slide-4",
+          "number": "04 / 44",
+          "expected": "04 / 44"
+        },
+        {
+          "id": "slide-5",
+          "number": "05 / 44",
+          "expected": "05 / 44"
+        },
+        {
+          "id": "slide-6",
+          "number": "06 / 44",
+          "expected": "06 / 44"
+        },
+        {
+          "id": "slide-7",
+          "number": "07 / 44",
+          "expected": "07 / 44"
+        },
+        {
+          "id": "slide-8",
+          "number": "08 / 44",
+          "expected": "08 / 44"
+        },
+        {
+          "id": "slide-9",
+          "number": "09 / 44",
+          "expected": "09 / 44"
+        },
+        {
+          "id": "slide-10",
+          "number": "10 / 44",
+          "expected": "10 / 44"
+        },
+        {
+          "id": "slide-11",
+          "number": "11 / 44",
+          "expected": "11 / 44"
+        },
+        {
+          "id": "slide-12",
+          "number": "12 / 44",
+          "expected": "12 / 44"
+        },
+        {
+          "id": "slide-13",
+          "number": "13 / 44",
+          "expected": "13 / 44"
+        },
+        {
+          "id": "slide-14",
+          "number": "14 / 44",
+          "expected": "14 / 44"
+        },
+        {
+          "id": "slide-15",
+          "number": "15 / 44",
+          "expected": "15 / 44"
+        },
+        {
+          "id": "slide-16",
+          "number": "16 / 44",
+          "expected": "16 / 44"
+        },
+        {
+          "id": "slide-17",
+          "number": "17 / 44",
+          "expected": "17 / 44"
+        },
+        {
+          "id": "slide-18",
+          "number": "18 / 44",
+          "expected": "18 / 44"
+        },
+        {
+          "id": "slide-19",
+          "number": "19 / 44",
+          "expected": "19 / 44"
+        },
+        {
+          "id": "slide-20",
+          "number": "20 / 44",
+          "expected": "20 / 44"
+        },
+        {
+          "id": "slide-21",
+          "number": "21 / 44",
+          "expected": "21 / 44"
+        },
+        {
+          "id": "slide-22",
+          "number": "22 / 44",
+          "expected": "22 / 44"
+        },
+        {
+          "id": "slide-23",
+          "number": "23 / 44",
+          "expected": "23 / 44"
+        },
+        {
+          "id": "slide-24",
+          "number": "24 / 44",
+          "expected": "24 / 44"
+        },
+        {
+          "id": "slide-25",
+          "number": "25 / 44",
+          "expected": "25 / 44"
+        },
+        {
+          "id": "slide-26",
+          "number": "26 / 44",
+          "expected": "26 / 44"
+        },
+        {
+          "id": "slide-27",
+          "number": "27 / 44",
+          "expected": "27 / 44"
+        },
+        {
+          "id": "slide-28",
+          "number": "28 / 44",
+          "expected": "28 / 44"
+        },
+        {
+          "id": "slide-29",
+          "number": "29 / 44",
+          "expected": "29 / 44"
+        },
+        {
+          "id": "slide-30",
+          "number": "30 / 44",
+          "expected": "30 / 44"
+        },
+        {
+          "id": "slide-31",
+          "number": "31 / 44",
+          "expected": "31 / 44"
+        },
+        {
+          "id": "slide-32",
+          "number": "32 / 44",
+          "expected": "32 / 44"
+        },
+        {
+          "id": "slide-33",
+          "number": "33 / 44",
+          "expected": "33 / 44"
+        },
+        {
+          "id": "slide-34",
+          "number": "34 / 44",
+          "expected": "34 / 44"
+        },
+        {
+          "id": "slide-35",
+          "number": "35 / 44",
+          "expected": "35 / 44"
+        },
+        {
+          "id": "slide-36",
+          "number": "36 / 44",
+          "expected": "36 / 44"
+        },
+        {
+          "id": "slide-37",
+          "number": "37 / 44",
+          "expected": "37 / 44"
+        },
+        {
+          "id": "slide-38",
+          "number": "38 / 44",
+          "expected": "38 / 44"
+        },
+        {
+          "id": "slide-39",
+          "number": "39 / 44",
+          "expected": "39 / 44"
+        },
+        {
+          "id": "slide-40",
+          "number": "40 / 44",
+          "expected": "40 / 44"
+        },
+        {
+          "id": "slide-41",
+          "number": "41 / 44",
+          "expected": "41 / 44"
+        },
+        {
+          "id": "slide-42",
+          "number": "42 / 44",
+          "expected": "42 / 44"
+        },
+        {
+          "id": "slide-43",
+          "number": "43 / 44",
+          "expected": "43 / 44"
+        },
+        {
+          "id": "slide-44",
+          "number": "44 / 44",
+          "expected": "44 / 44"
+        }
+      ],
+      "scrollAfterWheel": {
+        "x": 0,
+        "y": 0
+      },
+      "scrollAfterArrow": {
+        "x": 0,
+        "y": 0
+      },
+      "scrollAfterHome": {
+        "x": 0,
+        "y": 0
+      },
+      "assets": {
+        "images": [
+          {
+            "src": "assets/cover_ai.png",
+            "ok": true
+          },
+          {
+            "src": "assets/workflow.png",
+            "ok": true
+          },
+          {
+            "src": "assets/backsight.png",
+            "ok": true
+          },
+          {
+            "src": "assets/site.png",
+            "ok": true
+          },
+          {
+            "src": "assets/cover.png",
+            "ok": true
+          },
+          {
+            "src": "assets/types.png",
+            "ok": true
+          },
+          {
+            "src": "assets/site.png",
+            "ok": true
+          },
+          {
+            "src": "assets/workflow.png",
+            "ok": true
+          },
+          {
+            "src": "assets/axes.png",
+            "ok": true
+          },
+          {
+            "src": "assets/formulas/b45a9eb70a0f90b0.png",
+            "ok": true
+          },
+          {
+            "src": "assets/formulas/984a44f1a34205f4.png",
+            "ok": true
+          },
+          {
+            "src": "assets/reverse.png",
+            "ok": true
+          },
+          {
+            "src": "assets/formulas/63117e61a5b18638.png",
+            "ok": true
+          },
+          {
+            "src": "assets/formulas/41b7fec0a824b134.png",
+            "ok": true
+          },
+          {
+            "src": "assets/turning.png",
+            "ok": true
+          },
+          {
+            "src": "assets/interior.png",
+            "ok": true
+          },
+          {
+            "src": "assets/direction_loop.png",
+            "ok": true
+          },
+          {
+            "src": "assets/formulas/887e1f2e48144c4e.png",
+            "ok": true
+          },
+          {
+            "src": "assets/triangulation.png",
+            "ok": true
+          },
+          {
+            "src": "assets/formulas/ae6e1086ed38f111.png",
+            "ok": true
+          },
+          {
+            "src": "assets/formulas/7f45a845649a44fd.png",
+            "ok": true
+          },
+          {
+            "src": "assets/angle_adjust.png",
+            "ok": true
+          },
+          {
+            "src": "assets/formulas/d170b4f5685e2ec5.png",
+            "ok": true
+          },
+          {
+            "src": "assets/formulas/d4a022bbf86013c2.png",
+            "ok": true
+          },
+          {
+            "src": "assets/angle_adjust.png",
+            "ok": true
+          },
+          {
+            "src": "assets/formulas/336abb232314759f.png",
+            "ok": true
+          },
+          {
+            "src": "assets/turning.png",
+            "ok": true
+          },
+          {
+            "src": "assets/formulas/59b9cfb216b94991.png",
+            "ok": true
+          },
+          {
+            "src": "assets/turning.png",
+            "ok": true
+          },
+          {
+            "src": "assets/formulas/ff7d3bad636135f2.png",
+            "ok": true
+          },
+          {
+            "src": "assets/formulas/16fabebd7bb78245.png",
+            "ok": true
+          },
+          {
+            "src": "assets/direction_loop.png",
+            "ok": true
+          },
+          {
+            "src": "assets/deflection.png",
+            "ok": true
+          },
+          {
+            "src": "assets/formulas/b6294ec39cfb16ea.png",
+            "ok": true
+          },
+          {
+            "src": "assets/formulas/45815047f56e8431.png",
+            "ok": true
+          },
+          {
+            "src": "assets/components.png",
+            "ok": true
+          },
+          {
+            "src": "assets/formulas/1c28f1e4183fd27c.png",
+            "ok": true
+          },
+          {
+            "src": "assets/quadrants.png",
+            "ok": true
+          },
+          {
+            "src": "assets/components.png",
+            "ok": true
+          },
+          {
+            "src": "assets/formulas/df35cc36a4e856d6.png",
+            "ok": true
+          },
+          {
+            "src": "assets/formulas/feb4e203307e4e30.png",
+            "ok": true
+          },
+          {
+            "src": "assets/forward.png",
+            "ok": true
+          },
+          {
+            "src": "assets/formulas/08d3acceb7e35774.png",
+            "ok": true
+          },
+          {
+            "src": "assets/inverse.png",
+            "ok": true
+          },
+          {
+            "src": "assets/formulas/5ac4dc8b259279cb.png",
+            "ok": true
+          },
+          {
+            "src": "assets/formulas/89b2bd588ebd906f.png",
+            "ok": true
+          },
+          {
+            "src": "assets/formulas/407c1c90ee5d6f82.png",
+            "ok": true
+          },
+          {
+            "src": "assets/backsight.png",
+            "ok": true
+          },
+          {
+            "src": "assets/formulas/752b1399eca7288d.png",
+            "ok": true
+          },
+          {
+            "src": "assets/workflow.png",
+            "ok": true
+          },
+          {
+            "src": "assets/exercise_traverse.png",
+            "ok": true
+          },
+          {
+            "src": "assets/exercise_inverse.png",
+            "ok": true
+          },
+          {
+            "src": "assets/workflow.png",
+            "ok": true
+          },
+          {
+            "src": "assets/closure.png",
+            "ok": true
+          },
+          {
+            "src": "assets/inverse.png",
+            "ok": true
+          },
+          {
+            "src": "assets/formulas/d9bd85eb6b2376d7.png",
+            "ok": true
+          },
+          {
+            "src": "assets/formulas/440e2434314106bc.png",
+            "ok": true
+          },
+          {
+            "src": "assets/formulas/826ee472eb04bcd1.png",
+            "ok": true
+          },
+          {
+            "src": "assets/closure.png",
+            "ok": true
+          },
+          {
+            "src": "assets/formulas/586c00d09abc2c3c.png",
+            "ok": true
+          },
+          {
+            "src": "assets/formulas/76ad5ce3a04306e7.png",
+            "ok": true
+          },
+          {
+            "src": "assets/workflow.png",
+            "ok": true
+          },
+          {
+            "src": "assets/bowditch.png",
+            "ok": true
+          },
+          {
+            "src": "assets/formulas/325a010565a5f6ba.png",
+            "ok": true
+          },
+          {
+            "src": "assets/formulas/17c0e00ad64534ae.png",
+            "ok": true
+          },
+          {
+            "src": "assets/formulas/45ac0734d3b991fd.png",
+            "ok": true
+          }
+        ],
+        "fonts": [
+          {
+            "family": "DeckJP",
+            "status": "loaded",
+            "weight": "normal"
+          },
+          {
+            "family": "DeckJP",
+            "status": "loaded",
+            "weight": "700"
+          }
+        ],
+        "external": [
+          "http://127.0.0.1:36111/assets/cover_ai.png",
+          "http://127.0.0.1:36111/assets/workflow.png",
+          "http://127.0.0.1:36111/assets/backsight.png",
+          "http://127.0.0.1:36111/assets/site.png",
+          "http://127.0.0.1:36111/assets/cover.png",
+          "http://127.0.0.1:36111/assets/types.png",
+          "http://127.0.0.1:36111/assets/site.png",
+          "http://127.0.0.1:36111/assets/workflow.png",
+          "http://127.0.0.1:36111/assets/axes.png",
+          "http://127.0.0.1:36111/assets/formulas/b45a9eb70a0f90b0.png",
+          "http://127.0.0.1:36111/assets/formulas/984a44f1a34205f4.png",
+          "http://127.0.0.1:36111/assets/reverse.png",
+          "http://127.0.0.1:36111/assets/formulas/63117e61a5b18638.png",
+          "http://127.0.0.1:36111/assets/formulas/41b7fec0a824b134.png",
+          "http://127.0.0.1:36111/assets/turning.png",
+          "http://127.0.0.1:36111/assets/interior.png",
+          "http://127.0.0.1:36111/assets/direction_loop.png",
+          "http://127.0.0.1:36111/assets/formulas/887e1f2e48144c4e.png",
+          "http://127.0.0.1:36111/assets/triangulation.png",
+          "http://127.0.0.1:36111/assets/formulas/ae6e1086ed38f111.png",
+          "http://127.0.0.1:36111/assets/formulas/7f45a845649a44fd.png",
+          "http://127.0.0.1:36111/assets/angle_adjust.png",
+          "http://127.0.0.1:36111/assets/formulas/d170b4f5685e2ec5.png",
+          "http://127.0.0.1:36111/assets/formulas/d4a022bbf86013c2.png",
+          "http://127.0.0.1:36111/assets/angle_adjust.png",
+          "http://127.0.0.1:36111/assets/formulas/336abb232314759f.png",
+          "http://127.0.0.1:36111/assets/turning.png",
+          "http://127.0.0.1:36111/assets/formulas/59b9cfb216b94991.png",
+          "http://127.0.0.1:36111/assets/turning.png",
+          "http://127.0.0.1:36111/assets/formulas/ff7d3bad636135f2.png",
+          "http://127.0.0.1:36111/assets/formulas/16fabebd7bb78245.png",
+          "http://127.0.0.1:36111/assets/direction_loop.png",
+          "http://127.0.0.1:36111/assets/deflection.png",
+          "http://127.0.0.1:36111/assets/formulas/b6294ec39cfb16ea.png",
+          "http://127.0.0.1:36111/assets/formulas/45815047f56e8431.png",
+          "http://127.0.0.1:36111/assets/components.png",
+          "http://127.0.0.1:36111/assets/formulas/1c28f1e4183fd27c.png",
+          "http://127.0.0.1:36111/assets/quadrants.png",
+          "http://127.0.0.1:36111/assets/components.png",
+          "http://127.0.0.1:36111/assets/formulas/df35cc36a4e856d6.png",
+          "http://127.0.0.1:36111/assets/formulas/feb4e203307e4e30.png",
+          "http://127.0.0.1:36111/assets/forward.png",
+          "http://127.0.0.1:36111/assets/formulas/08d3acceb7e35774.png",
+          "http://127.0.0.1:36111/assets/inverse.png",
+          "http://127.0.0.1:36111/assets/formulas/5ac4dc8b259279cb.png",
+          "http://127.0.0.1:36111/assets/formulas/89b2bd588ebd906f.png",
+          "http://127.0.0.1:36111/assets/formulas/407c1c90ee5d6f82.png",
+          "http://127.0.0.1:36111/assets/backsight.png",
+          "http://127.0.0.1:36111/assets/formulas/752b1399eca7288d.png",
+          "http://127.0.0.1:36111/assets/workflow.png",
+          "http://127.0.0.1:36111/assets/exercise_traverse.png",
+          "http://127.0.0.1:36111/assets/exercise_inverse.png",
+          "http://127.0.0.1:36111/assets/workflow.png",
+          "http://127.0.0.1:36111/assets/closure.png",
+          "http://127.0.0.1:36111/assets/inverse.png",
+          "http://127.0.0.1:36111/assets/formulas/d9bd85eb6b2376d7.png",
+          "http://127.0.0.1:36111/assets/formulas/440e2434314106bc.png",
+          "http://127.0.0.1:36111/assets/formulas/826ee472eb04bcd1.png",
+          "http://127.0.0.1:36111/assets/closure.png",
+          "http://127.0.0.1:36111/assets/formulas/586c00d09abc2c3c.png",
+          "http://127.0.0.1:36111/assets/formulas/76ad5ce3a04306e7.png",
+          "http://127.0.0.1:36111/assets/workflow.png",
+          "http://127.0.0.1:36111/assets/bowditch.png",
+          "http://127.0.0.1:36111/assets/formulas/325a010565a5f6ba.png",
+          "http://127.0.0.1:36111/assets/formulas/17c0e00ad64534ae.png",
+          "http://127.0.0.1:36111/assets/formulas/45ac0734d3b991fd.png"
+        ]
+      },
+      "frames": [
+        {
+          "slide": "slide-1",
+          "slideBox": {
+            "x": 0,
+            "y": 0,
+            "width": 1920.0001220703125,
+            "height": 1080,
+            "right": 1920.0001220703125,
+            "bottom": 1080
+          },
+          "pageBox": {
+            "x": 1644.0001220703125,
+            "y": 1041.60009765625,
+            "width": 175.199951171875,
+            "height": 33.5999755859375,
+            "right": 1819.2000732421875,
+            "bottom": 1075.2000732421875
+          },
+          "navBox": {
+            "x": 1646.921875,
+            "y": 1036,
+            "width": 261.078125,
+            "height": 36,
+            "right": 1908,
+            "bottom": 1072
+          },
+          "doc": {
+            "width": 1920,
+            "height": 1080
+          },
+          "viewport": {
+            "width": 1920,
+            "height": 1080
+          }
+        },
+        {
+          "slide": "slide-20",
+          "slideBox": {
+            "x": 0,
+            "y": 0,
+            "width": 1920.0001220703125,
+            "height": 1080,
+            "right": 1920.0001220703125,
+            "bottom": 1080
+          },
+          "pageBox": {
+            "x": 1644.0001220703125,
+            "y": 1041.60009765625,
+            "width": 175.199951171875,
+            "height": 33.5999755859375,
+            "right": 1819.2000732421875,
+            "bottom": 1075.2000732421875
+          },
+          "navBox": {
+            "x": 1639.15625,
+            "y": 1036,
+            "width": 268.84375,
+            "height": 36,
+            "right": 1908,
+            "bottom": 1072
+          },
+          "doc": {
+            "width": 1920,
+            "height": 1080
+          },
+          "viewport": {
+            "width": 1920,
+            "height": 1080
+          }
+        },
+        {
+          "slide": "slide-33",
+          "slideBox": {
+            "x": 0,
+            "y": 0,
+            "width": 1920.0001220703125,
+            "height": 1080,
+            "right": 1920.0001220703125,
+            "bottom": 1080
+          },
+          "pageBox": {
+            "x": 1644.0001220703125,
+            "y": 1041.60009765625,
+            "width": 175.199951171875,
+            "height": 33.5999755859375,
+            "right": 1819.2000732421875,
+            "bottom": 1075.2000732421875
+          },
+          "navBox": {
+            "x": 1639.15625,
+            "y": 1036,
+            "width": 268.84375,
+            "height": 36,
+            "right": 1908,
+            "bottom": 1072
+          },
+          "doc": {
+            "width": 1920,
+            "height": 1080
+          },
+          "viewport": {
+            "width": 1920,
+            "height": 1080
+          }
+        },
+        {
+          "slide": "slide-44",
+          "slideBox": {
+            "x": 0,
+            "y": 0,
+            "width": 1920.0001220703125,
+            "height": 1080,
+            "right": 1920.0001220703125,
+            "bottom": 1080
+          },
+          "pageBox": {
+            "x": 1644.0001220703125,
+            "y": 1041.60009765625,
+            "width": 175.199951171875,
+            "height": 33.5999755859375,
+            "right": 1819.2000732421875,
+            "bottom": 1075.2000732421875
+          },
+          "navBox": {
+            "x": 1639.15625,
+            "y": 1036,
+            "width": 268.84375,
+            "height": 36,
+            "right": 1908,
+            "bottom": 1072
+          },
+          "doc": {
+            "width": 1920,
+            "height": 1080
+          },
+          "viewport": {
+            "width": 1920,
+            "height": 1080
+          }
+        }
+      ],
+      "errors": [],
+      "failed": [],
+      "requestCount": 56,
+      "networkRequests": [
+        "http://127.0.0.1:36111/slides.html",
+        "http://127.0.0.1:36111/assets/cover_ai.png",
+        "http://127.0.0.1:36111/assets/workflow.png",
+        "http://127.0.0.1:36111/assets/backsight.png",
+        "http://127.0.0.1:36111/assets/site.png",
+        "http://127.0.0.1:36111/assets/cover.png",
+        "http://127.0.0.1:36111/assets/types.png",
+        "http://127.0.0.1:36111/assets/axes.png",
+        "http://127.0.0.1:36111/assets/formulas/b45a9eb70a0f90b0.png",
+        "http://127.0.0.1:36111/assets/formulas/984a44f1a34205f4.png",
+        "http://127.0.0.1:36111/assets/reverse.png",
+        "http://127.0.0.1:36111/assets/formulas/63117e61a5b18638.png",
+        "http://127.0.0.1:36111/assets/formulas/41b7fec0a824b134.png",
+        "http://127.0.0.1:36111/assets/turning.png",
+        "http://127.0.0.1:36111/assets/interior.png",
+        "http://127.0.0.1:36111/assets/direction_loop.png",
+        "http://127.0.0.1:36111/assets/formulas/887e1f2e48144c4e.png",
+        "http://127.0.0.1:36111/assets/triangulation.png",
+        "http://127.0.0.1:36111/assets/formulas/ae6e1086ed38f111.png",
+        "http://127.0.0.1:36111/assets/formulas/7f45a845649a44fd.png",
+        "http://127.0.0.1:36111/assets/angle_adjust.png",
+        "http://127.0.0.1:36111/assets/formulas/d170b4f5685e2ec5.png",
+        "http://127.0.0.1:36111/assets/formulas/d4a022bbf86013c2.png",
+        "http://127.0.0.1:36111/assets/formulas/336abb232314759f.png",
+        "http://127.0.0.1:36111/assets/formulas/59b9cfb216b94991.png",
+        "http://127.0.0.1:36111/assets/formulas/ff7d3bad636135f2.png",
+        "http://127.0.0.1:36111/assets/formulas/16fabebd7bb78245.png",
+        "http://127.0.0.1:36111/assets/deflection.png",
+        "http://127.0.0.1:36111/assets/formulas/b6294ec39cfb16ea.png",
+        "http://127.0.0.1:36111/assets/formulas/45815047f56e8431.png",
+        "http://127.0.0.1:36111/assets/components.png",
+        "http://127.0.0.1:36111/assets/formulas/1c28f1e4183fd27c.png",
+        "http://127.0.0.1:36111/assets/quadrants.png",
+        "http://127.0.0.1:36111/assets/formulas/df35cc36a4e856d6.png",
+        "http://127.0.0.1:36111/assets/formulas/feb4e203307e4e30.png",
+        "http://127.0.0.1:36111/assets/forward.png",
+        "http://127.0.0.1:36111/assets/formulas/08d3acceb7e35774.png",
+        "http://127.0.0.1:36111/assets/inverse.png",
+        "http://127.0.0.1:36111/assets/formulas/5ac4dc8b259279cb.png",
+        "http://127.0.0.1:36111/assets/formulas/89b2bd588ebd906f.png",
+        "http://127.0.0.1:36111/assets/formulas/407c1c90ee5d6f82.png",
+        "http://127.0.0.1:36111/assets/formulas/752b1399eca7288d.png",
+        "http://127.0.0.1:36111/assets/exercise_traverse.png",
+        "http://127.0.0.1:36111/assets/exercise_inverse.png",
+        "http://127.0.0.1:36111/assets/closure.png",
+        "http://127.0.0.1:36111/assets/formulas/d9bd85eb6b2376d7.png",
+        "http://127.0.0.1:36111/assets/formulas/440e2434314106bc.png",
+        "http://127.0.0.1:36111/assets/formulas/826ee472eb04bcd1.png",
+        "http://127.0.0.1:36111/assets/formulas/586c00d09abc2c3c.png",
+        "http://127.0.0.1:36111/assets/formulas/76ad5ce3a04306e7.png",
+        "http://127.0.0.1:36111/assets/bowditch.png",
+        "http://127.0.0.1:36111/assets/formulas/325a010565a5f6ba.png",
+        "http://127.0.0.1:36111/assets/formulas/17c0e00ad64534ae.png",
+        "http://127.0.0.1:36111/assets/formulas/45ac0734d3b991fd.png",
+        "http://127.0.0.1:36111/assets/NotoSansJP-regular.woff",
+        "http://127.0.0.1:36111/assets/NotoSansJP-bold.woff"
+      ]
+    }
+  ]
+}

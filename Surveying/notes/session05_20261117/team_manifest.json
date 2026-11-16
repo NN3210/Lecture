@@ -1,0 +1,160 @@
+{
+  "planning_model": "GPT-6 Astra",
+  "production_model": "GPT-6.1 Sol",
+  "subagent_count": 30,
+  "maximum_concurrent_children": 6,
+  "requested_model_unavailable": "5.6ソロ",
+  "replacement_approved_by_user": true,
+  "agents": [
+    {
+      "task": "lecture_plan",
+      "model": "GPT-6 Astra",
+      "role": "全体計画・旧版診断"
+    },
+    {
+      "task": "content_first",
+      "model": "GPT-6.1 Sol",
+      "role": "前半原稿"
+    },
+    {
+      "task": "content_second",
+      "model": "GPT-6.1 Sol",
+      "role": "後半・補足原稿"
+    },
+    {
+      "task": "numeric",
+      "model": "GPT-6.1 Sol",
+      "role": "数値・Excel・演習と解答"
+    },
+    {
+      "task": "diagrams",
+      "model": "GPT-6.1 Sol",
+      "role": "幾何図版"
+    },
+    {
+      "task": "renderer",
+      "model": "GPT-6.1 Sol",
+      "role": "数式組版・PPTX・PDF・HTML"
+    },
+    {
+      "task": "review01_sources",
+      "model": "GPT-6.1 Sol",
+      "record": "review01_sources.md"
+    },
+    {
+      "task": "review02_angle",
+      "model": "GPT-6.1 Sol",
+      "record": "review02_angle.md"
+    },
+    {
+      "task": "review03_scope",
+      "model": "GPT-6.1 Sol",
+      "record": "review03_scope.md"
+    },
+    {
+      "task": "review04_pedagogy",
+      "model": "GPT-6.1 Sol",
+      "record": "review04_pedagogy.md"
+    },
+    {
+      "task": "review05_diagrams_angle",
+      "model": "GPT-6.1 Sol",
+      "record": "review05_diagrams_angle.md"
+    },
+    {
+      "task": "review06_diagrams_coords",
+      "model": "GPT-6.1 Sol",
+      "record": "review06_diagrams_coords.md"
+    },
+    {
+      "task": "review07_deflection_fix",
+      "model": "GPT-6.1 Sol",
+      "record": "review07_deflection_fix.md"
+    },
+    {
+      "task": "review08_numbers",
+      "model": "GPT-6.1 Sol",
+      "record": "review08_numbers.md"
+    },
+    {
+      "task": "review09_exercise_math",
+      "model": "GPT-6.1 Sol",
+      "record": "review09_exercise_math.md"
+    },
+    {
+      "task": "review10_excel",
+      "model": "GPT-6.1 Sol",
+      "record": "review10_excel.md"
+    },
+    {
+      "task": "review11_notes",
+      "model": "GPT-6.1 Sol",
+      "record": "review11_notes.md"
+    },
+    {
+      "task": "review12_workbook_fix",
+      "model": "GPT-6.1 Sol",
+      "record": "review12_workbook_fix.md"
+    },
+    {
+      "task": "review13_worksheet_visual",
+      "model": "GPT-6.1 Sol",
+      "record": "review13_worksheet_visual.md"
+    },
+    {
+      "task": "review14_inverse",
+      "model": "GPT-6.1 Sol",
+      "record": "review14_inverse.md"
+    },
+    {
+      "task": "review15_sources_final",
+      "model": "GPT-6.1 Sol",
+      "record": "review15_sources_final.md"
+    },
+    {
+      "task": "review16_diagram_polish",
+      "model": "GPT-6.1 Sol",
+      "record": "review16_diagram_polish.md"
+    },
+    {
+      "task": "review17_visual_01_08",
+      "model": "GPT-6.1 Sol",
+      "record": "review17_visual_01_08.md"
+    },
+    {
+      "task": "review18_visual_09_16",
+      "model": "GPT-6.1 Sol",
+      "record": "review18_visual_09_16.md"
+    },
+    {
+      "task": "review19_visual_17_24",
+      "model": "GPT-6.1 Sol",
+      "record": "review19_visual_17_24.md"
+    },
+    {
+      "task": "review20_visual_25_32",
+      "model": "GPT-6.1 Sol",
+      "record": "review20_visual_25_32.md"
+    },
+    {
+      "task": "review21_visual_33_38",
+      "model": "GPT-6.1 Sol",
+      "record": "review21_visual_33_38.md"
+    },
+    {
+      "task": "review22_visual_39_44",
+      "model": "GPT-6.1 Sol",
+      "record": "review22_visual_39_44.md"
+    },
+    {
+      "task": "review23_package",
+      "model": "GPT-6.1 Sol",
+      "record": "review23_package.md"
+    },
+    {
+      "task": "review24_browser",
+      "model": "GPT-6.1 Sol",
+      "record": "review24_browser.md"
+    }
+  ]
+}

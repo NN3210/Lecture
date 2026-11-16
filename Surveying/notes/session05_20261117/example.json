@@ -1,0 +1,458 @@
+{
+  "meta": {
+    "coordinates": "X=座標北、Y=東",
+    "angle_definition": "β: 後視→前視を時計回り。反時計回りループでは内角。",
+    "direction_rule": "T_next=mod(T_prev+180°+β,360°)",
+    "precision": "内部成分を丸めずに計算。表示mは0.001、角は1秒。",
+    "distance": "換算済みの平面計算用距離。授業では水平距離との差を無視できると仮定。",
+    "synthetic": "合成教材。小さい座標閉合差や大きい閉合比は観測精度の実証ではない。",
+    "tolerance": "規程値でなく授業用仮定: 講義4点40秒、演習5点80秒。等精度角。",
+    "exercise_change": "旧版の5点観測値は維持。εβ=+60秒に対し演習用許容80秒を明記。旧版の閉合差が小さければ正しいとする記述を削除。"
+  },
+  "lecture": {
+    "points": "ABCD",
+    "start": [
+      1000.0,
+      1000.0
+    ],
+    "t_start_sec": 225000,
+    "t_start_dms": "62°30′00″",
+    "n": 4,
+    "theory_sec": 1296000,
+    "observed_sum_sec": 1296040,
+    "observed_sum_dms": "360°00′40″",
+    "angle_error_sec": 40,
+    "correction_each_sec": -10.0,
+    "adjusted_sum_sec": 1296000.0,
+    "tolerance_sec": 40,
+    "within_tolerance": true,
+    "rows": [
+      {
+        "point": "A",
+        "line": "AB",
+        "observed_sec": 331820,
+        "observed_dms": "92°10′20″",
+        "correction_sec": -10.0,
+        "adjusted_sec": 331810.0,
+        "adjusted_dms": "92°10′10″",
+        "direction_sec": 225000.0,
+        "direction_deg": 62.5,
+        "direction_dms": "62°30′00″",
+        "distance": 120.0,
+        "dx": 55.409833588204066,
+        "dy": 106.4412999813866,
+        "x": 1055.409833588204,
+        "y": 1106.4412999813867,
+        "deflection_deg": -87.83055555555555,
+        "bowditch_cx": 3.342513947187812e-05,
+        "bowditch_cy": -5.2549511966647354e-05,
+        "corrected_dx": 55.409867013343536,
+        "corrected_dy": 106.44124743187464,
+        "corrected_x": 1055.4098670133435,
+        "corrected_y": 1106.4412474318747
+      },
+      {
+        "point": "B",
+        "line": "BC",
+        "observed_sec": 308430,
+        "observed_dms": "85°40′30″",
+        "correction_sec": -10.0,
+        "adjusted_sec": 308420.0,
+        "adjusted_dms": "85°40′20″",
+        "direction_sec": 1181420.0,
+        "direction_deg": 328.1722222222222,
+        "direction_dms": "328°10′20″",
+        "distance": 95.0,
+        "dx": 80.71552618498254,
+        "dy": -50.099938449876355,
+        "x": 1136.1253597731866,
+        "y": 1056.3413615315103,
+        "deflection_deg": -94.32777777777778,
+        "bowditch_cx": 2.6461568748570178e-05,
+        "bowditch_cy": -4.1601696973595825e-05,
+        "corrected_dx": 80.71555264655129,
+        "corrected_dy": -50.099980051573326,
+        "corrected_x": 1136.1254196598948,
+        "corrected_y": 1056.3412673803014
+      },
+      {
+        "point": "C",
+        "line": "CD",
+        "observed_sec": 354010,
+        "observed_dms": "98°20′10″",
+        "correction_sec": -10.0,
+        "adjusted_sec": 354000.0,
+        "adjusted_dms": "98°20′00″",
+        "direction_sec": 887420.0,
+        "direction_deg": 246.50555555555556,
+        "direction_dms": "246°30′20″",
+        "distance": 117.015,
+        "dx": -46.64921703062381,
+        "dy": -107.31430834436644,
+        "x": 1089.4761427425628,
+        "y": 949.0270531871439,
+        "deflection_deg": -81.66666666666667,
+        "bowditch_cx": 3.259368912751515e-05,
+        "bowditch_cy": -5.1242342856477e-05,
+        "corrected_dx": -46.64918443693468,
+        "corrected_dy": -107.3143595867093,
+        "corrected_x": 1089.47623522296,
+        "corrected_y": 949.026907793592
+      },
+      {
+        "point": "D",
+        "line": "DA",
+        "observed_sec": 301780,
+        "observed_dms": "83°49′40″",
+        "correction_sec": -10.0,
+        "adjusted_sec": 301770.0,
+        "adjusted_dms": "83°49′30″",
+        "direction_sec": 541190.0,
+        "direction_deg": 150.33055555555555,
+        "direction_dms": "150°19′50″",
+        "distance": 102.977,
+        "dx": -89.47626390646504,
+        "dy": 50.973137301333765,
+        "x": 999.9998788360978,
+        "y": 1000.0001904884776,
+        "deflection_deg": -96.175,
+        "bowditch_cx": 2.8683504894963277e-05,
+        "bowditch_cy": -4.509492578157871e-05,
+        "corrected_dx": -89.47623522296014,
+        "corrected_dy": 50.97309220640798,
+        "corrected_x": 999.9999999999999,
+        "corrected_y": 1000.0
+      }
+    ],
+    "return_direction_sec": 225000.0,
+    "return_direction_dms": "62°30′00″",
+    "angular_return_error_sec": 0.0,
+    "unadjusted_return_direction_dms": "62°30′40″",
+    "perimeter": 434.992,
+    "closure_x": -0.00012116390224292672,
+    "closure_y": 0.0001904884775782989,
+    "closure_distance": 0.0002257577269925253,
+    "closure_ratio_denominator": 1926808.9105734234,
+    "display_sum_x": 0.000999999999990564,
+    "display_sum_y": 7.105427357601002e-15,
+    "corrected_closure_x": 0.0,
+    "corrected_closure_y": 0.0
+  },
+  "exercise": {
+    "points": "ABCDE",
+    "start": [
+      1000.0,
+      1000.0
+    ],
+    "t_start_sec": 415230,
+    "t_start_dms": "115°20′30″",
+    "n": 5,
+    "theory_sec": 1944000,
+    "observed_sum_sec": 1944060,
+    "observed_sum_dms": "540°01′00″",
+    "angle_error_sec": 60,
+    "correction_each_sec": -12.0,
+    "adjusted_sum_sec": 1944000.0,
+    "tolerance_sec": 80,
+    "within_tolerance": true,
+    "rows": [
+      {
+        "point": "A",
+        "line": "AB",
+        "observed_sec": 360732,
+        "observed_dms": "100°12′12″",
+        "correction_sec": -12.0,
+        "adjusted_sec": 360720.0,
+        "adjusted_dms": "100°12′00″",
+        "direction_sec": 415230.0,
+        "direction_deg": 115.34166666666667,
+        "direction_dms": "115°20′30″",
+        "distance": 85.0,
+        "dx": -36.38129350523125,
+        "dy": 76.82057981352536,
+        "x": 963.6187064947687,
+        "y": 1076.8205798135255,
+        "deflection_deg": -79.8,
+        "bowditch_cx": 8.474939492338245e-05,
+        "bowditch_cy": -2.9204695335312976e-05,
+        "corrected_dx": -36.381208755836326,
+        "corrected_dy": 76.82055060883002,
+        "corrected_x": 963.6187912441637,
+        "corrected_y": 1076.82055060883
+      },
+      {
+        "point": "B",
+        "line": "BC",
+        "observed_sec": 426952,
+        "observed_dms": "118°35′52″",
+        "correction_sec": -12.0,
+        "adjusted_sec": 426940.0,
+        "adjusted_dms": "118°35′40″",
+        "direction_sec": 194170.0,
+        "direction_deg": 53.93611111111111,
+        "direction_dms": "53°56′10″",
+        "distance": 110.0,
+        "dx": 64.75556982954944,
+        "dy": 88.91971758867854,
+        "x": 1028.374276324318,
+        "y": 1165.740297402204,
+        "deflection_deg": -61.40555555555555,
+        "bowditch_cx": 0.00010967568754790669,
+        "bowditch_cy": -3.7794311610405025e-05,
+        "corrected_dx": 64.755679505237,
+        "corrected_dy": 88.91967979436693,
+        "corrected_x": 1028.3744707494006,
+        "corrected_y": 1165.7402304031968
+      },
+      {
+        "point": "C",
+        "line": "CD",
+        "observed_sec": 344912,
+        "observed_dms": "95°48′32″",
+        "correction_sec": -12.0,
+        "adjusted_sec": 344900.0,
+        "adjusted_dms": "95°48′20″",
+        "direction_sec": 1187070.0,
+        "direction_deg": 329.7416666666667,
+        "direction_dms": "329°44′30″",
+        "distance": 96.0,
+        "dx": 82.9211736108474,
+        "dy": -48.374362703809396,
+        "x": 1111.2954499351654,
+        "y": 1117.3659346983948,
+        "deflection_deg": -84.19444444444444,
+        "bowditch_cx": 9.571696367817311e-05,
+        "bowditch_cy": -3.298412649635348e-05,
+        "corrected_dx": 82.92126932781109,
+        "corrected_dy": -48.374395687935895,
+        "corrected_x": 1111.2957400772118,
+        "corrected_y": 1117.365834715261
+      },
+      {
+        "point": "D",
+        "line": "DE",
+        "observed_sec": 461442,
+        "observed_dms": "128°10′42″",
+        "correction_sec": -12.0,
+        "adjusted_sec": 461430.0,
+        "adjusted_dms": "128°10′30″",
+        "direction_sec": 1000500.0,
+        "direction_deg": 277.9166666666667,
+        "direction_dms": "277°55′00″",
+        "distance": 84.894,
+        "dx": 11.692677095247873,
+        "dy": -84.08491266776856,
+        "x": 1122.9881270304134,
+        "y": 1033.2810220306262,
+        "deflection_deg": -51.82499999999999,
+        "bowditch_cx": 8.464370744265446e-05,
+        "bowditch_cy": -2.9168275362306585e-05,
+        "corrected_dx": 11.692761738955316,
+        "corrected_dy": -84.08494183604392,
+        "corrected_x": 1122.9885018161672,
+        "corrected_y": 1033.280892879217
+      },
+      {
+        "point": "E",
+        "line": "EA",
+        "observed_sec": 350022,
+        "observed_dms": "97°13′42″",
+        "correction_sec": -12.0,
+        "adjusted_sec": 350010.0,
+        "adjusted_dms": "97°13′30″",
+        "direction_sec": 702510.0,
+        "direction_deg": 195.14166666666668,
+        "direction_dms": "195°08′30″",
+        "distance": 127.412,
+        "dx": -122.9886288525189,
+        "dy": -33.280849102409576,
+        "x": 999.9994981778945,
+        "y": 1000.0001729282167,
+        "deflection_deg": -82.775,
+        "bowditch_cx": 0.00012703635183503536,
+        "bowditch_cy": -4.377680755368114e-05,
+        "corrected_dx": -122.98850181616706,
+        "corrected_dy": -33.28089287921713,
+        "corrected_x": 1000.0000000000001,
+        "corrected_y": 999.9999999999998
+      }
+    ],
+    "return_direction_sec": 415230.0,
+    "return_direction_dms": "115°20′30″",
+    "angular_return_error_sec": 0.0,
+    "unadjusted_return_direction_dms": "115°21′30″",
+    "perimeter": 503.30600000000004,
+    "closure_x": -0.0005018221054271521,
+    "closure_y": 0.00017292821635805922,
+    "closure_distance": 0.0005307820583894293,
+    "closure_ratio_denominator": 948234.7642405231,
+    "display_sum_x": 1.7763568394002505e-15,
+    "display_sum_y": 0.0010000000000047748,
+    "corrected_closure_x": 1.7763568394002505e-14,
+    "corrected_closure_y": 0.0
+  },
+  "inverse": {
+    "start": [
+      1500.0,
+      2300.0
+    ],
+    "end": [
+      1580.0,
+      2150.0
+    ],
+    "dx": 80.0,
+    "dy": -150.0,
+    "distance": 170.0,
+    "direction_deg": 298.07248693585296,
+    "direction_dms": "298°04′21″",
+    "reverse_deg": 118.07248693585296,
+    "reverse_dms": "118°04′21″",
+    "atan_deg": -61.92751306414704
+  },
+  "inverse_cases": [
+    {
+      "start": [
+        0,
+        0
+      ],
+      "end": [
+        300,
+        400
+      ],
+      "dx": 300,
+      "dy": 400,
+      "distance": 500.0,
+      "direction_deg": 53.13010235415598,
+      "direction_dms": "53°07′48″",
+      "reverse_deg": 233.13010235415598,
+      "reverse_dms": "233°07′48″",
+      "atan_deg": 53.13010235415598
+    },
+    {
+      "start": [
+        0,
+        0
+      ],
+      "end": [
+        -300,
+        400
+      ],
+      "dx": -300,
+      "dy": 400,
+      "distance": 500.0,
+      "direction_deg": 126.86989764584402,
+      "direction_dms": "126°52′12″",
+      "reverse_deg": 306.86989764584405,
+      "reverse_dms": "306°52′12″",
+      "atan_deg": -53.13010235415598
+    },
+    {
+      "start": [
+        0,
+        0
+      ],
+      "end": [
+        -300,
+        -400
+      ],
+      "dx": -300,
+      "dy": -400,
+      "distance": 500.0,
+      "direction_deg": 233.13010235415598,
+      "direction_dms": "233°07′48″",
+      "reverse_deg": 53.13010235415595,
+      "reverse_dms": "53°07′48″",
+      "atan_deg": 53.13010235415598
+    },
+    {
+      "start": [
+        0,
+        0
+      ],
+      "end": [
+        300,
+        -400
+      ],
+      "dx": 300,
+      "dy": -400,
+      "distance": 500.0,
+      "direction_deg": 306.86989764584405,
+      "direction_dms": "306°52′12″",
+      "reverse_deg": 126.86989764584405,
+      "reverse_dms": "126°52′12″",
+      "atan_deg": -53.13010235415598
+    },
+    {
+      "start": [
+        0,
+        0
+      ],
+      "end": [
+        0,
+        200
+      ],
+      "dx": 0,
+      "dy": 200,
+      "distance": 200.0,
+      "direction_deg": 90.0,
+      "direction_dms": "90°00′00″",
+      "reverse_deg": 270.0,
+      "reverse_dms": "270°00′00″",
+      "atan_deg": null
+    },
+    {
+      "start": [
+        0,
+        0
+      ],
+      "end": [
+        -50,
+        50
+      ],
+      "dx": -50,
+      "dy": 50,
+      "distance": 70.71067811865476,
+      "direction_deg": 135.0,
+      "direction_dms": "135°00′00″",
+      "reverse_deg": 315.0,
+      "reverse_dms": "315°00′00″",
+      "atan_deg": -45.0
+    },
+    {
+      "start": [
+        0,
+        0
+      ],
+      "end": [
+        50,
+        -50
+      ],
+      "dx": 50,
+      "dy": -50,
+      "distance": 70.71067811865476,
+      "direction_deg": 315.0,
+      "direction_dms": "315°00′00″",
+      "reverse_deg": 135.0,
+      "reverse_dms": "135°00′00″",
+      "atan_deg": -45.0
+    },
+    {
+      "start": [
+        0,
+        0
+      ],
+      "end": [
+        0,
+        0
+      ],
+      "dx": 0,
+      "dy": 0,
+      "distance": 0.0,
+      "direction_deg": null,
+      "direction_dms": "未定義",
+      "reverse_deg": null,
+      "reverse_dms": "未定義",
+      "atan_deg": null
+    }
+  ]
+}

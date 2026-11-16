@@ -1,0 +1,95 @@
+{
+  "pdf_pages": {
+    "学生用演習": 2,
+    "教員用解答": 3
+  },
+  "visual_review": "2026-11-16: 全5ページをPNG化して目視。記入欄、罫線、数式、行切れ、余白を確認。",
+  "checks": {
+    "lecture_angle_error_40_sec": true,
+    "exercise_angle_error_60_sec": true,
+    "lecture_adjusted_angle_sum_exact": true,
+    "lecture_angular_round_trip_exact": true,
+    "lecture_within_teaching_tolerance": true,
+    "lecture_bowditch_closes_lt_1e_10_m": true,
+    "lecture_unrounded_sum_used": true,
+    "lecture_positive_ccw_area": true,
+    "exercise_adjusted_angle_sum_exact": true,
+    "exercise_angular_round_trip_exact": true,
+    "exercise_within_teaching_tolerance": true,
+    "exercise_bowditch_closes_lt_1e_10_m": true,
+    "exercise_unrounded_sum_used": true,
+    "exercise_positive_ccw_area": true,
+    "inverse_distance_exact_170": true,
+    "inverse_roundtrip_lt_1e_10": true,
+    "same_point_direction_undefined": true,
+    "dms_half_second_rounds_up": true,
+    "dms_seconds_carry": true,
+    "quadrants_correct": true,
+    "xlsx_formulas_present": true,
+    "xlsx_formula_cache_complete": true,
+    "xlsx_cached_no_errors": true,
+    "xlsx_same_point_cached_undefined": true,
+    "xlsx_trig_radians": true,
+    "xlsx_bowditch_start_references": true,
+    "xlsx_bowditch_coordinate_cache_consistent": true,
+    "xlsx_bowditch_follows_changed_start": true,
+    "学生用演習_page_count": true,
+    "学生用演習_a4": true,
+    "学生用演習_no_overfull_or_missing_fonts": true,
+    "教員用解答_page_count": true,
+    "教員用解答_a4": true,
+    "教員用解答_no_overfull_or_missing_fonts": true
+  },
+  "passed": true,
+  "formula_count": 191,
+  "formula_cache_missing": [],
+  "formula_errors": [],
+  "lecture_closure_internal": [
+    -0.00012116390224292672,
+    0.0001904884775782989
+  ],
+  "exercise_closure_internal": [
+    -0.0005018221054271521,
+    0.00017292821635805922
+  ],
+  "exercise_sum_display_components": [
+    1.7763568394002505e-15,
+    0.0010000000000047748
+  ],
+  "notes": [
+    "角入力は整数角秒、等配分はFractionを使い浮動小数の角和誤差を回避。",
+    "内部成分は未丸めで総和。表示0.001mの総和を別記。",
+    "Excel数式はxlsxwriterでキャッシュ保存。数式再計算は未実施のためキャッシュ・式参照を点検。",
+    "PDFは原稿texとPythonを同梱。"
+  ],
+  "pdf_files": [
+    "学生用演習.pdf",
+    "教員用解答.pdf"
+  ],
+  "bowditch_changed_start_cases": [
+    {
+      "start": [
+        1234.5,
+        -200.0
+      ],
+      "max_translation_error_m": 2.2737367544323206e-13,
+      "final": [
+        1234.4999999999998,
+        -200.00000000000003
+      ],
+      "closes_to_changed_start": true
+    },
+    {
+      "start": [
+        -30.0,
+        4500.25
+      ],
+      "max_translation_error_m": 9.094947017729282e-13,
+      "final": [
+        -30.000000000000007,
+        4500.249999999999
+      ],
+      "closes_to_changed_start": true
+    }
+  ]
+}

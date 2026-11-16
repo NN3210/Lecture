@@ -1,0 +1,118 @@
+\documentclass[a4paper,10pt]{article}
+\usepackage[margin=17mm]{geometry}
+\usepackage{fontspec,amsmath,array,tabularx,xcolor}
+\setmainfont{Noto Sans CJK JP}
+\setsansfont{Noto Sans CJK JP}
+\XeTeXlinebreaklocale "ja"
+\XeTeXlinebreakskip=0pt plus 1pt
+\definecolor{navy}{HTML}{183248}
+\definecolor{blue}{HTML}{276698}
+\definecolor{green}{HTML}{24734A}
+\definecolor{orange}{HTML}{B45B21}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{5pt}
+\renewcommand{\arraystretch}{1.34}
+\newcommand{\ttl}[2]{{\color{navy}\Large\bfseries #1}\par{\small #2}\par\vspace{2pt}\hrule\vspace{7pt}}
+\newcommand{\sub}[1]{\par{\color{navy}\large\bfseries #1}\par}
+\newcommand{\boxwork}[1]{\par\noindent\fbox{\parbox[t][#1][t]{0.965\linewidth}{\vspace{1pt}\hspace{2mm}{\color{gray}\small 途中式・検算}}}\par}
+\newcommand{\note}[1]{{\small\color{blue}#1}\par}
+\begin{document}
+\ttl{第05回 トラバース測量 I｜教員用解答（改3）}{採点10点／同じ内部数値からPDF・Excel・JSONを再生成}
+\sub{問1 (1)　角閉合差と等配分（2点）}
+観測和は540°01′00″、理論和は$(5-2)\times180°=540°$。
+\[
+\varepsilon_\beta=\sum\beta_{\rm obs}-(n-2)180°=+60″,
+\qquad v_\beta=-\frac{\varepsilon_\beta}{n}=-12″.
+\]
+授業用許容±80″に対し $|+60″|\le80″$ なので許容内。各角等精度という条件で等配分する。許容外なら機械的に配分せず、観測・記録を点検する。
+\begin{center}\small\begin{tabular}{|l|l|l|l|}
+\hline
+\textbf{点} & \textbf{観測β} & \textbf{補正} & \textbf{調整β} \\ \hline
+A & 100°12′12″ & −12″ & 100°12′00″ \\ \hline
+B & 118°35′52″ & −12″ & 118°35′40″ \\ \hline
+C & 95°48′32″ & −12″ & 95°48′20″ \\ \hline
+D & 128°10′42″ & −12″ & 128°10′30″ \\ \hline
+E & 97°13′42″ & −12″ & 97°13′30″ \\ \hline
+和 & 540°01′00″ & −60″ & 540°00′00″ \\ \hline
+\end{tabular}\end{center}
+\note{採点：観測和・εβと許容判定0.5点、補正−12″ 0.5点、調整角と総和1.0点。}
+\sub{問1 (2)　方向角（2.5点）}
+後視の方向角は前のT＋180°。そこからβを時計回りに加え、0°以上360°未満に整える。
+\[T_{\rm next}=\operatorname{mod}(T_{\rm prev}+180°+\beta,\ 360°)\]
+\begin{center}\small\begin{tabular}{|l|l|l|}
+\hline
+\textbf{測線} & \textbf{後視方向角＋調整β（整える前）} & \textbf{方向角T} \\ \hline
+AB & 既知 & 115°20′30″ \\ \hline
+BC & 413°56′10″ & 53°56′10″ \\ \hline
+CD & 329°44′30″ & 329°44′30″ \\ \hline
+DE & 637°55′00″ & 277°55′00″ \\ \hline
+EA & 555°08′30″ & 195°08′30″ \\ \hline
+AB 検算 & 475°20′30″ & 115°20′30″ \\ \hline
+\end{tabular}\end{center}
+\note{採点：BC・CD・DE・EA各0.5点（±2″）、ABに戻る検算0.5点。}
+{\small 旧版は5点の数値を維持し、角許容80″を授業条件として明記した。講義4点の許容40″を流用すると60″は許容外になる。両者はいずれも規程値ではない。}
+\newpage
+\ttl{問1 (3)　成分計算と総和（1.5点）}{X＝北・Y＝東／計算途中では丸めない}
+\[\Delta X=S\cos T,\qquad \Delta Y=S\sin T\]
+\begin{center}\small\begin{tabular}{|l|l|l|l|l|}
+\hline
+\textbf{測線} & \textbf{S (m)} & \textbf{方向角T} & \textbf{ΔX (m)} & \textbf{ΔY (m)} \\ \hline
+AB & 85.000 & 115°20′30″ & −36.381 & +76.821 \\ \hline
+BC & 110.000 & 53°56′10″ & +64.756 & +88.920 \\ \hline
+CD & 96.000 & 329°44′30″ & +82.921 & −48.374 \\ \hline
+DE & 84.894 & 277°55′00″ & +11.693 & −84.085 \\ \hline
+EA & 127.412 & 195°08′30″ & −122.989 & −33.281 \\ \hline
+内部総和 & 503.306 &  & −0.001 & +0.000 \\ \hline
+\end{tabular}\end{center}
+BCの計算例：$110.000\cos(53°56′10″)=+64.755569\ldots$ m、
+$110.000\sin(53°56′10″)=+88.919717\ldots$ m。
+
+\textbf{総和の表示に注意}
+
+未丸めの内部値から計算すると、
+ΣΔX＝-0.000501822105 m、ΣΔY＝+0.000172928216 m。
+
+したがって表の内部総和は0.001 m表示で −0.001 m、0.000 mとなる。各辺を先に0.001 mへ丸めて足すと0.000 m、＋0.001 mとなり、違う値になる。検算・補正には内部総和を使う。
+
+\note{採点：BC・CD・EAの各辺0.5点、計1.5点。各成分の符号が正しく、±0.002 mを目安に評価する。総和は検算課題であり、得点内訳に含めない（本演習は計10点）。表示値を足した合計が出た場合は、内部値総和との違いを説明する。}
+\textbf{小さい閉合差の解釈}
+
+距離は合成教材用に設定してある。小さい座標閉合差や大きい閉合比だけを、実測の精度が高い証拠にしてはいけない。角の点検、方向角の一周検算、象限と符号をそれぞれ確認する。閉合比とBowditch補正は次回の内容で、本演習の採点対象外。
+
+\textbf{授業で拾う誤り}
+
+・DEG設定のまま度で計算する。ExcelはCOS(RADIANS(T))を使う。
+
+・BCは北東で両成分が正、CDは北西でΔYが負。
+
+・観測角で方向角を作らず、調整角を用いる。
+
+・AB・DEの表示成分は確認用。総和を求めるときはそれらも元の距離と方向角から再計算する。
+
+\sub{発展（加点なし）}
+観測角のままで一周すると角和が理論値より60″大きいので、ABの方向角は115°21′30″となり、既知値から＋60″ずれる。
+\newpage
+\ttl{問2　座標の逆計算（4点）}{距離・方向角を求め、順計算で検算する}
+\sub{(1) 座標差と象限（1点）}
+\[\Delta X=1580-1500=+80.000\ \mathrm{m},\qquad
+\Delta Y=2150-2300=-150.000\ \mathrm{m}\]
+ΔX＞0、ΔY＜0なので、講義の象限表記では第4象限（北西）。
+\note{採点：符号付き座標差0.5点、象限・向き0.5点。}
+\sub{(2) 距離（1点）}
+\[S_{PQ}=\sqrt{80^2+(-150)^2}=\sqrt{28900}=170.000\ \mathrm{m}\]
+\note{採点：式と値1.0点。8：15：17の直角三角形。}
+\sub{(3) 方向角（1.5点）}
+\[\arctan(\Delta Y/\Delta X)=\arctan(-1.875)=-61°55′39″\]
+第4象限なので360°を加え、$T_{PQ}=298°04′21″$。
+
+内部値は298.07248693585296°。1秒表示へ丸める前の角で順計算すると、ΔX＝＋80.000 m、ΔY＝−150.000 m、Q＝(1580.000, 2150.000) mへ戻る。1秒表示角を再入力すると小さな丸め差が出るため、元の内部値と混ぜない。
+\note{採点：arctanの値0.5点、＋360° 0.5点、Tの値（±2″）0.5点。}
+\sub{(4) 反方向角（0.5点）}
+\[T_{QP}=\operatorname{mod}(T_{PQ}+180°,360°)=118°04′21″\]
+\note{採点：0.5点。}
+\sub{逆計算の境界条件}
+arctan(ΔY/ΔX)だけでは象限を区別できず、ΔX＝0で割れない。プログラムなら象限対応のatan2を使う。Pythonではatan2(ΔY,ΔX)、ExcelではATAN2(ΔX,ΔY)。同一点は距離0、方向角は未定義とする。
+
+\vfill
+{\small 再生成原稿：notes/session05\_20261117/build\_numeric.py。数値例は合成教材。距離は換算済み平面計算用距離。X北・Y東、Tは北から時計回り。}
+\end{document}

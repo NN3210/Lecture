@@ -1,0 +1,68 @@
+{
+  "slides": 44,
+  "main": 36,
+  "appendix": 8,
+  "notes": 44,
+  "python_layout_issues": [],
+  "pptx_rendered": false,
+  "pptx_rendering_limit": "LibreOffice/PowerPoint未導入。PPTX実描画は未実施。HTML/PDF目視と形状境界・XML検査で代替。",
+  "formula_representation": "XeLaTeX PDF/PNG/SVG。PPTX数式は画像。本文・表は編集可能。",
+  "browser_issues": [],
+  "responsive_browser": [
+    {
+      "scrollY": 0,
+      "active": "34",
+      "nav_page_overlap": false,
+      "nav_text_overlap": [],
+      "width": 1280,
+      "height": 720,
+      "pass": true
+    },
+    {
+      "scrollY": 0,
+      "active": "34",
+      "nav_page_overlap": false,
+      "nav_text_overlap": [],
+      "width": 1920,
+      "height": 1080,
+      "pass": true
+    }
+  ],
+  "keyboard_navigation": {
+    "right": "2",
+    "end": "44",
+    "left": "43",
+    "home": "1",
+    "pass": true
+  },
+  "missing_images": [],
+  "embedded_font_loaded": true,
+  "browser_checked_slides": 44,
+  "offline_external_requests": [],
+  "browser_status": "44枚の文字はみ出し・主内容重なりなし",
+  "pdf_pages": {
+    "slides.pdf": 36,
+    "slides_with_appendix.pdf": 44
+  },
+  "pdf_rasterized_pages": 44,
+  "pdf_missing_replacement_glyph": false,
+  "pptx_xml_issues": [],
+  "pptx_xml": {
+    "slides": 44,
+    "notes": 44,
+    "hidden_slide_ids": [
+      37,
+      38,
+      39,
+      40,
+      41,
+      42,
+      43,
+      44
+    ],
+    "checked_shapes": 784,
+    "editable_tables": 14,
+    "editable_text_frames": 704
+  },
+  "status": "pass"
+}
